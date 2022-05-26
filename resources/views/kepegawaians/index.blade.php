@@ -60,7 +60,7 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_cpns)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('sk_cpns'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
@@ -76,7 +76,7 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_pangkat)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('sk_pangkat'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
@@ -92,7 +92,7 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_jafung)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('sk_jafung'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
@@ -108,7 +108,7 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->ijazah)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('ijazah'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
@@ -124,14 +124,13 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->karpeg)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('karpeg'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
                                     </a>
                                 </td>
                             </tr>
-                            @if($tahun_nip<='2016')
                             <tr>
                                 <td>
                                     6
@@ -141,15 +140,14 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_penyesuaian)}}">Download</a></td>
                                 <td class="text-right">
-                                    <a href="{{route('kepegawaians.edit', Crypt::encrypt('sk_penyesuaian'))}}">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
                                         <button class="btn btn-info btn-round btn-sm">
                                             edit
                                         </button>
                                     </a>
                                 </td>
                             </tr>
-                            @elseif($tahun_nip_ggd<='201708')
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     6
                                 </td>
@@ -164,8 +162,7 @@
                                         </button>
                                     </a>
                                 </td>
-                            </tr>
-                            @endif
+                            </tr> --}}
                         </tbody>
                     </table>
                 </div>

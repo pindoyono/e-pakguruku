@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Kepegawaian extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['sk_cpns','sk_penyesuaian','sk_ggd', 'sk_pangkat', 'sk_jafung', 'ijazah', 'karpeg','user_id'];
 }
