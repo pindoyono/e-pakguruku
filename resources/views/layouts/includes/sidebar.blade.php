@@ -63,6 +63,12 @@
 
     @role('guru')
     <li class="nav-item ">
+        <a class="nav-link" href="{{ route('kepegawaians.index') }}">
+            <i class="material-icons">receipt_long</i>
+            <p> Berkas Kepegawaian </p>
+        </a>
+    </li>
+    <li class="nav-item ">
         <a class="nav-link" href="{{ route('paks.index') }}">
             <i class="material-icons">folder_open</i>
             <p> DUPAK </p>
@@ -85,6 +91,8 @@
         </a>
     </li>
     @endrole
+
+
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}"

@@ -9,6 +9,7 @@ use App\Http\Controllers\KegiatanController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KepegawaianController;
 
 
 
@@ -42,6 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('posts', PostController::class);
     Route::resource('pendidikans', PendidikanController::class);
     Route::resource('jabatans', JabatanController::class);
+    Route::resource('kepegawaians', KepegawaianController::class);
     Route::resource('pendidikans', PendidikanController::class)->except([
         'create','index'
     ]);
