@@ -53,7 +53,11 @@
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} placeholder="Password">
-
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback">
+                                            <strong>{{ $errors->first('password')}}</strong>
+                                        </span>
+                                    @endif
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
