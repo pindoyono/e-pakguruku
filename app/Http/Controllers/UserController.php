@@ -9,6 +9,7 @@ use App\Models\Jabatan;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use Auth;
 use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
@@ -148,7 +149,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         // $user = User::find($id);
-        // $user->assignRole('penilai');
+        // $user->assignRole('guru');
 
 
         // dd($id);
@@ -215,9 +216,12 @@ class UserController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-        if($request->input('roles')!=''){
-        $user->assignRole($request->input('roles'));
+        if(Auth::user()->id == 1){
+            $user->assignRole($request->input('roles'));
+                }else{
+            $user->assignRole('guru');
                 }
+
         $id = Crypt::encrypt($id);
 
         return redirect()->route('users.edit',$id)

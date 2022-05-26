@@ -6,7 +6,7 @@
     <div class="user-info">
             <a href="{{ route('users.edit',Crypt::encrypt(Auth::user()->id) ) }}" class="username">
                 <p>
-                    {{Auth::user()->name.'('.Auth::user()->getRoleNames()[0].')'}}
+                    {{Auth::user()->name}}
                 </p>
             </a>
       {{-- <div class="collapse" id="collapseExample">
@@ -62,7 +62,7 @@
     @endrole
 
     @role('guru')
-    <li class="nav-item ">
+     <li class="nav-item ">
         <a class="nav-link" href="{{ route('kepegawaians.index') }}">
             <i class="material-icons">receipt_long</i>
             <p> Berkas Kepegawaian </p>

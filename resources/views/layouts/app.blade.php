@@ -30,7 +30,7 @@
       <div class="content">
             @yield('content')
 
-            @if(Auth::user()->wilayah_kerja == null )
+            @if(Auth::user()->wilayah_kerja == null || get_upadate_at('kepegawaians',Auth::user()->id) > 0)
             <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -42,8 +42,9 @@
                     </div>
                     <div class="modal-body">
                       <h3>
-                          Biodata Anda belum lengkap silahkan lengkapi terlebih dahulu dengan klik link di bawah ini <br>
-                      <a type="button" href="{{route('users.edit',Crypt::encrypt(Auth::user()->id))}}" class="btn btn-primary">Lengkapi Biodata</a>
+                          Biodata Dan Berkas Kepegawaian Anda belum lengkap silahkan lengkapi terlebih dahulu dengan klik link di bawah ini <br>
+                          <a type="button" href="{{route('users.edit',Crypt::encrypt(Auth::user()->id))}}" class="btn btn-primary">Lengkapi Biodata</a>
+                          <a type="button" href="{{route('kepegawaians.edit',get_id_kepegawaian('kepegawaians',Auth::user()->id))}}" class="btn btn-succes">Lengkapi Berkas</a>
 
                       </h3>
                     </div>
