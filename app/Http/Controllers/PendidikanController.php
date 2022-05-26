@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pendidikan;
 use App\Models\Jabatan;
 use App\Models\pak;
-use App\Models\kegiatan;
+use App\Models\Kegiatan;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Auth;
