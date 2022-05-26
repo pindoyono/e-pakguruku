@@ -121,12 +121,12 @@ The above copyright notice and this permission notice shall be included in all c
                         </span>
                       </div>
                       <input type="text" class="form-control {{ $errors->has('username') || $errors->has('email') ?'is-invalid':'' }}" name="login" value="{{ old('username') ? old('username') : old('email')  }}"
-        placeholder="Username or Email" />
-    @if ($errors->has('username') || $errors->has('email'))
-    <span class="invalid-feedback">
-        <strong>{{ $errors->first('username') ? $errors->first('username') : $errors->first('email')  }}</strong>
-    </span>
-    @endif
+                            placeholder="Username or Email" />
+                        @if ($errors->has('username') || $errors->has('email'))
+                        <span class="invalid-feedback">
+                            <strong>{{ $errors->first('username') ? $errors->first('username') : $errors->first('email')  }}</strong>
+                        </span>
+                        @endif
                     </div>
                   </span>
                   <span class="bmd-form-group">
@@ -137,7 +137,7 @@ The above copyright notice and this permission notice shall be included in all c
                         </span>
                       </div>
                       {{-- <input type="password" class="form-control" placeholder="Password..."> --}}
-                      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                      <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
