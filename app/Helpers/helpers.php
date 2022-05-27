@@ -247,14 +247,3 @@ if (! function_exists('get_upadate_at')) {
         return Carbon::now()->diffInYears($updated_at);
     }
 }
-
-if (! function_exists('get_id_kepegawaian')) {
-    function get_id_kepegawaian($table,$user_id)
-    {
-        return  DB::table($table)
-        ->select('*')
-        ->where('user_id',$user_id)
-        ->first()->id;
-    }
-}
-

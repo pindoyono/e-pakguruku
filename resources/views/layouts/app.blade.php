@@ -44,7 +44,7 @@
                       <h3>
                           Biodata Dan Berkas Kepegawaian Anda belum lengkap silahkan lengkapi terlebih dahulu dengan klik link di bawah ini <br>
                           <a type="button" href="{{route('users.edit',Crypt::encrypt(Auth::user()->id))}}" class="btn btn-primary">Lengkapi Biodata</a>
-                          <a type="button" href="{{route('kepegawaians.edit',get_id_kepegawaian('kepegawaians',Auth::user()->id))}}" class="btn btn-succes">Lengkapi Berkas</a>
+                          <a type="button" href="{{route('kepegawaians.index')}}" class="btn btn-succes">Lengkapi Berkas</a>
 
                       </h3>
                     </div>
