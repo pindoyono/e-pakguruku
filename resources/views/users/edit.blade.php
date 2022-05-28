@@ -81,7 +81,7 @@
                     <select name="pangkat_golongan" class="selectpicker" title="Pilih Pangkat Golongan"  data-style="select-with-transition" title="">
                         {{-- <option disabled selected>Pilih Agama</option> --}}
                         @foreach ($jabatan as $item)
-                        <option {{ $user->pangkat_golongan === $item->pangkat ? 'selected' : '' }} value="{{$item->pangkat}}">{{$item->pangkat}}</option>
+                        <option {{ $user->pangkat_golongan === $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->pangkat}}</option>
                         @endforeach
                     </select>
                 </div>
