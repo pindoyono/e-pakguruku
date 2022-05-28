@@ -66,6 +66,19 @@
         </div>
 
         <br>
+        {{-- <div class="row">
+            <label class="col-sm-3 col-form-label">Nilai AK (UTAMA) PAK Pangkat Terakhir</label>
+            <div class="col-md-8">
+                <input type="number" step="any" name="nilai_pak_pangkat_akhir" class="form-control" placeholder="Nilai (UTAMA) PAK Pangkat Terkahir">
+            </div>
+            <label class="col-sm-3 col-form-label">Nilai AK (PENUNJANG) PAK Pangkat Terakhir</label>
+            <div class="col-md-2">
+                <input type="number" step="any" name="sk_ggd" class="form-control" placeholder="Nilai (PENUNJANG) PAK Pangkat Terkahir">
+            </div>
+        </div> --}}
+
+
+        <br>
 
             <button type="submit" class="btn btn-sm btn-success">
                 <span class="btn-label">

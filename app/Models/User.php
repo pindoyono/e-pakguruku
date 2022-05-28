@@ -45,6 +45,17 @@ class User extends Authenticatable
         'no_hp',
         'avatar',
         'wilayah_kerja',
+        'pendidikan_sekolah',
+        'pelatihan_prajabatan',
+        'proses_pembelajaran',
+        'proses_bimbingan',
+        'tugas_lain',
+        'pengembangan_diri',
+        'publikasi_ilmiah',
+        'karya_inovatif',
+        'ijazah_tidak_sesuai',
+        'pendukung_tugas_guru',
+        'memperoleh_penghargaan',
     ];
 
     /**

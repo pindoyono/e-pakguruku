@@ -81,7 +81,7 @@
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
             <i class="material-icons">trending_up</i>
-            <p> Kenaikan Pangkat </p>
+            <p> Rekap AK </p>
         </a>
     </li>
     @endrole

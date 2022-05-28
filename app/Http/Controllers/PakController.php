@@ -23,7 +23,7 @@ class PakController extends Controller
     public function index()
     {
         //
-        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->get();
+        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->get();
         $i=0;
         return view('paks.index', ['data' => $data,'i'=>$i]);
     }
@@ -36,7 +36,7 @@ class PakController extends Controller
     public function create()
     {
         //
-        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->count();
+        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
 
         return view('paks.create',['cek_pak' => $data]);
     }
@@ -51,36 +51,57 @@ class PakController extends Controller
     {
         //
         // dd(Auth::user()->id);
+        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
 
+        if( $data = 0) {
+            $this->validate($request, [
+                'awal' => 'required',
+                'akhir' => 'required',
+                'pendidikan_sekolah' => 'required|numeric',
+                'pelatihan_prajabatan' => 'required|numeric',
+                'proses_pembelajaran' => 'required|numeric',
+                'proses_bimbingan' => 'required|numeric',
+                'tugas_lain' => 'required|numeric',
+                'pengembangan_diri' => 'required|numeric',
+                'publikasi_ilmiah' => 'required|numeric',
+                'karya_inovatif' => 'required|numeric',
+                'ijazah_tidak_sesuai' => 'required|numeric',
+                'pendukung_tugas_guru' => 'required|numeric',
+                'memperoleh_penghargaan' => 'required|numeric',
+                'surat_pengantar' => 'mimes:pdf|max:2048',
+                'tidak_dihukum' => 'mimes:pdf|max:2048',
+                'dupak' => 'mimes:pdf|max:2048',
+                'surat_pembelajaran' => 'mimes:pdf|max:2048',
+                'surat_bimbingan_tertentu' => 'mimes:pdf|max:2048',
+                'surat_penunjang' => 'mimes:pdf|max:2048',
+                'surat_pkb' => 'mimes:pdf|max:2048',
+                'sk_ganjil' => 'mimes:pdf|max:2048',
+                'sk_genap' => 'mimes:pdf|max:2048',
+                'scan_pak' => 'required|mimes:pdf|max:2048',
+                'pkg' => 'mimes:pdf|max:2048',
+                'skp' => 'mimes:pdf|max:2048',
+            ]);
 
+        }else{
+            $this->validate($request, [
+                'awal' => 'required',
+                'akhir' => 'required',
+                'surat_pengantar' => 'mimes:pdf|max:2048',
+                'tidak_dihukum' => 'mimes:pdf|max:2048',
+                'dupak' => 'mimes:pdf|max:2048',
+                'surat_pembelajaran' => 'mimes:pdf|max:2048',
+                'surat_bimbingan_tertentu' => 'mimes:pdf|max:2048',
+                'surat_penunjang' => 'mimes:pdf|max:2048',
+                'surat_pkb' => 'mimes:pdf|max:2048',
+                'sk_ganjil' => 'mimes:pdf|max:2048',
+                'sk_genap' => 'mimes:pdf|max:2048',
+                'scan_pak' => 'required|mimes:pdf|max:2048',
+                'pkg' => 'mimes:pdf|max:2048',
+                'skp' => 'mimes:pdf|max:2048',
+            ]);
 
-        $this->validate($request, [
-            'awal' => 'required',
-            'akhir' => 'required',
-            'pendidikan_sekolah' => 'required|numeric',
-            'pelatihan_prajabatan' => 'required|numeric',
-            'proses_pembelajaran' => 'required|numeric',
-            'proses_bimbingan' => 'required|numeric',
-            'tugas_lain' => 'required|numeric',
-            'pengembangan_diri' => 'required|numeric',
-            'publikasi_ilmiah' => 'required|numeric',
-            'karya_inovatif' => 'required|numeric',
-            'ijazah_tidak_sesuai' => 'required|numeric',
-            'pendukung_tugas_guru' => 'required|numeric',
-            'memperoleh_penghargaan' => 'required|numeric',
-            'surat_pengantar' => 'mimes:pdf|max:2048',
-            'tidak_dihukum' => 'mimes:pdf|max:2048',
-            'dupak' => 'mimes:pdf|max:2048',
-            'surat_pembelajaran' => 'mimes:pdf|max:2048',
-            'surat_bimbingan_tertentu' => 'mimes:pdf|max:2048',
-            'surat_penunjang' => 'mimes:pdf|max:2048',
-            'surat_pkb' => 'mimes:pdf|max:2048',
-            'sk_ganjil' => 'mimes:pdf|max:2048',
-            'sk_genap' => 'mimes:pdf|max:2048',
-            'scan_pak' => 'required|mimes:pdf|max:2048',
-            'pkg' => 'mimes:pdf|max:2048',
-            'skp' => 'mimes:pdf|max:2048',
-        ]);
+        }
+
 
 
         $input = $request->all();
@@ -171,7 +192,7 @@ class PakController extends Controller
         $input['awal'] = Carbon::parse($request->get('awal'))->format('Y-m-d');
         $input['akhir'] = Carbon::parse($request->get('akhir'))->format('Y-m-d');
         $input['user_id'] = Auth::user()->id;
-        $input['status'] = 'Buat';
+        $input['status'] = 'submit';
 
         // dd($input);
         $pak = Pak::create($input);

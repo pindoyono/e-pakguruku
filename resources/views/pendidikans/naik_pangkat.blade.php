@@ -22,16 +22,20 @@
           </h4>
         </div>
         </div>
+        <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('users.update_pak',Auth::user()->id)}}" method="POST">
+            @csrf
+            <input type="hidden" value="PUT" name="_method">
       <div class="card-body">
         <table class="table table-bordered" >
             <tbody>
                 <tr>
-                    <td scope="col" colspan="{{$no+6}}" class="text-center font-weight-bolder">
+                    <td scope="col" colspan="{{$no+7}}" class="text-center font-weight-bolder">
                         <h1>Rekapitulasi Usulan</h1>
                     </td>
                 </tr>
                 <tr style="font-weight: 900;font-size: 20px;text-align:center">
                     <td scope="col" colspan="4">Unsur / Sub Unsur</td>
+                        <td scope="col" width="10%">PAK Pangkat Terakhir</td>
                         <td scope="col" width="10%">PAK Terakhir</td>
                     @foreach ($pak as $item)
                         <td scope="col" width="10%">{{tahun_aja($item->awal)}}</td>
@@ -41,6 +45,7 @@
                 <tr>
                     <td scope="col" rowspan="13" width="%" style="vertical-align: top;">1</td>
                     <td scope="col" colspan="3">Unsur Utama</td>
+                    <td scope="col">  </td>
                     <td scope="col">  </td>
                     @foreach ($pak as $item)
                     <td scope="col">
@@ -54,6 +59,7 @@
                     <td scope="col" rowspan="3" width="2%" style="vertical-align: top;">A</td>
                     <td scope="col" colspan="2">Pendidikan</td>
                     <td scope="col"></td>
+                    <td scope="col"></td>
                     @foreach ($pak as $item)
                     <td scope="col"></td>
                     @endforeach
@@ -62,6 +68,9 @@
                 <tr>
                     <td scope="col" width="2%">1</td>
                     <td scope="col">Pendidikan Sekolah</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pendidikan_sekolah}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->pendidikan_sekolah}}
@@ -84,6 +93,9 @@
                 <tr>
                     <td scope="col">2</td>
                     <td scope="col">Pelatihan Prajabatan</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pelatihan_prajabatan}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->pelatihan_prajabatan}}
@@ -108,6 +120,7 @@
                     <td scope="col" rowspan="4" width="2%" style="vertical-align: top;"> B</td>
                     <td scope="col" colspan="2">Pembelajaran / Bimbingan dan Tugas Tertentu</td>
                     <td scope="col"></td>
+                    <td scope="col"></td>
                     @foreach ($pak as $item)
                     <td scope="col"></td>
                     @endforeach
@@ -116,6 +129,9 @@
                 <tr>
                     <td scope="col" width="2%">1</td>
                     <td scope="col">Proses Pembelajaran</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_pembelajaran}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->proses_pembelajaran}}
@@ -139,6 +155,9 @@
                     <td scope="col">2</td>
                     <td scope="col">Proses Bimbingan</td>
                     <td scope="col">
+                        <input type="number" step="any" name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_bimbingan}}" class="form-control">
+                    </td>
+                    <td scope="col">
                         <span>
                             {{$pak_first->proses_bimbingan}}
                         </span>
@@ -160,6 +179,9 @@
                 <tr>
                     <td scope="col">3</td>
                     <td scope="col">Tugas Lainya</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tugas_lain}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->tugas_lain}}
@@ -185,6 +207,7 @@
                     <td scope="col" rowspan="4" width="2%" style="vertical-align: top;"> C</td>
                     <td scope="col" colspan="2">Pengembangan Keprofesian Bekelanjutan</td>
                     <td scope="col"></td>
+                    <td scope="col"></td>
                     @foreach ($pak as $item)
                     <td scope="col"></td>
                     @endforeach
@@ -193,6 +216,9 @@
                 <tr>
                     <td scope="col" width="2%">1</td>
                     <td scope="col">Pengembangan Diri</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pengembangan_diri}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->pengembangan_diri}}
@@ -216,6 +242,9 @@
                     <td scope="col">2</td>
                     <td scope="col">Karya Ilmiah</td>
                     <td scope="col">
+                        <input type="number" step="any" name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->publikasi_ilmiah}}" class="form-control">
+                    </td>
+                    <td scope="col">
                         <span>
                             {{$pak_first->publikasi_ilmiah}}
                         </span>
@@ -237,6 +266,9 @@
                 <tr>
                     <td scope="col">3</td>
                         <td scope="col">Karya Inovatif</td>
+                        <td scope="col">
+                        <input type="number" step="any" name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{Auth::user()->karya_inovatif}}" class="form-control">
+                        </td>
                         <td scope="col">
                             <span>
                                 {{$pak_first->karya_inovatif}}
@@ -263,6 +295,22 @@
                     <td scope="col">
                         <span id="jml_utama">
                             {{
+                                $jml_utama_terakhir =
+                            number_format(
+                                Auth::user()->pendidikan_sekolah+
+                                Auth::user()->pelatihan_prajabatan+
+                                Auth::user()->proses_pembelajaran +
+                                Auth::user()->proses_bimbingan +
+                                Auth::user()->tugas_lain +
+                                Auth::user()->pengembangan_diri +
+                                Auth::user()->publikasi_ilmiah +
+                                Auth::user()->karya_inovatif,3)
+                                }}
+                        </span>
+                    </td>
+                    <td scope="col">
+                        <span>
+                            {{
                                 number_format(
                                 $pak_first->pendidikan_sekolah+
                                 $pak_first->pelatihan_prajabatan+
@@ -277,7 +325,7 @@
                     </td>
                     @foreach ($pak as $item)
                     <td scope="col">
-                        <span id="jml_utama">
+                        <span>
                             {{
                                 number_format(
                                  karya_ilmiah($item->id) +  karya_inovatif($item->id) + sum_pendidikan1($item->id) + sum_prajab($item->id)+
@@ -288,7 +336,7 @@
                     </td>
                     @endforeach
                     <td scope="col">
-                        <span id="jml_utama">
+                        <span>
                             {{
                                  $ak_utama = number_format(
                                 $pak_first->pendidikan_sekolah+
@@ -313,6 +361,7 @@
                     <td scope="col" rowspan="5" width="2%" style="vertical-align: top;">2</td>
                     <td scope="col" colspan="3">Unsur Penunjang</td>
                     <td scope="col"> </td>
+                    <td scope="col"> </td>
                     @foreach ($pak as $item)
                     <td scope="col">
                         {{-- <input type="number" disabled  id="" oninput="jml_utama()" value=" --}}
@@ -324,6 +373,9 @@
                 <tr>
                     <td scope="col width="2%">A</td>
                     <td scope="col" colspan="2">Ijazah Tidak Sesuai</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->ijazah_tidak_sesuai}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->ijazah_tidak_sesuai}}
@@ -347,6 +399,9 @@
                     <td scope="col width="2%">C</td>
                     <td scope="col" colspan="2">Pendukung Tugas Guru</td>
                     <td scope="col">
+                        <input type="number" step="any" name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->pendukung_tugas_guru}}" class="form-control">
+                    </td>
+                    <td scope="col">
                         <span>
                             {{$pak_first->pendukung_tugas_guru}}
                         </span>
@@ -368,6 +423,9 @@
                 <tr>
                     <td scope="col width="2%">B</td>
                     <td scope="col" colspan="2">Memperoleh Penghargaan</td>
+                    <td scope="col">
+                        <input type="number" step="any" name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->memperoleh_penghargaan}}" class="form-control">
+                    </td>
                     <td scope="col">
                         <span>
                             {{$pak_first->memperoleh_penghargaan}}
@@ -391,9 +449,21 @@
                     <td scope="col" colspan="3">Jumlah Unsur Penunjang</td>
                     <td scope="col">
                         <span id="jml_penunjang">
+                            {{
+                                $jml_penunjang_terakhir =
+                                number_format(
+                                Auth::user()->ijazah_tidak_sesuai+
+                                Auth::user()->pendukung_tugas_guru+
+                                Auth::user()->memperoleh_penghargaan
+                                ,3)
+                            }}
+                        </span>
+                    </td>
+                    <td scope="col">
+                        <span>
                         {{
                             number_format(
-                            $pak_first->ijazah_tidak_sesuai+
+                                $pak_first->ijazah_tidak_sesuai+
                                 $pak_first->pendukung_tugas_guru+
                                 $pak_first->memperoleh_penghargaan
                                 ,3)
@@ -402,7 +472,7 @@
                     </td>
                     @foreach ($pak as $item)
                     <td scope="col">
-                        <span id="jml_penunjang">
+                        <span>
                             {{
                                 number_format(
                                 ijazah_tidak_sesuai($item->id)+
@@ -414,7 +484,7 @@
                     </td>
                     @endforeach
                     <td scope="col">
-                        <span id="jml_penunjang">
+                        <span>
                         {{
                              $ak_penunjang = number_format(
                             $pak_first->ijazah_tidak_sesuai+
@@ -435,6 +505,27 @@
                         <span id="jml_semua">
                             {{
                                 number_format(
+                                (Auth::user()->ijazah_tidak_sesuai+
+                                Auth::user()->pendukung_tugas_guru+
+                                Auth::user()->memperoleh_penghargaan+
+
+                                Auth::user()->pendidikan_sekolah+
+                                Auth::user()->pelatihan_prajabatan+
+                                Auth::user()->proses_pembelajaran +
+                                Auth::user()->proses_bimbingan +
+                                Auth::user()->tugas_lain +
+                                Auth::user()->pengembangan_diri +
+                                Auth::user()->publikasi_ilmiah +
+                                Auth::user()->karya_inovatif)
+                                ,3)
+
+                            }}
+                        </span>
+                    </td>
+                    <td scope="col">
+                        <span>
+                            {{
+                                number_format(
                                 ($pak_first->ijazah_tidak_sesuai+
                                 $pak_first->pendukung_tugas_guru+
                                 $pak_first->memperoleh_penghargaan+
@@ -453,7 +544,7 @@
                     </td>
                     @foreach ($pak as $item)
                     <td scope="col" style="font-weight: 900">
-                        <span id="jml_semua">
+                        <span>
                             {{
                                 number_format(
                                 ijazah_tidak_sesuai($item->id)+
@@ -496,6 +587,15 @@
                 </tr>
             </tbody>
         </table>
+        <button type="submit" class="btn btn-sm btn-success col-sm-12">
+            <span class="btn-label">
+              <i class="material-icons">check</i>
+            </span>
+            Hitung
+            <div class="ripple-container"></div>
+        </button>
+
+    {!! Form::close() !!}
         <table class="table table-bordered" >
             <tbody>
                 <tr>
@@ -510,38 +610,38 @@
                     <td rowspan="2">Unsur Penunjang Maksimal 10%</td>
                 </tr>
                 <tr>
+                    <td>AKK</td>
                     <td>PD</td>
                     <td>PI/KI</td>
-                    <td>Unsur Utama Minimanl 90%</td>
                 </tr>
                 <tr>
                     <td>AK Yang Di Peroleh</td>
                     <td>{{$ak_peroleh}}</td>
-                    <td>{{$pak_first->pengembangan_diri + $pengembangan_diri}}</td>
-                    <td>{{$pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif }}</td>
-                    <td>{{$ak_utama}}</td>
-                    <td>{{$ak_penunjang}}</td>
+                    <td>{{$ak_utama - $jml_utama_terakhir }}</td>
+                    <td>{{($pak_first->pengembangan_diri + $pengembangan_diri) - Auth::user()->pengembangan_diri}}</td>
+                    <td>{{($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) -  (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif) }}</td>
+                    <td>{{$ak_penunjang - $jml_penunjang_terakhir}}</td>
                 </tr>
                 <tr>
                     <td>AK Yang Wajib Peroleh</td>
                     <td>{{ $jabatan->target }}</td>
+                    <td>{{ $jabatan->akk }}</td>
                     <td>{{ $jabatan->akpkbpd }}</td>
                     <td>{{ $jabatan->akpkbpiki }}</td>
-                    <td>{{ $jabatan->akk }}</td>
                     <td>{{ $jabatan->akp }}</td>
                 </tr>
                 <tr>
                     <td>Kelebihan/Kekurangan</td>
                     @php $jml_1 = $ak_peroleh - $jabatan->target; @endphp
-                    <td style="{{ $jml_1 <= 0 ? 'color: red;' : ''  }}">{{ $jml_1 }}</td>
-                    @php $jml_2 = ($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd; @endphp
-                    <td style="{{ $jml_2<=0 ? 'color: red;' : ''  }}">{{ $jml_2 }}</td>
-                    @php $jml_3 = ($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki; @endphp
-                    <td style="{{ $jml_3<=0 ? 'color: red;' : ''  }}">{{ $jml_3 }}</td>
-                    @php $jml_4 = $ak_utama - $jabatan->akk; @endphp
-                    <td style="{{ $jml_4<=0 ? 'color: red;' : ''  }}">{{ $jml_4 }}</td>
+                    <td style="{{ $jml_1 < 0 ? 'color: red;' : ''  }}">{{ $jml_1 }}</td>
+                    @php $jml_4 = ($ak_utama - $jml_utama_terakhir ) - $jabatan->akk; @endphp
+                    <td style="{{ $jml_4<0 ? 'color: red;' : ''  }}">{{ $jml_4 }}</td>
+                    @php $jml_2 = (($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd) - Auth::user()->pengembangan_diri; @endphp
+                    <td style="{{ $jml_2<0 ? 'color: red;' : ''  }}">{{ $jml_2 }}</td>
+                    @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
+                    <td style="{{ $jml_3<0 ? 'color: red;' : ''  }}">{{ $jml_3 }}</td>
                     @php $jml_5 = $ak_penunjang - $jabatan->akp; @endphp
-                    <td style="{{ $jml_5>=0 ? 'color: red;' : ''  }}">{{ $jml_5 }}</td>
+                    <td style="{{ $jml_5>0 ? 'color: red;' : ''  }}">{{ $jml_5 }}</td>
                 </tr>
             </tbody>
         </table>
@@ -586,6 +686,51 @@
         md.initSliders();
       }
     });
+  </script>
+
+<script>
+    function jml_utama() {
+        var sekolah = document.getElementById("sekolah").value;
+        var pra_jabatan = document.getElementById("pra_jabatan").value;
+        var prose_pembelajaran = document.getElementById("prose_pembelajaran").value;
+        var proses_bimbingan = document.getElementById("proses_bimbingan").value;
+        var tugas_lain = document.getElementById("tugas_lain").value;
+        var pengembangan_diri = document.getElementById("pengembangan_diri").value;
+        var karya_ilmiah = document.getElementById("karya_ilmiah").value;
+        var karya_inovatif = document.getElementById("karya_inovatif").value;
+        var total = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
+        document.getElementById("jml_utama").innerHTML = total;
+    }
+
+    function jml_penunjang() {
+        var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
+        var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
+        var penghargaan = document.getElementById("penghargaan").value;
+
+        var total = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
+        document.getElementById("jml_penunjang").innerHTML = total;
+    }
+    function jml_semua() {
+        var sekolah = document.getElementById("sekolah").value;
+        var pra_jabatan = document.getElementById("pra_jabatan").value;
+        var prose_pembelajaran = document.getElementById("prose_pembelajaran").value;
+        var proses_bimbingan = document.getElementById("proses_bimbingan").value;
+        var tugas_lain = document.getElementById("tugas_lain").value;
+        var pengembangan_diri = document.getElementById("pengembangan_diri").value;
+        var karya_ilmiah = document.getElementById("karya_ilmiah").value;
+        var karya_inovatif = document.getElementById("karya_inovatif").value;
+        var total_utama = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
+
+
+        var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
+        var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
+        var penghargaan = document.getElementById("penghargaan").value;
+
+        var total_penunjang = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
+
+
+        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang;
+    }
   </script>
 
 @endpush

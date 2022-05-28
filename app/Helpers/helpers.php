@@ -34,6 +34,7 @@ if (! function_exists('sum_pendidikan1')) {
         ->where('kegiatans.unsur','PENDIDIKAN')
         ->where('kegiatans.sub_unsur','!=','Mengikuti pelatihan  prajabatan')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
 
     }
@@ -50,6 +51,7 @@ if (! function_exists('sum_prajab')) {
         ->where('kegiatans.unsur','PENDIDIKAN')
         ->where('kegiatans.sub_unsur','Mengikuti pelatihan  prajabatan')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -64,6 +66,7 @@ if (! function_exists('sum_penugasan')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.unsur','PEMBELAJARAN/  BIMBINGAN DAN  TUGASTERTENTU')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -92,6 +95,7 @@ if (! function_exists('sum_penunjang')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.unsur','PENUNJANG TUGAS GURU')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -107,6 +111,7 @@ if (! function_exists('proses_pembelajaran')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan proses  pembelajaran')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -121,6 +126,7 @@ if (! function_exists('proses_bimbingan')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan proses  bimbingan')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -136,6 +142,7 @@ if (! function_exists('tugas_lain')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan tugas lain  yang relevan dengan  fungsi sekolah /  madrasah.')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -150,6 +157,7 @@ if (! function_exists('pengembangan_diri')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan  pengembangan diri')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -165,6 +173,7 @@ if (! function_exists('karya_ilmiah')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan Publikasi Ilmiah')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -179,6 +188,7 @@ if (! function_exists('karya_inovatif')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan Karya Inovatif')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -194,6 +204,7 @@ if (! function_exists('ijazah_tidak_sesuai')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Memperoleh gelar/ijazah yang tidak sesuai dengan bidang yang diampunya')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -208,6 +219,7 @@ if (! function_exists('memperoleh_penghargaan')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Perolehan penghargaan/tanda jasa')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }
@@ -222,6 +234,7 @@ if (! function_exists('pendukung_tugas_guru')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.sub_unsur','Melaksanakan kegiatan yang mendukung tugas guru')
         ->where('pak_id',$pak_id)
+        ->where('status','submit')
         ->sum('nilai');
     }
 }

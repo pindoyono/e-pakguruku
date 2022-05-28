@@ -11,6 +11,7 @@ class pak extends Model
     protected $fillable = [
         'awal',
         'user_id',
+        'status',
         'akhir',
         'pendidikan_sekolah',
         'pelatihan_prajabatan',

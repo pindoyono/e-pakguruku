@@ -65,6 +65,18 @@
                 <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
+        <br>
+
+        {{-- <div class="row">
+            <label class="col-sm-3 col-form-label">Nilai AK PAK Pangkat Terakhir</label>
+            <div class="col-md-8">
+                <input type="number" step="any" name="nilai_pak_pangkat_akhir" value="{{$kepegawaian->nilai_pak_pangkat_akhir}}" class="form-control" placeholder="Nilai PAK Pangkat Terkahir">
+            </div>
+            <label class="col-sm-3 col-form-label">Sk Penyesuaian (kab ke prov)</label>
+            <div class="col-md-2">
+                <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
+            </div>
+        </div> --}}
 
         <br>
 

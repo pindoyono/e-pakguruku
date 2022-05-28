@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendidikan;
 use App\Models\Jabatan;
+use App\Models\Kepegawaian;
 use App\Models\pak;
 use App\Models\Kegiatan;
 use Illuminate\Http\Request;
@@ -349,6 +350,13 @@ class PendidikanController extends Controller
         //
         // dd($pak_id);
 
+        // $count =Kepegawaian::where('user_id',Auth::user()->id)->count();
+        // if($count > 0){
+        //    $nilai_pak_pangkat_akhir =  Kepegawaian::where('user_id',Auth::user()->id)->first()->nilai_pak_pangkat_akhir;
+        // }else{
+        //    $nilai_pak_pangkat_akhir =  1500;
+        // }
+
         $jabatan = Jabatan::where('pangkat',Auth::user()->pangkat_golongan)->first();
         if($jabatan){
 
@@ -356,10 +364,10 @@ class PendidikanController extends Controller
             $jabatan = Jabatan::first();
         }
         $kegiatan = Kegiatan::orderBy('kode','asc')->get();
-        $pak = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->get();
-        $pak_first = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->first();
-        $pak_count = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->count();
-        $no = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->count();
+        $pak = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->get();
+        $pak_first = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->first();
+        $pak_count = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
+        $no = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
         $sum_prajab=0;
         $sum_pendidikan1=0;
         $sum_penugasan=0;
@@ -382,7 +390,7 @@ class PendidikanController extends Controller
                                                         'sum_penunjang','proses_pembelajaran','proses_bimbingan',
                                                         'tugas_lain','pengembangan_diri','karya_ilmiah','karya_inovatif',
                                                         'ijazah_tidak_sesuai','pendukung_tugas_guru','memperoleh_penghargaan',
-                                                        'jabatan', ));
+                                                        'jabatan'));
         }else{
             // dd($pak_count);
             return view('pendidikans.tidak_ada');

@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Perkiraan Perhitungan Naik Pangkat</h2>
+            {{-- <h2>Perkiraan Perhitungan Naik Pangkat</h2> --}}
         </div>
 
     </div>
@@ -109,24 +109,28 @@
             </div>
             <div class="col-md-1">
             </div>
-            <label class="col-sm-3 col-form-label">P A K</label>
+            <label class="col-sm-3 col-form-label"> P A K Terakhir</label>
             <div class="col-md-2">
                 <input type="file" name="scan_pak" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
-            <label class="col-sm-3 col-form-label">Laporan / form PKG/PKKS</label>
+            {{-- <label class="col-sm-3 col-form-label">Laporan / form PKG/PKKS</label>
             <div class="col-md-2">
                 <input type="file" name="pkg" class="form-control" placeholder=".col-md-3">
-            </div>
-            <div class="col-md-1">
-            </div>
+            </div> --}}
+            {{-- <div class="col-md-1">
+            </div> --}}
             <label class="col-sm-3 col-form-label">SKP</label>
             <div class="col-md-2">
-                <input type="file" name="skp" class="form-control" placeholder=".col-md-3">
+                <input type="file" name="skp" class="form-control" placeholder="">
             </div>
         </div>
+
+        @if ($cek_pak == 0)
+
+
         <br>
         <div class="progress progress-line-info">
             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
@@ -294,23 +298,24 @@
                 </tr>
             </tbody>
           </table>
-
-            <button type="submit" class="btn btn-sm btn-success">
-                <span class="btn-label">
-                  <i class="material-icons">check</i>
-                </span>
-                Simpan
-                <div class="ripple-container"></div>
-            </button>
-
-            <a class="btn btn-sm btn-info" href="{{ route('paks.index') }}">
-                <span class="btn-label">
-                  <i class="material-icons">reply</i>
-                </span>
-                Kembali
-              <div class="ripple-container"></div>
-            </a>
         </table>
+        @endif
+        <button type="submit" class="btn btn-sm btn-success">
+            <span class="btn-label">
+              <i class="material-icons">check</i>
+            </span>
+            Simpan
+            <div class="ripple-container"></div>
+        </button>
+
+        <a class="btn btn-sm btn-info" href="{{ route('paks.index') }}">
+            <span class="btn-label">
+              <i class="material-icons">reply</i>
+            </span>
+            Kembali
+          <div class="ripple-container"></div>
+        </a>
+
         {!! Form::close() !!}
       </div>
     </div>

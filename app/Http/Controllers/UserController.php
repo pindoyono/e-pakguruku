@@ -229,6 +229,37 @@ class UserController extends Controller
                         ->with('success','User updated successfully');
     }
 
+    public function update_pak(Request $request, $id)
+    {
+        // $user = User::find($id);
+        // $user->assignRole('guru');
+        // dd($request->get('pangkat_golongan'));
+
+        // dd($id);
+        // $createdAt = Carbon::parse($request->get('tanggal_lahir'));
+        // dd($createdAt->format('Y-m-d'));
+        $this->validate($request, [
+            'pendidikan_sekolah' => 'required|numeric',
+            'pelatihan_prajabatan' => 'required|numeric',
+            'proses_pembelajaran' => 'required|numeric',
+            'proses_bimbingan' => 'required|numeric',
+            'tugas_lain' => 'required|numeric',
+            'pengembangan_diri' => 'required|numeric',
+            'publikasi_ilmiah' => 'required|numeric',
+            'karya_inovatif' => 'required|numeric',
+            'ijazah_tidak_sesuai' => 'required|numeric',
+            'pendukung_tugas_guru' => 'required|numeric',
+            'memperoleh_penghargaan' => 'required|numeric',
+        ]);
+
+        $input = $request->all();
+
+        $user = User::find($id);
+        $user->update($input);
+
+        return redirect()->route('pendidikans.naik_pangkat')
+                        ->with('success','Berhasil menghitung angka kredit');
+    }
     /**
      * Remove the specified resource from storage.
      *

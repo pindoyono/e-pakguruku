@@ -34,6 +34,10 @@ class KepegawaianController extends Controller
     public function create()
     {
         //
+        $count =Kepegawaian::where('user_id',Auth::user()->id)->count();
+        if($count > 0){
+            return back()->with('error','Anda Sudah Melakukan Upload Berkas Silahkan Edit Berkas Yg ada');
+        }
         $nip = Auth::user()->nip;
         $tahun_nip = substr($nip,8,4);
         //19891109 201708
@@ -53,6 +57,7 @@ class KepegawaianController extends Controller
     public function store(Request $request)
     {
         //
+
         $this->validate($request, [
             'sk_cpns' => 'required|mimes:pdf|max:2048',
             'sk_pangkat' => 'required|mimes:pdf|max:2048',
@@ -64,6 +69,7 @@ class KepegawaianController extends Controller
 
 
         $input = $request->all();
+        // dd($input);
         if ($request->file('sk_cpns')) {
             $image = $request->file('sk_cpns');
             $profileImage = 'sk_cpns_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -110,8 +116,8 @@ class KepegawaianController extends Controller
 
         // dd($input);
         $input['user_id'] = Auth::user()->id;
-        // dd($input);
         $pak = Kepegawaian::create($input);
+        // dd($pak);
 
         return redirect()->route('kepegawaians.index')
                         ->with('success','berkas kepegawaian created successfully');

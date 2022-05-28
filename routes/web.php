@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('/destroy1/{id}', [PendidikanController::class, 'destroy1'])->name('pendidikans.destroy1');
     Route::get('/naik_pangkat', [PendidikanController::class, 'naik_pangkat'])->name('pendidikans.naik_pangkat');
 
+    Route::put('/update_pak/{id}', [UserController::class, 'update_pak'])->name('users.update_pak');
+
     // untuk penilai
     Route::get('/penilai', [PakController::class, 'penilai'])->name('paks.penilai');
 

@@ -70,7 +70,7 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <input type="file" name="lampiran" required class="form-control" placeholder="">
+                    <input type="file" name="lampiran" class="form-control" placeholder="">
                 </div>
             </div>
 
