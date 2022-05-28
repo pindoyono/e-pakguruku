@@ -1,10 +1,10 @@
 <div class="user">
     <div class="photo">
       {{-- <img src="../../assets/img/avatar.jpg" /> --}}
-      @if($user->avatar == null)
+      @if(Auth::user()->avatar == null)
           <img height="40px" src="{{asset('storage/avatar/placeholder.jpg')}}" alt="...">
       @else
-            <img height="40px" src="{{asset('storage/avatar/'.$user->avatar)}}" alt="...">
+            <img height="40px" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}" alt="...">
       @endif
     </div>
     <div class="user-info">
