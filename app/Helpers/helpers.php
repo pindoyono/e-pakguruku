@@ -240,10 +240,23 @@ if (! function_exists('jabatan')) {
 if (! function_exists('get_upadate_at')) {
     function get_upadate_at($table,$user_id)
     {
-        $updated_at =  DB::table($table)
+        $count =  DB::table($table)
         ->select('*')
         ->where('user_id',$user_id)
-        ->first()->updated_at;
-        return Carbon::now()->diffInYears($updated_at);
+        ->count();
+
+
+        if($count){
+            $updated_at =  DB::table($table)
+            ->select('*')
+            ->where('user_id',$user_id)
+            ->first()->updated_at;
+            return Carbon::now()->diffInYears($updated_at);
+            // return 1;
+        }else{
+            return 1;
+        }
+
+        return 1;
     }
 }

@@ -81,7 +81,7 @@
                     <select name="pangkat_golongan" class="selectpicker" title="Pilih Pangkat Golongan"  data-style="select-with-transition" title="">
                         {{-- <option disabled selected>Pilih Agama</option> --}}
                         @foreach ($jabatan as $item)
-                        <option {{ $user->pangkat_golongan === $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->pangkat}}</option>
+                        <option {{ $user->pangkat_golongan == $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->pangkat }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -108,16 +108,24 @@
                 <div class="col-sm-10">
                     <div class="form-group">
                         {{-- {!! Form::select('roles[]', $roles,[], array('class' => 'selectpicker','btn btn-default btn-round btn-sm')) !!} --}}
-                        <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role">
+                        {{-- <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role"> --}}
                             {{-- <option disabled selected>Pilih Agama</option> --}}
+                            @php $no_role = 0; @endphp
+                            @if(!empty($roles))
                             @foreach ($roles as $role)
-                                @if(!empty($user->getRoleNames()))
-                                    <option {{ $user->getRoleNames()[0] === $role? 'selected' : '' }} value={{$role}}>{{$role}}</option>
-                                @else
-                                Role Belum Dibuat
-                                @endif
+                                <div class="col-sm-12 checkbox-radios">
+                                    <div class="checkbox">
+                                        <label>
+                                            @if(!empty($user->getRoleNames()))
+                                                <input class="form-check-input" name="roles[]" type="checkbox" {{in_array($role['name'], json_decode($user->getRoleNames())) ? "checked" : ""}}   id="roles" value="{{ $role['name'] }}">{{ $role['name'] }}
+                                            @else
+                                              Role Belum Dibuat
+                                            @endif
+                                        </label>
+                                    </div>
+                                </div>
                             @endforeach
-                          </select>
+                        @endif
                     </div>
                 </div>
               </div>

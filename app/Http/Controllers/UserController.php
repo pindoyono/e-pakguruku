@@ -130,7 +130,8 @@ class UserController extends Controller
         $id = Crypt::decrypt($id);
         $jabatan = Jabatan::orderBy('id','asc')->get();
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
+        // $roles = Role::pluck('name','name')->all();
+        $roles = Role::all();
         $userRole = $user->roles->pluck('name','name')->all();
         // if(!$userRole){
         //     $userRole = $roles;
@@ -150,7 +151,7 @@ class UserController extends Controller
     {
         // $user = User::find($id);
         // $user->assignRole('guru');
-
+        // dd($request->get('pangkat_golongan'));
 
         // dd($id);
         // $createdAt = Carbon::parse($request->get('tanggal_lahir'));
