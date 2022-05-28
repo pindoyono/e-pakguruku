@@ -1,7 +1,11 @@
 <div class="user">
     <div class="photo">
       {{-- <img src="../../assets/img/avatar.jpg" /> --}}
-      <img src="{{asset('assets/img/kaltara.png')}}" />
+      @if($user->avatar == null)
+          <img height="40px" src="{{asset('storage/avatar/placeholder.jpg')}}" alt="...">
+      @else
+            <img height="40px" src="{{asset('storage/avatar/'.$user->avatar)}}" alt="...">
+      @endif
     </div>
     <div class="user-info">
             <a href="{{ route('users.edit',Crypt::encrypt(Auth::user()->id) ) }}" class="username">
