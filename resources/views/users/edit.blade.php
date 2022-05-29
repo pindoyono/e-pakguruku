@@ -93,7 +93,7 @@
                 <div class="col-sm-10">
                   <div class="form-group">
                     <select name="wilayah_kerja" class="selectpicker" title="Pilih Wilayah Kerja"  data-style="select-with-transition" data-style="btn btn-default btn-round btn-sm" title="">
-                        <option {{ $user->wilaya_kerja === "tarakan"? 'selected' : '' }}  value="tarakan">Tarakan</option>
+                        <option {{ $user->wilayah_kerja === "tarakan"? 'selected' : '' }}  value="tarakan">Tarakan</option>
                         <option {{ $user->wilayah_kerja === "malinau"? 'selected' : '' }}  value="malinau">Malinau-KTT</option>
                         <option {{ $user->wilayah_kerja === "nunukan"? 'selected' : '' }}  value="nunukan">Nunukan</option>
                         <option {{ $user->wilayah_kerja === "bulungan"? 'selected' : '' }}  value="bulungan">Bulungan</option>
@@ -303,6 +303,15 @@
                 </div>
               </div>
 
+              <div class="row">
+                <label class="col-sm-2 col-form-label">TMT SK Jafung Terakhir</label>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <input name="tmt_jabatan" type="text" value="{{Carbon\Carbon::parse($user->tmt_jabatan)->format('d/m/Y')}}" class="form-control" id='datetimepickerjabatan'>
+                  </div>
+                </div>
+              </div>
+
             <div class="row">
                 <label class="col-sm-2 col-form-label">No Handhone</label>
                 <div class="col-sm-10">
@@ -389,6 +398,15 @@
               format: 'D-M-Y',
           });
           $('#datetimepickercp').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y',
+          });
+          $('#datetimepickerjabatan').datetimepicker({
               icons: {
                   time: "fa fa-clock-o",
                   date: "fa fa-calendar",

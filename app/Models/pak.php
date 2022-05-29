@@ -36,6 +36,18 @@ class pak extends Model
         'scan_pak',
         'pkg',
         'skp',
+        'pendidikan_sekolah2',
+        'pelatihan_prajabatan2',
+        'proses_pembelajaran2',
+        'proses_bimbingan2',
+        'tugas_lain2',
+        'pengembangan_diri2',
+        'publikasi_ilmiah2',
+        'karya_inovatif2',
+        'ijazah_tidak_sesuai2',
+        'pendukung_tugas_guru2',
+        'memperoleh_penghargaan2',
+        'penilai_id',
     ];
 
     public function users()

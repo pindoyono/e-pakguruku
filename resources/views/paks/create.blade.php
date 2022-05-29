@@ -53,78 +53,78 @@
         <div class="row">
             <label class="col-sm-3 col-form-label">Surat Pengantar Dari Sekolah</label>
             <div class="col-md-2">
-                <input type="file" name="surat_pengantar" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="surat_pengantar" class="form-control" placeholder=".col-md-3">
             </div>
             <div class="col-md-1">
             </div>
             <label class="col-sm-3 col-form-label">Surat Pernyataan Tidak Pernah Di Hukum Disiplin</label>
             <div class="col-md-2">
-                <input type="file" name="tidak_dihukum" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="tidak_dihukum" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
             <label class="col-sm-3 col-form-label">DUPAK</label>
             <div class="col-md-2">
-                <input type="file" name="dupak" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="dupak" class="form-control" placeholder=".col-md-3">
             </div>
             <div class="col-md-1">
             </div>
             <label class="col-sm-3 col-form-label">Surat Pernyataan Melaksanakan Pembelajaran</label>
             <div class="col-md-2">
-                <input type="file" name="surat_pembelajaran" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="surat_pembelajaran" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
             <label class="col-sm-3 col-form-label">Surat Pernyataan Melaksanakan Bimbingan/Tugas Tertentu</label>
             <div class="col-md-2">
-                <input type="file" name="surat_bimbingan_tertentu" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="surat_bimbingan_tertentu" class="form-control" placeholder=".col-md-3">
             </div>
             <div class="col-md-1">
             </div>
             <label class="col-sm-3 col-form-label">Surat Pernyataan Melaksanakan Unsur Penunjang</label>
             <div class="col-md-2">
-                <input type="file" name="surat_penunjang" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="surat_penunjang" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
             <label class="col-sm-3 col-form-label">Surat Pernyataan Melaksanakan PKB</label>
             <div class="col-md-2">
-                <input type="file" name="surat_pkb" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="surat_pkb" class="form-control" placeholder=".col-md-3">
             </div>
             <div class="col-md-1">
             </div>
             <label class="col-sm-3 col-form-label">SK Pembagian Tugas Ganjil</label>
             <div class="col-md-2">
-                <input type="file" name="sk_ganjil" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="sk_ganjil" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
             <label class="col-sm-3 col-form-label">SK Pembagian Tugas Genap</label>
             <div class="col-md-2">
-                <input type="file" name="sk_genap" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="sk_genap" class="form-control" placeholder=".col-md-3">
             </div>
             <div class="col-md-1">
             </div>
             <label class="col-sm-3 col-form-label"> P A K Terakhir</label>
             <div class="col-md-2">
-                <input type="file" name="scan_pak" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="scan_pak" class="form-control" placeholder=".col-md-3">
             </div>
         </div>
 
         <div class="row">
             {{-- <label class="col-sm-3 col-form-label">Laporan / form PKG/PKKS</label>
             <div class="col-md-2">
-                <input type="file" name="pkg" class="form-control" placeholder=".col-md-3">
+                <input type="file" required name="pkg" class="form-control" placeholder=".col-md-3">
             </div> --}}
             {{-- <div class="col-md-1">
             </div> --}}
             <label class="col-sm-3 col-form-label">SKP</label>
             <div class="col-md-2">
-                <input type="file" name="skp" class="form-control" placeholder="">
+                <input type="file" required name="skp" class="form-control" placeholder="">
             </div>
         </div>
 

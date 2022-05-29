@@ -81,7 +81,7 @@
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
             <i class="material-icons">trending_up</i>
-            <p> Rekap AK </p>
+            <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>
         </a>
     </li>
     @endrole
@@ -89,7 +89,7 @@
 
     @role('penilai')
     <li class="nav-item ">
-        <a class="nav-link" href="{{ route('paks.penilai') }}">
+        <a class="nav-link" href="{{ route('penilais.penilai') }}">
             <i class="material-icons">calculate</i>
             <p> Penilaian </p>
         </a>

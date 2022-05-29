@@ -178,6 +178,9 @@
             </div>
         </div>
         <br>
+
+        @if($data->pendidikan_sekolah != null && $data->status == 'submit')
+
         <div class="progress progress-line-info">
             <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
               {{-- <span class="sr-only">60% Complete</span> --}}
@@ -353,8 +356,7 @@
 
 
         {{-- {!! Form::file(array('route' => 'users.store','method'=>'POST')) !!} --}}
-         @csrf
-
+          @endif
             <button type="submit" class="btn btn-sm btn-success">
                 <span class="btn-label">
                   <i class="material-icons">check</i>

@@ -32,6 +32,7 @@
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Naik Pangkat</th>
                     <th>Periode</th>
                     <th>Sekolah</th>
                     <th>Status</th>
@@ -42,6 +43,7 @@
                   <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Naik Pangkat</th>
                     <th>Periode</th>
                     <th>Sekolah</th>
                     <th>Status</th>
@@ -53,10 +55,14 @@
                   <tr>
                     <th>{{$i++}}</th>
                     <th>{{ $pak->name }}</th>
+                    <th><label class="badge badge-info">{{ $pak->status_naik_pangkat }}</label></th>
                     <th>{{ tahun_aja($pak->awal) }}</th>
                     <th>{{ $pak->sekolah }}</th>
-                    <th><label class="badge badge-success">{{ $pak->status }}</label></th>
-                    <th class="text-right">Actions</th>
+                    <th><label class="badge badge-info">{{ $pak->status }}</label></th>
+                    <td class="td-actions text-right">
+                        <a class="btn btn-success" href="{{ route('penilais.pak_detail',$pak->id) }}"><i class="material-icons">zoom_in</i></a>
+                        <a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}"><i class="material-icons">print</i></a>
+                    </td>
                     </td>
                   </tr>
                   @endforeach

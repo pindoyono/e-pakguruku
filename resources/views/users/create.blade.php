@@ -278,6 +278,15 @@
                 </div>
               </div>
 
+              <div class="row">
+                <label class="col-sm-2 col-form-label">TMT SK Jafung Terakhir</label>
+                <div class="col-sm-5">
+                  <div class="form-group">
+                    <input name="tmt_jabatan" type="text" class="form-control" id='datetimepickerjabatan'>
+                  </div>
+                </div>
+              </div>
+
             <div class="row">
                 <label class="col-sm-2 col-form-label">No Handhone</label>
                 <div class="col-sm-10">
@@ -361,6 +370,15 @@
               format: 'D-M-Y'
           });
           $('#datetimepickercp').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+          $('#datetimepickerjabatan').datetimepicker({
               icons: {
                   time: "fa fa-clock-o",
                   date: "fa fa-calendar",

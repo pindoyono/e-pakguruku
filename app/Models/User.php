@@ -42,6 +42,7 @@ class User extends Authenticatable
         'no_sk_cpns',
         'tmt_cpns',
         'tmt_pns',
+        'tmt_jabatan',
         'no_hp',
         'avatar',
         'wilayah_kerja',
@@ -56,6 +57,7 @@ class User extends Authenticatable
         'ijazah_tidak_sesuai',
         'pendukung_tugas_guru',
         'memperoleh_penghargaan',
+        'status_naik_pangkat',
     ];
 
     /**

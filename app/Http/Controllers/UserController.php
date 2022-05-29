@@ -99,6 +99,8 @@ class UserController extends Controller
         $input['tanggal_lahir'] = Carbon::parse($request->get('tanggal_lahir'));
         $input['tmt_cpns'] = Carbon::parse($request->get('tmt_cpns'));
         $input['tmt_pns'] = Carbon::parse($request->get('tmt_pns'));
+        $input['tmt_jabatan'] = Carbon::parse($request->get('tmt_jabatan'));
+
 
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
@@ -155,7 +157,7 @@ class UserController extends Controller
 
         // dd($id);
         // $createdAt = Carbon::parse($request->get('tanggal_lahir'));
-        // dd($createdAt->format('Y-m-d'));
+        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
@@ -213,14 +215,13 @@ class UserController extends Controller
         $input['tanggal_lahir'] = Carbon::parse($request->get('tanggal_lahir'));
         $input['tmt_cpns'] = Carbon::parse($request->get('tmt_cpns'));
         $input['tmt_pns'] = Carbon::parse($request->get('tmt_pns'));
+        $input['tmt_jabatan'] = Carbon::parse($request->get('tmt_jabatan'));
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
 
         if(Auth::user()->id == 1){
+            DB::table('model_has_roles')->where('model_id',$id)->delete();
             $user->assignRole($request->input('roles'));
-                }else{
-            $user->assignRole('guru');
                 }
 
         $id = Crypt::encrypt($id);

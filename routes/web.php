@@ -10,6 +10,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KepegawaianController;
+use App\Http\Controllers\PenilaiController;
 
 
 
@@ -60,7 +61,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/update_pak/{id}', [UserController::class, 'update_pak'])->name('users.update_pak');
 
     // untuk penilai
-    Route::get('/penilai', [PakController::class, 'penilai'])->name('paks.penilai');
+    Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilais.penilai');
+    Route::get('/pak_detail/{id}', [PenilaiController::class, 'pak_detail'])->name('penilais.pak_detail');
+    Route::put('/update_pak_penilai/{id}', [PenilaiController::class, 'update_pak_penilai'])->name('penilais.update_pak_penilai');
+    Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
+    Route::get('/cetak_berita_acara/{id}', [PenilaiController::class, 'cetak_berita_acara'])->name('penilais.cetak_berita_acara');
 
 
 
