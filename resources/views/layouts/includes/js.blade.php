@@ -41,6 +41,11 @@
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('assets/demo/demo.js')}}"></script>
 
+
+
+{{-- <script src="https://cdn.tiny.cloud/1/32566mbz21cw2hkjossy34ht7r0mq3sl8m45db862f1a558h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+
+
 {{-- ajax --}}
   {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

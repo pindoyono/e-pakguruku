@@ -11,6 +11,7 @@ use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KepegawaianController;
 use App\Http\Controllers\PenilaiController;
+use App\Http\Controllers\ProvinsiController;
 
 
 
@@ -66,6 +67,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/update_pak_penilai/{id}', [PenilaiController::class, 'update_pak_penilai'])->name('penilais.update_pak_penilai');
     Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
     Route::get('/cetak_berita_acara/{id}', [PenilaiController::class, 'cetak_berita_acara'])->name('penilais.cetak_berita_acara');
+    Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
+
+
+
+    Route::get('/verifikasi', [ProvinsiController::class, 'verifikasi'])->name('provinsis.verifikasi');
+    Route::get('/verif/{id}', [ProvinsiController::class, 'verif'])->name('provinsis.verif');
+    Route::put('/perbaikan/{id}', [ProvinsiController::class, 'perbaikan'])->name('provinsis.perbaikan');
+    Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
+
 
 
 

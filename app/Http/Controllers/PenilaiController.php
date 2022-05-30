@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\Pendidikan;
+use App\Models\Kegiatan;
 use App\Models\Pak;
 use App\Models\User;
 use App\Models\Jabatan;
@@ -22,7 +23,7 @@ class PenilaiController extends Controller
                         ->join('users', 'users.id', '=', 'paks.user_id')
                         ->select('users.*','paks.*')
                         ->orderBy('paks.id','asc')
-                        // ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+                        ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
                         ->get();
         $i=0;
 
@@ -263,6 +264,14 @@ class PenilaiController extends Controller
                                             ]);
 
         return $pdf->stream('BeritaAcara.pdf');
+    }
+
+    public function angka_kredit()
+    {
+        //
+        $data = Kegiatan::orderBy('id','DESC')->get();
+        $i=0;
+        return view('penilais.angka_kredit', ['data' => $data,'i'=>$i]);
     }
 
 }

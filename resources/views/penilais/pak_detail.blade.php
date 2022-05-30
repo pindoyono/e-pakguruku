@@ -13,87 +13,102 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary card-header-icon">
-            <div class="card-icon">
-              <i class="material-icons">assignment</i>
+
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+              <div class="card-header card-header-tabs card-header-rose">
+                <div class="nav-tabs-navigation">
+                  <div class="nav-tabs-wrapper">
+                    <span class="nav-tabs-title">DATA PTK : </span>
+                    <ul class="nav nav-tabs" data-tabs="tabs">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#profile" data-toggle="tab">
+                          <i class="material-icons">contact_mail</i> Profile PTK
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#messages" data-toggle="tab">
+                          <i class="material-icons">inventory</i> Berkas Kepegawaian
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#settings" data-toggle="tab">
+                          <i class="material-icons">folder_open</i> DUPAK
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      @role('penilai|admin-prov')
+                      <li class="nav-item">
+                        <a class="nav-link" href="#berita_acara" data-toggle="tab">
+                          <i class="material-icons">input</i> Berita Acara
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      @endrole
+                      @role('cabdin|admin-prov')
+                      <li class="nav-item">
+                        <a class="nav-link" href="#verifikasi" data-toggle="tab">
+                          <i class="material-icons">checklist</i> Verifikasi
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
+                      @endrole
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="tab-content">
+                  <div class="tab-pane active" id="profile">
+                    @include('penilais.profile')
+                  </div>
+                  <div class="tab-pane" id="messages">
+                    @include('penilais.kepegawaians')
+                  </div>
+                  <div class="tab-pane" id="settings">
+                    @include('penilais.dupak')
+                  </div>
+                  @role('penilai|admin-prov')
+                  <div class="tab-pane" id="berita_acara">
+                    @include('penilais.berita_acara')
+                  </div>
+                  @endrole
+                  @role('cabdin|admin-prov')
+                  <div class="tab-pane" id="verifikasi">
+                    <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('provinsis.perbaikan',$pak_id)}}" method="POST">
+                        @csrf
+                        <input type="hidden" value="PUT" name="_method">
+                        <textarea name='pesan_perbaikan' cols="125" rows="15">
+                          Isi Pesan Perbaikan Untuk PTK
+                       </textarea>
+                          <button type="submit" class="btn btn-success">
+                              <span class="btn-label">
+                                <i class="material-icons">published_with_changes</i>
+                              </span>
+                              Perkaikan
+                              <div class="ripple-container"></div>
+                          </button>
+
+                          <a class="btn btn-primary" href="{{ route('provinsis.verif',$pak->id)}}">
+                              <span class="btn-label">
+                                  <i class="material-icons">done_all</i>
+                                </span>
+                                Verifikasi
+                                <div class="ripple-container"></div>
+                          </a>
+                          {!! Form::close() !!}
+                  </div>
+                  @endrole
+
+
+
+                </div>
+              </div>
             </div>
           </div>
-            <div class="card-body">
-                {{-- <div class="pull-right">
-                    <a class="btn btn-sm btn-success" href="{{ route('pendidikans.exporDupak', $pak_id) }}"> export xsl</a>
-                </div> --}}
-                <div id="accordion" role="tablist">
-                    <div class="card-collapse">
-                      <div class="card-header" role="tab" id="headingOne">
-                        <h5 class="mb-0">
-                          <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
-                            <h4 style="font-weight:bold">
-                                Data Profile PTK
-                            </h4>
-                            <i class="material-icons">keyboard_arrow_down</i>
-                          </a>
-                        </h5>
-                      </div>
-                      <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" style="">
-                        <div class="card-body">
-                        @include('penilais.profile')
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-collapse">
-                      <div class="card-header" role="tab" id="headingTwo">
-                        <h5 class="mb-0">
-                          <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <h4 style="font-weight: bold">
-                                Berkas Kepegawaian
-                            </h4>
-                            <i class="material-icons">keyboard_arrow_down</i>
-                          </a>
-                        </h5>
-                      </div>
-                      <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            @include('penilais.kepegawaians')
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-collapse">
-                      <div class="card-header" role="tab" id="headingThree">
-                        <h5 class="mb-0">
-                          <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            <h4 style="font-weight: bold">Daftar Usulan Angka Kredit</h4>
-                            <i class="material-icons">keyboard_arrow_down</i>
-                          </a>
-                        </h5>
-                      </div>
-                      <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                        <div class="card-body">
-                            @include('penilais.dupak')
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-collapse">
-                        <div class="card-header" role="tab" id="headingThree">
-                          <h5 class="mb-0">
-                            <a class="collapsed" data-toggle="collapse" href="#berita_acara" aria-expanded="false" aria-controls="collapseThree">
-                              <h4 style="font-weight: bold">Berita Acara PAK</h4>
-                              <i class="material-icons">keyboard_arrow_down</i>
-                            </a>
-                          </h5>
-                        </div>
-                        <div id="berita_acara" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-                          <div class="card-body">
-                              @include('penilais.berita_acara')
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-            </div>
         </div>
-        <!--  end card  -->
-      </div>
       <!-- end col-md-12 -->
     </div>
     <!-- end row -->
@@ -106,6 +121,20 @@
 
 @push('body-scripts')
 <script src="{{asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
+
+
+<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange export formatpainter image editimage linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tableofcontents tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code export formatpainter image editimage pageembed permanentpen table tableofcontents',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+  </script>
+
+
 <script>
     $(document).ready(function() {
       $('#datatables').DataTable({

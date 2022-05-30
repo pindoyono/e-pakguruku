@@ -86,7 +86,6 @@
     </li>
     @endrole
 
-
     @role('penilai')
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('penilais.penilai') }}">
@@ -96,7 +95,22 @@
     </li>
     @endrole
 
+    @role('admin-prov|cabdin')
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('provinsis.verifikasi') }}">
+            <i class="material-icons">verified</i>
+            <p> Verifikasi </p>
+        </a>
+    </li>
+    @endrole
 
+
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('penilais.angka_kredit') }}">
+            <i class="material-icons">my_location</i>
+            <p> Angka Kredit  </p>
+        </a>
+    </li>
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}"

@@ -22,14 +22,6 @@
             </div>
             <h3 class="card-title">List Daftar Usulan Penilaian Angka Kredit</h3>
           </div>
-          <div class="card-title col-md-12">
-            <div class="pull-right">
-                <h2>
-                    <a class="btn btn-sm btn-info" href="{{ route('paks.create') }}">Tambah Dupak</a>
-                </h2>
-            </div>
-          </div>
-
           <div class="card-body">
             <div class="toolbar">
               <!--        Here you can write extra buttons/actions for the toolbar              -->
@@ -39,8 +31,10 @@
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Periode</th>
                     <th>Nama</th>
+                    <th>Naik Pangkat</th>
+                    <th>Periode</th>
+                    <th>Sekolah</th>
                     <th>Status</th>
                     <th class="disabled-sorting text-right">Actions</th>
                   </tr>
@@ -48,8 +42,10 @@
                 <tfoot>
                   <tr>
                     <th>No</th>
-                    <th>Periode</th>
                     <th>Nama</th>
+                    <th>Naik Pangkat</th>
+                    <th>Periode</th>
+                    <th>Sekolah</th>
                     <th>Status</th>
                     <th class="text-right">Actions</th>
                   </tr>
@@ -57,34 +53,16 @@
                 <tbody>
                     @foreach ($data as $key => $pak)
                   <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $pak->awal }}</td>
-                    <td>{{ $pak->akhir }}</td>
-                    <th>
-                        <label class="badge badge-success">
-                            {{ $pak->status }}
-                            @if ($pak->status == 'Perbaikan' )
-                            <a href="{{ route('provinsis.pesan_perbaikan',$pak->id) }}" target="_blank" rel="noopener noreferrer">
-                                <span class="material-icons">
-                                zoom_in
-                                </span>
-                            </a>
-                            @endif
-                        </label>
-                    </th>
+                    <th>{{$i++}}</th>
+                    <th>{{ $pak->name }}</th>
+                    <th><label class="badge badge-info">{{ $pak->status_naik_pangkat }}</label></th>
+                    <th>{{ tahun_aja($pak->awal) }}</th>
+                    <th>{{ $pak->sekolah }}</th>
+                    <th><label class="badge badge-info">{{ $pak->status }}</label></th>
                     <td class="td-actions text-right">
-                        @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' )
-
-                        <a class="btn btn-warning" href="{{ route('pendidikans.index1',$pak->id) }}"><i class="material-icons">attach_file</i></a>
-                        <a class="btn btn-primary" href="{{ route('paks.edit',$pak) }}"><i class="material-icons">edit</i></a>
-                        {!! Form::open(['method' => 'DELETE','route' => ['paks.destroy', $pak],'style'=>'display:inline']) !!}
-                        {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
-                        <button type="submit" rel="tooltip" class="btn btn-danger">
-                            <i class="material-icons">close</i>
-                            {!! Form::close() !!}
-                        @else
-                            {{'Tidak Ada Akses Action'}}
-                        @endif
+                        <a class="btn btn-success" href="{{ route('penilais.pak_detail',$pak->id) }}"><i class="material-icons">zoom_in</i></a>
+                        <a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}"><i class="material-icons">print</i></a>
+                    </td>
                     </td>
                   </tr>
                   @endforeach

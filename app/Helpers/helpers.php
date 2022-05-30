@@ -1,5 +1,7 @@
 <?php
 use Carbon\Carbon;
+use App\Models\User;
+
 
 if (! function_exists('convertLocalToUTC')) {
     function convertLocalToUTC($time)
@@ -315,5 +317,27 @@ if (! function_exists('masa_kerja')) {
         $bulan = $diffInMonths-($diffYears*12);
 
         return  $diffYears.' Tahun '.$bulan.' Bulan';
+    }
+}
+
+
+if (! function_exists('get_juml_guru')) {
+    function get_juml_guru()
+    {
+        $users = User::role('guru')->count();
+        return $users;
+    }
+}
+
+
+if (! function_exists('get_juml_guru_pak')) {
+    function get_juml_guru_pak($status)
+    {
+        $users =  DB::table('paks')
+        ->join('users', 'users.id', '=', 'paks.user_id')
+        ->where('users.status_naik_pangkat',$status)
+        ->where('status','!=','terbit')
+        ->count();
+        return $users;
     }
 }

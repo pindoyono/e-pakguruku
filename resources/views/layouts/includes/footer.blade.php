@@ -1,4 +1,4 @@
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <div class="copyright float-right">
       &copy;
       <script>
@@ -6,4 +6,4 @@
       </script>, made with <i class="material-icons">favorite</i> by
       <a href="" target="_blank">PNDYN</a> for a better web.
     </div>
-  </div>
+  </div> --}}

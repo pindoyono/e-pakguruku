@@ -48,6 +48,7 @@ class pak extends Model
         'pendukung_tugas_guru2',
         'memperoleh_penghargaan2',
         'penilai_id',
+        'pesan_perbaikan',
     ];
 
     public function users()
