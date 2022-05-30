@@ -7,7 +7,7 @@ use DB;
 use Auth;
 use App\Models\Pendidikan;
 use App\Models\Kegiatan;
-use App\Models\Pak;
+use App\Models\pak;
 use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Kepegawaian;

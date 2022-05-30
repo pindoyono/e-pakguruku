@@ -364,10 +364,10 @@ class PendidikanController extends Controller
             $jabatan = Jabatan::first();
         }
         $kegiatan = Kegiatan::orderBy('kode','asc')->get();
-        $pak = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->get();
-        $pak_first = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->first();
-        $pak_count = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
-        $no = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','submit')->count();
+        $pak = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->get();
+        $pak_first = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->first();
+        $pak_count = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->count();
+        $no = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->count();
         $sum_prajab=0;
         $sum_pendidikan1=0;
         $sum_penugasan=0;
