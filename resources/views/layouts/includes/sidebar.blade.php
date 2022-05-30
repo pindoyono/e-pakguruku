@@ -105,10 +105,25 @@
     @endrole
 
 
+
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('penilais.angka_kredit') }}">
             <i class="material-icons">my_location</i>
             <p> Angka Kredit  </p>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" target="_blank" href="https://t.me/+N3_V0kylBOgxY2M1">
+            <i class="material-icons">contact_support</i>
+            <p> Group Diskusi  </p>
+        </a>
+    </li>
+
+    <li class="nav-item ">
+        <a class="nav-link" target="_blank" href="">
+            <i class="material-icons">play_circle</i>
+            <p> Video Panduan  </p>
         </a>
     </li>
 
