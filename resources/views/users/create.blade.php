@@ -106,7 +106,7 @@
                                         <div class="checkbox">
                                             <label>
                                                 @if(!empty($user->getRoleNames()))
-                                                    <input class="form-check-input" name="roles[]" type="checkbox" {{in_array($role['name'], json_decode($user->getRoleNames())) ? "checked" : ""}}   id="roles" value="{{ $role['name'] }}">{{ $role['name'] }}
+                                                    <input class="form-check-input" name="roles[]" type="checkbox"  id="roles" value="{{ $role['name'] }}">{{ $role['name'] }}
                                                 @else
                                                   Role Belum Dibuat
                                                 @endif
