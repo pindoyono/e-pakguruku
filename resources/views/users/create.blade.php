@@ -94,25 +94,21 @@
               <div class="row">
                 <label class="col-sm-2 col-form-label">Role</label>
                 <div class="col-sm-10">
-                    <div class="col-sm-10">
-                        <div class="form-group">
-                            {{-- {!! Form::select('roles[]', $roles,[], array('class' => 'selectpicker','btn btn-default btn-round btn-sm')) !!} --}}
-                            {{-- <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role"> --}}
-                                {{-- <option disabled selected>Pilih Agama</option> --}}
-                                @php $no_role = 0; @endphp
-                                @if(!empty($roles))
-                                @foreach ($roles as $role)
-                                    <div class="col-sm-12 checkbox-radios">
-                                        <div class="checkbox">
-                                            <label>
-                                                    <input class="form-check-input" name="roles[]" type="checkbox"  id="roles" value="{{ $role['name'] }}">{{ $role['name'] }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
+                  <div class="form-group">
+                        {{-- <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role"> --}}
+                            {{-- <option disabled selected>Pilih Agama</option> --}}
+                            <div class="col-sm-12 checkbox-radios">
+                                <div class="checkbox">
+                                    @foreach ($roles as $role)
+                                            {{-- <option value={{$role}}>{{$role}}</option> --}}
+                                            <input class="form-check-input" name="roles[]" type="checkbox"  id="roles" value="{{ $role }}">{{ $role }}
+                                            <br>
+                                    @endforeach
+                                </div>
+                            </div>
+                          {{-- </select> --}}
+                    {{-- </div> --}}
+                  </div>
                 </div>
               </div>
 
