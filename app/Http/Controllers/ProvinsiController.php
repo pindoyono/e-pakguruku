@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
-use App\Models\Pak;
+use App\Models\pak;
 
 
 
