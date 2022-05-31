@@ -94,16 +94,29 @@
               <div class="row">
                 <label class="col-sm-2 col-form-label">Role</label>
                 <div class="col-sm-10">
-                  <div class="form-group">
-                    <div class="form-group">
-                        <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role">
-                            {{-- <option disabled selected>Pilih Agama</option> --}}
-                            @foreach ($roles as $role)
-                                    <option value={{$role}}>{{$role}}</option>
-                            @endforeach
-                          </select>
+                    <div class="col-sm-10">
+                        <div class="form-group">
+                            {{-- {!! Form::select('roles[]', $roles,[], array('class' => 'selectpicker','btn btn-default btn-round btn-sm')) !!} --}}
+                            {{-- <select name="roles[]" class="selectpicker" data-style="select-with-transition" title="Pilih Role"> --}}
+                                {{-- <option disabled selected>Pilih Agama</option> --}}
+                                @php $no_role = 0; @endphp
+                                @if(!empty($roles))
+                                @foreach ($roles as $role)
+                                    <div class="col-sm-12 checkbox-radios">
+                                        <div class="checkbox">
+                                            <label>
+                                                @if(!empty($user->getRoleNames()))
+                                                    <input class="form-check-input" name="roles[]" type="checkbox" {{in_array($role['name'], json_decode($user->getRoleNames())) ? "checked" : ""}}   id="roles" value="{{ $role['name'] }}">{{ $role['name'] }}
+                                                @else
+                                                  Role Belum Dibuat
+                                                @endif
+                                            </label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
                     </div>
-                  </div>
                 </div>
               </div>
 
