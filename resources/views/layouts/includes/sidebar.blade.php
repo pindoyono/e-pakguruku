@@ -121,7 +121,7 @@
     </li>
 
     <li class="nav-item ">
-        <a class="nav-link" target="_blank" href="">
+        <a class="nav-link" target="_blank" href="https://youtu.be/OQrhI7BYUYI">
             <i class="material-icons">play_circle</i>
             <p> Video Panduan  </p>
         </a>
