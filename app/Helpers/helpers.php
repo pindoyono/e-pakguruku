@@ -83,6 +83,7 @@ if (! function_exists('sum_pkb')) {
         ->orderBy('kegiatans.kode','asc')
         ->where('kegiatans.unsur','PENGEMBANGAN  KEPROFESIAN  BERKELANJUTAN')
         ->where('pak_id',$pak_id)
+        ->where('status','!=','terbit')
         ->sum('nilai');
     }
 }

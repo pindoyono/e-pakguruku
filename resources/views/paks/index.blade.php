@@ -40,7 +40,6 @@
                   <tr>
                     <th>No</th>
                     <th>Periode</th>
-                    <th>Nama</th>
                     <th>Status</th>
                     <th class="disabled-sorting text-right">Actions</th>
                   </tr>
@@ -49,7 +48,6 @@
                   <tr>
                     <th>No</th>
                     <th>Periode</th>
-                    <th>Nama</th>
                     <th>Status</th>
                     <th class="text-right">Actions</th>
                   </tr>
@@ -59,7 +57,6 @@
                   <tr>
                     <td>{{ ++$i }}</td>
                     <td>{{ $pak->awal }}</td>
-                    <td>{{ $pak->akhir }}</td>
                     <th>
                         <label class="badge badge-success">
                             {{ $pak->status }}
