@@ -33,7 +33,7 @@
             <div class="col-md-2">
                 <input type="file" name="sk_cpns" class="form-control" placeholder=".col-md-3">
             </div>
-            <label class="col-sm-3 col-form-label">SK Pangkat Terakhir</label>
+            <label class="col-sm-3 col-form-label">SK Pangkat Terakhir & PAK Pangkat Terakhir</label>
             <div class="col-md-2">
                 <input type="file" name="sk_pangkat" class="form-control" placeholder=".col-md-3">
             </div>
