@@ -1,3 +1,5 @@
+@include('penilais.kelengkapan')
+
 <table class="table table-bordered" >
     <thead>
     <tbody>
