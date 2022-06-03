@@ -64,7 +64,7 @@ class KepegawaianController extends Controller
             'sk_jafung' => 'required|mimes:pdf|max:2048',
             'ijazah' => 'required|mimes:pdf|max:2048',
             'karpeg' => 'required|mimes:pdf|max:2048',
-            'sk_penyesuaian' => 'required|mimes:pdf|max:2048',
+            'sk_penyesuaian' => 'mimes:pdf|max:2048',
         ]);
 
 
