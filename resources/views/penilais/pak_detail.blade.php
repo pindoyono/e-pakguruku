@@ -46,6 +46,15 @@
                           <div class="ripple-container"></div>
                         </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#hapak" data-toggle="tab">
+                            {{-- <span class="material-symbols-outlined">
+                                published_with_changes
+                                </span> --}}
+                          <i class="material-icons">published_with_changes</i> HAPAK
+                          <div class="ripple-container"></div>
+                        </a>
+                      </li>
                       @endrole
                       @role('cabdin|admin-prov')
                       <li class="nav-item">
@@ -73,6 +82,9 @@
                   @role('penilai|admin-prov')
                   <div class="tab-pane" id="berita_acara">
                     @include('penilais.berita_acara')
+                  </div>
+                  <div class="tab-pane" id="hapak">
+                    @include('penilais.hapak')
                   </div>
                   @endrole
                   @role('cabdin|admin-prov')

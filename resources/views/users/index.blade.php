@@ -46,6 +46,7 @@
                       <th>No</th>
                       <th>Avatar</th>
                       <th>Name</th>
+                      <th>NIP</th>
                       <th>Email</th>
                       <th>Roles</th>
                       <th class="disabled-sorting text-right">Actions</th>
@@ -56,6 +57,7 @@
                       <th>No</th>
                       <th>Avatar</th>
                       <th>Name</th>
+                      <th>NIP</th>
                       <th>Email</th>
                       <th>Roles</th>
                       <th class="text-right">Actions</th>
@@ -73,6 +75,7 @@
                             <td><img height="40px" src="{{asset('storage/avatar/'.$user->avatar)}}" alt="..."></td>
                         @endif
                         <td>{{ $user->name }}</td>
+                        <td>{{ $user->username }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             @if(!empty($user->getRoleNames()))
