@@ -47,6 +47,7 @@
                       <th>Avatar</th>
                       <th>Name</th>
                       <th>NIP</th>
+                      <th>Wilayah</th>
                       <th>Email</th>
                       <th>Roles</th>
                       <th class="disabled-sorting text-right">Actions</th>
@@ -58,6 +59,7 @@
                       <th>Avatar</th>
                       <th>Name</th>
                       <th>NIP</th>
+                      <th>Wilayah</th>
                       <th>Email</th>
                       <th>Roles</th>
                       <th class="text-right">Actions</th>
@@ -76,6 +78,7 @@
                         @endif
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->username }}</td>
+                        <td>{{ $user->wilayah_kerja }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             @if(!empty($user->getRoleNames()))
