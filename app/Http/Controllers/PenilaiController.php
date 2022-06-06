@@ -218,7 +218,7 @@ class PenilaiController extends Controller
         //
 
         // dd($data);
-        if(Auth::user()->pendidikan == null || Auth::user()->pendidikan != 0 ){
+        if(Auth::user()->pendidikan == null){
             return back()->with('error','Lakukan hitung terlebih dahulu');
         }
         if($data == 1){
