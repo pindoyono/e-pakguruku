@@ -286,7 +286,7 @@ class PendidikanController extends Controller
             'judul' => 'required',
             'nilai' => 'required|numeric',
             'kegiatan_id' => 'required',
-            'lampiran' => 'mimes:pdf|max:2048',
+            'lampiran' => 'mimes:pdf|max:15048',
         ]);
         $input = $request->all();
         if ($request->file('lampiran')) {
@@ -355,7 +355,7 @@ class PendidikanController extends Controller
             'judul' => 'required',
             'nilai' => 'required|numeric',
             'kegiatan_id' => 'required',
-            'lampiran' => 'mimes:pdf|max:2048',
+            'lampiran' => 'mimes:pdf|max:15048',
         ]);
 
         $input = $request->all();
