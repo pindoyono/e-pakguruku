@@ -152,6 +152,8 @@ class PenilaiController extends Controller
         $jabatan = Jabatan::all();
         $kepegawaian = Kepegawaian::where('user_id',$user_id)->get();
 
+        $jabatan_pak = Jabatan::where('id',Auth::user()->pangkat_golongan)->first();
+
         // dd($pak->awal);
 
         return view('penilais.pak_detail', [
@@ -172,6 +174,7 @@ class PenilaiController extends Controller
                                             'jabatan' => $jabatan,
                                             'kepegawaians' => $kepegawaian,
                                             'pak' => $pak,
+                                            'jabatan_pak' => $jabatan_pak,
                                     ]);
     }
 

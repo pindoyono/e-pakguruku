@@ -259,7 +259,7 @@
                 </tr>
                 <tr>
                     <td scope="col">2</td>
-                    <td scope="col">Karya Ilmiah</td>
+                    <td scope="col">Publikasi Ilmiah</td>
                     <td scope="col">
                         <span>
                             {{$pak_first->publikasi_ilmiah}}

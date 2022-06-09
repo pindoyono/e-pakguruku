@@ -1,13 +1,17 @@
 
- <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('penilais.update_pak_penilai',$pak_id)}}" method="POST">
-    @csrf
-    <input type="hidden" value="PUT" name="_method">
+
 <table class="table table-bordered" >
     <thead>
     <tbody>
         <tr>
             <td scope="col" colspan="8" class="text-center font-weight-bolder">
-                <h1>Berita Acara Penetapan Angka Kredit</h1>
+                <h1>Rekapitulasi Penetapan Angka Kredit</h1>
+                <h3>
+                    Periode
+                </h3>
+                <h3>
+                    {{ tgl_indo($pak->awal).' S/D '.tgl_indo($pak->akhir)}}
+                </h3>
             </td>
         </tr>
         <tr>
@@ -15,7 +19,7 @@
             <td scope="col" width="10%">Lama</td>
             <td scope="col" width="10%">Baru</td>
             <td scope="col" width="10%">Total</td>
-            <td scope="col" width="10%">Pakl Pagkat Terakhir</td>
+            <td scope="col" width="10%">Pak Pangkat Terakhir</td>
         </tr>
         <tr>
             <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
@@ -346,7 +350,7 @@
                 </span>
             </td>
             <td scope="col">
-                <input type="number" step="any" name="ijazah_tidak_sesuai3" id="ijazah_tidak_sesuai3" oninput="jml_penunjang();jml_semua();" value="{{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="ijazah_tidak_sesuai3" id="ijazah_tidak_sesuai3" oninput="jml_penunjang();jml_semua();" value="{{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}" class="form-control">
             </td>
         </tr>
         <tr>
@@ -368,7 +372,7 @@
                 </span>
             </td>
             <td scope="col">
-                <input type="number" step="any" name="pendukung_tugas_guru3" id="pendukung_tugas_guru3" oninput="jml_penunjang();jml_semua();" value="{{$user->pendukung_tugas_guru != null ? $user->pendukung_tugas_guru : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="pendukung_tugas_guru3" id="pendukung_tugas_guru3" oninput="jml_penunjang();jml_semua();" value="{{$user->pendukung_tugas_guru != null ? $user->pendukung_tugas_guru : 0}}" class="form-control">
             </td>
         </tr>
         <tr>
@@ -390,7 +394,7 @@
                 </span>
             </td>
             <td scope="col">
-                <input type="number" step="any" name="memperoleh_penghargaan3" id="penghargaan3" oninput="jml_penunjang();jml_semua();" value="{{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="memperoleh_penghargaan3" id="penghargaan3" oninput="jml_penunjang();jml_semua();" value="{{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}" class="form-control">
             </td>
         </tr>
         <tr>
@@ -420,7 +424,7 @@
             <td scope="col">
                 <span id="jml_penunjang3">
                     {{
-                        number_format(
+                        $ak_penunjang = number_format(
                             $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
                             $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
                             $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
@@ -431,7 +435,7 @@
             <td scope="col">
                 <span id="jml_penunjang">
                     {{
-                        number_format(
+                        $ak_penunjang_akhir = number_format(
                             $user->ijazah_tidak_sesuai
                             + $user->pendukung_tugas_guru
                             + $user->memperoleh_penghargaan
@@ -483,7 +487,7 @@
             <td scope="col">
                 <span id="jml_semua3">
                     {{
-                         number_format(
+                        $ak_diperoleh = number_format(
                         $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
                         $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
                         $pak->proses_pembelajaran + $pak->proses_pembelajaran2 +
@@ -502,7 +506,7 @@
             <td scope="col">
                 <span id="jml_semua">
                     {{
-                         number_format(
+                         $ak_terakhir = number_format(
                         $user->pendidikan_sekolah
                         + $user->pelatihan_prajabatan
                         + $user->proses_pembelajaran
@@ -523,6 +527,97 @@
   </table>
 </table>
 
+
+<table class="table table-bordered" >
+    <tbody>
+        <tr>
+            <td scope="col" colspan="8" class="text-center font-weight-bolder">
+                <h1>Rekapitulasi Perhitungan Naik Pangkat</h1>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">Uraian</td>
+            <td rowspan="2">Angka Kredit Komulatif</td>
+            <td colspan="3">Unsur Utama</td>
+            <td rowspan="2">Unsur Penunjang Maksimal 10%</td>
+        </tr>
+        <tr>
+            <td>AKK</td>
+            <td>PD</td>
+            <td>PI/KI</td>
+        </tr>
+        <tr>
+            <td>AK Yang Di Peroleh</td>
+            <td>
+                {{ $ak_diperoleh }}
+            </td>
+            <td>
+                {{
+                    number_format(
+                        $ak_diperoleh - $ak_terakhir
+                    ,3);
+                }}
+            </td>
+            <td>
+                {{
+                   $ak_pd = number_format(
+                    $pak->pengembangan_diri + $pak->pengembangan_diri2 - $user->pengembangan_diri
+                    ,3);
+                }}
+            </td>
+            <td>
+                {{
+                   $ak_piki = number_format(
+                        $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 +
+                        $pak->karya_inovatif + $pak->karya_inovatif2 - $user->publikasi_ilmiah
+                        - $user->karya_inovatif
+                    ,3);
+                }}
+            </td>
+            <td>
+                {{
+                    number_format($ak_penunjang - $ak_penunjang_akhir,3 )
+                }}
+            </td>
+        </tr>
+        <tr>
+            <td>AK Yang Wajib Peroleh</td>
+            <td>{{ $jabatan_pak->target }}</td>
+            <td>{{ $jabatan_pak->akk }}</td>
+            <td>{{ $jabatan_pak->akpkbpd }}</td>
+            <td>{{ $jabatan_pak->akpkbpiki }}</td>
+            <td>{{ $jabatan_pak->akp }}</td>
+        </tr>
+
+        @php $jml_1 = number_format($ak_diperoleh - $jabatan_pak->target,3)  @endphp
+        @php $jml_4 = number_format(($ak_diperoleh - $jabatan_pak->target) - $jabatan_pak->akk ,3) @endphp
+        @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
+        @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
+        @php $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp,3 );
+
+            if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
+                $naik_pangkat = 1;
+            }else{
+                $naik_pangkat = 0;
+            }
+        @endphp
+
+        <tr style="font-weight: 900">
+            <td>Kelebihan/Kekurangan</td>
+            <td style="{{ $jml_1 >= 0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_1 }}</td>
+            <td style="{{ $jml_4>=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_4 }}</td>
+            <td style="{{ $jml_2>=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_2 }}</td>
+            <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_3 }}</td>
+            <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_5 }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<form enctype="multipart/form-data" class="form-horizontal"  action="{{route('penilais.update_pak_penilai',$pak_id)}}" method="POST">
+    @csrf
+    <input type="hidden" value="PUT" name="_method">
 @if($user->id != Auth::user()->id)
 <button type="submit" class="btn btn-success">
     <span class="btn-label">
