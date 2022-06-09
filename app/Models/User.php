@@ -58,6 +58,7 @@ class User extends Authenticatable
         'pendukung_tugas_guru',
         'memperoleh_penghargaan',
         'status_naik_pangkat',
+        'tertinggal',
     ];
 
     /**

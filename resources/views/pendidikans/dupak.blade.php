@@ -13,7 +13,7 @@
         <tr>
             <td scope="col" width="2%" style="vertical-align: top;">1</td>
             <td scope="col" colspan="3">Unsur Utama</td>
-            <td scope="col"></td>
+            <td scope="col">{{$sum_tertinggal}}</td>
         </tr>
         <tr>
             <td scope="col" width="2%" style="vertical-align: top;"></td>
@@ -323,13 +323,15 @@
             <td scope="col" colspan="4" >Jumlah Unsur Utama & Penunjang</td>
             <td scope="col">
                 <span id=""> {{
-                    $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
-                    $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
-                    $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                    $pengembangan_diri->sum('nilai') +
+                    number_format(
+                        $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
+                        $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
+                        $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
+                        $pengembangan_diri->sum('nilai') +
 
-                    $ijazah_tidak_sesuai->sum('nilai') + $memperoleh_penghargaan->sum('nilai') +
-                    $pendukung_tugas_guru->sum('nilai')
+                        $ijazah_tidak_sesuai->sum('nilai') + $memperoleh_penghargaan->sum('nilai') +
+                        $pendukung_tugas_guru->sum('nilai') + $sum_tertinggal
+                        ,3)
 
                 }}</span>
                 {{-- <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$sum_pendidikan1+$sum_prajab+$sum_penugasan+$sum_pkb+$sum_penunjang}}" class="form-control"> --}}

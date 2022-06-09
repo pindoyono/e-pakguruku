@@ -37,6 +37,28 @@ class PendidikanController extends Controller
     public function index1($pak_id)
     {
 
+        $tertinggal = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.unsur','TERTINGGAL')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->get();
+
+                        // dd($tertinggal);
+        $sum_tertinggal = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.unsur','TERTINGGAL')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->sum('nilai');
+
+
         $pendidikan1 = DB::table('kegiatans')
                         ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
                         ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
@@ -227,6 +249,8 @@ class PendidikanController extends Controller
                                             'i' => $i,
                                             'pendidikan1' => $pendidikan1,
                                             'sum_pendidikan1' => $sum_pendidikan1,
+                                            'tertinggal' => $tertinggal,
+                                            'sum_tertinggal' => $sum_tertinggal,
                                             'sum_prajab' => $sum_prajab,
                                             'prajab' => $prajab,
                                             'sum_penugasan' => $sum_penugasan,
@@ -286,7 +310,7 @@ class PendidikanController extends Controller
             'judul' => 'required',
             'nilai' => 'required|numeric',
             'kegiatan_id' => 'required',
-            'lampiran' => 'mimes:pdf|max:15048',
+            'lampiran' => 'mimes:pdf|max:30048',
         ]);
         $input = $request->all();
         if ($request->file('lampiran')) {
@@ -355,7 +379,7 @@ class PendidikanController extends Controller
             'judul' => 'required',
             'nilai' => 'required|numeric',
             'kegiatan_id' => 'required',
-            'lampiran' => 'mimes:pdf|max:15048',
+            'lampiran' => 'mimes:pdf|max:30048',
         ]);
 
         $input = $request->all();
@@ -449,6 +473,7 @@ class PendidikanController extends Controller
         $no = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->count();
         $sum_prajab=0;
         $sum_pendidikan1=0;
+        $sum_tertinggal=0;
         $sum_penugasan=0;
         $sum_pkb=0;
         $sum_penunjang=0;
@@ -465,7 +490,7 @@ class PendidikanController extends Controller
         if($pak_count > 0){
 
             return view('pendidikans.naik_pangkat', compact('kegiatan','pak','no','pak_first','sum_prajab',
-            'sum_pendidikan1','sum_penugasan','sum_pkb',
+            'sum_pendidikan1','sum_penugasan','sum_pkb','sum_tertinggal',
                                                         'sum_penunjang','proses_pembelajaran','proses_bimbingan',
                                                         'tugas_lain','pengembangan_diri','karya_ilmiah','karya_inovatif',
                                                         'ijazah_tidak_sesuai','pendukung_tugas_guru','memperoleh_penghargaan',

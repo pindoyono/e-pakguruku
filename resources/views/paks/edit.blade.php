@@ -212,6 +212,7 @@
                     <td scope="col" colspan="3">Unsur Utama</td>
                     <td scope="col">
                         {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                        <input type="number" step="any"  id="tertinggal" name="tertinggal" oninput="jml_semua()" value="{{ $data->tertinggal }}" class="form-control">
                     </td>
                 </tr>
 
@@ -347,7 +348,7 @@
                         <span id="jml_semua">
                             {{  $data->pendidikan_sekolah + $data->pelatihan_prajabatan + $data->proses_pembelajaran+ $data->proses_bimbingan +
                                 $data->tugas_lain + $data->pengembangan_diri + $data->publikasi_ilmiah +
-                                $data->karya_inovatif + $data->ijazah_tidak_sesuai + $data->pendukung_tugas_guru+$data->memperoleh_penghargaan}}
+                                $data->karya_inovatif + $data->ijazah_tidak_sesuai + $data->pendukung_tugas_guru+$data->memperoleh_penghargaan +$data->tertinggal}}
                         </span>
                     </td>
                 </tr>
@@ -453,11 +454,12 @@
         var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
         var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
         var penghargaan = document.getElementById("penghargaan").value;
+        var tertinggal = document.getElementById("tertinggal").value;
 
         var total_penunjang = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
 
 
-        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang;
+        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang + + tertinggal;
     }
   </script>
 @endpush

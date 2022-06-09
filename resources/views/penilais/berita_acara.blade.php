@@ -20,13 +20,19 @@
             <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
             <td scope="col" colspan="3">Unsur Utama</td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                <input type="number" step="any" name="tertinggal" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$pak->tertinggal != null ? $pak->tertinggal : 0}}" class="form-control">
             </td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                <input type="number" step="any" name="tertinggal2" id="sekolah2" oninput="jml_utama();jml_semua();"  value="{{$pak->tertinggal2 != null ? $pak->tertinggal2 : 0}}" class="form-control">
             </td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                <span id="jml_sekolah">
+                    {{
+                        number_format(
+                            $pak->tertinggal + $pak->tertinggal2
+                        ,3);
+                    }}
+                </span>
             </td>
         </tr>
 
@@ -376,7 +382,8 @@
                 <span id="jml_semua">
                     {{
                          number_format(
-                        $pak->pendidikan_sekolah
+                        $pak->tertinggal +
+                         $pak->pendidikan_sekolah
                         + $pak->pelatihan_prajabatan
                         + $pak->proses_pembelajaran
                         + $pak->proses_bimbingan
@@ -395,6 +402,7 @@
                 <span id="jml_semua2">
                     {{
                          number_format(
+                        $pak->tertinggal2 +
                         $pak->pendidikan_sekolah2
                         + $pak->pelatihan_prajabatan2
                         + $pak->proses_pembelajaran2
@@ -425,6 +433,7 @@
                             $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
                             $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
                             $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
+                            + $pak->tertinggal + $pak->tertinggal2
                         ,3);
                     }}
                 </span>

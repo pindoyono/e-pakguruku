@@ -162,7 +162,7 @@
                     <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
                     <td scope="col" colspan="3">Unsur Utama</td>
                     <td scope="col">
-                        {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                        <input type="number" step="any"  id="tertinggal" name="tertinggal" oninput="jml_semua()" value="0" class="form-control">
                     </td>
                 </tr>
 
@@ -398,10 +398,12 @@
         var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
         var penghargaan = document.getElementById("penghargaan").value;
 
+        var tertinggal = document.getElementById("tertinggal").value;
+
         var total_penunjang = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
 
 
-        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang;
+        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang + +tertinggal;
     }
   </script>
 @endpush

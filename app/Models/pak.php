@@ -49,6 +49,8 @@ class pak extends Model
         'memperoleh_penghargaan2',
         'penilai_id',
         'pesan_perbaikan',
+        'tertinggal',
+        'tertinggal2',
     ];
 
     public function users()

@@ -52,13 +52,25 @@
                 <tr>
                     <td scope="col" rowspan="13" width="%" style="vertical-align: top;">1</td>
                     <td scope="col" colspan="3">Unsur Utama</td>
-                    <td scope="col">  </td>
-                    <td scope="col">  </td>
+                    <td scope="col"> {{$pak_first->tertinggal}} </td>
                     @foreach ($pak as $item)
+                    @php $sum_tertinggal += sum_tertinggal($item->id); @endphp
                     <td scope="col">
+                        <span>
+                            {{sum_tertinggal($item->id)}}
+                        </span>
                     </td>
                     @endforeach
-                    <td scope="col" colspan="3"></td>
+
+                    <td scope="col">
+                        <span>
+                            {{ number_format($pak_first->tertinggal + $sum_tertinggal,3) }}
+                        </span>
+                    </td>
+
+                    <td scope="col" colspan="3">
+                        <input type="number" step="any" name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tertinggal}}" class="form-control">
+                    </td>
                 </tr>
 
                 {{-- Pendidikan --}}
@@ -521,7 +533,8 @@
                                 $pak_first->tugas_lain +
                                 $pak_first->pengembangan_diri +
                                 $pak_first->publikasi_ilmiah +
-                                $pak_first->karya_inovatif)
+                                $pak_first->karya_inovatif
+                                ) + $pak_first->tertinggal
                                 ,3)
                                 }}
                         </span>
@@ -534,7 +547,7 @@
                                 ijazah_tidak_sesuai($item->id)+
                                 pendukung_tugas_guru($item->id)+
                                 memperoleh_penghargaan($item->id)+karya_ilmiah($item->id) +  karya_inovatif($item->id) + sum_pendidikan1($item->id) + sum_prajab($item->id)+
-                                proses_pembelajaran($item->id) + proses_bimbingan($item->id) + tugas_lain($item->id) + pengembangan_diri($item->id)
+                                proses_pembelajaran($item->id) + proses_bimbingan($item->id) + tugas_lain($item->id) + pengembangan_diri($item->id) + + sum_tertinggal($item->id)
                                 ,3)
                             }}
                         </span>
@@ -564,7 +577,16 @@
                                     $ijazah_tidak_sesuai+
                                     $pendukung_tugas_guru+
                                     $memperoleh_penghargaan
+
+                                    +
+
+                                    $pak_first->tertinggal
+                                    +
+                                    $sum_tertinggal
+
                                     ,3)
+
+
                             }}
                             </span>
                     </td>
@@ -572,7 +594,7 @@
                         <span id="jml_semua">
                             {{
                                 number_format(
-                                (Auth::user()->ijazah_tidak_sesuai+
+                               $total_semua2 = (Auth::user()->ijazah_tidak_sesuai+
                                 Auth::user()->pendukung_tugas_guru+
                                 Auth::user()->memperoleh_penghargaan+
 
@@ -583,7 +605,10 @@
                                 Auth::user()->tugas_lain +
                                 Auth::user()->pengembangan_diri +
                                 Auth::user()->publikasi_ilmiah +
-                                Auth::user()->karya_inovatif)
+                                Auth::user()->karya_inovatif +
+                                Auth::user()->tertinggal
+
+                                )
                                 ,3)
 
                             }}
@@ -603,17 +628,17 @@
     {!! Form::close() !!}
 
     @php $jml_1 = $ak_peroleh - $jabatan->target; @endphp
-    @php $jml_4 = ($ak_utama - $jml_utama_terakhir ) - $jabatan->akk; @endphp
     @php $jml_2 = (($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd) - Auth::user()->pengembangan_diri; @endphp
     @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
-    @php $jml_5 = ($ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akp;
-
-        if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
-            $naik_pangkat = 1;
-        }else{
-            $naik_pangkat = 0;
-        }
+    @php $jml_5 = ($ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akp;@endphp
+    @php $jml_4 = (($ak_utama - $jml_utama_terakhir ) - $jabatan->akk) + $jml_5;
+      if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
+        $naik_pangkat = 1;
+    }else{
+        $naik_pangkat = 0;
+    }
     @endphp
+
 
     <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('penilais.usul_naik_pangkat',$naik_pangkat)}}" method="POST">
         @csrf

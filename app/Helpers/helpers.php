@@ -42,6 +42,23 @@ if (! function_exists('sum_pendidikan1')) {
     }
 }
 
+if (! function_exists('sum_tertinggal')) {
+    function sum_tertinggal($pak_id)
+    {
+
+        return DB::table('kegiatans')
+        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        ->select('kegiatans.*','pendidikans.*')
+        ->orderBy('kegiatans.kode','asc')
+        ->where('kegiatans.unsur','TERTINGGAL')
+        ->where('pak_id',$pak_id)
+        ->where('status','!=','terbit')
+        ->sum('nilai');
+
+    }
+}
+
 if (! function_exists('sum_prajab')) {
     function sum_prajab($pak_id)
     {
