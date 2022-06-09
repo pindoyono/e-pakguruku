@@ -631,7 +631,7 @@
     @php $jml_2 = (($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd) - Auth::user()->pengembangan_diri; @endphp
     @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
     @php $jml_5 = ($ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akp;@endphp
-    @php $jml_4 = (($ak_utama - $jml_utama_terakhir ) - $jabatan->akk) + $jml_5;
+    @php $jml_4 = (($ak_utama - $jml_utama_terakhir ) - $jabatan->akk) + ($ak_penunjang - $jml_penunjang_terakhir);
       if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
         $naik_pangkat = 1;
     }else{
@@ -664,7 +664,7 @@
                 <tr>
                     <td>AK Yang Di Peroleh</td>
                     <td>{{$ak_peroleh}}</td>
-                    <td>{{$ak_utama - $jml_utama_terakhir }}</td>
+                    <td>{{$ak_utama - $jml_utama_terakhir + ($ak_penunjang - $jml_penunjang_terakhir) }}</td>
                     <td>{{($pak_first->pengembangan_diri + $pengembangan_diri) - Auth::user()->pengembangan_diri}}</td>
                     <td>{{($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) -  (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif) }}</td>
                     <td>{{$ak_penunjang - $jml_penunjang_terakhir}}</td>
