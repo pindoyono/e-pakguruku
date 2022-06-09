@@ -15,6 +15,12 @@ class Lampiran2pkbController extends Controller
     public function index()
     {
         //
+        $data = Lampiran2pkb::orderBy('jenis','asc')->get();
+        return view('lampiran2pkbs.index', [
+            'data' => $data,
+            'i' => $i=0,
+
+                                        ]);
     }
 
     /**
@@ -25,6 +31,7 @@ class Lampiran2pkbController extends Controller
     public function create()
     {
         //
+        return view("lampirans.create");
     }
 
     /**
@@ -36,6 +43,30 @@ class Lampiran2pkbController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = Validator::make($request->all(), [
+            "jenis" => "required",
+            "kode" => "required",
+            "diskripsi" => "required",
+            "saran" => "required"
+        ]);
+
+
+
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+
+        // return $request;
+        $lampiran = new Lampiran2pkb;
+        $lampiran->jenis = $request->get('jenis');
+        $lampiran->kode = $request->get('kode');
+        $lampiran->diskripsi = $request->get('diskripsi');
+        $lampiran->saran = $request->get('saran');
+        $lampiran->save();
+
+        return redirect()->route('lampirans.create')->with('toast_success', 'Task Created Successfully!');
     }
 
     /**
@@ -58,6 +89,11 @@ class Lampiran2pkbController extends Controller
     public function edit(Lampiran2pkb $lampiran2pkb)
     {
         //
+        $data = Lampiran2pkb::findOrFail($id);
+
+        return view('lampirans.edit',   ['data' => $data
+                                    ]
+                                );
     }
 
     /**
@@ -70,6 +106,31 @@ class Lampiran2pkbController extends Controller
     public function update(Request $request, Lampiran2pkb $lampiran2pkb)
     {
         //
+        $validator = Validator::make($request->all(), [
+            "jenis" => "required",
+            "kode" => "required",
+            "diskripsi" => "required",
+            "saran" => "required"
+        ]);
+
+
+
+
+        if ($validator->fails()) {
+            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
+        }
+
+
+        // return $request;
+        $lampiran =  Lampiran2pkb::findOrFail($id);
+        $lampiran->jenis = $request->get('jenis');
+        $lampiran->kode = $request->get('kode');
+        $lampiran->diskripsi = $request->get('diskripsi');
+        $lampiran->saran = $request->get('saran');
+        $lampiran->Update();
+
+        return redirect()->route('lampirans.index')->with('toast_success', 'Task Created Successfully!');
+
     }
 
     /**
@@ -81,5 +142,9 @@ class Lampiran2pkbController extends Controller
     public function destroy(Lampiran2pkb $lampiran2pkb)
     {
         //
+        $data = Lampiran2pkb::findOrFail($id);
+        $data->delete();
+        return redirect()->route('lampirans.index')->with('toast_success', 'Task Delete Successfully!');
+
     }
 }

@@ -63,6 +63,12 @@
             <p> Jabatan </p>
         </a>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
+            <i class="material-icons">trending_up</i>
+            <p> Lampiran 2 PKB </p>
+        </a>
+    </li>
     @endrole
 
     @role('guru')
@@ -91,6 +97,12 @@
         <a class="nav-link" href="{{ route('penilais.penilai') }}">
             <i class="material-icons">calculate</i>
             <p> Penilaian </p>
+        </a>
+    </li>
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
+            <i class="material-icons">trending_up</i>
+            <p> Lampiran 2 PKB </p>
         </a>
     </li>
     @endrole

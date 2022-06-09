@@ -12,6 +12,8 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KepegawaianController;
 use App\Http\Controllers\PenilaiController;
 use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\Lampiran2pkbController;
+
 
 
 
@@ -46,6 +48,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('pendidikans', PendidikanController::class);
     Route::resource('jabatans', JabatanController::class);
     Route::resource('kepegawaians', KepegawaianController::class);
+
+    Route::resource('lampiran2pkbs', Lampiran2pkbController::class);
+
     Route::resource('pendidikans', PendidikanController::class)->except([
         'create','index'
     ]);
