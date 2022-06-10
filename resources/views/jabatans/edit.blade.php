@@ -85,6 +85,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <label class="col-sm-2 label-on-left">Target Sebelumnya</label>
+                            <div class="col-sm-7">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <input class="form-control" value="{{$jabatans->target_sebelum}}"  placeholder="Target Sebelumnya Angka Kredit  Untuk Kenaikan Pangkat" type="text" name="target_sebelum"  required="true" aria-required="true">
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <label class="col-sm-2 label-on-left">AKK</label>
                             <div class="col-sm-7">
                                 <div class="form-group label-floating is-empty">

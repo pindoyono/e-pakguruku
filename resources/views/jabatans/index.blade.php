@@ -30,6 +30,7 @@
                                     <th>Jabatan</th>
                                     <th>Pangkat/Golongan</th>
                                     <th>Target</th>
+                                    <th>T sebelumnya</th>
                                     <th>AKK</th>
                                     <th>AKPKB PD</th>
                                     <th>AKPKB PI/KI</th>
@@ -44,6 +45,7 @@
                                     <th>{{$jabatan->jabatan}}</th>
                                     <th>{{$jabatan->pangkat}}</th>
                                     <th>{{$jabatan->target}}</th>
+                                    <th>{{$jabatan->target_sebelum}}</th>
                                     <th>{{$jabatan->akk}}</th>
                                     <th>{{$jabatan->akpkbpd}}</th>
                                     <th>{{$jabatan->akpkbpiki}}</th>

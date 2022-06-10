@@ -43,6 +43,7 @@ class JabatanController extends Controller
             "jabatan" => "required",
             "pangkat" => "required",
             "target" => "required|numeric",
+            "target_sebelum" => "required|numeric",
             "akk" => "required|numeric",
             "akpkbpd" => "required|numeric",
             "akpkbpiki" => "required|numeric",
@@ -54,6 +55,7 @@ class JabatanController extends Controller
         $jabatan->jabatan = $request->get('jabatan');
         $jabatan->pangkat = $request->get('pangkat');
         $jabatan->target = $request->get('target');
+        $jabatan->target_sebelum = $request->get('target_sebelum');
         $jabatan->akk = $request->get('akk');
         $jabatan->akpkbpd = $request->get('akpkbpd');
         $jabatan->akpkbpiki = $request->get('akpkbpiki');
@@ -103,6 +105,7 @@ class JabatanController extends Controller
             "jabatan" => "required",
             "pangkat" => "required",
             "target" => "required|numeric",
+            "target_sebelum" => "required|numeric",
             "akk" => "required|numeric",
             "akpkbpd" => "required|numeric",
             "akpkbpiki" => "required|numeric",
@@ -115,6 +118,7 @@ class JabatanController extends Controller
         $jabatan->jabatan = $request->get('jabatan');
         $jabatan->pangkat = $request->get('pangkat');
         $jabatan->target = $request->get('target');
+        $jabatan->target_sebelum = $request->get('target_sebelum');
         $jabatan->akk = $request->get('akk');
         $jabatan->akpkbpd = $request->get('akpkbpd');
         $jabatan->akpkbpiki = $request->get('akpkbpiki');
