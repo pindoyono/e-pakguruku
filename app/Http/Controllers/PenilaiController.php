@@ -47,7 +47,7 @@ class PenilaiController extends Controller
                         ->where('kegiatans.unsur','TERTINGGAL')
                         ->where('pak_id',$pak_id)
                         ->where('status','!=','terbit')
-                        ->get();
+                        ->first();
 
                         // dd($tertinggal);
         $sum_tertinggal = DB::table('kegiatans')
