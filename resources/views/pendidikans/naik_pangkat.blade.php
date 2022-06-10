@@ -653,7 +653,7 @@
                 <tr>
                     <td rowspan="2">Uraian</td>
                     <td rowspan="2">Angka Kredit Komulatif</td>
-                    <td colspan="3">Unsur Utama</td>
+                    <td colspan="3">Unsur Utama 90%</td>
                     <td rowspan="2">Unsur Penunjang Maksimal 10%</td>
                 </tr>
                 <tr>
@@ -664,7 +664,7 @@
                 <tr>
                     <td>AK Yang Di Peroleh</td>
                     <td>{{$ak_peroleh}}</td>
-                    <td>{{$ak_utama - $jml_utama_terakhir + $ak_penunjang - $jml_penunjang_terakhir }}</td>
+                    <td>{{$ak_utama - $jml_utama_terakhir }}</td>
                     <td>{{($pak_first->pengembangan_diri + $pengembangan_diri) - Auth::user()->pengembangan_diri}}</td>
                     <td>{{($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) -  (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif) }}</td>
                     <td>{{$ak_penunjang - $jml_penunjang_terakhir}}</td>
@@ -672,7 +672,7 @@
                 <tr>
                     <td>AK Yang Wajib Peroleh</td>
                     <td>{{ $jabatan->target }}</td>
-                    <td>{{ $jabatan->akk }}</td>
+                    <td>{{ 90/100*$jabatan->akk }}</td>
                     <td>{{ $jabatan->akpkbpd }}</td>
                     <td>{{ $jabatan->akpkbpiki }}</td>
                     <td>{{ $jabatan->akp }}</td>
