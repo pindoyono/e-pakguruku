@@ -39,6 +39,27 @@ class PenilaiController extends Controller
 
         $i=0;
 
+        $tertinggal = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.unsur','TERTINGGAL')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->get();
+
+                        // dd($tertinggal);
+        $sum_tertinggal = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.unsur','TERTINGGAL')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->sum('nilai');
+
         $pendidikan1 = DB::table('kegiatans')
         ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
         ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
@@ -136,6 +157,96 @@ class PenilaiController extends Controller
                 ->where('pak_id',$pak_id)
                 ->sum('nilai');
 
+                $proses_pembelajaran = DB::table('kegiatans')
+                ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                ->select('kegiatans.*','pendidikans.*')
+                ->orderBy('kegiatans.kode','asc')
+                ->where('kegiatans.sub_unsur','Melaksanakan proses  pembelajaran')
+                ->where('pak_id',$pak_id)
+                ->where('status','!=','terbit')
+                ->get();
+
+                $proses_bimbingan = DB::table('kegiatans')
+                ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                ->select('kegiatans.*','pendidikans.*')
+                ->orderBy('kegiatans.kode','asc')
+                ->where('kegiatans.sub_unsur','Melaksanakan proses  bimbingan')
+                ->where('pak_id',$pak_id)
+                ->where('status','!=','terbit')
+                ->get();
+
+                $tugas_lain = DB::table('kegiatans')
+                    ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                    ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                    ->select('kegiatans.*','pendidikans.*')
+                    ->orderBy('kegiatans.kode','asc')
+                    ->where('kegiatans.sub_unsur','Melaksanakan tugas lain  yang relevan dengan  fungsi sekolah /  madrasah.')
+                    ->where('pak_id',$pak_id)
+                    ->where('status','!=','terbit')
+                    ->get();
+
+                $pengembangan_diri = DB::table('kegiatans')
+                    ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                    ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                    ->select('kegiatans.*','pendidikans.*')
+                    ->orderBy('kegiatans.kode','asc')
+                    ->where('kegiatans.sub_unsur','Melaksanakan  pengembangan diri')
+                    ->where('pak_id',$pak_id)
+                    ->where('status','!=','terbit')
+                    ->get();
+
+                $karya_ilmiah = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.sub_unsur','Melaksanakan Publikasi Ilmiah')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->get();
+
+                $karya_inovatif = DB::table('kegiatans')
+                    ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                    ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                    ->select('kegiatans.*','pendidikans.*')
+                    ->orderBy('kegiatans.kode','asc')
+                    ->where('kegiatans.sub_unsur','Melaksanakan Karya Inovatif')
+                    ->where('pak_id',$pak_id)
+                    ->where('status','!=','terbit')
+                    ->get();
+
+                $ijazah_tidak_sesuai = DB::table('kegiatans')
+                        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                        ->select('kegiatans.*','pendidikans.*')
+                        ->orderBy('kegiatans.kode','asc')
+                        ->where('kegiatans.sub_unsur','Memperoleh gelar/ijazah yang tidak sesuai dengan bidang yang diampunya')
+                        ->where('pak_id',$pak_id)
+                        ->where('status','!=','terbit')
+                        ->get();
+
+                $memperoleh_penghargaan =  DB::table('kegiatans')
+                            ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                            ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                            ->select('kegiatans.*','pendidikans.*')
+                            ->orderBy('kegiatans.kode','asc')
+                            ->where('kegiatans.sub_unsur','Perolehan penghargaan/tanda jasa')
+                            ->where('pak_id',$pak_id)
+                            ->where('status','!=','terbit')
+                            ->get();
+
+                $pendukung_tugas_guru = DB::table('kegiatans')
+                                ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+                                ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+                                ->select('kegiatans.*','pendidikans.*')
+                                ->orderBy('kegiatans.kode','asc')
+                                ->where('kegiatans.sub_unsur','Melaksanakan kegiatan yang mendukung tugas guru')
+                                ->where('pak_id',$pak_id)
+                                ->where('status','!=','terbit')
+                                ->get();
+
         $pendidikan = DB::table('kegiatans')
         ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
         ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
@@ -162,6 +273,8 @@ class PenilaiController extends Controller
                                             'i' => $i,
                                             'pendidikan1' => $pendidikan1,
                                             'sum_pendidikan1' => $sum_pendidikan1,
+                                            'tertinggal' => $tertinggal,
+                                            'sum_tertinggal' => $sum_tertinggal,
                                             'sum_prajab' => $sum_prajab,
                                             'prajab' => $prajab,
                                             'penugasan' => $penugasan,
@@ -175,6 +288,15 @@ class PenilaiController extends Controller
                                             'kepegawaians' => $kepegawaian,
                                             'pak' => $pak,
                                             'jabatan_pak' => $jabatan_pak,
+                                            'proses_pembelajaran' => $proses_pembelajaran,
+                                            'proses_bimbingan' => $proses_bimbingan,
+                                            'tugas_lain' => $tugas_lain,
+                                            'pengembangan_diri' => $pengembangan_diri,
+                                            'karya_ilmiah' => $karya_ilmiah,
+                                            'karya_inovatif' => $karya_inovatif,
+                                            'ijazah_tidak_sesuai' => $ijazah_tidak_sesuai,
+                                            'memperoleh_penghargaan' => $memperoleh_penghargaan,
+                                            'pendukung_tugas_guru' => $pendukung_tugas_guru,
                                     ]);
     }
 
