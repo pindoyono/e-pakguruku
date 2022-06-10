@@ -628,7 +628,7 @@
     {!! Form::close() !!}
 
     @php $jml_1 = $ak_peroleh - $jabatan->target; @endphp
-    @php $jml_4 = ($ak_utama - $target + ($sum_tertinggal +  Auth::user()->tertinggal + $pak_first->tertinggal )) - (90/100*$jabatan->akk); @endphp
+    @php $jml_4 = ($ak_utama - $jml_utama_terakhir + ($sum_tertinggal +  Auth::user()->tertinggal + $pak_first->tertinggal )) - (90/100*$jabatan->akk); @endphp
     @php $jml_2 = (($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd) - Auth::user()->pengembangan_diri; @endphp
     @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
     @php $jml_5 = ($ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akp;
@@ -664,7 +664,7 @@
                 <tr>
                     <td>AK Yang Di Peroleh</td>
                     <td>{{$ak_peroleh}}</td>
-                    <td>{{$ak_utama - $jabatan->target + ($sum_tertinggal +  Auth::user()->tertinggal + $pak_first->tertinggal ) }}</td>
+                    <td>{{$ak_utama - $jml_utama_terakhir + ($sum_tertinggal +  Auth::user()->tertinggal + $pak_first->tertinggal ) }}</td>
                     <td>{{($pak_first->pengembangan_diri + $pengembangan_diri) - Auth::user()->pengembangan_diri}}</td>
                     <td>{{($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) -  (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif) }}</td>
                     <td>{{$ak_penunjang - $jml_penunjang_terakhir}}</td>
