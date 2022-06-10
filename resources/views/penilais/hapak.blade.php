@@ -554,7 +554,7 @@
             <td>
                 {{
                     number_format(
-                        $ak_diperoleh - $ak_terakhir
+                        $ak_diperoleh - $ak_terakhir - $ak_penunjang - $ak_penunjang_akhir
                     ,3);
                 }}
             </td>
@@ -583,14 +583,14 @@
         <tr>
             <td>AK Yang Wajib Peroleh</td>
             <td>{{ $jabatan_pak->target }}</td>
-            <td>{{ $jabatan_pak->akk }}</td>
+            <td>{{ 90/100*$jabatan_pak->akk }}</td>
             <td>{{ $jabatan_pak->akpkbpd }}</td>
             <td>{{ $jabatan_pak->akpkbpiki }}</td>
             <td>{{ $jabatan_pak->akp }}</td>
         </tr>
 
         @php $jml_1 = number_format($ak_diperoleh - $jabatan_pak->target,3)  @endphp
-        @php $jml_4 = number_format(($ak_diperoleh - $jabatan_pak->target) - $jabatan_pak->akk ,3) @endphp
+        @php $jml_4 = number_format(($ak_diperoleh - $jabatan_pak->target - $ak_penunjang - $ak_penunjang_akhir) - (90/100*$jabatan_pak->akk) ,3) @endphp
         @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
         @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
         @php $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp,3 );
