@@ -65,7 +65,7 @@
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
-            <i class="material-icons">trending_up</i>
+            <i class="material-icons">assistant</i>
             <p> Lampiran 2 PKB </p>
         </a>
     </li>
@@ -101,7 +101,7 @@
     </li>
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
-            <i class="material-icons">trending_up</i>
+            <i class="material-icons">assistant</i>
             <p> Lampiran 2 PKB </p>
         </a>
     </li>
