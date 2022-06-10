@@ -628,7 +628,7 @@
     {!! Form::close() !!}
 
     @php $jml_1 = $ak_peroleh - $jabatan->target; @endphp
-    @php $jml_4 = ($ak_utama - $jml_utama_terakhir + $ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akk; @endphp
+    @php $jml_4 = ($ak_utama - $jml_utama_terakhir) - (90/100*$jabatan->akk); @endphp
     @php $jml_2 = (($pak_first->pengembangan_diri + $pengembangan_diri) - $jabatan->akpkbpd) - Auth::user()->pengembangan_diri; @endphp
     @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
     @php $jml_5 = ($ak_penunjang - $jml_penunjang_terakhir) - $jabatan->akp;
