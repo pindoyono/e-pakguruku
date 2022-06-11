@@ -310,7 +310,7 @@
             <td scope="col">
                 <span id="jml_utama3">
                     {{
-                        number_format(
+                        $ak_utama_total = number_format(
                         $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
                         $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
                         $pak->proses_pembelajaran + $pak->proses_pembelajaran2 +
@@ -560,7 +560,7 @@
             <td>
                 {{
                     number_format(
-                        $ak_utama_peroleh_saatini
+                        $ak_utama_total - (90/100*$jabatan_pak->target_sebelum)
                     ,3);
                 }}
             </td>
@@ -596,7 +596,7 @@
         </tr>
 
         @php $jml_1 = number_format($ak_diperoleh - $jabatan_pak->target,3)  @endphp
-        @php $jml_4 = number_format(($ak_utama_peroleh_saatini) - (90/100*$jabatan_pak->akk) ,3) @endphp
+        @php $jml_4 = number_format(($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ,3) @endphp
         @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
         @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
         @php $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp,3 );
