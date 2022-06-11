@@ -589,7 +589,7 @@
         <tr>
             <td>AK Yang Wajib Peroleh</td>
             <td>{{ $jabatan_pak->target }}</td>
-            <td>{{ $jabatan_pak->akk }}</td>
+            <td>{{ 90/100*$jabatan_pak->akk }}</td>
             <td>{{ $jabatan_pak->akpkbpd }}</td>
             <td>{{ $jabatan_pak->akpkbpiki }}</td>
             <td>{{ $jabatan_pak->akp }}</td>
