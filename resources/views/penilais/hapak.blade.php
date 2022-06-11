@@ -460,7 +460,7 @@
             <td scope="col">
                 <span id="jml_semua">
                     {{
-                         number_format(
+                       $ak_terakhir =  number_format(
                         $user->pendidikan_sekolah
                         + $user->pelatihan_prajabatan
                         + $user->proses_pembelajaran
