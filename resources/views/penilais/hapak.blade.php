@@ -420,7 +420,7 @@
             <td scope="col">
                 <span id="jml_penunjang">
                     {{
-                        number_format(
+                        $ak_penunjang_akhir = number_format(
                             $user->ijazah_tidak_sesuai
                             + $user->pendukung_tugas_guru
                             + $user->memperoleh_penghargaan
