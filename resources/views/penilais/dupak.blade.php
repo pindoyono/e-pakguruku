@@ -18,9 +18,7 @@
             <td scope="col">{{$sum_tertinggal}}</td>
             <td scope="col">
                     @if($tertinggal)
-                       {{
-                           $tertinggal->lampiran
-                       }}
+                        <a href="{{ asset('storage/'.$tertinggal->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
                     @endif
             </td>
         </tr>
@@ -269,7 +267,7 @@
                                 $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
                                 $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
                                 $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                                $pengembangan_diri->sum('nilai')
+                                $pengembangan_diri->sum('nilai') + $pengembangan_diri->sum('nilai')
                             }}</span>
             </td>
             <td scope="col"></td>
@@ -387,7 +385,7 @@
                         $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
                         $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
                         $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                        $pengembangan_diri->sum('nilai') +
+                        $pengembangan_diri->sum('nilai') + $pengembangan_diri->sum('nilai')
 
                         $ijazah_tidak_sesuai->sum('nilai') + $memperoleh_penghargaan->sum('nilai') +
                         $pendukung_tugas_guru->sum('nilai') + $sum_tertinggal

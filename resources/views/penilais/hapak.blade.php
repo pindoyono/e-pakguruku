@@ -16,8 +16,8 @@
         </tr>
         <tr>
             <td scope="col" colspan="4">Unsur / Sub Unsur</td>
-            <td scope="col" width="10%">Lama</td>
-            <td scope="col" width="10%">Baru</td>
+            <td scope="col" width="10%">AK Lama</td>
+            <td scope="col" width="10%">AK Diperoleh</td>
             <td scope="col" width="10%">Total</td>
             <td scope="col" width="10%">Pak Pangkat Terakhir</td>
         </tr>
@@ -51,10 +51,16 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Pendidikan Sekolah</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$pak->pendidikan_sekolah != null ? $pak->pendidikan_sekolah : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$user->pendidikan_sekolah != null ? $user->pendidikan_sekolah : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendidikan_sekolah2" id="sekolah2" oninput="jml_utama();jml_semua();"  value="{{$pak->pendidikan_sekolah != null ? $pak->pendidikan_sekolah : 0}}" class="form-control">
+                <span id="jml_sekolah">
+                    {{
+                        number_format(
+                            ($pak->pendidikan_sekolah + $pak->pendidikan_sekolah2) - $user->pendidikan_sekolah
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_sekolah">
@@ -73,10 +79,16 @@
             <td scope="col">2</td>
             <td scope="col">Pelatihan Prajabatan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{$pak->pelatihan_prajabatan != null ? $pak->pelatihan_prajabatan : 0}}"  class="form-control">
+                <input type="number" step="any" disabled name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{$user->pelatihan_prajabatan != null ? $user->pelatihan_prajabatan : 0}}"  class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pelatihan_prajabatan2" id="pra_jabatan2" oninput="jml_utama();jml_semua();" value="{{$pak->pelatihan_prajabatan2 != null ? $pak->pelatihan_prajabatan2 : 0}}"  class="form-control">
+                <span id="jml_pra_jabatan">
+                    {{
+                        number_format(
+                           ( $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2) - $user->pelatihan_prajabatan
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_pra_jabatan">
@@ -104,10 +116,16 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Proses Pembelajaran</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{$pak->proses_pembelajaran != null ? $pak->proses_pembelajaran : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{$user->proses_pembelajaran != null ? $user->proses_pembelajaran : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_pembelajaran2" id="prose_pembelajaran2" oninput="jml_utama();jml_semua();" value="{{$pak->proses_pembelajaran2 != null ? $pak->proses_pembelajaran2 : 0}}" class="form-control">
+                <span id="jml_prose_pembelajaran">
+                    {{
+                        number_format(
+                           ( $pak->proses_pembelajaran + $pak->proses_pembelajaran2) - $user->proses_pembelajaran
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_prose_pembelajaran">
@@ -127,10 +145,16 @@
             <td scope="col">2</td>
             <td scope="col">Proses Bimbingan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{$pak->proses_bimbingan != null ? $pak->proses_bimbingan : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{$user->proses_bimbingan != null ? $user->proses_bimbingan : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_bimbingan2" id="proses_bimbingan2" oninput="jml_utama();jml_semua();" value="{{$pak->proses_bimbingan2 != null ? $pak->proses_bimbingan2 : 0}}" class="form-control">
+                <span id="jml_proses_bimbingan">
+                    {{
+                        number_format(
+                            ($pak->proses_bimbingan + $pak->proses_bimbingan2) - $user->proses_bimbingan
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_proses_bimbingan">
@@ -149,10 +173,16 @@
             <td scope="col">3</td>
             <td scope="col">Tugas Lainya</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{$pak->tugas_lain != null ? $pak->tugas_lain : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{$user->tugas_lain != null ? $user->tugas_lain : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="tugas_lain2" id="tugas_lain2" oninput="jml_utama();jml_semua();" value="{{$pak->tugas_lain2 != null ? $pak->tugas_lain2 : 0}}" class="form-control">
+                <span id="jml_tugas_lain">
+                    {{
+                        number_format(
+                            ($pak->tugas_lain + $pak->tugas_lain2) - $user->tugas_lain
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_tugas_lain">
@@ -181,10 +211,16 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Pengembangan Diri</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{$pak->pengembangan_diri != null ? $pak->pengembangan_diri : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{$user->pengembangan_diri != null ? $user->pengembangan_diri : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pengembangan_diri2" id="pengembangan_diri2" oninput="jml_utama();jml_semua();" value="{{$pak->pengembangan_diri2 != null ? $pak->pengembangan_diri2 : 0}}" class="form-control">
+                <span id="jml_pengembangan_diri">
+                    {{
+                        number_format(
+                            ($pak->pengembangan_diri + $pak->pengembangan_diri2) - $user->pengembangan_diri
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_pengembangan_diri">
@@ -203,10 +239,16 @@
             <td scope="col">2</td>
             <td scope="col">Karya Ilmiah</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$pak->publikasi_ilmiah != null ? $pak->publikasi_ilmiah : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$user->publikasi_ilmiah != null ? $user->publikasi_ilmiah : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="publikasi_ilmiah2" id="karya_ilmiah2" oninput="jml_utama();jml_semua();" value="{{$pak->publikasi_ilmiah2 != null ? $pak->publikasi_ilmiah2 : 0}}" class="form-control">
+                <span id="jml_karya_ilmiah">
+                    {{
+                        number_format(
+                            ($pak->publikasi_ilmiah + $pak->publikasi_ilmiah2) - $user->publikasi_ilmiah
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_karya_ilmiah">
@@ -225,10 +267,16 @@
             <td scope="col">3</td>
                 <td scope="col">Karya Inovatif</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{$pak->karya_inovatif != null ? $pak->karya_inovatif : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{$user->karya_inovatif != null ? $user->karya_inovatif : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="karya_inovatif2" id="karya_inovatif2" oninput="jml_utama();jml_semua();" value="{{$pak->karya_inovatif2 != null ? $pak->karya_inovatif2 : 0}}" class="form-control">
+                <span id="jml_karya_inovatif">
+                    {{
+                        number_format(
+                        ($pak->karya_inovatif + $pak->karya_inovatif2) - $user->karya_inovatif
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_karya_inovatif">
@@ -251,30 +299,41 @@
                 <span id="jml_utama">
                     {{
                          number_format(
-                        $pak->pendidikan_sekolah
-                        + $pak->pelatihan_prajabatan
-                        + $pak->proses_pembelajaran
-                        + $pak->proses_bimbingan
-                        + $pak->tugas_lain
-                        + $pak->pengembangan_diri
-                        + $pak->publikasi_ilmiah
-                        + $pak->karya_inovatif
+                        $user->pendidikan_sekolah
+                        + $user->pelatihan_prajabatan
+                        + $user->proses_pembelajaran
+                        + $user->proses_bimbingan
+                        + $user->tugas_lain
+                        + $user->pengembangan_diri
+                        + $user->publikasi_ilmiah
+                        + $user->karya_inovatif
                         ,3);
                     }}
                 </span>
             </td>
             <td scope="col">
-                <span id="jml_utama2">
+                <span id="jml_utama3">
                     {{
-                        number_format(
-                        $pak->pendidikan_sekolah2
-                        + $pak->pelatihan_prajabatan2
-                        + $pak->proses_pembelajaran2
-                        + $pak->proses_bimbingan2
-                        + $pak->tugas_lain2
-                        + $pak->pengembangan_diri2
-                        + $pak->publikasi_ilmiah2
-                        + $pak->karya_inovatif2
+                        $ak_utama_peroleh = number_format(
+                        ($pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
+                        $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
+                        $pak->proses_pembelajaran + $pak->proses_pembelajaran2 +
+                        $pak->proses_bimbingan + $pak->proses_bimbingan2 +
+                        $pak->tugas_lain + $pak->tugas_lain2 +
+                        $pak->pengembangan_diri + $pak->pengembangan_diri2 +
+                        $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 +
+                        $pak->karya_inovatif + $pak->karya_inovatif2
+                        )
+                        -
+                        (
+                        $user->pendidikan_sekolah
+                        + $user->pelatihan_prajabatan
+                        + $user->proses_pembelajaran
+                        + $user->proses_bimbingan
+                        + $user->tugas_lain
+                        + $user->pengembangan_diri
+                        + $user->publikasi_ilmiah
+                        + $user->karya_inovatif)
                         ,3);
                     }}
                 </span>
@@ -298,7 +357,7 @@
             <td>
                 <span id="jml_utama4">
                     {{
-                        number_format(
+                        $ak_utama_akhir = number_format(
                         $user->pendidikan_sekolah
                         + $user->pelatihan_prajabatan
                         + $user->proses_pembelajaran
@@ -335,10 +394,16 @@
             <td scope="col width="2%">A</td>
             <td scope="col" colspan="2">Ijazah Tidak Sesuai</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{$pak->ijazah_tidak_sesuai != null ? $pak->ijazah_tidak_sesuai : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="ijazah_tidak_sesuai2" id="ijazah_tidak_sesuai2" oninput="jml_penunjang();jml_semua();" value="{{$pak->ijazah_tidak_sesuai2 != null ? $pak->ijazah_tidak_sesuai2 : 0}}" class="form-control">
+                <span id="jml_ijazah_tidak_sesuai">
+                    {{
+                        number_format(
+                            ($pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2) - $user->ijazah_tidak_sesuai
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_ijazah_tidak_sesuai">
@@ -357,10 +422,16 @@
             <td scope="col width="2%">C</td>
             <td scope="col" colspan="2">Pendukung Tugas Guru</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{$pak->pendukung_tugas_guru != null ? $pak->pendukung_tugas_guru : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{$user->pendukung_tugas_guru != null ? $user->pendukung_tugas_guru : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendukung_tugas_guru2" id="pendukung_tugas_guru2" oninput="jml_penunjang();jml_semua();" value="{{$pak->pendukung_tugas_guru2 != null ? $pak->pendukung_tugas_guru2 : 0}}" class="form-control">
+                <span id="jml_pendukung_tugas_guru">
+                    {{
+                        number_format(
+                           ( $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2) - $user->pendukung_tugas_guru
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_pendukung_tugas_guru">
@@ -379,10 +450,16 @@
             <td scope="col width="2%">B</td>
             <td scope="col" colspan="2">Memperoleh Penghargaan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{$pak->memperoleh_penghargaan != null ? $pak->memperoleh_penghargaan : 0}}" class="form-control">
+                <input type="number" step="any" disabled name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" disabled name="memperoleh_penghargaan2" id="penghargaan2" oninput="jml_penunjang();jml_semua();" value="{{$pak->memperoleh_penghargaan2 != null ? $pak->memperoleh_penghargaan2 : 0}}" class="form-control">
+                <span id="jml_penghargaan">
+                    {{
+                        number_format(
+                            ($pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2) -  $user->memperoleh_penghargaan
+                        ,3);
+                    }}
+                </span>
             </td>
             <td scope="col">
                 <span id="jml_penghargaan">
@@ -403,20 +480,24 @@
                 <span id="jml_penunjang">
                     {{
                         number_format(
-                            $pak->ijazah_tidak_sesuai
-                            + $pak->pendukung_tugas_guru
-                            + $pak->memperoleh_penghargaan
+                            $user->ijazah_tidak_sesuai
+                            + $user->pendukung_tugas_guru
+                            + $user->memperoleh_penghargaan
                         ,3);
                     }}
                 </span>
             </td>
             <td scope="col">
-                <span id="jml_penunjang2">
+                <span id="jml_penunjang3">
                     {{
-                        number_format(
-                            $pak->ijazah_tidak_sesuai2
-                            + $pak->pendukung_tugas_guru2
-                            + $pak->memperoleh_penghargaan2
+                        $ak_penunjang = number_format(
+                            ($pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
+                            $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
+                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2)
+                            -
+                            ($user->ijazah_tidak_sesuai
+                            + $user->pendukung_tugas_guru
+                            + $user->memperoleh_penghargaan)
                         ,3);
                     }}
                 </span>
@@ -450,36 +531,50 @@
                 <span id="jml_semua">
                     {{
                          number_format(
-                        $pak->pendidikan_sekolah
-                        + $pak->pelatihan_prajabatan
-                        + $pak->proses_pembelajaran
-                        + $pak->proses_bimbingan
-                        + $pak->tugas_lain
-                        + $pak->pengembangan_diri
-                        + $pak->publikasi_ilmiah
-                        + $pak->karya_inovatif
-                        + $pak->ijazah_tidak_sesuai
-                            + $pak->pendukung_tugas_guru
-                            + $pak->memperoleh_penghargaan
+                        $user->pendidikan_sekolah
+                        + $user->pelatihan_prajabatan
+                        + $user->proses_pembelajaran
+                        + $user->proses_bimbingan
+                        + $user->tugas_lain
+                        + $user->pengembangan_diri
+                        + $user->publikasi_ilmiah
+                        + $user->karya_inovatif
+                        + $user->ijazah_tidak_sesuai
+                            + $user->pendukung_tugas_guru
+                            + $user->memperoleh_penghargaan
                         ,3);
                     }}
                 </span>
             </td>
             <td scope="col">
-                <span id="jml_semua2">
+                <span id="jml_semua3">
                     {{
-                         number_format(
-                        $pak->pendidikan_sekolah2
-                        + $pak->pelatihan_prajabatan2
-                        + $pak->proses_pembelajaran2
-                        + $pak->proses_bimbingan2
-                        + $pak->tugas_lain2
-                        + $pak->pengembangan_diri2
-                        + $pak->publikasi_ilmiah2
-                        + $pak->karya_inovatif2
-                        +$pak->ijazah_tidak_sesuai2
-                            + $pak->pendukung_tugas_guru2
-                            + $pak->memperoleh_penghargaan2
+                        $ak_diperoleh = number_format(
+                       ( $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
+                        $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
+                        $pak->proses_pembelajaran + $pak->proses_pembelajaran2 +
+                        $pak->proses_bimbingan + $pak->proses_bimbingan2 +
+                        $pak->tugas_lain + $pak->tugas_lain2 +
+                        $pak->pengembangan_diri + $pak->pengembangan_diri2 +
+                        $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 +
+                        $pak->karya_inovatif + $pak->karya_inovatif2 +
+                            $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
+                            $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
+                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2)
+                        -
+
+                        $user->pendidikan_sekolah
+                        + $user->pelatihan_prajabatan
+                        + $user->proses_pembelajaran
+                        + $user->proses_bimbingan
+                        + $user->tugas_lain
+                        + $user->pengembangan_diri
+                        + $user->publikasi_ilmiah
+                        + $user->karya_inovatif
+                        + $user->ijazah_tidak_sesuai
+                            + $user->pendukung_tugas_guru
+                            + $user->memperoleh_penghargaan
+
                         ,3);
                     }}
                 </span>
