@@ -60,6 +60,23 @@ class ProvinsiController extends Controller
         return back()->with('success','Pesan Perbaikan Berhasil Terkirim');
     }
 
+    public function saran(Request $request,$pak_id)
+    {
+        //
+
+        $this->validate($request, [
+            'saran' => 'required',
+        ]);
+        // dd($request->all());
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'saran' => $request->get('saran'),
+            ]
+        );
+        return back()->with('success','Saran Tersimpan');
+    }
+
     public function pesan_perbaikan(Request $request,$pak_id)
     {
         //

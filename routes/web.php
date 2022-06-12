@@ -80,6 +80,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/verif/{id}', [ProvinsiController::class, 'verif'])->name('provinsis.verif');
     Route::put('/perbaikan/{id}', [ProvinsiController::class, 'perbaikan'])->name('provinsis.perbaikan');
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
+    Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
 
 
 

@@ -51,6 +51,7 @@ class pak extends Model
         'pesan_perbaikan',
         'tertinggal',
         'tertinggal2',
+        'saran',
     ];
 
     public function users()

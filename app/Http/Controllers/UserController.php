@@ -258,8 +258,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->update($input);
 
-        return redirect()->route('pendidikans.naik_pangkat')
-                        ->with('success','Berhasil menghitung angka kredit');
+        return back()->with('success','Berhasil menghitung angka kredit');
     }
     /**
      * Remove the specified resource from storage.

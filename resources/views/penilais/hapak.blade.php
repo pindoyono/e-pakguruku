@@ -1,5 +1,7 @@
 
-
+<form enctype="multipart/form-data" class="form-horizontal"  action="{{route('users.update_pak',$pak->user_id)}}" method="POST">
+    @csrf
+    <input type="hidden" value="PUT" name="_method">
 <table class="table table-bordered" >
     <thead>
     <tbody>
@@ -46,7 +48,7 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Pendidikan Sekolah</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$user->pendidikan_sekolah != null ? $user->pendidikan_sekolah : 0}}" class="form-control">
+                <input type="number" step="any"  name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$user->pendidikan_sekolah != null ? $user->pendidikan_sekolah : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_sekolah">
@@ -71,7 +73,7 @@
             <td scope="col">2</td>
             <td scope="col">Pelatihan Prajabatan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{$user->pelatihan_prajabatan != null ? $user->pelatihan_prajabatan : 0}}"  class="form-control">
+                <input type="number" step="any"  name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{$user->pelatihan_prajabatan != null ? $user->pelatihan_prajabatan : 0}}"  class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_pra_jabatan">
@@ -104,7 +106,7 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Proses Pembelajaran</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{$user->proses_pembelajaran != null ? $user->proses_pembelajaran : 0}}" class="form-control">
+                <input type="number" step="any"  name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{$user->proses_pembelajaran != null ? $user->proses_pembelajaran : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_prose_pembelajaran">
@@ -130,7 +132,7 @@
             <td scope="col">2</td>
             <td scope="col">Proses Bimbingan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{$user->proses_bimbingan != null ? $user->proses_bimbingan : 0}}" class="form-control">
+                <input type="number" step="any"  name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{$user->proses_bimbingan != null ? $user->proses_bimbingan : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_proses_bimbingan">
@@ -155,7 +157,7 @@
             <td scope="col">3</td>
             <td scope="col">Tugas Lainya</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{$user->tugas_lain != null ? $user->tugas_lain : 0}}" class="form-control">
+                <input type="number" step="any"  name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{$user->tugas_lain != null ? $user->tugas_lain : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_tugas_lain">
@@ -189,7 +191,7 @@
             <td scope="col" width="2%">1</td>
             <td scope="col">Pengembangan Diri</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{$user->pengembangan_diri != null ? $user->pengembangan_diri : 0}}" class="form-control">
+                <input type="number" step="any"  name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{$user->pengembangan_diri != null ? $user->pengembangan_diri : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_pengembangan_diri">
@@ -214,7 +216,7 @@
             <td scope="col">2</td>
             <td scope="col">Karya Ilmiah</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$user->publikasi_ilmiah != null ? $user->publikasi_ilmiah : 0}}" class="form-control">
+                <input type="number" step="any"  name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$user->publikasi_ilmiah != null ? $user->publikasi_ilmiah : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_karya_ilmiah">
@@ -239,7 +241,7 @@
             <td scope="col">3</td>
                 <td scope="col">Karya Inovatif</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{$user->karya_inovatif != null ? $user->karya_inovatif : 0}}" class="form-control">
+                <input type="number" step="any"  name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{$user->karya_inovatif != null ? $user->karya_inovatif : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_karya_inovatif">
@@ -265,7 +267,7 @@
         <tr>
             <td scope="col" colspan="3">Jumlah Unsur Utama</td>
             <td scope="col">
-                <span id="jml_utama">
+                <span id="jml_utama2">
                     {{
                          number_format(
                         $user->pendidikan_sekolah
@@ -344,7 +346,7 @@
             <td scope="col width="2%">A</td>
             <td scope="col" colspan="2">Ijazah Tidak Sesuai</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}" class="form-control">
+                <input type="number" step="any"  name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_ijazah_tidak_sesuai">
@@ -369,7 +371,7 @@
             <td scope="col width="2%">C</td>
             <td scope="col" colspan="2">Pendukung Tugas Guru</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{$user->pendukung_tugas_guru != null ? $user->pendukung_tugas_guru : 0}}" class="form-control">
+                <input type="number" step="any"  name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{$user->pendukung_tugas_guru != null ? $user->pendukung_tugas_guru : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_pendukung_tugas_guru">
@@ -394,7 +396,7 @@
             <td scope="col width="2%">B</td>
             <td scope="col" colspan="2">Memperoleh Penghargaan</td>
             <td scope="col">
-                <input type="number" step="any" disabled name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}" class="form-control">
+                <input type="number" step="any"  name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}" class="form-control">
             </td>
             <td scope="col">
                 <span id="jml_penghargaan">
@@ -534,6 +536,18 @@
 </table>
 
 
+<button type="submit" class="btn btn-sm btn-success col-sm-12">
+    <span class="btn-label">
+      <i class="material-icons">check</i>
+    </span>
+    Hitung
+    <div class="ripple-container"></div>
+</button>
+
+{!! Form::close() !!}
+
+
+
 <table class="table table-bordered" >
     <tbody>
         <tr>
@@ -621,9 +635,18 @@
 
 
 
-<form enctype="multipart/form-data" class="form-horizontal"  action="{{route('penilais.update_pak_penilai',$pak_id)}}" method="POST">
+
+<form enctype="multipart/form-data" class="form-horizontal"  action="{{route('provinsis.saran',$pak_id)}}" method="POST">
     @csrf
     <input type="hidden" value="PUT" name="_method">
+
+    <textarea name='saran' cols="125" rows="15">
+        @if ($pak->saran == null)
+        Isi Pesan dan Saran Untuk perbaikan hapak
+        @else
+        {{ $pak->saran }}
+        @endif
+     </textarea>
 @if($user->id != Auth::user()->id)
 <button type="submit" class="btn btn-success">
     <span class="btn-label">
@@ -641,9 +664,17 @@
       <div class="ripple-container"></div>
 </a>
 
+<a class="btn btn-warning" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}">
+    <span class="btn-label">
+        <i class="material-icons">attach_file</i>
+      </span>
+      L2PKB
+      <div class="ripple-container"></div>
+</a>
+
 @else
     <h2 style="font-weight: bold">
-        Tidak Bisa Menilai DUPAK INI
+        Tidak Bisa Buat Hapak
     </h2>
 @endif
 
@@ -652,95 +683,4 @@
 
 @push('body-scripts')
 
-  <script>
-    function jml_utama() {
-        var sekolah = document.getElementById("sekolah").value;
-        var sekolah2 = document.getElementById("sekolah2").value;
-        var pra_jabatan = document.getElementById("pra_jabatan").value;
-        var pra_jabatan2 = document.getElementById("pra_jabatan2").value;
-        var prose_pembelajaran = document.getElementById("prose_pembelajaran").value;
-        var prose_pembelajaran2 = document.getElementById("prose_pembelajaran2").value;
-        var proses_bimbingan = document.getElementById("proses_bimbingan").value;
-        var proses_bimbingan2 = document.getElementById("proses_bimbingan2").value;
-        var tugas_lain = document.getElementById("tugas_lain").value;
-        var tugas_lain2 = document.getElementById("tugas_lain2").value;
-        var pengembangan_diri = document.getElementById("pengembangan_diri").value;
-        var pengembangan_diri2 = document.getElementById("pengembangan_diri2").value;
-        var karya_ilmiah = document.getElementById("karya_ilmiah").value;
-        var karya_ilmiah2 = document.getElementById("karya_ilmiah2").value;
-        var karya_inovatif = document.getElementById("karya_inovatif").value;
-        var karya_inovatif2 = document.getElementById("karya_inovatif2").value;
-        var total = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
-        var total2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + + pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
-        document.getElementById("jml_utama").innerHTML = total;
-        document.getElementById("jml_utama2").innerHTML = total2;
-        document.getElementById("jml_sekolah").innerHTML = + sekolah + + sekolah2;
-        document.getElementById("jml_pra_jabatan").innerHTML = + pra_jabatan + + pra_jabatan2;
-        document.getElementById("jml_prose_pembelajaran").innerHTML = + prose_pembelajaran + + prose_pembelajaran2;
-        document.getElementById("jml_proses_bimbingan").innerHTML = + proses_bimbingan + + proses_bimbingan2;
-        document.getElementById("jml_tugas_lain").innerHTML = + tugas_lain + + tugas_lain2;
-        document.getElementById("jml_pengembangan_diri").innerHTML = + pengembangan_diri + + pengembangan_diri2;
-        document.getElementById("jml_karya_ilmiah").innerHTML = + karya_ilmiah + + karya_ilmiah2;
-        document.getElementById("jml_karya_inovatif").innerHTML = + karya_inovatif + + karya_inovatif2;
-    }
-
-    function jml_penunjang() {
-        var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
-        var ijazah_tidak_sesuai2 = document.getElementById("ijazah_tidak_sesuai2").value;
-        var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
-        var pendukung_tugas_guru2 = document.getElementById("pendukung_tugas_guru2").value;
-        var penghargaan = document.getElementById("penghargaan").value;
-        var penghargaan2 = document.getElementById("penghargaan2").value;
-
-        var total = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
-        var total2 = +ijazah_tidak_sesuai2 + +pendukung_tugas_guru2 + +penghargaan2;
-        document.getElementById("jml_penunjang").innerHTML = total;
-        document.getElementById("jml_penunjang2").innerHTML = total2;
-        document.getElementById("jml_penunjang3").innerHTML = total2 + + total;
-        document.getElementById("jml_ijazah_tidak_sesuai").innerHTML = + ijazah_tidak_sesuai + + ijazah_tidak_sesuai2;
-        document.getElementById("jml_pendukung_tugas_guru").innerHTML = + pendukung_tugas_guru + + pendukung_tugas_guru2;
-        document.getElementById("jml_penghargaan").innerHTML = + penghargaan + + penghargaan2;
-    }
-    function jml_semua() {
-        var sekolah = document.getElementById("sekolah").value;
-        var pra_jabatan = document.getElementById("pra_jabatan").value;
-        var prose_pembelajaran = document.getElementById("prose_pembelajaran").value;
-        var proses_bimbingan = document.getElementById("proses_bimbingan").value;
-        var tugas_lain = document.getElementById("tugas_lain").value;
-        var pengembangan_diri = document.getElementById("pengembangan_diri").value;
-        var karya_ilmiah = document.getElementById("karya_ilmiah").value;
-        var karya_inovatif = document.getElementById("karya_inovatif").value;
-        var total_utama = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
-
-        var sekolah2 = document.getElementById("sekolah2").value;
-        var pra_jabatan2 = document.getElementById("pra_jabatan2").value;
-        var prose_pembelajaran2 = document.getElementById("prose_pembelajaran2").value;
-        var proses_bimbingan2 = document.getElementById("proses_bimbingan2").value;
-        var tugas_lain2 = document.getElementById("tugas_lain2").value;
-        var pengembangan_diri2 = document.getElementById("pengembangan_diri2").value;
-        var karya_ilmiah2 = document.getElementById("karya_ilmiah2").value;
-        var karya_inovatif2 = document.getElementById("karya_inovatif2").value;
-        var total_utama2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + + pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
-
-
-        var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
-        var pendukung_tugas_guru = document.getElementById("pendukung_tugas_guru").value;
-        var penghargaan = document.getElementById("penghargaan").value;
-
-        var total_penunjang = +ijazah_tidak_sesuai + +pendukung_tugas_guru + +penghargaan;
-
-
-        var ijazah_tidak_sesuai2 = document.getElementById("ijazah_tidak_sesuai2").value;
-        var pendukung_tugas_guru2 = document.getElementById("pendukung_tugas_guru2").value;
-        var penghargaan2 = document.getElementById("penghargaan2").value;
-
-        var total_penunjang2 = +ijazah_tidak_sesuai2 + +pendukung_tugas_guru2 + +penghargaan2;
-
-
-
-        document.getElementById("jml_semua").innerHTML = total_utama + + total_penunjang;
-        document.getElementById("jml_semua2").innerHTML = total_utama2 + + total_penunjang2;
-        document.getElementById("jml_semua3").innerHTML = total_utama2 + + total_penunjang2 + + total_utama + + total_penunjang;
-    }
-  </script>
 @endpush
