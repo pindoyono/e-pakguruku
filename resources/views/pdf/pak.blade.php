@@ -27,26 +27,88 @@
 
 
 
-        <div class="container center" style="text-align:center;">
-            <h3>
-                BERITA ACARA PENILAIAN ANGKA KREDIT
-                    <br>
-            </h3>
+        <div class="container">
+            <table width="100%" style="border: none !important;  vertical-align:top; font-size:10">
+                <tr style="border: none !important;  vertical-align:top;">
+                    <td  width="10%" style="border: none !important;  vertical-align:top;">
 
-            {{-- <div style="font-size:10; text-align:justify">
-                Pada hari ini jumat, 29 mei 2020 bertempat di Kantor Cabang Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara
-                Wilayah Malinau dan Tana Tidung di Malinau telah dilakukan penilaian terhadap usulan penilaian angka kredit jabatan fungsional guru dengan hasil sebagai berikut:
-            </div> --}}
-            <table>
-                <tbody style="font-size:10">
-                    <tr>
-                    <td  colspan=4 style="font-size:9; text-align:left">
-                        Instansi : Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara
                     </td>
-                    <td colspan=4 style="font-size:9;text-align:right">
-                        Masa Penilaian : {{ tgl_indo($pak->awal).' s/d '.tgl_indo($pak->akhir)}}
+                    <td style="border: none !important;  vertical-align:top;" >
+
                     </td>
-                    </tr>
+                    <td width="12%" style="border: none !important;  vertical-align:top;">
+                        Lampiran V
+                    </td>
+                    <td width="1%" style="border: none !important; vertical-align:top;">
+                        :
+                    </td>
+                    <td width="35%" style="border: none !important;  vertical-align:top;">
+                        <table  style="border: none !important;">
+                            <tr  style="border: none !important;">
+                                <td colspan="3" style="border: none !important;">
+                                    Peraturan Bersama
+                                </td>
+                            </tr>
+                            <tr  style="border: none !important;">
+                                <td colspan="3"  style="border: none !important;">
+                                    Menteri Pendidikan Nasional <br>
+                                    dan Kepala Badan Kepegawaian Negara
+                                </td>
+                            </tr>
+                            <tr  style="border: none !important;">
+                                <td width="8px"  style="border: none !important;">
+                                    Nomor
+                                </td>
+                                <td width="3px" style="border: none !important;">
+                                    :
+                                </td>
+                                <td  width="100px"  style="border: none !important;">
+                                    03/V/PB/2010
+                                </td>
+                            </tr>
+                            <tr  style="border: none !important;">
+                                <td width="8px"  style="border: none !important;">
+                                    Nomor
+                                </td>
+                                <td width="3px" style="border: none !important;">
+                                    :
+                                </td>
+                                <td  width="100px"  style="border: none !important;">
+                                    14 TAHUN 2010
+                                </td>
+                            </tr>
+                            <tr  style="border: none !important;">
+                                <td width="8px"  style="border: none !important;">
+                                    Tanggal
+                                </td>
+                                <td width="3px" style="border: none !important;">
+                                    :
+                                </td>
+                                <td  width="100px"  style="border: none !important;">
+                                    6 Mei 2010
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <div style="text-align:center; border: none !important;" >
+                <span style="font-size:14; font-weight:bold; ">
+                    PENETAPAN ANGKA KREDIT JABATAN FUNGSIONAL GURU <br>
+                    DINAS PENDIDIKAN DAN KEBUDAYAAN PROVINSI KALIMANTAN UTARA <br>
+                </span>
+                <span style="font-size:10">
+                    Nomor :  823.3/2428/Disdikbud-A1/KU/III/2022 <br> <br>
+                </span>
+                <span style="font-size:12; font-weight:bold">
+                    Masa Penilaian : {{ tgl_indo($pak->awal).' s/d '.tgl_indo($pak->akhir)}} <br>
+                </span>
+
+            </div>
+
+            <table width="100%">
+                <tbody style="font-size:10;" >
                     <tr>
                         <td width ="3%">I</td>
                         <td colspan=7 class="text-left"> KETERANGAN PERORANGAN</td>
@@ -443,20 +505,76 @@
             </tbody>
             </table>
 
-            <div style="text-align:left;padding-left:70%">
-                <br>
-                <br>
-                                    {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo( \Carbon\Carbon::now()->format('Y-m-d') ) }}
-                                <br>
-                                <br>
-                                <br>
-                                <br>
 
-                                {{ Auth::user()->name }}
-                                <br>
-                                {{ 'NIP. '.Auth::user()->username}}
-            </div>
+            <table width="100%" style="font-size:10; border: none !important;vertical-align:top;">
+                <tr style="border: none !important;">
+                    <td  style="border: none !important;">
+                        <table width="100%" style="border: none !important;vertical-align:top;">
+                            <tr >
+                                <td width="20%" style="border: none !important;">Nama</td>
+                                <td width="2%" style="border: none !important;">:</td>
+                                <td style="border: none !important;">Patan Pindoyono</td>
+                            </tr>
+                            <tr >
+                                <td width="10%" style="border: none !important;">NIP</td>
+                                <td width="2%" style="border: none !important;">:</td>
+                                <td style="border: none !important;">199106102018021001</td>
+                            </tr>
+                            <tr >
+                                <td width="10%" style="border: none !important;">Alamat</td>
+                                <td width="2%" style="border: none !important;">:</td>
+                                <td style="border: none !important;">JL AMD no 18 RT 18</td>
+                            </tr>
+                        </table>
+                    </td>
+                    {{-- <td style="border: none !important;" >
 
+                    </td> --}}
+                    <td width="25%" style="border: none !important;vertical-align:top;">
+                        <table width="100%" style="border: none !important;vertical-align:top;">
+                            <tr >
+                                <td width="50%" style="border: none !important;vertical-align:top;">Ditetapkan di</td>
+                                <td width="2%" style="border: none !important;vertical-align:top;">:</td>
+                                <td style="border: none !important;vertical-align:top;">Tanjung Selor</td>
+                            </tr>
+                            <tr >
+                                <td  style="border: none !important;">Pada Tanggal</td>
+                                <td width="2%" style="border: none !important;">:</td>
+                                <td  style="border: none !important;">02 Maret 2022</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table width="100%" style="font-size:10; border: none !important;vertical-align:top;">
+                <tr style="border: none !important;">
+                    <td  width="90%" style="border: none !important;">
+
+                            Tembusan : Disampaikan Kepada Yth. <br>
+                            &nbsp;1. Kepala Kantor Regional VIII BKN Banjarmasin di Banjarbaru <br>
+                            &nbsp;2. Gubernur kalimantan Utara <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;    Up. Kepala BKD Prov. Kaltara di Tanjung Selor <br>
+                            &nbsp;3. Sekretaris Tim Penilai Penetapan Angka Kredit <br>
+                            &nbsp;4. Kepala Sekolah yang bersangkutan <br>
+                            &nbsp;5. yang bersangkutan <br>
+
+                    </td>
+                    {{-- <td style="border: none !important;" >
+
+                    </td> --}}
+                    <td width="40%" style="border: none !important;vertical-align:top;">
+                        Kepala Dinas,
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        Drs. teguh henri S., M.Pd <br>
+                        Pembina tingkat I, IV/b <br>
+                        NIP. 196502271993031006 <br>
+                    </td>
+                </tr>
+            </table>
 
 </body>
 </html>

@@ -33,10 +33,10 @@
                     <br>
             </h3>
 
-            {{-- <div style="font-size:10; text-align:justify">
+            <div style="font-size:10; text-align:justify">
                 Pada hari ini jumat, 29 mei 2020 bertempat di Kantor Cabang Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara
                 Wilayah Malinau dan Tana Tidung di Malinau telah dilakukan penilaian terhadap usulan penilaian angka kredit jabatan fungsional guru dengan hasil sebagai berikut:
-            </div> --}}
+            </div>
             <table>
                 <tbody style="font-size:10">
                     <tr>
