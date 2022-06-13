@@ -227,7 +227,7 @@
                                 $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
                         $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
                         $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                        $pengembangan_diri->sum('nilai') + $tugas_lain->sum('nilai') +
+                        $pengembangan_diri->sum('nilai') + $tugas_lain->sum('nilai')
                             }}</span>
             </td>
         </tr>
