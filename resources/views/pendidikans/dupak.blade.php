@@ -225,7 +225,7 @@
                 {{-- <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{ $sum_prajab $sum_penugasan}}" class="form-control"> --}}
                 <span id=""> {{
                                 $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
-                                $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
+                                $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +  $tugas_lainya->sum('nilai') +
                                 $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
                                 $pengembangan_diri->sum('nilai') + $pengembangan_diri->sum('nilai')
                             }}</span>
