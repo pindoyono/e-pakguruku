@@ -25,7 +25,7 @@ class RelasiL2pkbUsulanController extends Controller
         ->select('kegiatans.*','pendidikans.*')
         ->orderBy('kegiatans.kode','asc')
         ->where('pendidikans.pak_id',$pak_id)
-        ->where('kegiatans.unsur','PENGEMBANGAN  KEPROFESIAN  BERKELANJUTAN')
+        // ->where('kegiatans.unsur','PENGEMBANGAN  KEPROFESIAN  BERKELANJUTAN')
         ->get();
 
         // $data = relasi_l2pkb_usulan::orderBy('id','DESC')->get();
