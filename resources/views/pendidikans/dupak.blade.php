@@ -38,7 +38,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -59,7 +59,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -87,7 +87,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -110,7 +110,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -134,7 +134,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -165,7 +165,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -188,7 +188,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -211,7 +211,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -225,9 +225,9 @@
                 {{-- <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{ $sum_prajab $sum_penugasan}}" class="form-control"> --}}
                 <span id=""> {{
                                 $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
-                                $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +  $tugas_lain->sum('nilai') +
-                                $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                                $pengembangan_diri->sum('nilai') + $pengembangan_diri->sum('nilai')
+                        $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
+                        $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
+                        $pengembangan_diri->sum('nilai') + $tugas_lain->sum('nilai') +
                             }}</span>
             </td>
         </tr>
@@ -253,7 +253,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -277,7 +277,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
@@ -301,7 +301,7 @@
             <td scope="col" width="2%"></td>
             <td scope="col" >{{'['.$item->sub_unsur.']  '.$item->kegiatan}}</td>
             <td scope="col">
-                <input type="number" disabled name="pendidikan_sekolah" id="sekolah"  value="{{$item->nilai}}" class="form-control">
+                {{$item->nilai}}
             </td>
         </tr>
         @endforeach
