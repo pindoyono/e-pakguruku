@@ -7,7 +7,7 @@
         <table width="100%" style="text-align: center; border: none !important;">
             <tr style="text-align: center; border: none !important;">
                 <td  width="10%" style="text-align: center; border: none !important;">
-                    <img style="height: auto; width: 70px;" src="{{ public_path("storage/kaltara.png") }}" />
+                    <img style="height: auto; width: 70px;" src="http://e-pakguruku.id/assets/img/kaltara.png" />
                 </td>
                 <td style="text-align: center; border: none !important;" >
                     <span style="font-size:14">
