@@ -382,7 +382,7 @@ class PenilaiController extends Controller
         ->first();
 
         // dd($pak2);
-        dd($data);
+        // dd($data);
         $pangkat = Jabatan::find($data->pangkat_golongan);
 
         $pdf = PDF::loadView('pdf.berita_acara',[
