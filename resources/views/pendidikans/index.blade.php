@@ -84,9 +84,9 @@
                       <b> Info - </b> Table dibawah ini adalah Rekapan Daftar Usulan PAK yg sudah anda Upload..
                       silahkan Cek kembali jika dirasa ada tidak sesuai silahkan perbaiki melalui menu di atas  </span>
                   </div>
-                  <div class="pull-right">
+                  {{-- <div class="pull-right">
                     <a class="btn btn-sm btn-success" href="{{ route('pendidikans.exporDupak', $pak_id) }}"> export xsl</a>
-                </div>
+                </div> --}}
                   @include('pendidikans.dupak')
             </div>
         </div>
