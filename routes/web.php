@@ -13,6 +13,7 @@ use App\Http\Controllers\KepegawaianController;
 use App\Http\Controllers\PenilaiController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\Lampiran2pkbController;
+use App\Http\Controllers\RelasiL2pkbUsulanController;
 
 
 
@@ -72,6 +73,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/update_pak_penilai/{id}', [PenilaiController::class, 'update_pak_penilai'])->name('penilais.update_pak_penilai');
     Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
     Route::get('/cetak_berita_acara/{id}', [PenilaiController::class, 'cetak_berita_acara'])->name('penilais.cetak_berita_acara');
+    Route::get('/cetak_pak/{id}', [PenilaiController::class, 'cetak_pak'])->name('penilais.cetak_pak');
+    Route::get('/cetak_hapak/{id}', [PenilaiController::class, 'cetak_hapak'])->name('penilais.cetak_hapak');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
 
@@ -81,6 +84,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::put('/perbaikan/{id}', [ProvinsiController::class, 'perbaikan'])->name('provinsis.perbaikan');
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
     Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
+
+
+    Route::get('/index/{id}', [RelasiL2pkbUsulanController::class, 'index'])->name('l2pkb.index');
+    Route::POST('/store', [RelasiL2pkbUsulanController::class, 'store'])->name('l2pkb.store');
+    Route::delete('/destroy/{id}', [RelasiL2pkbUsulanController::class, 'destroy'])->name('l2pkb.destroy');
 
 
 

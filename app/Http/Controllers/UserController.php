@@ -236,7 +236,7 @@ class UserController extends Controller
         // $user->assignRole('guru');
         // dd($request->get('pangkat_golongan'));
 
-        // dd($id);
+        // dd($request->all());
         // $createdAt = Carbon::parse($request->get('tanggal_lahir'));
         // dd($createdAt->format('Y-m-d'));
         $this->validate($request, [
@@ -251,6 +251,7 @@ class UserController extends Controller
             'ijazah_tidak_sesuai' => 'required|numeric',
             'pendukung_tugas_guru' => 'required|numeric',
             'memperoleh_penghargaan' => 'required|numeric',
+            'tertinggal' => 'required|numeric',
         ]);
 
         $input = $request->all();

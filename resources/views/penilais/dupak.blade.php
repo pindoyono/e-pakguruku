@@ -19,6 +19,7 @@
             <td scope="col">
                     @if($tertinggal)
                         <a href="{{ asset('storage/'.$tertinggal->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                        {{'['.$item->id.']' }}
                     @endif
             </td>
         </tr>
@@ -49,6 +50,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -72,6 +74,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -105,6 +108,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -134,6 +138,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -164,6 +169,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -202,6 +208,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -227,6 +234,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -252,6 +260,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -300,6 +309,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -329,6 +339,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach
@@ -358,6 +369,7 @@
             </td>
             <td scope="col">
                 <a href="{{ asset('storage/'.$item->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
+                {{'['.$item->id.']' }}
             </td>
         </tr>
         @endforeach

@@ -26,13 +26,21 @@
             <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
             <td scope="col" colspan="3">Unsur Utama</td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                <input type="number" step="any"  name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{$user->tertinggal }}" class="form-control">
             </td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+               {{
+                number_format(
+                           ( $pak->tetinggal + $pak->tetinggal2) - $user->tetinggal
+                        ,3);
+                }}
             </td>
             <td scope="col">
-                {{-- <input type="number" step="any"  id="" oninput="jml_utama()" value="" class="form-control"> --}}
+                {{
+                    number_format(
+                           ( $pak->tertinggal + $pak->tertinggal2)
+                        ,3);
+                    }}
             </td>
         </tr>
 
@@ -474,6 +482,7 @@
                         + $user->ijazah_tidak_sesuai
                             + $user->pendukung_tugas_guru
                             + $user->memperoleh_penghargaan
+                            + $user->tertinggal
                         ,3);
                     }}
                 </span>
@@ -492,7 +501,8 @@
                         $pak->karya_inovatif + $pak->karya_inovatif2 +
                             $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
                             $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
-                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2)
+                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2 +
+                            $pak->tertinggal + $pak->tertinggal2)
                         -
 
                        ( $user->pendidikan_sekolah
@@ -505,7 +515,8 @@
                         + $user->karya_inovatif
                         + $user->ijazah_tidak_sesuai
                             + $user->pendukung_tugas_guru
-                            + $user->memperoleh_penghargaan)
+                            + $user->memperoleh_penghargaan
+                            + $user->tertinggal)
 
                         ,3);
                     }}
@@ -525,7 +536,8 @@
                         $pak->karya_inovatif + $pak->karya_inovatif2 +
                             $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
                             $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
-                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
+                            $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2 +
+                            $pak->tertinggal + $pak->tertinggal2
                         ,3);
                     }}
                 </span>
@@ -547,7 +559,6 @@
 {!! Form::close() !!}
 
 
-
 <table class="table table-bordered" >
     <tbody>
         <tr>
@@ -562,7 +573,7 @@
             <td rowspan="2">Unsur Penunjang Maksimal 10%</td>
         </tr>
         <tr>
-            <td>AKK</td>
+            <td>Utama (90%)</td>
             <td>PD</td>
             <td>PI/KI</td>
         </tr>
@@ -574,7 +585,7 @@
             <td>
                 {{
                     number_format(
-                        $ak_utama_total - (90/100*$jabatan_pak->target_sebelum)
+                        $ak_utama_total - (90/100*$jabatan_pak->target_sebelum) + ( $pak->tetinggal + $pak->tetinggal2 + $user->tetinggal)
                     ,3);
                 }}
             </td>
@@ -610,7 +621,7 @@
         </tr>
 
         @php $jml_1 = number_format($ak_diperoleh - $jabatan_pak->target,3)  @endphp
-        @php $jml_4 = number_format(($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ,3) @endphp
+        @php $jml_4 = number_format(($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk)  + ( $pak->tetinggal + $pak->tetinggal2 + $user->tetinggal),3) @endphp
         @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
         @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
         @php $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp,3 );
@@ -656,7 +667,7 @@
     <div class="ripple-container"></div>
 </button>
 
-<a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}">
+<a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_hapak',$pak->id)}}">
     <span class="btn-label">
         <i class="material-icons">print</i>
       </span>
@@ -664,7 +675,7 @@
       <div class="ripple-container"></div>
 </a>
 
-<a class="btn btn-warning" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}">
+<a class="btn btn-warning" target="_blank" href="{{ route('l2pkb.index',$pak->id)}}">
     <span class="btn-label">
         <i class="material-icons">attach_file</i>
       </span>
