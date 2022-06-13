@@ -569,8 +569,8 @@
                         <br>
                         <br>
                         <br>
-                        Drs. teguh henri S., M.Pd <br>
-                        Pembina tingkat I, IV/b <br>
+                        Drs. Teguh Henri S., M.Pd <br>
+                        Pembina Tingkat I, IV/b <br>
                         NIP. 196502271993031006 <br>
                     </td>
                 </tr>
