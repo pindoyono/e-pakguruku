@@ -14,6 +14,8 @@ use App\Http\Controllers\PenilaiController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\Lampiran2pkbController;
 use App\Http\Controllers\RelasiL2pkbUsulanController;
+use App\Http\Controllers\SettingController;
+
 
 
 
@@ -89,6 +91,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/index/{id}', [RelasiL2pkbUsulanController::class, 'index'])->name('l2pkb.index');
     Route::POST('/store', [RelasiL2pkbUsulanController::class, 'store'])->name('l2pkb.store');
     Route::delete('/destroy/{id}', [RelasiL2pkbUsulanController::class, 'destroy'])->name('l2pkb.destroy');
+
+    Route::get('/index', [SettingController::class, 'index'])->name('settings.index');
+    Route::get('/create', [SettingController::class, 'create'])->name('settings.create');
+    Route::POST('/store1', [SettingController::class, 'store1'])->name('settings_controller.store1');
+    Route::get('/edit', [SettingController::class, 'edit'])->name('settings.edit');
+
 
 
 

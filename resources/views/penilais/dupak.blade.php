@@ -19,7 +19,7 @@
             <td scope="col">
                     @if($tertinggal)
                         <a href="{{ asset('storage/'.$tertinggal->lampiran) }}" target="_blank" rel="noopener noreferrer">Lihat</a>
-                        {{'['.$item->id.']' }}
+                        {{-- {{'['.$item->id.']' }} --}}
                     @endif
             </td>
         </tr>

@@ -147,7 +147,7 @@
                 </td>
             </tr>
         </table>
-            Yang telah dinilai oleh Tim Penilai ANgka Kredit Jabatan fungsional Guru Dinas Pendidikan dan
+            Yang telah dinilai oleh Tim Penilai Angka Kredit Jabatan fungsional Guru Dinas Pendidikan dan
             Kebudayaan Provinsi Kalimantan Utara pada tanggal 20 November s.d 3 Desember 2022, dengan hasil penilaian DUPAK
             dan bukti fisik pada masa penilaian 01 januari 2019 s.d 30 Desember 2021 adalah sebagai berikut:
     </div>
@@ -773,7 +773,7 @@
                     @php $jml_4 = number_format(($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ,3) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal) @endphp
                     @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
                     @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
-                    @php $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp,3 );
+                    @php $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp,3 );
 
                         if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
                             $naik_pangkat = 1;

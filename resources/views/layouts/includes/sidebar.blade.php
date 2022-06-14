@@ -52,6 +52,12 @@
         </a>
     </li>
     <li class="nav-item ">
+        <a class="nav-link" href="{{ route('settings.index') }}">
+            <i class="material-icons">settings</i>
+            <p> Setting </p>
+        </a>
+    </li>
+    <li class="nav-item ">
         <a class="nav-link" href="{{ route('kegiatans.index') }}">
             <i class="material-icons">switch_access_shortcut_add</i>
             <p> Kegiatan </p>

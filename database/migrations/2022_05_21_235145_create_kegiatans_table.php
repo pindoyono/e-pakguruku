@@ -18,7 +18,7 @@ class CreateKegiatansTable extends Migration
             $table->string('unsur');
             $table->string('sub_unsur');
             $table->text('kegiatan');
-            $table->string('kode');
+            $table->string('hari_ba');
             $table->string('satuan_hasil');
             $table->string('angka_kredit');
             $table->string('pelaksana');
