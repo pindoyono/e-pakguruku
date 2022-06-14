@@ -75,6 +75,27 @@
                             </div>
                         </div>
                         <div class="row">
+                            <label class="col-sm-2 label-on-left">Pangkat/Golongan Setelahnya</label>
+                            <div class="col-sm-7">
+                                <div class="form-group label-floating is-empty">
+                                    <label class="control-label"></label>
+                                    <select class="js-example-basic-single form-control"  width="70%" name="pangkat_sebelum" >
+                                        <option value="">Pilih Pangkat</option>
+                                        <option {{$jabatans->pangkat == "Penata Muda, III a" ? "selected" : ""}} value="Penata Muda, III a">Penata Muda, III a</option>
+                                        <option {{$jabatans->pangkat == "Penata Muda Tk I, III b" ? "selected" : ""}} value="Penata Muda Tk I, III b">Penata Muda Tk I, III b</option>
+                                        <option {{$jabatans->pangkat == "Penata, III c" ? "selected" : ""}} value="Penata, III c">Penata, III c</option>
+                                        <option {{$jabatans->pangkat == "Penata Tk. I / III d" ? "selected" : ""}} value="Penata Tk. I / III d">Penata Tk. I / III d</option>
+                                        <option {{$jabatans->pangkat == "Pembina , IV a" ? "selected" : ""}} value="Pembina , IV a">Pembina , IV a</option>
+                                        <option {{$jabatans->pangkat == "Pembina Tk. I, IV b" ? "selected" : ""}} value="Pembina Tk. I, IV b">Pembina Tk. I, IV b</option>
+                                        <option {{$jabatans->pangkat == "Pembina Utama Muda , IV c" ? "selected" : ""}} value="Pembina Utama Muda , IV c">Pembina Utama Muda , IV c</option>
+                                        <option {{$jabatans->pangkat == "Pembina Utama Madya, IV d" ? "selected" : ""}} value="Pembina Utama Madya, IV d">Pembina Utama Madya, IV d</option>
+                                        <option {{$jabatans->pangkat == "Pembina Utama, IV e" ? "selected" : ""}} value="Pembina Utama, IV e">Pembina Utama, IV e</option>
+                                    </select>
+                                    <span class="material-input"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <label class="col-sm-2 label-on-left">Target</label>
                             <div class="col-sm-7">
                                 <div class="form-group label-floating is-empty">

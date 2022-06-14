@@ -29,6 +29,7 @@
                                     <th class="text-center">NO</th>
                                     <th>Jabatan</th>
                                     <th>Pangkat/Golongan</th>
+                                    <th>Pangkat Setelah</th>
                                     <th>Target</th>
                                     <th>T sebelumnya</th>
                                     <th>AKK</th>
@@ -44,6 +45,7 @@
                                     <th class="text-center">{{$key+1}}</th>
                                     <th>{{$jabatan->jabatan}}</th>
                                     <th>{{$jabatan->pangkat}}</th>
+                                    <th>{{$jabatan->pangkat_sebelum}}</th>
                                     <th>{{$jabatan->target}}</th>
                                     <th>{{$jabatan->target_sebelum}}</th>
                                     <th>{{$jabatan->akk}}</th>

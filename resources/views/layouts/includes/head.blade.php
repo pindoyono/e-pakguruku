@@ -14,7 +14,8 @@
 <!-- CSS Just for demo purpose, don't include it in your project -->
 <link href="{{asset('assets/demo/demo.css')}}" rel="stylesheet" />
 
-<script src="https://cdn.tiny.cloud/1/32566mbz21cw2hkjossy34ht7r0mq3sl8m45db862f1a558h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+{{-- <script src="https://cdn.tiny.cloud/1/32566mbz21cw2hkjossy34ht7r0mq3sl8m45db862f1a558h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script> --}}
+{{-- <script src="https://cdn.tiny.cloud/1/32566mbz21cw2hkjossy34ht7r0mq3sl8m45db862f1a558h/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> --}}
 
 {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css"/> --}}

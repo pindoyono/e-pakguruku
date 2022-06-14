@@ -496,7 +496,7 @@
                                 @if ($naik_pangkat == 1)
                                     Naik Pangkat
                                 @else
-                                    Tidak Naik
+                                    Tidak dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} PAK Tahun {{\Carbon\Carbon::parse($pak->awal)}}
                                 @endif
                             </b>
                         </td>

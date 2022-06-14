@@ -18,5 +18,6 @@ class Jabatan extends Model
         'akpkbpd',
         'akpkbpiki',
         'akp',
+        'pangkat_sebelum',
     ];
 }
