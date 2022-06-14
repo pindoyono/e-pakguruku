@@ -25,7 +25,7 @@
               @if($count==0)
               <div class="col-md-12">
                   <div class="pull-right">
-                      <a class="btn btn-sm btn-info" href="{{ route('settings1.create') }}"> Tambah Setting</a>
+                      <a class="btn btn-sm btn-info" href="{{ route('settings.create') }}"> Tambah Setting</a>
                     </div>
                 </div>
                 @endif
