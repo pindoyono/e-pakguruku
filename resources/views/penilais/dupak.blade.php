@@ -397,7 +397,7 @@
                         $pendidikan1->sum('nilai') + $prajab->sum('nilai') +
                         $proses_pembelajaran->sum('nilai') + $proses_bimbingan->sum('nilai') +
                         $karya_ilmiah->sum('nilai') + $karya_inovatif->sum('nilai') +
-                        $pengembangan_diri->sum('nilai') + $pengembangan_diri->sum('nilai') +
+                        $pengembangan_diri->sum('nilai') + $tugas_lain->sum('nilai') +
 
                         $ijazah_tidak_sesuai->sum('nilai') + $memperoleh_penghargaan->sum('nilai') +
                         $pendukung_tugas_guru->sum('nilai') + $sum_tertinggal
