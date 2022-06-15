@@ -25,7 +25,7 @@ class PenilaiController extends Controller
                         ->orderBy('paks.id','asc')
                         ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
                         ->get();
-        $i=0;
+        $i=1;
 
         return view('penilais.penilai', [
                                         'data' => $data,
@@ -738,7 +738,7 @@ class PenilaiController extends Controller
         $jabatan_pak = Jabatan::where('id',$user->pangkat_golongan)->first();
 
         // dd($pak->awal);
-        $i=0;
+        $i=1;
 
         $customPaper = [0, 0, 609,449, 935,433];
 
@@ -785,7 +785,7 @@ class PenilaiController extends Controller
     {
         //
         $data = Kegiatan::orderBy('id','DESC')->get();
-        $i=0;
+        $i=1;
         return view('penilais.angka_kredit', ['data' => $data,'i'=>$i]);
     }
 

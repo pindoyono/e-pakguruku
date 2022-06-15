@@ -20,7 +20,7 @@ class ProvinsiController extends Controller
                         ->orderBy('paks.id','asc')
                         ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
                         ->get();
-        $i=0;
+        $i=1;
 
         return view('provinsis.verifikasi', [
                                         'data' => $data,

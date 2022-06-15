@@ -242,7 +242,7 @@ class PendidikanController extends Controller
                     ->select('kegiatans.*','pendidikans.*')
                     ->where('pak_id',$pak_id)
                     ->get();
-        $i=0;
+        $i=1;
         return view('pendidikans.index', [
                                             'pendidikan' => $pendidikan,
                                             'pak_id' => $pak_id,
