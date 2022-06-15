@@ -62,7 +62,11 @@
                     <td class="td-actions text-right">
                         <a class="btn btn-success" href="{{ route('penilais.pak_detail',$pak->id) }}"><i class="material-icons">zoom_in</i></a>
                         <a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_berita_acara',$pak->id)}}"><i class="material-icons">print</i></a>
+                    @role('admin-prov')
                         <a class="btn btn-warning" target="_blank" href="{{ route('penilais.cetak_pak',$pak->id)}}"><i class="material-icons">print</i></a>
+                    @endrole
+
+
                     </td>
                     </td>
                   </tr>
