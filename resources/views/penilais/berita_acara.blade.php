@@ -20,13 +20,13 @@
             <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
             <td scope="col" colspan="3">Unsur Utama</td>
             <td scope="col">
-                <input type="number" step="any" name="tertinggal" id="sekolah" oninput="jml_utama();jml_semua();" value="{{$pak->tertinggal != null ? $pak->tertinggal : 0}}" class="form-control">
+                <input type="number" step="any" name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{$pak->tertinggal != null ? $pak->tertinggal : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <input type="number" step="any" name="tertinggal2" id="sekolah2" oninput="jml_utama();jml_semua();"  value="{{$pak->tertinggal2 != null ? $pak->tertinggal2 : 0}}" class="form-control">
+                <input type="number" step="any" name="tertinggal2" id="tertinggal2" oninput="jml_utama();jml_semua();"  value="{{$pak->tertinggal2 != null ? $pak->tertinggal2 : 0}}" class="form-control">
             </td>
             <td scope="col">
-                <span id="jml_sekolah">
+                <span id="jml_tertinggal">
                     {{
                         number_format(
                             $pak->tertinggal + $pak->tertinggal2
@@ -489,8 +489,10 @@
         var karya_ilmiah2 = document.getElementById("karya_ilmiah2").value;
         var karya_inovatif = document.getElementById("karya_inovatif").value;
         var karya_inovatif2 = document.getElementById("karya_inovatif2").value;
-        var total = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
-        var total2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + + pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
+        var total = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + +
+        pengembangan_diri + + karya_ilmiah + + karya_inovatif;
+        var total2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + +
+        pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
         document.getElementById("jml_utama").innerHTML = total;
         document.getElementById("jml_utama2").innerHTML = total2;
         document.getElementById("jml_sekolah").innerHTML = + sekolah + + sekolah2;
@@ -520,6 +522,8 @@
         document.getElementById("jml_pendukung_tugas_guru").innerHTML = + pendukung_tugas_guru + + pendukung_tugas_guru2;
         document.getElementById("jml_penghargaan").innerHTML = + penghargaan + + penghargaan2;
     }
+
+
     function jml_semua() {
         var sekolah = document.getElementById("sekolah").value;
         var pra_jabatan = document.getElementById("pra_jabatan").value;
@@ -529,7 +533,8 @@
         var pengembangan_diri = document.getElementById("pengembangan_diri").value;
         var karya_ilmiah = document.getElementById("karya_ilmiah").value;
         var karya_inovatif = document.getElementById("karya_inovatif").value;
-        var total_utama = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + + pengembangan_diri + + karya_ilmiah + + karya_inovatif;
+        var total_utama = + sekolah + + pra_jabatan + + prose_pembelajaran + + proses_bimbingan + + tugas_lain + +
+        pengembangan_diri + + karya_ilmiah + + karya_inovatif;
 
         var sekolah2 = document.getElementById("sekolah2").value;
         var pra_jabatan2 = document.getElementById("pra_jabatan2").value;
@@ -539,7 +544,8 @@
         var pengembangan_diri2 = document.getElementById("pengembangan_diri2").value;
         var karya_ilmiah2 = document.getElementById("karya_ilmiah2").value;
         var karya_inovatif2 = document.getElementById("karya_inovatif2").value;
-        var total_utama2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + + pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
+        var total_utama2 = + sekolah2 + + pra_jabatan2 + + prose_pembelajaran2 + + proses_bimbingan2 + + tugas_lain2 + +
+        pengembangan_diri2 + + karya_ilmiah2 + + karya_inovatif2;
 
 
         var ijazah_tidak_sesuai = document.getElementById("ijazah_tidak_sesuai").value;
