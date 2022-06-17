@@ -32,13 +32,20 @@ use App\Http\Controllers\SettingController;
 |
 */
 
-// Route::get('call-helper', sum_pendidikan1(1));
-
+// // Route::get('call-helper', sum_pendidikan1(1));
+// if (Auth::user()->hasRole('admin')) {
+//     // return redirect()->route('admin.page');
+// }else{
+//     // return redirect()->route('user.page');
+// }
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/lock', [HomeController::class, 'index1'])->name('home1');
+
+// Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
     // Route::resource('roles', RoleController::class);

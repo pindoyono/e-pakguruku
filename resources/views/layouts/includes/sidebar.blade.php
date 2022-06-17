@@ -77,7 +77,7 @@
     </li>
     @endrole
 
-    @role('guru')
+    @role('admin')
      <li class="nav-item ">
         <a class="nav-link" href="{{ route('kepegawaians.index') }}">
             <i class="material-icons">receipt_long</i>
