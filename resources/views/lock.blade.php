@@ -35,7 +35,7 @@ The above copyright notice and this permission notice shall be included in all c
   <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top text-white">
     <div class="container">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="javascript:;">Lock Page</a>
+        <a class="navbar-brand" href="javascript:;">Error Page</a>
       </div>
       <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="sr-only">Toggle navigation</span>
@@ -45,7 +45,7 @@ The above copyright notice and this permission notice shall be included in all c
       </button>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="../dashboard.html" class="nav-link">
               <i class="material-icons">dashboard</i>
               Dashboard
@@ -56,56 +56,51 @@ The above copyright notice and this permission notice shall be included in all c
               <i class="material-icons">person_add</i>
               Register
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item ">
-            <a href="../pages/login.html" class="nav-link">
-              <i class="material-icons">fingerprint</i>
-              Login
+            {{-- <a href="../pages/login.html" class="nav-link">
+                <i class="material-icons">fingerprint</i>
+                Login
+            </a> --}}
+            <a class="nav-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                 <i class="material-icons">fingerprint</i>
+                 Logout
             </a>
+
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
           </li>
-          <li class="nav-item  active ">
+          {{-- <li class="nav-item ">
             <a href="../pages/lock.html" class="nav-link">
               <i class="material-icons">lock_open</i>
               Lock
             </a>
-          </li>
+          </li> --}}
         </ul>
       </div>
     </div>
   </nav>
   <!-- End Navbar -->
   <div class="wrapper wrapper-full-page">
-    <div class="page-header lock-page header-filter" style="background-image: url('../../assets/img/lock.jpg')">
+    <div class="page-header error-page header-filter" style="background-image: url('../../assets/img/clint-mckoy.jpg')">
       <!--   you can change the color of the filter page using: data-color="blue | green | orange | red | purple" -->
-      <div class="container">
+      <div class="content-center">
         <div class="row">
-          <div class="col-md-4 ml-auto mr-auto">
-            <div class="card card-profile text-center card-hidden">
-              <div class="card-header ">
-                <div class="card-avatar">
-                  <a href="#pablo">
-                    <img class="img" src="../../assets/img/faces/avatar.jpg">
-                  </a>
-                </div>
-              </div>
-              <div class="card-body ">
-                <h4 class="card-title">Tania Andrew</h4>
-                <div class="form-group">
-                  <label for="exampleInput1" class="bmd-label-floating">Enter Password</label>
-                  <input type="password" class="form-control" id="exampleInput1">
-                </div>
-              </div>
-              <div class="card-footer justify-content-center">
-                <a href="#pablo" class="btn btn-rose btn-round">Unlock</a>
-              </div>
-            </div>
+          <div class="col-md-12">
+            <h1 class="title">404</h1>
+            <h2>Page not found :(</h2>
+            <h4>Masa Pengusulan Sudah Berakhir</h4>
           </div>
         </div>
       </div>
       <footer class="footer">
         <div class="container">
           <nav class="float-left">
-            <ul>
+            {{-- <ul>
               <li>
                 <a href="https://www.creative-tim.com/">
                   Creative Tim
@@ -126,14 +121,14 @@ The above copyright notice and this permission notice shall be included in all c
                   Licenses
                 </a>
               </li>
-            </ul>
+            </ul> --}}
           </nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
             </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com/" target="_blank">Creative Tim</a> for a better web.
+            <a href="" target="_blank">Tim</a>
           </div>
         </div>
       </footer>
@@ -144,6 +139,34 @@ The above copyright notice and this permission notice shall be included in all c
   <script src="../../assets/js/core/popper.min.js"></script>
   <script src="../../assets/js/core/bootstrap-material-design.min.js"></script>
   <script src="../../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!-- Plugin for the momentJs  -->
+  <script src="../../assets/js/plugins/moment.min.js"></script>
+  <!--  Plugin for Sweet Alert -->
+  <script src="../../assets/js/plugins/sweetalert2.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../../assets/js/plugins/jquery.validate.min.js"></script>
+  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+  <script src="../../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+  <script src="../../assets/js/plugins/bootstrap-selectpicker.js"></script>
+  <!--  Plugin for the DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+  <script src="../../assets/js/plugins/bootstrap-datetimepicker.min.js"></script>
+  <!--  DataTables.net Plugin, full documentation here: https://datatables.net/  -->
+  <script src="../../assets/js/plugins/jquery.dataTables.min.js"></script>
+  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+  <script src="../../assets/js/plugins/bootstrap-tagsinput.js"></script>
+  <!-- Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+  <script src="../../assets/js/plugins/jasny-bootstrap.min.js"></script>
+  <!--  Full Calendar Plugin, full documentation here: https://github.com/fullcalendar/fullcalendar    -->
+  <script src="../../assets/js/plugins/fullcalendar.min.js"></script>
+  <!-- Vector Map plugin, full documentation here: http://jvectormap.com/documentation/ -->
+  <script src="../../assets/js/plugins/jquery-jvectormap.js"></script>
+  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+  <script src="../../assets/js/plugins/nouislider.min.js"></script>
+  <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support SweetAlert -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+  <!-- Library for adding dinamically elements -->
+  <script src="../../assets/js/plugins/arrive.min.js"></script>
   <!--  Google Maps Plugin    -->
   <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
   <!-- Chartist JS -->
@@ -328,10 +351,6 @@ The above copyright notice and this permission notice shall be included in all c
   <script>
     $(document).ready(function() {
       md.checkFullPageBackgroundImage();
-      setTimeout(function() {
-        // after 1000 ms we add the class animated to the login/register card
-        $('.card').removeClass('card-hidden');
-      }, 700);
     });
   </script>
 </body>
