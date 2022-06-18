@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Berita Acara</title>
+    <title>Penetapan Angka Kredit</title>
 </head>
 <body>
     <style>
@@ -496,7 +496,7 @@
                                 @if ($naik_pangkat == 1)
                                     Naik Pangkat
                                 @else
-                                    Tidak dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} PAK Tahun {{\Carbon\Carbon::parse($pak->awal)}}
+                                    Tidak dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} , PAK Tahun {{\Carbon\Carbon::parse($pak->awal)->format('Y')}}
                                 @endif
                             </b>
                         </td>

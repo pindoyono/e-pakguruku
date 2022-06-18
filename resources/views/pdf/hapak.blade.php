@@ -484,7 +484,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td rowspan="3"></td>
+                        <td rowspan="2"></td>
                         <td colspan="3">1. Ijazah yang tidak sesuai</td>
                         <td style="text-align:right">
                             {{$user->ijazah_tidak_sesuai != null ? $user->ijazah_tidak_sesuai : 0}}
@@ -534,7 +534,7 @@
                             </span>
                         </td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td colspan="3">3. Memperoleh Penghargaan</td>
                         <td style="text-align:right">
                             {{$user->memperoleh_penghargaan != null ? $user->memperoleh_penghargaan : 0}}
@@ -557,7 +557,7 @@
                                 }}
                             </span>
                         </td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td colspan="4"><b>Jumlah Unsur Penunjang	</b></td>
                         <td style="text-align:right">
@@ -789,6 +789,14 @@
                         <td style="{{ $jml_2>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_2 }}</td>
                         <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_3 }}</td>
                         <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_5 }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                    <tr style="font-weight: 900">
+                        <td>Masa Kerja Golongan</td>
+                        <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td>
+                        <td  colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo($user->tmt_pns)}}   )</td>
                     </tr>
                 </tbody>
             </table>

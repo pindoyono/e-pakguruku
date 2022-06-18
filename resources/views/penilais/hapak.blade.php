@@ -641,9 +641,16 @@
             <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_3 }}</td>
             <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_5 }}</td>
         </tr>
+        <tr>
+            <td colspan="6"></td>
+        </tr>
+        <tr style="font-weight: 900">
+            <td>Masa Kerja Golongan</td>
+            <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td>
+            <td> TMT pangkat Terakhir ( {{  tgl_indo($user->tmt_pns)}}   )</td>
+        </tr>
     </tbody>
 </table>
-
 
 
 

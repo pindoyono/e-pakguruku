@@ -11,6 +11,7 @@ use App\Models\pak;
 use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Kepegawaian;
+use App\Models\Setting;
 use PDF;
 
 
@@ -384,6 +385,8 @@ class PenilaiController extends Controller
         ->where('paks.id',$pak_id)
         ->first();
 
+        $settings = Setting::first();
+
         // dd($pak2);
         // dd($data);
         $pangkat = Jabatan::find($data->pangkat_golongan);
@@ -392,6 +395,7 @@ class PenilaiController extends Controller
                                                 'pak' => $data,
                                                 'pak2' => $pak2,
                                                 'pangkat' => $pangkat,
+                                                'settings' => $settings,
                                             ]);
 
         return $pdf->stream('BeritaAcara.pdf');
@@ -484,7 +488,10 @@ class PenilaiController extends Controller
         $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3);
         $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp,3 );
 
-            if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0){
+        $masa_kerja = masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns);
+
+
+            if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0 && $masa_kerja >= 2){
                 $naik_pangkat = 1;
             }else{
                 $naik_pangkat = 0;
@@ -494,11 +501,14 @@ class PenilaiController extends Controller
 
         $pangkat = Jabatan::find($data->pangkat_golongan);
 
+        $settings = Setting::first();
+
         $pdf = PDF::loadView('pdf.pak',[
                                                 'pak' => $data,
                                                 'pak2' => $pak2,
                                                 'pangkat' => $pangkat,
                                                 'naik_pangkat' => $naik_pangkat,
+                                                'settings' => $settings,
                                             ]);
 
         return $pdf->stream('PAK.pdf');
@@ -750,6 +760,7 @@ class PenilaiController extends Controller
         $i=1;
 
         $customPaper = [0, 0, 609,449, 935,433];
+        $settings = Setting::first();
 
         $pdf = PDF::loadView('pdf.hapak', [
                                     'pendidikan' => $pendidikan,
@@ -782,6 +793,7 @@ class PenilaiController extends Controller
                                     'memperoleh_penghargaan' => $memperoleh_penghargaan,
                                     'pendukung_tugas_guru' => $pendukung_tugas_guru,
                                     'lampiran_hapak' => $lampiran_hapak,
+                                    'settings' => $settings,
 
                             ])->setPaper('folio', 'potrait');;
 

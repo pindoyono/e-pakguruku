@@ -103,6 +103,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/create', [SettingController::class, 'create'])->name('settings.create');
     Route::POST('/store1', [SettingController::class, 'store1'])->name('settings_controller.store1');
     Route::get('/edit', [SettingController::class, 'edit'])->name('settings.edit');
+    Route::put('/update/{id}', [SettingController::class, 'update'])->name('settings.update');
 
 
 

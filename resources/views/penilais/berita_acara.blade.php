@@ -567,5 +567,7 @@
         document.getElementById("jml_semua2").innerHTML = total_utama2 + + total_penunjang2;
         document.getElementById("jml_semua3").innerHTML = total_utama2 + + total_penunjang2 + + total_utama + + total_penunjang;
     }
-  </script>
+
+
+    </script>
 @endpush

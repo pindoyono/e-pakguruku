@@ -15,7 +15,7 @@
         </div>
         <div class="col-sm-12">
             <div class="pull-right">
-                <a class="btn btn-sm btn-primary" href="{{ route('kepegawaians.index') }}">
+                <a class="btn btn-sm btn-primary" href="{{ route('settings.index') }}">
                     <span class="btn-label">
                         <i class="material-icons">reply</i>
                     </span>
@@ -25,58 +25,78 @@
             </div>
         </div>
       <div class="card-body">
-
-        <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('kepegawaians.update',$kepegawaian)}}" method="POST">
-            @csrf
-            <input type="hidden" value="PUT" name="_method">
+            <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('settings.update',$settings->id)}}" method="POST">
+                @csrf
+                <input type="hidden" value="PUT" name="_method">
         <div class="row">
-            <label class="col-sm-3 col-form-label">SK CPNS</label>
+            <label class="col-sm-3 col-form-label">Tanggal Berita Acara Atas</label>
             <div class="col-md-2">
-                <input type="file" name="sk_cpns" class="form-control" placeholder=".col-md-3">
+                <input name="tgl_berita_acara_atas" value="{{Carbon\Carbon::parse($settings->tgl_berita_acara_atas)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker1'>
             </div>
-            <label class="col-sm-3 col-form-label">SK Pangkat Terakhir & PAK Pangkat Terakhir</label>
+            <label class="col-sm-3 col-form-label">Tanggal Berita Acara TTD</label>
             <div class="col-md-2">
-                <input type="file" name="sk_pangkat" class="form-control" placeholder=".col-md-3">
+                <input name="tgl_berita_acara_ttd" value="{{Carbon\Carbon::parse($settings->tgl_berita_acara_ttd)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker2'>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label">Hari Berita Acara</label>
+            <div class="col-md-2">
+                <input name="hari_ba" value="{{$settings->hari_ba}}" type="text" class="form-control" >
+            </div>
+            <label class="col-sm-3 col-form-label">Tanggal Hapak ATAS</label>
+            <div class="col-md-2">
+                <input name="tgl_hapak_atas" value="{{Carbon\Carbon::parse($settings->tgl_hapak_atas)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker3'>
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label">Awal Hapak</label>
+            <div class="col-md-2">
+                <input name="awal_hapak" value="{{Carbon\Carbon::parse($settings->awal_hapak)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker4' >
+            </div>
+            <label class="col-sm-3 col-form-label">Akhir Hapak</label>
+            <div class="col-md-2">
+                <input name="akhir_hapak" value="{{Carbon\Carbon::parse($settings->akhir_hapak)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker5'>
             </div>
         </div>
 
         <br>
 
         <div class="row">
-            <label class="col-sm-3 col-form-label">SK Jabatan Fungsional</label>
+            <label class="col-sm-3 col-form-label">Tanggal Hapak TTD</label>
             <div class="col-md-2">
-                <input type="file" name="sk_jafung" class="form-control" placeholder=".col-md-3">
+                <input name="tgl_hapak_ttd" value="{{Carbon\Carbon::parse($settings->tgl_hapak_ttd)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker6' >
             </div>
-            <label class="col-sm-3 col-form-label">IJAZAH</label>
+            <label class="col-sm-3 col-form-label">Tanggal PAK TTD</label>
             <div class="col-md-2">
-                <input type="file" name="ijazah" class="form-control" placeholder=".col-md-3">
+                <input name="tgl_pak_ttd" value="{{Carbon\Carbon::parse($settings->tgl_pak_ttd)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker7'>
             </div>
         </div>
 
-        <br>
 
         <div class="row">
-            <label class="col-sm-3 col-form-label">Karpeg</label>
+            <label class="col-sm-3 col-form-label">Tag KADIS</label>
             <div class="col-md-2">
-                <input type="file" name="karpeg" class="form-control" placeholder=".col-md-3">
+                <input name="kadis" value="{{$settings->kadis}}" type="text" class="form-control" id='' >
             </div>
-            <label class="col-sm-3 col-form-label">Sk Penyesuaian (kab ke prov)</label>
+            <label class="col-sm-3 col-form-label">Nama Kadis</label>
             <div class="col-md-2">
-                <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
+                <input name="nama_kadis" value="{{$settings->nama_kadis}}" type="text" class="form-control" id=''>
             </div>
         </div>
-        <br>
 
-        {{-- <div class="row">
-            <label class="col-sm-3 col-form-label">Nilai AK PAK Pangkat Terakhir</label>
-            <div class="col-md-8">
-                <input type="number" step="any" name="nilai_pak_pangkat_akhir" value="{{$kepegawaian->nilai_pak_pangkat_akhir}}" class="form-control" placeholder="Nilai PAK Pangkat Terkahir">
-            </div>
-            <label class="col-sm-3 col-form-label">Sk Penyesuaian (kab ke prov)</label>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label">Jabatan Kadis</label>
             <div class="col-md-2">
-                <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
+                <input name="jabatan_kadis" value="{{$settings->jabatan_kadis}}" type="text" class="form-control" id='' >
             </div>
-        </div> --}}
+            <label class="col-sm-3 col-form-label">NIP Kadis</label>
+            <div class="col-md-2">
+                <input name="nip_kadis" value="{{$settings->nip_kadis}}" type="text" class="form-control" id=''>
+            </div>
+        </div>
 
         <br>
 
@@ -88,13 +108,13 @@
                 <div class="ripple-container"></div>
             </button>
 
-            <a class="btn btn-sm btn-info" href="{{ route('kepegawaians.index') }}">
+            {{-- <a class="btn btn-sm btn-info" href="{{ route('kepegawaians.index') }}">
                 <span class="btn-label">
                   <i class="material-icons">reply</i>
                 </span>
                 Kembali
               <div class="ripple-container"></div>
-            </a>
+            </a> --}}
         </table>
         {!! Form::close() !!}
       </div>
@@ -118,7 +138,8 @@
               },
               format: 'D-M-Y'
           });
-          $('#datetimepickertmt').datetimepicker({
+
+          $('#datetimepicker2').datetimepicker({
               icons: {
                   time: "fa fa-clock-o",
                   date: "fa fa-calendar",
@@ -127,7 +148,8 @@
               },
               format: 'D-M-Y'
           });
-          $('#datetimepickercp').datetimepicker({
+
+          $('#datetimepicker3').datetimepicker({
               icons: {
                   time: "fa fa-clock-o",
                   date: "fa fa-calendar",
@@ -136,6 +158,47 @@
               },
               format: 'D-M-Y'
           });
+
+          $('#datetimepicker4').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+
+          $('#datetimepicker5').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+
+          $('#datetimepicker6').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+
+          $('#datetimepicker7').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+
     });
  </script>
 <script>

@@ -338,6 +338,18 @@ if (! function_exists('masa_kerja')) {
     }
 }
 
+if (! function_exists('masa_kerja_tahun')) {
+    function masa_kerja_tahun($sekarang,$patokan){
+        $dbDate = \Carbon\Carbon::parse($patokan);
+        $diffYears = $sekarang->diffInYears($dbDate);
+        $diffInMonths = $sekarang->diffInMonths($dbDate);
+
+        $bulan = $diffInMonths-($diffYears*12);
+
+        return  $diffYears;
+    }
+}
+
 
 if (! function_exists('get_juml_guru')) {
     function get_juml_guru()
