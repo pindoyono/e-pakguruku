@@ -19,12 +19,21 @@ class PenilaiController extends Controller
     //
     public function penilai()
     {
-        $data = DB::table('paks')
+
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*')
+                        ->orderBy('paks.id','asc')
+                        ->get();
+        }else{
+            $data = DB::table('paks')
                         ->join('users', 'users.id', '=', 'paks.user_id')
                         ->select('users.*','paks.*')
                         ->orderBy('paks.id','asc')
                         ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
                         ->get();
+        }
         $i=1;
 
         return view('penilais.penilai', [

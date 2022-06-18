@@ -26,6 +26,10 @@ class HomeController extends Controller
     {
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
+            if (Auth::user()->hasRole('super-admin')) {
+                // return redirect()->route('admin.page');
+                return view('home');
+            }
             return view('lock');
         }
         return view('home');
