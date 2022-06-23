@@ -460,6 +460,14 @@
       <div class="ripple-container"></div>
 </a>
 
+<a class="btn btn-warning" target="_blank" href="{{ route('ba_jurnals.index',$pak->id)}}">
+    <span class="btn-label">
+        <i class="material-icons">attach_file</i>
+      </span>
+      BA Pi Jurnal
+      <div class="ripple-container"></div>
+</a>
+
 @else
     <h2 style="font-weight: bold">
         Tidak Bisa Menilai DUPAK INI

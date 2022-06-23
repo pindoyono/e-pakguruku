@@ -14,6 +14,7 @@ use App\Http\Controllers\PenilaiController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\Lampiran2pkbController;
 use App\Http\Controllers\RelasiL2pkbUsulanController;
+use App\Http\Controllers\BaJurnalController;
 use App\Http\Controllers\SettingController;
 
 
@@ -108,6 +109,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/edit', [SettingController::class, 'edit'])->name('settings.edit');
     Route::put('/update/{id}', [SettingController::class, 'update'])->name('settings.update');
 
+    Route::get('/index2/{id}', [BaJurnalController::class, 'index'])->name('ba_jurnals.index');
+    Route::POST('/store/{id}', [BaJurnalController::class, 'store'])->name('ba_jurnals.store');
+    Route::delete('/destroy/{id}', [BaJurnalController::class, 'destroy'])->name('ba_jurnals.destroy');
 
 
 
