@@ -686,6 +686,38 @@
                     <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_3 }}</td>
                     <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }}">{{ $jml_5 }}</td>
                 </tr>
+                <tr>
+                    <td colspan="6"></td>
+                </tr>
+                <tr style="font-weight: 900">
+                    <td>Masa Kerja Golongan</td>
+                    <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), Auth::user()->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), Auth::user()->tmt_pns)  }} </td>
+                    <td colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo(Auth::user()->tmt_pns)}}   )</td>
+                </tr>
+                {{-- @if ($jabatan->id >=4 )
+                <tr style="font-weight: 900">
+                    <td>Karya Inovatif Maksimal 50% <br> (3d Keatas)</td>
+                    <td style="{{$pak->karya_inovatif + $pak->karya_inovatif2 - Auth::user()->karya_inovatif <= 50/100*$jabatan->akpkbpiki? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->karya_inovatif + $pak->karya_inovatif2 - Auth::user()->karya_inovatif}})   </td>
+                    <td  colspan="4"> Maksimal Karya Inovatif Yg di Bolehkan  ( {{  50/100*$jabatan->akpkbpiki }}  )</td>
+                </tr>
+
+                @if ($jabatan->id == 4 )
+                <tr style="font-weight: 900">
+                    <td>Laporan Hasil Penelitian <br> (3d -> 4a)</td>
+                    <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - Auth::user()->publikasi_ilmiah}})   </td>
+                    <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian</td>
+                </tr>
+                @endif
+
+                @if ($jabatan->id == 5 )
+                <tr style="font-weight: 900">
+                    <td>Laporan Hasil Penelitian <br> (4a -> 4b)</td>
+                    <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
+                    <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah</td>
+                </tr>
+                @endif
+
+                @endif --}}
             </tbody>
         </table>
 

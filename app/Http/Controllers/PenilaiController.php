@@ -339,7 +339,9 @@ class PenilaiController extends Controller
         ]);
 
         $input = $request->all();
-        $input['penilai_id'] = Auth::user()->id;
+        if(Pak::find($pak_id)->penilai_id == null){
+            $input['penilai_id'] = Auth::user()->id;
+        }
         $input['status'] = 'sudah dinilai';
         $data = Pak::find($pak_id);
         $data->update($input);
@@ -490,9 +492,20 @@ class PenilaiController extends Controller
 
         $masa_kerja = masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns);
 
+        $ki = $pak->karya_inovatif + $pak->karya_inovatif2 - $user->karya_inovatif <= 50/100*$jabatan_pak->akpkbpiki;
 
-            if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0 && $masa_kerja >= 2){
-                $naik_pangkat = 1;
+
+
+            if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0 && $masa_kerja >= 2 ){
+                if($jabatan_pak->id >= 4){
+                    if($ki){
+                        $naik_pangkat = 1;
+                    }else{
+                        $naik_pangkat = 0;
+                    }
+                }else{
+                    $naik_pangkat = 1;
+                }
             }else{
                 $naik_pangkat = 0;
             }

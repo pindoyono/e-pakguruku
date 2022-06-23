@@ -647,8 +647,32 @@
         <tr style="font-weight: 900">
             <td>Masa Kerja Golongan</td>
             <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td>
-            <td> TMT pangkat Terakhir ( {{  tgl_indo($user->tmt_pns)}}   )</td>
+            <td colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo($user->tmt_pns)}}   )</td>
         </tr>
+        @if ($jabatan_pak->id >=4 )
+        <tr style="font-weight: 900">
+            <td>Karya Inovatif Maksimal 50% <br> (3d Keatas)</td>
+            <td style="{{$pak->karya_inovatif + $pak->karya_inovatif2 - $user->karya_inovatif <= 50/100*$jabatan_pak->akpkbpiki? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->karya_inovatif + $pak->karya_inovatif2 - $user->karya_inovatif}})   </td>
+            <td  colspan="4"> Maksimal Karya Inovatif Yg di Bolehkan  ( {{  50/100*$jabatan_pak->akpkbpiki }}  )</td>
+        </tr>
+
+        @if ($jabatan_pak->id == 4 )
+        <tr style="font-weight: 900">
+            <td>Laporan Hasil Penelitian <br> (3d -> 4a)</td>
+            <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
+            <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian</td>
+        </tr>
+        @endif
+
+        @if ($jabatan_pak->id == 5 )
+        <tr style="font-weight: 900">
+            <td>Laporan Hasil Penelitian <br> (4a -> 4b)</td>
+            <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
+            <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah</td>
+        </tr>
+        @endif
+
+        @endif
     </tbody>
 </table>
 

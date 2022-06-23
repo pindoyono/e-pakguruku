@@ -112,8 +112,8 @@
                         <td colspan=4>{{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}</td>
                     </tr>
                     <tr>
-                        <td>Baru</td>
-                        <td colspan=4>{{ masa_kerja(\Carbon\Carbon::parse(now()),$pak->tmt_cpns)  }}</td>
+                        <td>Baru {{date("Y")."-10-01"}}</td>
+                        <td colspan=4>{{ masa_kerja(\Carbon\Carbon::parse( date("Y")."-10-01" ), $pak->tmt_cpns)  }}</td>
                     </tr>
                     <tr>
                         <td> 10</td>
@@ -623,9 +623,9 @@
                                 <br>
                                 <br>
 
-                                {{ Auth::user()->name }}
+                                {{ get_data_penilai($pak->penilai_id)->name  }}
                                 <br>
-                                {{ 'NIP. '.Auth::user()->username}}
+                                {{ 'NIP. '.get_data_penilai($pak->penilai_id)->username}}
             </div>
 
 
