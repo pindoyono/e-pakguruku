@@ -4,7 +4,7 @@ use App\Models\User;
 use App\Models\Jabatan;
 use App\Models\Kegiatan;
 use App\Models\Kepegawaian;
-use App\Models\Pak;
+use App\Models\pak;
 
 
 if (! function_exists('convertLocalToUTC')) {
@@ -401,8 +401,8 @@ if (! function_exists('lolos')) {
     function lolos($pak_id)
     {
 
-        $pak = Pak::find($pak_id);
-        $user_id = Pak::find($pak_id)->user_id;
+        $pak = pak::find($pak_id);
+        $user_id = pak::find($pak_id)->user_id;
         $user = User::find($user_id);
         $jabatan = Jabatan::all();
         $kepegawaian = Kepegawaian::where('user_id',$user_id)->get();
