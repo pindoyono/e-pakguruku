@@ -92,6 +92,7 @@
                     <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('provinsis.perbaikan',$pak_id)}}" method="POST">
                         @csrf
                         <input type="hidden" value="PUT" name="_method">
+                        <input type="hidden" value="" id="tolak"  name="ditolak">
                         <textarea name='pesan_perbaikan' cols="125" rows="15">
                           Isi Pesan Perbaikan Untuk PTK
                        </textarea>
@@ -99,9 +100,18 @@
                               <span class="btn-label">
                                 <i class="material-icons">published_with_changes</i>
                               </span>
-                              Perkaikan
+                              Perbaikan
                               <div class="ripple-container"></div>
                           </button>
+
+
+                          <button type="submit" onclick="myFunction()" class="btn btn-danger">
+                            <span class="btn-label">
+                              <i class="material-icons">published_with_changes</i>
+                            </span>
+                            Tolak
+                            <div class="ripple-container"></div>
+                        </button>
 
                           <a class="btn btn-primary" href="{{ route('provinsis.verif',$pak->id)}}">
                               <span class="btn-label">
@@ -133,7 +143,11 @@
 
 @push('body-scripts')
 <script src="{{asset('assets/js/plugins/jquery.dataTables.min.js')}}"></script>
-
+<script>
+    function myFunction() {
+      document.getElementById("tolak").value = "ditolak";
+    }
+</script>
 
 <script>
     tinymce.init({

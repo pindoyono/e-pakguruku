@@ -58,16 +58,31 @@
                     <td>{{ ++$i }}</td>
                     <td>{{ $pak->awal }}</td>
                     <th>
-                        <label class="badge badge-success">
-                            {{ $pak->status }}
+
                             @if ($pak->status == 'Perbaikan' )
                             <a href="{{ route('provinsis.pesan_perbaikan',$pak->id) }}" target="_blank" rel="noopener noreferrer">
-                                <span class="material-icons">
-                                zoom_in
-                                </span>
+                                <label class="badge badge-primary">
+                                    {{ $pak->status }}
+                                    <span class="material-icons">
+                                    zoom_in
+                                    </span>
+                                </label>
                             </a>
+
+                            @elseif ($pak->status == 'Ditolak' )
+                            <a href="{{ route('provinsis.pesan_perbaikan',$pak->id) }}" target="_blank" rel="noopener noreferrer">
+                                <label class="badge badge-danger">
+                                    {{ $pak->status }}
+                                    <span class="material-icons">
+                                    zoom_in
+                                    </span>
+                                </label>
+                            </a>
+                            @else
+                            <label class="badge badge-success">
+                                {{ $pak->status }}
+                            </label>
                             @endif
-                        </label>
                     </th>
                     <td class="td-actions text-right">
                         @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' )

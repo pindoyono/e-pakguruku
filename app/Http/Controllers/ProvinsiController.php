@@ -60,13 +60,41 @@ class ProvinsiController extends Controller
         ]);
         // dd($request->all());
         $pak = Pak::find($pak_id);
+        if( $request->get('ditolak') == "ditolak" ){
+            $pak->update(
+                [
+                    'pesan_perbaikan' => $request->get('pesan_perbaikan'),
+                    'status' => 'Ditolak',
+                    ]
+                );
+        }else{
+
+            $pak->update(
+                [
+                    'pesan_perbaikan' => $request->get('pesan_perbaikan'),
+                    'status' => 'Perbaikan',
+                    ]
+                );
+        }
+        return back()->with('success','Pesan Perbaikan Berhasil Terkirim');
+    }
+
+    public function tolak(Request $request,$pak_id)
+    {
+        //
+
+        $this->validate($request, [
+            'pesan_perbaikan' => 'required',
+        ]);
+        // dd($request->all());
+        $pak = Pak::find($pak_id);
         $pak->update(
             [
                 'pesan_perbaikan' => $request->get('pesan_perbaikan'),
-                'status' => 'Perbaikan',
+                'status' => 'ditolak',
             ]
         );
-        return back()->with('success','Pesan Perbaikan Berhasil Terkirim');
+        return back()->with('success','Pesan Penolakan Berhasil Terkirim');
     }
 
     public function saran(Request $request,$pak_id)
