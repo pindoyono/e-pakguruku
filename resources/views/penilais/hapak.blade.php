@@ -222,7 +222,7 @@
         </tr>
         <tr>
             <td scope="col">2</td>
-            <td scope="col">Karya Ilmiah</td>
+            <td scope="col">Publikasi Ilmiah</td>
             <td scope="col">
                 <input type="number" step="any"  name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$user->publikasi_ilmiah != null ? $user->publikasi_ilmiah : 0}}" class="form-control">
             </td>
@@ -656,19 +656,33 @@
             <td  colspan="4"> Maksimal Karya Inovatif Yg di Bolehkan  ( {{  50/100*$jabatan_pak->akpkbpiki }}  )</td>
         </tr>
 
-        @if ($jabatan_pak->id == 4 )
+       @if ($jabatan_pak->id == 4 )
         <tr style="font-weight: 900">
-            <td>Laporan Hasil Penelitian <br> (3d -> 4a)</td>
-            <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
-            <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian</td>
+            <td>Laporan Hasil Penelitian <br> (IIId -> 4a)</td>
+            <td style="{{ $pak->lap_pi == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->lap_pi == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
+            <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah
+                <a class="btn btn-primary" href="{{ route('provinsis.lap_pi',$pak->id)}}">
+                    <span class="btn-label">
+                        <i class="material-icons">done_all</i>
+                      </span>
+                      <div class="ripple-container"></div>
+                </a>
+            </td>
         </tr>
         @endif
 
         @if ($jabatan_pak->id == 5 )
         <tr style="font-weight: 900">
-            <td>Laporan Hasil Penelitian <br> (4a -> 4b)</td>
-            <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
-            <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah</td>
+            <td>Jurnal Ilmiah <br> (4a -> 4b)</td>
+            <td style="{{ $pak->jurnal == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->jurnal == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
+            <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah
+                <a class="btn btn-primary" href="{{ route('provinsis.jurnal',$pak->id)}}">
+                    <span class="btn-label">
+                        <i class="material-icons">done_all</i>
+                      </span>
+                      <div class="ripple-container"></div>
+                </a>
+            </td>
         </tr>
         @endif
 

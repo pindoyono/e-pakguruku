@@ -113,7 +113,7 @@
                             <div class="ripple-container"></div>
                         </button>
 
-                          <a class="btn btn-primary" href="{{ route('provinsis.verif',$pak->id)}}">
+                          <a class="btn btn-primary" href="{{ route('provinsis.lap_pi',$pak->id)}}">
                               <span class="btn-label">
                                   <i class="material-icons">done_all</i>
                                 </span>

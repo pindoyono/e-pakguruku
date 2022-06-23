@@ -477,7 +477,19 @@ if (! function_exists('lolos')) {
             if($jml_1>=0 && $jml_2>=0 && $jml_3>=0 && $jml_4>=0 && $jml_5<=0 && $masa_kerja >= 2 ){
                 if($jabatan_pak->id >= 4){
                     if($ki){
-                        $naik_pangkat = 1;
+                        if($jabatan_pak->id == 4){
+                            if($pak->lap_pi == "Ada"){
+                                $naik_pangkat = 1;
+                            }else{
+                                $naik_pangkat = 0;
+                            }
+                        }elseif($jabatan_pak->id == 5){
+                            if($pak->jurnal == "Ada"){
+                                $naik_pangkat = 1;
+                            }else{
+                                $naik_pangkat = 0;
+                            }
+                        }
                     }else{
                         $naik_pangkat = 0;
                     }

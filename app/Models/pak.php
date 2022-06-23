@@ -52,6 +52,8 @@ class pak extends Model
         'tertinggal',
         'tertinggal2',
         'saran',
+        'jurnal',
+        'lap_pi',
     ];
 
     public function users()

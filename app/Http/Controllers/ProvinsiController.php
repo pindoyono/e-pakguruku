@@ -97,6 +97,28 @@ class ProvinsiController extends Controller
         return back()->with('success','Pesan Penolakan Berhasil Terkirim');
     }
 
+    public function lap_pi(Request $request,$pak_id)
+    {
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'lap_pi' => 'Ada',
+            ]
+        );
+        return back()->with('success','Laporan Penilitian berhasil di Update');
+    }
+
+    public function jurnal(Request $request,$pak_id)
+    {
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'jurnal' => 'Ada',
+            ]
+        );
+        return back()->with('success','Jurnal berhasil di Update');
+    }
+
     public function saran(Request $request,$pak_id)
     {
         //

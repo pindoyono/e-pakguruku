@@ -178,7 +178,7 @@
         </tr>
         <tr>
             <td scope="col">2</td>
-            <td scope="col">Karya Ilmiah</td>
+            <td scope="col">Publikasi Ilmiah</td>
             <td scope="col">
                 <input type="number" step="any" name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{$pak->publikasi_ilmiah != null ? $pak->publikasi_ilmiah : 0}}" class="form-control">
             </td>

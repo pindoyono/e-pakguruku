@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/verif/{id}', [ProvinsiController::class, 'verif'])->name('provinsis.verif');
     Route::put('/perbaikan/{id}', [ProvinsiController::class, 'perbaikan'])->name('provinsis.perbaikan');
     Route::put('/tolak/{id}', [ProvinsiController::class, 'tolak'])->name('provinsis.tolak');
+    Route::get('/lap_pi/{id}', [ProvinsiController::class, 'lap_pi'])->name('provinsis.lap_pi');
+    Route::get('/jurnal/{id}', [ProvinsiController::class, 'jurnal'])->name('provinsis.jurnal');
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
     Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
 
