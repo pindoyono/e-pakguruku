@@ -112,7 +112,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/index2/{id}', [BaJurnalController::class, 'index'])->name('ba_jurnals.index');
     Route::POST('/store/{id}', [BaJurnalController::class, 'store'])->name('ba_jurnals.store');
-    Route::delete('/destroy/{id}', [BaJurnalController::class, 'destroy'])->name('ba_jurnals.destroy');
+    Route::delete('/destroy2/{id}', [BaJurnalController::class, 'destroy'])->name('ba_jurnals.destroy');
 
 
 
