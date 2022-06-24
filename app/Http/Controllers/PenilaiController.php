@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Auth;
 use App\Models\Pendidikan;
+use App\Models\Ba_jurnal;
 use App\Models\Kegiatan;
 use App\Models\pak;
 use App\Models\User;
@@ -393,11 +394,48 @@ class PenilaiController extends Controller
         // dd($data);
         $pangkat = Jabatan::find($data->pangkat_golongan);
 
+        // dd($data->name);
         $pdf = PDF::loadView('pdf.berita_acara',[
                                                 'pak' => $data,
                                                 'pak2' => $pak2,
                                                 'pangkat' => $pangkat,
                                                 'settings' => $settings,
+                                            ]);
+
+        return $pdf->stream('BeritaAcara.pdf');
+    }
+
+    public function cetak_ba_jurnal($pak_id)
+    {
+
+
+        $data = DB::table('paks')
+        ->join('users', 'users.id', '=', 'paks.user_id')
+        ->where('paks.id',$pak_id)
+        ->first();
+
+        $pak2 = DB::table('paks')
+        ->join('users', 'users.id', '=', 'paks.user_id')
+        ->select('paks.*')
+        ->where('paks.id',$pak_id)
+        ->first();
+
+        $ba = Ba_jurnal::where('pak_id',$pak_id)->get();
+
+        dd($pak_id);
+
+        $settings = Setting::first();
+
+        // dd($pak2);
+        // dd($data);
+        $pangkat = Jabatan::find($data->pangkat_golongan);
+
+        $pdf = PDF::loadView('pdf.ba_jurnal',[
+                                                'pak' => $data,
+                                                'pak2' => $pak2,
+                                                'pangkat' => $pangkat,
+                                                'settings' => $settings,
+                                                'ba' => $ba,
                                             ]);
 
         return $pdf->stream('BeritaAcara.pdf');

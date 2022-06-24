@@ -41,6 +41,13 @@
                     Simpan
                     <div class="ripple-container"></div>
                 </button>
+                <a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_ba_jurnal',$pak_id)}}">
+                    <span class="btn-label">
+                        <i class="material-icons">print</i>
+                      </span>
+                      Cetak
+                      <div class="ripple-container"></div>
+                </a>
             {!! Form::close() !!}
 
             </div>
