@@ -36,7 +36,7 @@
             <div class="col-md-12">
                 <div class="pull-right">
                     @role('super-admin')
-                    <a class="btn btn-sm btn-info" href="{{ route('kegiatans.create') }}"> Tambah Kegiatan</a>
+                    <a class="btn btn-sm btn-info" href="{{ route('lampiran2pkbs.create') }}"> Tambah Kegiatan</a>
                     @endrole
                 </div>
             </div>

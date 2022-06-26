@@ -2,20 +2,28 @@
 
 
 @section('content')
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Edit L2PKB</h2>
+        </div>
+    </div>
+</div>
+
 <div class="col-md-12">
     <div class="card ">
       <div class="card-header card-header-rose card-header-text">
         <div class="card-text">
           <h4 class="card-title">
             <span class="material-icons md-72">
-                trending_up
+                post_add
                 </span>
           </h4>
         </div>
         </div>
         <div class="col-sm-12">
             <div class="pull-right">
-                <a class="btn btn-sm btn-primary" href="{{ route('kepegawaians.index') }}">
+                <a class="btn btn-sm btn-primary" href="{{ route('lampiran2pkbs.index') }}">
                     <span class="btn-label">
                         <i class="material-icons">reply</i>
                     </span>
@@ -25,62 +33,53 @@
             </div>
         </div>
       <div class="card-body">
-
-        <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('kepegawaians.update',$kepegawaian)}}" method="POST">
-            @csrf
+        {{-- {!! Form::file(array('route' => 'users.store','method'=>'POST')) !!} --}}
+        <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('lampiran2pkbs.update',$data)}}" method="POST">
             <input type="hidden" value="PUT" name="_method">
-        <div class="row">
-            <label class="col-sm-3 col-form-label">SK CPNS</label>
-            <div class="col-md-2">
-                <input type="file" name="sk_cpns" class="form-control" placeholder=".col-md-3">
+            @csrf
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Kode</label>
+                <div class="col-sm-10">
+                    <div class="form-group">
+                    <input class="form-control"  placeholder="Kode" type="text" name="kode" value="{{ $data->kode }}" required="true" aria-required="true">
+                    {{-- <span class="bmd-help">A block of help text that breaks onto a new line.</span> --}}
+                    </div>
+                </div>
             </div>
-            <label class="col-sm-3 col-form-label">SK Pangkat Terakhir & PAK Pangkat Terakhir</label>
-            <div class="col-md-2">
-                <input type="file" name="sk_pangkat" class="form-control" placeholder=".col-md-3">
-            </div>
-        </div>
 
-        <br>
-
-        <div class="row">
-            <label class="col-sm-3 col-form-label">SK Jabatan Fungsional</label>
-            <div class="col-md-2">
-                <input type="file" name="sk_jafung" class="form-control" placeholder=".col-md-3">
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Deskripsi</label>
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <textarea cols="10" rows="4" class="form-control" value="" name="diskripsi" id="input-description" type="text" placeholder="" required="true" aria-required="true">
+                            {{$data->diskripsi}}
+                        </textarea>
+                    </div>
+                </div>
             </div>
-            <label class="col-sm-3 col-form-label">IJAZAH</label>
-            <div class="col-md-2">
-                <input type="file" name="ijazah" class="form-control" placeholder=".col-md-3">
-            </div>
-        </div>
 
-        <br>
-
-        <div class="row">
-            <label class="col-sm-3 col-form-label">Karpeg</label>
-            <div class="col-md-2">
-                <input type="file" name="karpeg" class="form-control" placeholder=".col-md-3">
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Jenis</label>
+                <div class="col-sm-10">
+                    <div class="form-group">
+                    <input class="form-control"  placeholder="Jenis" type="text" name="jenis" value="{{ $data->jenis }}" required="true" aria-required="true">
+                    {{-- <span class="bmd-help">A block of help text that breaks onto a new line.</span> --}}
+                    </div>
+                </div>
             </div>
-            <label class="col-sm-3 col-form-label">Sk Penyesuaian (kab ke prov)</label>
-            <div class="col-md-2">
-                <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
-            </div>
-        </div>
-        <br>
 
-        {{-- <div class="row">
-            <label class="col-sm-3 col-form-label">Nilai AK PAK Pangkat Terakhir</label>
-            <div class="col-md-8">
-                <input type="number" step="any" name="nilai_pak_pangkat_akhir" value="{{$kepegawaian->nilai_pak_pangkat_akhir}}" class="form-control" placeholder="Nilai PAK Pangkat Terkahir">
+            <div class="row">
+                <label class="col-sm-2 col-form-label">Saran</label>
+                <div class="col-sm-10">
+                    <div class="form-group">
+                        <textarea cols="10" rows="4" class="form-control" value="" name="saran" id="input-description" type="text" placeholder="" required="true" aria-required="true">
+                            {{$data->saran}}
+                        </textarea>
+                    </div>
+                </div>
             </div>
-            <label class="col-sm-3 col-form-label">Sk Penyesuaian (kab ke prov)</label>
-            <div class="col-md-2">
-                <input type="file" name="sk_penyesuaian" class="form-control" placeholder=".col-md-3">
-            </div>
-        </div> --}}
 
-        <br>
-
-            <button type="submit" class="btn btn-sm btn-success">
+            <button type="submit" class="btn btn-success">
                 <span class="btn-label">
                   <i class="material-icons">check</i>
                 </span>
@@ -88,14 +87,13 @@
                 <div class="ripple-container"></div>
             </button>
 
-            <a class="btn btn-sm btn-info" href="{{ route('kepegawaians.index') }}">
+            <a class="btn btn-info" href="{{ route('lampiran2pkbs.index') }}">
                 <span class="btn-label">
                   <i class="material-icons">reply</i>
                 </span>
                 Kembali
               <div class="ripple-container"></div>
             </a>
-        </table>
         {!! Form::close() !!}
       </div>
     </div>

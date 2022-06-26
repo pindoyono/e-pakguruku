@@ -31,7 +31,7 @@ class Lampiran2pkbController extends Controller
     public function create()
     {
         //
-        return view("lampirans.create");
+        return view("lampiran2pkbs.create");
     }
 
     /**
@@ -43,19 +43,13 @@ class Lampiran2pkbController extends Controller
     public function store(Request $request)
     {
         //
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             "jenis" => "required",
             "kode" => "required",
             "diskripsi" => "required",
             "saran" => "required"
         ]);
 
-
-
-
-        if ($validator->fails()) {
-            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
-        }
 
 
         // return $request;
@@ -66,7 +60,7 @@ class Lampiran2pkbController extends Controller
         $lampiran->saran = $request->get('saran');
         $lampiran->save();
 
-        return redirect()->route('lampirans.create')->with('toast_success', 'Task Created Successfully!');
+        return redirect()->route('lampiran2pkbs.create')->with('toast_success', 'Task Created Successfully!');
     }
 
     /**
@@ -89,9 +83,10 @@ class Lampiran2pkbController extends Controller
     public function edit(Lampiran2pkb $lampiran2pkb)
     {
         //
-        $data = Lampiran2pkb::findOrFail($id);
+        $data = Lampiran2pkb::find($lampiran2pkb)->first();
+        // dd($data);
 
-        return view('lampirans.edit',   ['data' => $data
+        return view('lampiran2pkbs.edit',   ['data' => $data
                                     ]
                                 );
     }
@@ -106,7 +101,7 @@ class Lampiran2pkbController extends Controller
     public function update(Request $request, Lampiran2pkb $lampiran2pkb)
     {
         //
-        $validator = Validator::make($request->all(), [
+        $this->validate($request, [
             "jenis" => "required",
             "kode" => "required",
             "diskripsi" => "required",
@@ -115,21 +110,15 @@ class Lampiran2pkbController extends Controller
 
 
 
-
-        if ($validator->fails()) {
-            return back()->with('toast_error', $validator->messages()->all()[0])->withInput();
-        }
-
-
         // return $request;
-        $lampiran =  Lampiran2pkb::findOrFail($id);
+        $lampiran =  Lampiran2pkb::find($lampiran2pkb->id);
         $lampiran->jenis = $request->get('jenis');
         $lampiran->kode = $request->get('kode');
         $lampiran->diskripsi = $request->get('diskripsi');
         $lampiran->saran = $request->get('saran');
         $lampiran->Update();
 
-        return redirect()->route('lampirans.index')->with('toast_success', 'Task Created Successfully!');
+        return redirect()->route('lampiran2pkbs.index')->with('toast_success', 'Task Created Successfully!');
 
     }
 
@@ -142,9 +131,9 @@ class Lampiran2pkbController extends Controller
     public function destroy(Lampiran2pkb $lampiran2pkb)
     {
         //
-        $data = Lampiran2pkb::findOrFail($id);
+        $data = Lampiran2pkb::findOrFail($lampiran2pkb->id);
         $data->delete();
-        return redirect()->route('lampirans.index')->with('toast_success', 'Task Delete Successfully!');
+        return redirect()->route('lampiran2pkbs.index')->with('toast_success', 'Task Delete Successfully!');
 
     }
 }
