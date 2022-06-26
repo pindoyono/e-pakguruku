@@ -660,7 +660,7 @@
         <tr style="font-weight: 900">
             <td>Laporan Hasil Penelitian <br> (IIId -> 4a)</td>
             <td style="{{ $pak->lap_pi == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->lap_pi == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
-            <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah
+            <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian
                 <a class="btn btn-primary" href="{{ route('provinsis.lap_pi',$pak->id)}}">
                     <span class="btn-label">
                         <i class="material-icons">done_all</i>
@@ -672,6 +672,18 @@
         @endif
 
         @if ($jabatan_pak->id == 5 )
+        <tr style="font-weight: 900">
+            <td>Laporan Hasil Penelitian <br> (4a -> 4b)</td>
+            <td style="{{ $pak->lap_pi == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->lap_pi == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
+            <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian
+                <a class="btn btn-primary" href="{{ route('provinsis.lap_pi',$pak->id)}}">
+                    <span class="btn-label">
+                        <i class="material-icons">done_all</i>
+                      </span>
+                      <div class="ripple-container"></div>
+                </a>
+            </td>
+        </tr>
         <tr style="font-weight: 900">
             <td>Jurnal Ilmiah <br> (4a -> 4b)</td>
             <td style="{{ $pak->jurnal == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->jurnal == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>

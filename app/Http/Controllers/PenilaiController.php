@@ -422,12 +422,14 @@ class PenilaiController extends Controller
 
         $ba = Ba_jurnal::where('pak_id',$pak_id)->get();
 
-        dd($pak_id);
+        // dd($pak_id);
 
         $settings = Setting::first();
 
         // dd($pak2);
         // dd($data);
+        $user_id = Pak::find($pak_id)->user_id;
+        $user = User::find($user_id);
         $pangkat = Jabatan::find($data->pangkat_golongan);
 
         $pdf = PDF::loadView('pdf.ba_jurnal',[
@@ -436,6 +438,8 @@ class PenilaiController extends Controller
                                                 'pangkat' => $pangkat,
                                                 'settings' => $settings,
                                                 'ba' => $ba,
+                                                'user' => $user,
+                                                'no' => $no=1,
                                             ]);
 
         return $pdf->stream('BeritaAcara.pdf');
@@ -544,7 +548,7 @@ class PenilaiController extends Controller
                                 $naik_pangkat = 0;
                             }
                         }elseif($jabatan_pak->id == 5){
-                            if($pak->jurnal == "Ada"){
+                            if($pak->jurnal == "Ada" && $pak->lap_pi == "Ada"){
                                 $naik_pangkat = 1;
                             }else{
                                 $naik_pangkat = 0;

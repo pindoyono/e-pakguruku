@@ -484,7 +484,7 @@ if (! function_exists('lolos')) {
                                 $naik_pangkat = 0;
                             }
                         }elseif($jabatan_pak->id == 5){
-                            if($pak->jurnal == "Ada"){
+                            if($pak->jurnal == "Ada" && $pak->lap_pi == "Ada"){
                                 $naik_pangkat = 1;
                             }else{
                                 $naik_pangkat = 0;
