@@ -18,7 +18,7 @@
         </tr>
         <tr>
             <td scope="col" colspan="4">Unsur / Sub Unsur</td>
-            <td scope="col" width="10%">AK Lama</td>
+            <td scope="col" width="10%">AK Lama(pak Pangkat Terakhir)</td>
             <td scope="col" width="10%">AK Diperoleh</td>
             <td scope="col" width="10%">Total</td>
         </tr>
@@ -708,21 +708,21 @@
     @csrf
     <input type="hidden" value="PUT" name="_method">
 
-    <textarea name='saran' cols="125" rows="15">
+    {{-- <textarea name='saran' cols="125" rows="15">
         @if ($pak->saran == null)
         Isi Pesan dan Saran Untuk perbaikan hapak
         @else
         {{ $pak->saran }}
         @endif
-     </textarea>
+     </textarea> --}}
 @if($user->id != Auth::user()->id)
-<button type="submit" class="btn btn-success">
+{{-- <button type="submit" onclick="alert('Pastikan nilai AK lama Sesuai dengan PAK Pangkat yg bersangkutan')" class="btn btn-success">
     <span class="btn-label">
       <i class="material-icons">check</i>
     </span>
     Simpan
     <div class="ripple-container"></div>
-</button>
+</button> --}}
 
 <a class="btn btn-primary" target="_blank" href="{{ route('penilais.cetak_hapak',$pak->id)}}">
     <span class="btn-label">

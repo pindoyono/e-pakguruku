@@ -177,7 +177,7 @@
                         <td width="2%"" >1</td>
                         <td colspan=3> <b>Unsur Utama</b></td>
                         <td style="text-align:right">
-                            {{$user->tertinggal != 0 ? $user->tertinggal : '-';}}
+                            {{$user->tertinggal != 0 ? str_replace('.',',',$user->tertinggal) : '-';}}
                         </td>
                         <td style="text-align:right">
                             {{
@@ -185,9 +185,11 @@
                                          ($pak->tertinggal + $pak->tertinggal2) - $user->tertinggal
                                      ,3)
                                      !=0?
+                                     str_replace('.',',',
                                      number_format(
                                          ($pak->tertinggal + $pak->tertinggal2) - $user->tertinggal
                                      ,3)
+                                     )
                                      :'-';
                             }}
 
@@ -198,9 +200,11 @@
                                          ($pak->tertinggal + $pak->tertinggal2)
                                      ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                          ($pak->tertinggal + $pak->tertinggal2)
                                      ,3)
+                                    )
                                      :'-';
                             }}
                         </td>
@@ -215,7 +219,7 @@
                     <tr>
                         <td colspan="3" >1) Pendidikan sekolah dan memperoleh gelar ijazah </td>
                         <td style="text-align:right">
-                            {{$user->pendidikan_sekolah != 0 ? $user->pendidikan_sekolah : '-';}}
+                            {{$user->pendidikan_sekolah != 0 ? str_replace('.',',',$user->pendidikan_sekolah) : '-';}}
                          </td>
                          <td style="text-align:right">
                              <span id="jml_sekolah">
@@ -224,9 +228,11 @@
                                          ($pak->pendidikan_sekolah + $pak->pendidikan_sekolah2) - $user->pendidikan_sekolah
                                      ,3)
                                      !=0?
+                                     str_replace('.',',',
                                      number_format(
                                          ($pak->pendidikan_sekolah + $pak->pendidikan_sekolah2) - $user->pendidikan_sekolah
                                      ,3)
+                                     )
                                      :'-';
                                  }}
                              </span>
@@ -238,9 +244,11 @@
                                          $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2
                                      ,3)
                                      !=0?
+                                     str_replace('.',',',
                                      number_format(
                                          $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2
                                      ,3)
+                                     )
                                      :'-';
                                  }}
                              </span>
@@ -249,7 +257,7 @@
                     <tr>
                         <td colspan="3">2) Mengikuti pelatihan prajabatan</td>
                         <td style="text-align:right">
-                            {{$user->pelatihan_prajabatan != 0 ? $user->pelatihan_prajabatan : '-';}}
+                            {{$user->pelatihan_prajabatan != 0 ? str_replace('.',',',$user->pelatihan_prajabatan) : '-';}}
                          </td>
                          <td style="text-align:right">
                              <span id="jml_pra_jabatan">
@@ -258,9 +266,11 @@
                                         ( $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2) - $user->pelatihan_prajabatan
                                      ,3)
                                      !=0?
+                                     str_replace('.',',',
                                      number_format(
                                         ( $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2) - $user->pelatihan_prajabatan
                                      ,3)
+                                     )
                                      :'-';
                                  }}
                              </span>
@@ -272,9 +282,11 @@
                                          $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2
                                      ,3)
                                      !=0?
+                                     str_replace('.',',',
                                      number_format(
                                          $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2
                                      ,3)
+                                     )
                                      :'-';
                                  }}
                              </span>
@@ -289,7 +301,7 @@
                     <tr>
                         <td colspan="3">    1) Proses pembelajaran	</td>
                         <td style="text-align:right">
-                            {{$user->proses_pembelajaran != 0 ? $user->proses_pembelajaran : '-';}}
+                            {{$user->proses_pembelajaran != 0 ? str_replace('.',',',$user->proses_pembelajaran) : '-';}}
                         </td>
                         <td style="text-align:right">
                             <span id="jml_prose_pembelajaran">
@@ -298,9 +310,11 @@
                                        ( $pak->proses_pembelajaran + $pak->proses_pembelajaran2) - $user->proses_pembelajaran
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                        ( $pak->proses_pembelajaran + $pak->proses_pembelajaran2) - $user->proses_pembelajaran
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -312,9 +326,11 @@
                                         $pak->proses_pembelajaran + $pak->proses_pembelajaran2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->proses_pembelajaran + $pak->proses_pembelajaran2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -323,7 +339,7 @@
                     <tr>
                         <td colspan="3">    2) Proses bimbingan	</td>
                         <td style="text-align:right">
-                            {{$user->proses_bimbingan != 0 ? $user->proses_bimbingan : '-';}}
+                            {{$user->proses_bimbingan != 0 ? str_replace('.',',',$user->proses_bimbingan) : '-';}}
                         </td>
                         <td style="text-align:right">
                             <span id="jml_proses_bimbingan">
@@ -332,9 +348,11 @@
                                         ($pak->proses_bimbingan + $pak->proses_bimbingan2) - $user->proses_bimbingan
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         ($pak->proses_bimbingan + $pak->proses_bimbingan2) - $user->proses_bimbingan
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -346,9 +364,11 @@
                                         $pak->proses_bimbingan + $pak->proses_bimbingan2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->proses_bimbingan + $pak->proses_bimbingan2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -357,7 +377,7 @@
                     <tr>
                         <td colspan="3">    3) Tugas lain yang relevan</td>
                         <td style="text-align:right">
-                            {{$user->tugas_lain != null ? $user->tugas_lain : 0}}
+                            {{$user->tugas_lain != null ? str_replace('.',',',$user->tugas_lain) : 0}}
                           </td>
                           <td style="text-align:right">
                               <span id="jml_tugas_lain">
@@ -366,9 +386,11 @@
                                           ($pak->tugas_lain + $pak->tugas_lain2) - $user->tugas_lain
                                       ,3)
                                       !=0?
+                                      str_replace('.',',',
                                       number_format(
                                           ($pak->tugas_lain + $pak->tugas_lain2) - $user->tugas_lain
                                       ,3)
+                                      )
                                       :'-';
                                   }}
                               </span>
@@ -380,9 +402,11 @@
                                           $pak->tugas_lain + $pak->tugas_lain2
                                       ,3)
                                       !=0?
+                                      str_replace('.',',',
                                       number_format(
                                           $pak->tugas_lain + $pak->tugas_lain2
                                       ,3)
+                                      )
                                       :'-';
                                   }}
                               </span>
@@ -397,7 +421,7 @@
                     <tr>
                         <td colspan="3"> 1) Pengembangan Diri</td>
                         <td style="text-align:right">
-                            {{$user->pengembangan_diri != 0 ? $user->pengembangan_diri : '-';}}
+                            {{$user->pengembangan_diri != 0 ? str_replace('.',',',$user->pengembangan_diri) : '-';}}
                         </td>
                         <td style="text-align:right">
                             <span id="jml_pengembangan_diri">
@@ -406,9 +430,11 @@
                                         ($pak->pengembangan_diri + $pak->pengembangan_diri2) - $user->pengembangan_diri
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         ($pak->pengembangan_diri + $pak->pengembangan_diri2) - $user->pengembangan_diri
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -420,9 +446,11 @@
                                         $pak->pengembangan_diri + $pak->pengembangan_diri2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->pengembangan_diri + $pak->pengembangan_diri2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -440,9 +468,11 @@
                                         ($pak->publikasi_ilmiah + $pak->publikasi_ilmiah2) - $user->publikasi_ilmiah
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         ($pak->publikasi_ilmiah + $pak->publikasi_ilmiah2) - $user->publikasi_ilmiah
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -454,9 +484,11 @@
                                         $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -474,9 +506,11 @@
                                     ($pak->karya_inovatif + $pak->karya_inovatif2) - $user->karya_inovatif
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                     ($pak->karya_inovatif + $pak->karya_inovatif2) - $user->karya_inovatif
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -488,9 +522,11 @@
                                     $pak->karya_inovatif + $pak->karya_inovatif2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                     $pak->karya_inovatif + $pak->karya_inovatif2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -512,6 +548,7 @@
                                    + $user->karya_inovatif
                                    ,3)
                                    !=0?
+                                   str_replace('.',',',
                                    number_format(
                                    $user->pendidikan_sekolah
                                    + $user->pelatihan_prajabatan
@@ -522,6 +559,7 @@
                                    + $user->publikasi_ilmiah
                                    + $user->karya_inovatif
                                    ,3)
+                                   )
                                    :'-';
                                }}
                             </b>
@@ -551,7 +589,9 @@
                                     + $user->karya_inovatif)
                                     ,3))
                                     !=0?
+                                    str_replace('.',',',
                                     $ak_utama_peroleh_saatini
+                                    )
                                     :'-';
                                 }}
                             </b>
@@ -570,7 +610,9 @@
                                     $pak->karya_inovatif + $pak->karya_inovatif2
                                     ,3))
                                     !=0?
+                                    str_replace('.',',',
                                     $ak_utama_total
+                                    )
                                     :'-';
                                 }}
                             </b>
@@ -587,7 +629,7 @@
                         <td rowspan="2"></td>
                         <td colspan="3">1. Ijazah yang tidak sesuai</td>
                         <td style="text-align:right">
-                            {{$user->ijazah_tidak_sesuai != 0 ? $user->ijazah_tidak_sesuai : '-';}}
+                            {{$user->ijazah_tidak_sesuai != 0 ? str_replace('.',',',$user->ijazah_tidak_sesuai) : '-';}}
                         </td>
                         <td style="text-align:right">
                             <span id="jml_ijazah_tidak_sesuai">
@@ -596,9 +638,11 @@
                                         ($pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2) - $user->ijazah_tidak_sesuai
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         ($pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2) - $user->ijazah_tidak_sesuai
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -610,9 +654,11 @@
                                         $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -623,7 +669,7 @@
                     <tr>
                         <td colspan="3">2. Pendukung tugas guru</td>
                         <td style="text-align:right">
-                            {{$user->pendukung_tugas_guru != 0 ? $user->pendukung_tugas_guru : '-'}}
+                            {{$user->pendukung_tugas_guru != 0 ? str_replace('.',',',$user->pendukung_tugas_guru) : '-'}}
                         </td>
                         <td style="text-align:right">
                             <span id="jml_pendukung_tugas_guru">
@@ -632,9 +678,11 @@
                                        ( $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2) - $user->pendukung_tugas_guru
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                        ( $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2) - $user->pendukung_tugas_guru
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -646,9 +694,11 @@
                                         $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </span>
@@ -689,7 +739,9 @@
                                         + $user->memperoleh_penghargaan
                                     ,3))
                                     !=0?
+                                    str_replace('.',',',
                                     $ak_penunjang_akhir
+                                    )
                                     :'-';
                                 }}
                             </b>
@@ -707,7 +759,9 @@
                                         + $user->memperoleh_penghargaan)
                                     ,3))
                                     !=0?
+                                    str_replace('.',',',
                                     $ak_penunjang
+                                    )
                                     :'-';
                                 }}
                             </b>
@@ -721,11 +775,13 @@
                                         $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
                                     ,3)
                                     !=0?
+                                    str_replace('.',',',
                                     number_format(
                                         $pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
                                         $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
                                         $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
                                     ,3)
+                                    )
                                     :'-';
                                 }}
                             </b>
@@ -735,6 +791,7 @@
                         <td style="text-align:right">
                             <b>
                                 {{
+                                    str_replace('.',',',
                                     $ak_terakhir =  number_format(
                                      $user->pendidikan_sekolah
                                      + $user->pelatihan_prajabatan
@@ -748,13 +805,14 @@
                                          + $user->pendukung_tugas_guru
                                          + $user->memperoleh_penghargaan
                                          + $user->tertinggal
-                                     ,3);
+                                     ,3));
                                  }}
                             </b>
                         </td>
                         <td style="text-align:right">
                             <b>
                                 {{
+                                    str_replace('.',',',
                                     $ak_diperoleh_saatini = number_format(
                                    ( $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
                                     $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
@@ -783,13 +841,14 @@
                                         + $user->tertinggal
                                         + $user->memperoleh_penghargaan)
 
-                                    ,3);
+                                    ,3));
                                 }}
                             </b>
                         </td>
                         <td style="text-align:right">
                             <b>
                                 {{
+                                    str_replace('.',',',
                                     $ak_diperoleh = number_format(
                                     $pak->pendidikan_sekolah + $pak->pendidikan_sekolah2 +
                                     $pak->pelatihan_prajabatan + $pak->pelatihan_prajabatan2 +
@@ -803,7 +862,7 @@
                                         $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
                                         $pak->tertinggal + $pak->tertinggal2 +
                                         $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2
-                                    ,3);
+                                    ,3));
                                 }}
                             </b>
                         </td>
@@ -832,34 +891,39 @@
                     <tr>
                         <td>AK Yang Di Peroleh</td>
                         <td style="text-align:right">
-                            {{ $ak_diperoleh }}
+                            {{ str_replace('.',',',$ak_diperoleh) }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format(
                                     $ak_utama_total - (90/100*$jabatan_pak->target_sebelum) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal)
-                                ,3);
+                                ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                $ak_pd = number_format(
                                 $pak->pengembangan_diri + $pak->pengembangan_diri2 - $user->pengembangan_diri
-                                ,3);
+                                ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                $ak_piki = number_format(
                                     $pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 +
                                     $pak->karya_inovatif + $pak->karya_inovatif2 - $user->publikasi_ilmiah
                                     - $user->karya_inovatif
-                                ,3);
+                                ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format($ak_penunjang,3 )
+                                );
                             }}
                         </td>
                     </tr>
@@ -867,37 +931,42 @@
                         <td>AK Yang Wajib Peroleh</td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                              number_format(
                                  $jabatan_pak->target
-                                 ,3);
+                                 ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format(
                                     90/100*$jabatan_pak->akk
-                                 ,3);
+                                 ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format(
                                     $jabatan_pak->akpkbpd
-                                 ,3);
+                                 ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format(
                                  $jabatan_pak->akpkbpiki
-                                 ,3);
+                                 ,3));
                             }}
                         </td>
                         <td style="text-align:right">
                             {{
+                                str_replace('.',',',
                                 number_format(
                                     $jabatan_pak->akp
-                                 ,3);
+                                 ,3));
                             }}
                         </td>
                     </tr>
@@ -917,11 +986,11 @@
 
                     <tr style="font-weight: 900">
                         <td>Kelebihan/Kekurangan</td>
-                        <td style="{{ $jml_1 >= 0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_1 }}</td>
-                        <td style="{{ $jml_4>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_4 }}</td>
-                        <td style="{{ $jml_2>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_2 }}</td>
-                        <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_3 }}</td>
-                        <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ $jml_5 }}</td>
+                        <td style="{{ $jml_1 >= 0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',$jml_1) }}</td>
+                        <td style="{{ $jml_4>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',$jml_4) }}</td>
+                        <td style="{{ $jml_2>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',$jml_2) }}</td>
+                        <td style="{{ $jml_3>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',$jml_3) }}</td>
+                        <td style="{{ $jml_5<=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',$jml_5) }}</td>
                     </tr>
                     <tr>
                         <td colspan="6"></td>
