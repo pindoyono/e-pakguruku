@@ -583,7 +583,9 @@ class PenilaiController extends Controller
 
     public function vermak($pak_id)
     {
-
+        return view('penilais.vermak', [
+            'i' => $i=0,
+        ]);
     }
 
     public function cetak_hapak($pak_id)

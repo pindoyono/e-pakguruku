@@ -124,7 +124,7 @@
     </li>
     @endrole
 
-    @role('admin-prov')
+    {{-- @role('admin-prov')
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('penilais.vermak') }}">
             <i class="material-icons">recycling</i>
@@ -132,7 +132,7 @@
         </a>
     </li>
 
-    @endrole
+    @endrole --}}
 
 
 
