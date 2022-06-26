@@ -88,6 +88,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cetak_hapak/{id}', [PenilaiController::class, 'cetak_hapak'])->name('penilais.cetak_hapak');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
+    Route::get('/vermak/{id}', [PenilaiController::class, 'vermak'])->name('penilais.vermak');
 
 
     Route::get('/verifikasi', [ProvinsiController::class, 'verifikasi'])->name('provinsis.verifikasi');

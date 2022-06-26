@@ -601,10 +601,12 @@ class PakController extends Controller
         $data->update($input);
 
         $user = User::find(Auth::user()->id);
-        $user->update( [
-            'status_naik_pangkat' => 'PAK TAHUNAN',
-            ]
-        );
+        // $user->update( [
+        //     'status_naik_pangkat' => 'PAK TAHUNAN',
+        //     ]
+        // );
+
+        $user->update();
 
         return redirect()->route('paks.edit',$data)
                         ->with('success','User updated successfully');

@@ -16,7 +16,7 @@ class KegiatanController extends Controller
     {
         //
         $data = Kegiatan::orderBy('id','DESC')->get();
-        $i=0;
+        $i=1;
         return view('kegiatans.index', ['data' => $data,'i'=>$i]);
     }
 

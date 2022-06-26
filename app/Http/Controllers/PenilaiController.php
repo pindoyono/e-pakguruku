@@ -581,6 +581,10 @@ class PenilaiController extends Controller
         return $pdf->stream('PAK.pdf');
     }
 
+    public function vermak($pak_id)
+    {
+
+    }
 
     public function cetak_hapak($pak_id)
     {
