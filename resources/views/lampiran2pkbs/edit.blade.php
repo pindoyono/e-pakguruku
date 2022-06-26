@@ -51,7 +51,7 @@
                 <label class="col-sm-2 col-form-label">Deskripsi</label>
                 <div class="col-sm-10">
                     <div class="form-group">
-                        <textarea cols="10" rows="4" class="form-control" value="" name="diskripsi" id="input-description" type="text" placeholder="" required="true" aria-required="true">
+                        <textarea cols="10" rows="10" class="form-control" value="" name="diskripsi" id="input-description" type="text" placeholder="" required="true" aria-required="true">
                             {{$data->diskripsi}}
                         </textarea>
                     </div>
@@ -72,7 +72,7 @@
                 <label class="col-sm-2 col-form-label">Saran</label>
                 <div class="col-sm-10">
                     <div class="form-group">
-                        <textarea cols="10" rows="4" class="form-control" value="" name="saran" id="input-description" type="text" placeholder="" required="true" aria-required="true">
+                        <textarea cols="10" rows="10" class="form-control" value="" name="saran" id="input-description" type="text" placeholder="" required="true" aria-required="true">
                             {{$data->saran}}
                         </textarea>
                     </div>
