@@ -593,7 +593,7 @@ class PakController extends Controller
         $input['awal'] = Carbon::parse($request->get('awal'))->format('Y-m-d');
         $input['akhir'] = Carbon::parse($request->get('akhir'))->format('Y-m-d');
         $input['user_id'] = Auth::user()->id;
-        $input['status'] = 'submit';
+        // $input['status'] = 'submit';
 
         // dd($input);
         // $data = Pak::update($input);
