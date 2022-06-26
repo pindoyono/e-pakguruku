@@ -53,7 +53,9 @@
                     {{ $no++.' '.$b->judul}}
                 </p>
             @endforeach
-
+                <p style="font-size:12; text-align:justify;">
+                    yang disusun dan diusulkan oleh:
+                </p>
             <table width="100%" style=" border: none !important;font-size:12">
                 <tr style=" border: none !important;">
                     <td  width="15%" style=" border: none !important;">
