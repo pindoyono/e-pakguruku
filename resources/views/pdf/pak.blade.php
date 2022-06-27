@@ -108,10 +108,10 @@
             </div>
 
             <table width="100%">
-                <tbody style="font-size:10;" >
+                <tbody style="font-size:9;" >
                     <tr>
                         <td width ="3%">I</td>
-                        <td colspan=7 class="text-left"> KETERANGAN PERORANGAN</td>
+                        <td colspan=7 class="font-size:9; text-left"> KETERANGAN PERORANGAN</td>
                     </tr>
                     <tr>
                         <td rowspan=14></td>
@@ -190,7 +190,7 @@
 
 
 
-                    <tr style="text-align:center" >
+                    <tr style="font-size:9; text-align:left" >
                         <td>II</td>
                         <td colspan=4> PENETAPAN ANGKA KREDIT</td>
                         <td width="10%" > LAMA</td>
