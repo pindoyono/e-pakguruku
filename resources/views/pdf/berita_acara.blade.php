@@ -629,7 +629,7 @@
                 </tbody>
             </table>
 
-            <div style="text-align:left;padding-left:70%">
+            <div style="text-align:left;padding-left:65%;font-size:10">
                 <br>
                 <br>
                                     {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo($settings->tgl_berita_acara_ttd) }}
