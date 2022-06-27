@@ -639,7 +639,7 @@
                                 <br>
                                     @if ( $pak->penilai_id != null)
 
-                                    {{ get_data_penilai($pak->penilai_id)->name  }}
+                                    {{ ucwords(get_data_penilai( $pak->penilai_id)->name )  }}
                                     <br>
                                     {{ 'NIP. '.get_data_penilai($pak->penilai_id)->username}}
                                     @endif
