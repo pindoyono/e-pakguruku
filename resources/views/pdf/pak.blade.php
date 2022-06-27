@@ -726,7 +726,7 @@
                     {{-- <td style="border: none !important;" >
 
                     </td> --}}
-                    <td width="40%" style="border: none !important;vertical-align:top;">
+                    <td width="40%" style="border: none !important;vertical-align:top;font-size:11">
                         {{$settings->kadis}},
                         <br>
                         <br>
