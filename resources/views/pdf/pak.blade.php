@@ -28,7 +28,7 @@
 
 
         <div class="container">
-            <table width="100%" style="border: none !important;  vertical-align:top; font-size:10">
+            <table width="100%" style="border: none !important;  vertical-align:top; font-size:9 !important">
                 <tr style="border: none !important;  vertical-align:top;">
                     <td  width="10%" style="border: none !important;  vertical-align:top;">
 
@@ -99,7 +99,7 @@
                     DINAS PENDIDIKAN DAN KEBUDAYAAN PROVINSI KALIMANTAN UTARA <br>
                 </span>
                 <span style="font-size:10">
-                    Nomor :  823.3/2428/Disdikbud-A1/KU/III/2022 <br> <br>
+                    Nomor :  823.3/2428/Disdikbud-A1/KU/III/2022 <br>
                 </span>
                 <span style="font-size:12; font-weight:bold">
                     Masa Penilaian : {{ tgl_indo($pak->awal).' s/d '.tgl_indo($pak->akhir)}} <br>
@@ -115,9 +115,9 @@
                     </tr>
                     <tr>
                         <td rowspan=14></td>
-                        <td width="3%" > 1</td>
-                        <td width="30%" colspan=2 >Nama</td>
-                        <td width="50%" colspan=4>{{ $pak->name }}</td>
+                        <td width="10px" > 1</td>
+                        <td colspan=2 width="10px">Nama</td>
+                        <td colspan=4>{{ $pak->name }}</td>
                     </tr>
                     <tr>
                         <td> 2</td>
@@ -674,7 +674,7 @@
                     <td  style="border: none !important;">
                         <table width="100%" style="border: none !important;vertical-align:top;">
                             <tr >
-                                <td width="20%" style="border: none !important;">Nama</td>
+                                <td width="10%" style="border: none !important;">Nama</td>
                                 <td width="2%" style="border: none !important;">:</td>
                                 <td style="border: none !important;">{{ $pak->name}}</td>
                             </tr>
