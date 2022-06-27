@@ -60,39 +60,51 @@
                             <td rowspan=14></td>
                             <td width ="3%" > 1</td>
                             <td colspan=2>Nama</td>
-                            <td colspan=4>asdas</td>
+                            <td colspan=4>
+                                <input type="text" name="name" value="{{$user->name}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 2</td>
                             <td colspan=2>NIP</td>
-                            <td colspan=4>dasda</td>
+                            <td colspan=4>
+                                <input type="text" name="username" value="{{$user->username}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 3</td>
                             <td colspan=2>NUPTK</td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="nuptk" value="{{$user->nuptk}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 4</td>
                             <td colspan=2>Tempat, Tanggal Lahir</td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="tmp_lahir" value="{{$user->tempat_lahir.','.tgl_indo($user->tanggal_lahir)}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 5</td>
                             <td colspan=2>Jenis Kelamin</td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="jenis_kelamin" value="{{$user->jenis_kelamin}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 6</td>
                             <td colspan=2 >Pendidikan yang telah diperhitungkan angka kreditnya</td>
                             {{-- <td colspan=2 style="font-size:9;">Pendidikan yang telah diperhitungkan angka kreditnya</td> --}}
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="pendidikan" value="{{$user->pendidikan}}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 7</td>
                             <td colspan=2>Pangkat / Golongan ruang / TMT</td>
                             <td colspan=4>
-
+                                <input type="text" name="pendidikan" value="{{$user->pangkat_golongan}}" class="form-control">
                             </td>
                         </tr>
                         <tr>

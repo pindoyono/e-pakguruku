@@ -583,8 +583,11 @@ class PenilaiController extends Controller
 
     public function vermak($pak_id)
     {
+        $user_id = Pak::find($pak_id)->user_id;
+        $user = User::find($user_id);
         return view('penilais.vermak', [
             'i' => $i=0,
+            'user' => $user,
         ]);
     }
 

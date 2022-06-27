@@ -94,7 +94,7 @@
             </table>
             <br>
             <div style="text-align:center; border: none !important;" >
-                <span style="font-size:14; font-weight:bold; ">
+                <span style="font-size:12; font-weight:bold; ">
                     PENETAPAN ANGKA KREDIT JABATAN FUNGSIONAL GURU <br>
                     DINAS PENDIDIKAN DAN KEBUDAYAAN PROVINSI KALIMANTAN UTARA <br>
                 </span>
