@@ -637,6 +637,8 @@
                                 <br>
                                 <br>
                                 <br>
+                                <br>
+                                <br>
                                     @if ( $pak->penilai_id != null)
 
                                     {{ ucwords(get_data_penilai( $pak->penilai_id)->name )  }}
