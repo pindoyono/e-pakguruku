@@ -566,7 +566,7 @@ class PenilaiController extends Controller
 
         // dd($naik_pangkat);
 
-        $pangkat = Jabatan::find($data->pangkat_golongan);
+        $pangkat = Jabatan::find($user->pangkat_golongan);
 
         $settings = Setting::first();
 
