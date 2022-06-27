@@ -447,24 +447,34 @@ class PenilaiController extends Controller
 
     public function cetak_pak($pak_id)
     {
-
-
-        $data = DB::table('kegiatans')
-        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
-        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        $data = DB::table('paks')
         ->join('users', 'users.id', '=', 'paks.user_id')
-        ->orderBy('kegiatans.kode','asc')
-        ->where('pak_id',$pak_id)
+        ->where('paks.id',$pak_id)
         ->first();
 
-        $pak2 = DB::table('kegiatans')
-        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
-        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+
+        // $data = DB::table('kegiatans')
+        // ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+        // ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        // ->join('users', 'users.id', '=', 'paks.user_id')
+        // ->orderBy('kegiatans.kode','asc')
+        // ->where('pak_id',$pak_id)
+        // ->first();
+
+        $pak2 = DB::table('paks')
         ->join('users', 'users.id', '=', 'paks.user_id')
-        ->orderBy('kegiatans.kode','asc')
         ->select('paks.*')
-        ->where('pak_id',$pak_id)
+        ->where('paks.id',$pak_id)
         ->first();
+
+        // $pak2 = DB::table('kegiatans')
+        // ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+        // ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        // ->join('users', 'users.id', '=', 'paks.user_id')
+        // ->orderBy('kegiatans.kode','asc')
+        // ->select('paks.*')
+        // ->where('pak_id',$pak_id)
+        // ->first();
 
         // dd($pak2);
 
