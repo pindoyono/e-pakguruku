@@ -47,7 +47,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" onclick="alert('Pastikan nilai AK lama Sesuai dengan PAK Pangkat yg bersangkutan')" href="#hapak" data-toggle="tab">
+                        <a class="nav-link" onclick="alert('Pastikan nilai AK lama Sesuai dengan PAK Pangkat Terakhir yg bersangkutan')" href="#hapak" data-toggle="tab">
                             {{-- <span class="material-symbols-outlined">
                                 published_with_changes
                                 </span> --}}
