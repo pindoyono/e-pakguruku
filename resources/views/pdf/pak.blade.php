@@ -110,12 +110,12 @@
             <table width="100%">
                 <tbody style="font-size:10;" >
                     <tr>
-                        <td width ="3%">I</td>
+                        <td width="40%">I</td>
                         <td colspan=7 class="font-size:9; text-left"> KETERANGAN PERORANGAN</td>
                     </tr>
                     <tr>
                         <td rowspan=14></td>
-                        <td width ="3%" > 1</td>
+                        <td width="3%" > 1</td>
                         <td colspan=2>Nama</td>
                         <td colspan=4>{{ $pak->name }}</td>
                     </tr>
