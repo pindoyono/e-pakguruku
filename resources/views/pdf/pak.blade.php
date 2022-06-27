@@ -11,7 +11,7 @@
 
 
         @page{
-          margin: 0.5em 3em;
+          margin: 0.5em 1em;
         }
 
         table {
@@ -108,7 +108,7 @@
             </div>
 
             <table width="100%">
-                <tbody style="font-size:9;" >
+                <tbody style="font-size:10;" >
                     <tr>
                         <td width ="3%">I</td>
                         <td colspan=7 class="font-size:9; text-left"> KETERANGAN PERORANGAN</td>
