@@ -117,7 +117,7 @@
                         <td rowspan=14></td>
                         <td width="3%" > 1</td>
                         <td width="30%" colspan=2 >Nama</td>
-                        <td colspan=4>{{ $pak->name }}</td>
+                        <td width="50%" colspan=4>{{ $pak->name }}</td>
                     </tr>
                     <tr>
                         <td> 2</td>
