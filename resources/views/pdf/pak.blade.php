@@ -28,7 +28,7 @@
 
 
         <div class="container">
-            <table width="100%" style="border: none !important;  vertical-align:top; font-size:9 !important">
+            <table width="100%" style="border: none !important;  vertical-align:top; font-size:8 !important">
                 <tr style="border: none !important;  vertical-align:top;">
                     <td  width="10%" style="border: none !important;  vertical-align:top;">
 
@@ -62,7 +62,7 @@
                                 <td width="3px" style="border: none !important;">
                                     :
                                 </td>
-                                <td  width="100px"  style="border: none !important;">
+                                <td  width="150px"  style="border: none !important;">
                                     03/V/PB/2010
                                 </td>
                             </tr>
@@ -92,7 +92,7 @@
                     </td>
                 </tr>
             </table>
-            <br>
+
             <div style="text-align:center; border: none !important;" >
                 <span style="font-size:12; font-weight:bold; ">
                     PENETAPAN ANGKA KREDIT JABATAN FUNGSIONAL GURU <br>
@@ -657,9 +657,9 @@
                         <td colspan="7">
                             <b>
                                 @if ($naik_pangkat == 1)
-                                    Dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} , PAK Tahun {{\Carbon\Carbon::parse($pak->awal)->format('Y')}}
+                                    Dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} , PAK {{\Carbon\Carbon::parse(now())->format('m')<=4?'April':'Oktober' }} Tahun {{\Carbon\Carbon::parse(now())->format('Y')}}
                                 @else
-                                    Tidak dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} , PAK Tahun {{\Carbon\Carbon::parse($pak->awal)->format('Y')}}
+                                    Tidak dapat dipertimbangkan untuk Kenaikan Pangkat, Golongan, TMT: {{ $pangkat->pangkat_sebelum  }} , PAK {{\Carbon\Carbon::parse(now())->format('m')<=4?'April':'Oktober' }} Tahun {{\Carbon\Carbon::parse(now())->format('Y')}}
                                 @endif
                             </b>
                         </td>
@@ -669,7 +669,7 @@
             </table>
 
 
-            <table width="100%" style="font-size:10; border: none !important;vertical-align:top;">
+            <table width="100%" style="font-size:9; border: none !important;vertical-align:top;">
                 <tr style="border: none !important;">
                     <td  style="border: none !important;">
                         <table width="100%" style="border: none !important;vertical-align:top;">
@@ -709,10 +709,9 @@
                     </td>
                 </tr>
             </table>
-            <br>
             <table width="100%" style="font-size:10; border: none !important;vertical-align:top;">
                 <tr style="border: none !important;">
-                    <td  width="90%" style="border: none !important;">
+                    <td  width="580px" style="border: none !important;">
 
                             Tembusan : Disampaikan Kepada Yth. <br>
                             &nbsp;1. Kepala Kantor Regional VIII BKN Banjarmasin di Banjarbaru <br>
@@ -726,7 +725,7 @@
                     {{-- <td style="border: none !important;" >
 
                     </td> --}}
-                    <td width="40%" style="border: none !important;vertical-align:top;font-size:11">
+                    <td width="50%" style="border: none !important;vertical-align:top;font-size:11">
                         {{$settings->kadis}},
                         <br>
                         <br>

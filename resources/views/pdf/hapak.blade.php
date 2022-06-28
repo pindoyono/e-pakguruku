@@ -1095,9 +1095,13 @@
                 <br>
                 <br>
 
-                {{ Auth::user()->name }}
                 <br>
-                {{ 'NIP. '.Auth::user()->username}}
+                @if ( $pak->penilai_id != null)
+
+                {{ ucwords(get_data_penilai( $pak->penilai_id)->name )  }}
+                <br>
+                {{ 'NIP. '.get_data_penilai($pak->penilai_id)->username}}
+                @endif
             </div>
 
         </body>
