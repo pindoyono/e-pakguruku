@@ -1044,16 +1044,21 @@
 
             <div style="text-align:left;padding-left:70%;font-size:10">
                 <br>
+                <br> <br>
                 <br>
-                                    {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo($settings->tgl_hapak_ttd) }}
-                                <br>
-                                <br>
-                                <br>
-                                <br>
+                {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo( \Carbon\Carbon::now()->format('Y-m-d') ) }}
+                <br>
+                <br>
+                <br>
+                <br>
 
-                                {{ Auth::user()->name }}
-                                <br>
-                                {{ 'NIP. '.Auth::user()->username}}
+                <br>
+                @if ( $pak->penilai_id != null)
+
+                {{ ucwords(get_data_penilai( $pak->penilai_id)->name )  }}
+                <br>
+                {{ 'NIP. '.get_data_penilai($pak->penilai_id)->username}}
+                @endif
             </div>
 
 

@@ -136,6 +136,23 @@ class ProvinsiController extends Controller
         return back()->with('success','Saran Tersimpan');
     }
 
+    public function no_sk(Request $request,$pak_id)
+    {
+        //
+
+        $this->validate($request, [
+            'no_sk' => 'required',
+        ]);
+        // dd($request->all());
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'no_sk' => $request->get('no_sk'),
+            ]
+        );
+        return back()->with('success','No SK Tersimpan');
+    }
+
     public function pesan_perbaikan(Request $request,$pak_id)
     {
         //

@@ -27,6 +27,101 @@
               <!--        Here you can write extra buttons/actions for the toolbar              -->
             </div>
             <div class="material-datatables">
+                <table class="table table-bordered" style="font-weight: 900">
+                    <tbody>
+                      <tr>
+                        <td>
+                            Jumlah Usulan
+                        </td>
+                        <td>
+                            {{ get_juml_guru_pak1('NAIK PANGKAT') + get_juml_guru_pak1('PAK TAHUNAN') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah NAIK PANGKAT
+                        </td>
+                        <td>
+                            {{ get_juml_guru_pak1('NAIK PANGKAT') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah PAK Tahunan
+                        </td>
+                        <td>
+                            {{ get_juml_guru_pak1('PAK TAHUNAN') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3"></td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah PAK Sudah Dinilai
+                        </td>
+                        <td>
+                            {{ get_jml_dinilai('Sudah Dinilai') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah PAK yg Belum Dinilai
+                        </td>
+                        <td>
+                            {{ get_juml_guru_pak1('NAIK PANGKAT') + get_juml_guru_pak1('PAK TAHUNAN') - get_jml_dinilai('Sudah Dinilai') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3"></td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah PAK Lolos
+                        </td>
+                        <td>
+                            {{ get_jml_lolos('Lolos') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah PAK Tidak Lolos  (terbit HAPAK)
+                        </td>
+                        <td>
+                            {{ get_jml_lolos('Tidak Lolos')."(".get_jml_hapak().")" }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3" class="td-actions">
+                            @foreach (get_jml_hapak_list() as $list )
+                            <a class="btn btn-warning" target="_blank" href="{{ route('penilais.cetak_hapak',$list->pak_id)}}">{{ $list->pak_id }}</a>
+                            @endforeach
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
               <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                 <thead>
                   <tr>
@@ -35,6 +130,7 @@
                     <th>Naik Pangkat</th>
                     <th>Periode</th>
                     <th>Sekolah</th>
+                    <th>No SK</th>
                     <th>Status</th>
                     <th class="disabled-sorting text-right">Actions</th>
                   </tr>
@@ -46,19 +142,34 @@
                     <th>Naik Pangkat</th>
                     <th>Periode</th>
                     <th>Sekolah</th>
-                    <th>Status</th>
-                    <th class="text-right">Actions</th>
+                    <th width="25%">No SK</th>
+                    <th >Status</th>
+                    <th class="text-right" width="15%">Actions</th>
                   </tr>
                 </tfoot>
                 <tbody>
                     @foreach ($data as $key => $pak)
                   <tr>
-                    <th>{{$i++}}</th>
-                    <th>{{ $pak->name }}</th>
-                    <th><label class="badge {{$pak->status_naik_pangkat=="NAIK PANGKAT" ? "badge-info" : "badge-warning" }} ">{{ $pak->status_naik_pangkat }}</label></th>
-                    <th>{{ tahun_aja($pak->awal) }}</th>
-                    <th>{{ $pak->sekolah }}</th>
-                    <th>
+                    <td>{{$i++}}</td>
+                    <td>{{ $pak->name }}</td>
+                    <td><label class="badge {{$pak->status_naik_pangkat=="NAIK PANGKAT" ? "badge-info" : "badge-warning" }} ">{{ $pak->status_naik_pangkat }}</label></td>
+                    <td>{{ tahun_aja($pak->awal) }}</td>
+                    <td>{{ $pak->sekolah }}</td>
+                    <td class="td-actions">
+                    {!! Form::open(['method' => 'PUT','route' => ['provinsis.no_sk', $pak->id],'style'=>'display:inline']) !!}
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" value="{{ $pak->no_sk }}" name="no_sk" placeholder="No SK">
+                            </div>
+                            <div class="col-md-2">
+                                    <button type="submit" rel="tooltip" class="btn btn-default">
+                                        <i class="material-icons">done</i>
+                              </div>
+                          </div>
+                        {!! Form::close() !!}
+                    </td>
+                    <td>
                         @if ($pak->status == 'Perbaikan' )
                             <label class="badge badge-primary">{{ $pak->status }}</label>
                         @elseif ($pak->status == 'Ditolak' )
@@ -68,7 +179,7 @@
                             {{ $pak->status }}
                         </label>
                         @endif
-                    </th>
+                    </td>
                     <td class="td-actions text-right">
 
                         <a class="btn btn-danger" href="{{ route('penilais.vermak',$pak->id) }}"><i class="material-icons">recycling</i></a>

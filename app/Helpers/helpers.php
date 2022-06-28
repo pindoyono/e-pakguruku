@@ -523,6 +523,126 @@ if (! function_exists('get_juml_guru_pak')) {
     }
 }
 
+if (! function_exists('get_juml_guru_pak1')) {
+    function get_juml_guru_pak1($status)
+    {
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*')
+                        ->orderBy('paks.id','asc')
+                        ->where('users.status_naik_pangkat',$status)
+                        ->count();
+        }else{
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*')
+                        ->orderBy('paks.id','asc')
+                        ->where('users.status_naik_pangkat',$status)
+                        ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+                        ->count();
+        }
+        return $data;
+    }
+}
+
+if (! function_exists('get_jml_dinilai')) {
+    function get_jml_dinilai($dinilai)
+    {
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*')
+                        ->orderBy('paks.id','asc')
+                        ->where('paks.status',$dinilai)
+                        ->count();
+        }else{
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*')
+                        ->orderBy('paks.id','asc')
+                        ->where('paks.status',$dinilai)
+                        ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+                        ->count();
+        }
+
+        return $data;
+    }
+}
+
+
+if (! function_exists('get_jml_lolos')) {
+    function get_jml_lolos($lolos)
+    {
+        $count=0;
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*','paks.id as pak_id')
+                        ->orderBy('paks.id','asc')
+                        ->get();
+        }else{
+            $data = DB::table('paks')
+                        ->join('users', 'users.id', '=', 'paks.user_id')
+                        ->select('users.*','paks.*','paks.id as pak_id')
+                        ->orderBy('paks.id','asc')
+                        ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+                        ->get();
+        }
+
+        foreach ($data as $key => $value) {
+            if(lolos($value->pak_id) == $lolos){
+                $count++;
+            }
+        }
+        return $count;
+    }
+}
+
+if (! function_exists('get_jml_hapak')) {
+    function get_jml_hapak()
+    {
+        $count=0;
+        $data = DB::table('pendidikans')
+        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+        ->select('pak_id')
+        // ->where('pak_id',$pak_id)
+        ->groupBy('pak_id')
+        ->orderBy('pak_id')
+        ->get();
+
+        foreach ($data as $key => $value) {
+                $count++;
+        }
+
+        return $count;
+    }
+}
+
+if (! function_exists('get_jml_hapak_list')) {
+    function get_jml_hapak_list()
+    {
+        $count=0;
+        $data = DB::table('pendidikans')
+        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+        ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+        ->select('pak_id')
+        // ->where('pak_id',$pak_id)
+        ->groupBy('pak_id')
+        ->orderBy('pak_id')
+        ->get();
+
+        // foreach ($data as $key => $value) {
+        //         $count++;
+        // }
+
+        return $data;
+    }
+}
+
+
+
 if (! function_exists('get_data_penilai')) {
     function get_data_penilai($id)
     {

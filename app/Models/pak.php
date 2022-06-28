@@ -54,6 +54,7 @@ class pak extends Model
         'saran',
         'jurnal',
         'lap_pi',
+        'no_sk',
     ];
 
     public function users()

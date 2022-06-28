@@ -99,7 +99,7 @@
                     DINAS PENDIDIKAN DAN KEBUDAYAAN PROVINSI KALIMANTAN UTARA <br>
                 </span>
                 <span style="font-size:10">
-                    Nomor :  823.3/2428/Disdikbud-A1/KU/III/2022 <br>
+                    Nomor :  {{ $pak->no_sk }} <br>
                 </span>
                 <span style="font-size:12; font-weight:bold">
                     Masa Penilaian : {{ tgl_indo($pak->awal).' s/d '.tgl_indo($pak->akhir)}} <br>
