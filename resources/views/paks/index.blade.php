@@ -85,11 +85,11 @@
                             @endif
                     </th>
                     <td class="td-actions text-right">
-                        @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' )
                         <a class="btn btn-warning" href="{{ route('pendidikans.index1',$pak->id) }}"><i class="material-icons">attach_file</i></a>
                         <a class="btn btn-primary" href="{{ route('paks.edit',$pak) }}"><i class="material-icons">edit</i></a>
                         {!! Form::open(['method' => 'DELETE','route' => ['paks.destroy', $pak],'style'=>'display:inline']) !!}
                         {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
+                        @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' )
                         <button type="submit" rel="tooltip" class="btn btn-danger">
                             <i class="material-icons">close</i>
                             {!! Form::close() !!}
