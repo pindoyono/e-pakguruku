@@ -103,10 +103,21 @@
                       </tr>
                       <tr>
                         <td>
-                            Jumlah PAK Tidak Lolos  (terbit HAPAK)
+                            Jumlah PAK Tidak Lolos
                         </td>
                         <td>
-                            {{ get_jml_lolos('Tidak Lolos')."(".get_jml_hapak().")" }}
+                            {{ get_jml_lolos('Tidak Lolos') }}
+                        </td>
+                        <td>
+                          -
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            Jumlah HAPAK
+                        </td>
+                        <td>
+                            {{ get_jml_hapak() }}
                         </td>
                         <td>
                           -

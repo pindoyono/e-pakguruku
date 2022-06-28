@@ -603,14 +603,30 @@ if (! function_exists('get_jml_hapak')) {
     function get_jml_hapak()
     {
         $count=0;
-        $data = DB::table('pendidikans')
-        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
-        ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
-        ->select('pak_id')
-        // ->where('pak_id',$pak_id)
-        ->groupBy('pak_id')
-        ->orderBy('pak_id')
-        ->get();
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('pendidikans')
+            ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+            ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->select('pak_id')
+            // ->where('pak_id',$pak_id)
+            ->groupBy('pak_id')
+            ->orderBy('pak_id')
+            ->get();
+
+        }else{
+            $data = DB::table('pendidikans')
+            ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+            ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->select('pak_id')
+            // ->where('pak_id',$pak_id)
+            ->groupBy('pak_id')
+            ->orderBy('pak_id')
+            ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+            ->get();
+        }
+
 
         foreach ($data as $key => $value) {
                 $count++;
@@ -624,14 +640,29 @@ if (! function_exists('get_jml_hapak_list')) {
     function get_jml_hapak_list()
     {
         $count=0;
-        $data = DB::table('pendidikans')
-        ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
-        ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
-        ->select('pak_id')
-        // ->where('pak_id',$pak_id)
-        ->groupBy('pak_id')
-        ->orderBy('pak_id')
-        ->get();
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('pendidikans')
+            ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+            ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->select('pak_id')
+            // ->where('pak_id',$pak_id)
+            ->groupBy('pak_id')
+            ->orderBy('pak_id')
+            ->get();
+
+        }else{
+            $data = DB::table('pendidikans')
+            ->join('paks', 'paks.id', '=', 'pendidikans.pak_id')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+            ->join('relasi_l2pkb_usulans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->select('pak_id')
+            // ->where('pak_id',$pak_id)
+            ->groupBy('pak_id')
+            ->orderBy('pak_id')
+            ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
+            ->get();
+        }
 
         // foreach ($data as $key => $value) {
         //         $count++;
