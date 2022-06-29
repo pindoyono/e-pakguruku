@@ -602,7 +602,7 @@ class PenilaiController extends Controller
             ->get();
 
             $pak2 = DB::table('paks')
-            ->select('paks.*','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
+            ->select('paks.*','paks.id as pak_id','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
             ->join('users', 'users.id', '=', 'paks.user_id')
             ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
             ->select('paks.*')
@@ -610,14 +610,14 @@ class PenilaiController extends Controller
 
         }else{
             $data = DB::table('paks')
-            ->select('paks.*','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
+            ->select('paks.*','paks.id as pak_id','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
             ->join('users', 'users.id', '=', 'paks.user_id')
             ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
             ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
             ->get();
 
             $pak2 = DB::table('paks')
-            ->select('paks.*','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
+            ->select('paks.*','paks.id as pak_id','users.name','jabatans.id as jabatan_id','users.pangkat_golongan','users.tertinggal as tertinggal_user','users.pengembangan_diri as pd_user','users.tmt_pns','users.karya_inovatif as ki_user','users.publikasi_ilmiah as pi_user','jabatans.*')
             ->join('users', 'users.id', '=', 'paks.user_id')
             ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
             ->select('paks.*')
