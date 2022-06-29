@@ -119,12 +119,12 @@
     @endrole
 
     @role('admin-prov')
-    {{-- <li class="nav-item ">
-        <a class="nav-link" href="{{ route('penilais.vermak') }}">
-            <i class="material-icons">recycling</i>
-            <p> Vermak PAK </p>
+    <li class="nav-item ">
+        <a class="nav-link" href="{{ route('penilais.pleno') }}">
+            <i class="material-icons">view_in_ar</i>
+            <p> Rekap Pleno </p>
         </a>
-    </li> --}}
+    </li>
         <li class="nav-item ">
         <a class="nav-link" href="{{ route('settings.index') }}">
             <i class="material-icons">settings</i>

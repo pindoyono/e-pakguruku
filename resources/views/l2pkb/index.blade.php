@@ -70,6 +70,14 @@
                     </div>
                 </div>
 
+                 <textarea name='saran' cols="125" rows="15">
+                    {{-- @if ($pak->saran == null)
+                    Isi Pesan dan Saran Untuk perbaikan hapak
+                    @else
+                    {{ $pak->saran }}
+                    @endif --}}
+                </textarea>
+
 
                 <button type="submit" class="btn btn-success">
                     <span class="btn-label">

@@ -276,8 +276,10 @@ if (! function_exists('jabatan')) {
 if (! function_exists('get_jabatan')) {
     function get_jabatan($id)
     {
-        return Jabatan::find($id)
-        ->first();
+        // return 'tes';
+        return DB::table('jabatans')
+        ->where('id',$id)->first();
+        // ->first();
     }
 }
 

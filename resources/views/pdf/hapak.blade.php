@@ -1008,7 +1008,7 @@
                     </tr>
                     @endif
 
-                    @if ($jabatan_pak->id == 4 )
+                    @if ($jabatan_pak->id >= 4 )
                         <tr style="font-weight: 900">
                             <td>Laporan Hasil Penelitian <br> (IIId -> 4a)</td>
                             <td style="{{ $pak->lap_pi == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->lap_pi == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
@@ -1016,7 +1016,7 @@
                         </tr>
                     @endif
 
-                    @if ($jabatan_pak->id == 5 )
+                    @if ($jabatan_pak->id >= 5 )
                     <tr style="font-weight: 900">
                         <td>Laporan Hasil Penelitian <br> (IIId -> 4a)</td>
                         <td style="{{ $pak->lap_pi == "Ada"  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{ $pak->lap_pi == "Ada"  ? 'Ada' : 'Tidak Ada'}})   </td>
