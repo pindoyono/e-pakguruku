@@ -94,7 +94,11 @@
                         <input type="hidden" value="PUT" name="_method">
                         <input type="hidden" value="" id="tolak"  name="ditolak">
                         <textarea name='pesan_perbaikan' cols="125" rows="15">
-                          Isi Pesan Perbaikan Untuk PTK
+                            @if ($pak->pesan_perbaikan==null)
+                                Isi Pesan Perbaikan Untuk PTK
+                            @else
+                                {{ $pak->pesan_perbaikan }}
+                            @endif
                        </textarea>
                           <button type="submit" class="btn btn-success">
                               <span class="btn-label">
