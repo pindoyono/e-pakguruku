@@ -239,7 +239,8 @@
                                     $pak2->tugas_lain +
                                     $pak2->pengembangan_diri +
                                     $pak2->publikasi_ilmiah +
-                                    $pak2->karya_inovatif
+                                    $pak2->karya_inovatif +
+                                    $pak2->tertinggal
                                     ,3)
 
                                     != 0
@@ -254,7 +255,8 @@
                                     $pak2->tugas_lain +
                                     $pak2->pengembangan_diri +
                                     $pak2->publikasi_ilmiah +
-                                    $pak2->karya_inovatif
+                                    $pak2->karya_inovatif +
+                                    $pak2->tertinggal
                                     ,3)
                                     )
                                     :
@@ -276,7 +278,8 @@
                                     $pak2->tugas_lain2 +
                                     $pak2->pengembangan_diri2 +
                                     $pak2->publikasi_ilmiah2 +
-                                    $pak2->karya_inovatif2
+                                    $pak2->karya_inovatif2 +
+                                    $pak2->tertinggal2
                                     ,3)
 
                                     != 0 ?
@@ -290,7 +293,8 @@
                                     $pak2->tugas_lain2 +
                                     $pak2->pengembangan_diri2 +
                                     $pak2->publikasi_ilmiah2 +
-                                    $pak2->karya_inovatif2
+                                    $pak2->karya_inovatif2 +
+                                    $pak2->tertinggal2
                                     ,3)
                                     )
                                     : '-'
@@ -310,6 +314,7 @@
                                     $pak2->pengembangan_diri +
                                     $pak2->publikasi_ilmiah +
                                     $pak2->karya_inovatif +
+                                    $pak2->tertinggal +
 
                                     $pak2->pendidikan_sekolah2 +
                                     $pak2->pelatihan_prajabatan2 +
@@ -318,7 +323,8 @@
                                     $pak2->tugas_lain2 +
                                     $pak2->pengembangan_diri2 +
                                     $pak2->publikasi_ilmiah2 +
-                                    $pak2->karya_inovatif2
+                                    $pak2->karya_inovatif2 +
+                                    $pak2->tertinggal2
                                     ,3)
 
                                     != 0 ?
@@ -333,6 +339,7 @@
                                     $pak2->pengembangan_diri +
                                     $pak2->publikasi_ilmiah +
                                     $pak2->karya_inovatif +
+                                    $pak2->tertinggal +
 
                                     $pak2->pendidikan_sekolah2 +
                                     $pak2->pelatihan_prajabatan2 +
@@ -341,7 +348,8 @@
                                     $pak2->tugas_lain2 +
                                     $pak2->pengembangan_diri2 +
                                     $pak2->publikasi_ilmiah2 +
-                                    $pak2->karya_inovatif2
+                                    $pak2->karya_inovatif2 +
+                                    $pak2->tertinggal2
                                     ,3)
                                     )
 

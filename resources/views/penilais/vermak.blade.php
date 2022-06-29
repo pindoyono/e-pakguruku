@@ -123,7 +123,7 @@
                             </td>d
                         </tr>
                         <tr>
-                            <td>Baru {{date("Y")."-10-01"}}</td>
+                            <td>Baru</td>
                             <td colspan=4>
                                 <input type="text" name="baru" value="{{
                                          \Carbon\Carbon::parse(now())->format('m')<=4?
