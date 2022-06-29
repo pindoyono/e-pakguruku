@@ -45,10 +45,10 @@
                 <thead>
                 <tbody>
                     <tr>
-                        <td  colspan=4 style="font-size:9; text-align:left">
+                        <td  colspan=4 style="font-size:9; text-align:left" width="100px">
                             Instansi : Dinas Pendidikan dan Kebudayaan Provinsi Kalimantan Utara
                         </td>
-                        <td colspan=4 style="font-size:9;text-align:right">
+                        <td colspan=4 style="font-size:9;text-align:right" width="100px">
                             Masa Penilaian : das.' s/d '.dasd
                         </td>
                         </tr>
@@ -104,47 +104,68 @@
                             <td> 7</td>
                             <td colspan=2>Pangkat / Golongan ruang / TMT</td>
                             <td colspan=4>
-                                <input type="text" name="pendidikan" value="{{$user->pangkat_golongan}}" class="form-control">
+                                <input type="text" name="pangkat" value="{{ get_jabatan($user->pangkat_golongan)->pangkat }}" class="form-control">
                             </td>
                         </tr>
                         <tr>
                             <td> 8</td>
                             <td colspan=2>Jabatan Guru / TMT</td>
-                            <td colspan=4> </td>
+                            <td colspan=4>
+                                <input type="text" name="jabatan" value="{{ get_jabatan($user->pangkat_golongan)->jabatan }}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td rowspan=2> 9</td>
                             <td rowspan=2>Masa Kerja Golongan</td>
                             <td>Lama</td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="lama" value="{{ masa_kerja(\Carbon\Carbon::parse($user->tmt_pns), $user->tmt_cpns) }}" class="form-control">
+                            </td>d
                         </tr>
                         <tr>
                             <td>Baru {{date("Y")."-10-01"}}</td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="baru" value="{{
+                                         \Carbon\Carbon::parse(now())->format('m')<=4?
+                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $user->tmt_cpns)
+                                        :
+                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-10-01" ), $user->tmt_cpns)
+                                    }}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td> 10</td>
                             <td colspan=2>Jenis Guru </td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="jenis_guru" value="{{ $user->jenis_guru }}" class="form-control">
+
+                            </td>
                         </tr>
                         <tr>
                             <td> 11</td>
                             <td colspan=2>Unit Kerja </td>
-                            <td colspan=4></td>
+                            <td colspan=4>
+                                <input type="text" name="jenis_guru" value="{{ $user->sekolah }}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
                             <td rowspan=2> 12</td>
                             <td rowspan=2>Alamat</td>
                             <td>Sekolah</td>
-                            <td colspan=4 style="font-size:9;"></td>
+                            <td colspan=4 style="font-size:9;">
+                                <input type="text" name="jenis_guru" value="{{ $user->alamat_sekolah }}" class="form-control">
+                            </td>
                         </tr>
                         <tr>
-                            <td>Rumah</td></td>
+                            <td>Rumah</td>
+                            <td colspan=4 >
+                                <input type="text" name="jenis_guru" value="{{ $user->alamat_rumah }}" class="form-control">
+                            </td>
                         </tr>
 
 
                     <tr>
-                        <td scope="col" colspan="7" class="text-center font-weight-bolder">
+                        <td scope="col" colspan="7" class="text-center font-weight-bolder" width="100px">
                             <h1>Berita Acara Penetapan Angka Kredit</h1>
                         </td>
                     </tr>

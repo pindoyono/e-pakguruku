@@ -273,6 +273,16 @@ if (! function_exists('jabatan')) {
     }
 }
 
+if (! function_exists('get_jabatan')) {
+    function get_jabatan($id)
+    {
+        return Jabatan::find($id)
+        ->first();
+    }
+}
+
+
+
 
 if (! function_exists('get_upadate_at')) {
     function get_upadate_at($table,$user_id)
