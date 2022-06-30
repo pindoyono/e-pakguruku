@@ -14,7 +14,8 @@ use App\Models\Jabatan;
 use App\Models\Kepegawaian;
 use App\Models\Setting;
 use PDF;
-
+use App\Exports\PlenosExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PenilaiController extends Controller
 {
@@ -633,6 +634,11 @@ class PenilaiController extends Controller
                                         'pak2' => $pak2,
                                         'i' => $i=1,
                                     ]);
+    }
+
+    public function export()
+    {
+        return Excel::download(new PlenosExport, 'Pleno.xlsx');
     }
 
     public function vermak($pak_id)
