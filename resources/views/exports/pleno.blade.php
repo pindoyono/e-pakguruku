@@ -180,7 +180,6 @@
                 }}
             </td>
             <td style="{{ number_format($ak_penunjang - $pak->akp,3 )<=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',number_format($ak_penunjang - $pak->akp,3 )) }}</td>
-            <td></td>
 
             <td>
                 {{  tgl_indo($pak->tmt_pns)}}
