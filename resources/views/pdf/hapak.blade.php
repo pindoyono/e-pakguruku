@@ -60,7 +60,7 @@
                     :
                 </td>
                 <td style="text-align: left; border: none !important;" >
-                    lamp....
+                    Dua lembar
                 </td>
             </tr>
             <tr style="text-align: left; border: none !important;">
@@ -71,13 +71,15 @@
                     :
                 </td>
                 <td style="text-align: left; border: none !important; vertical-align:top;" >
-                    hal.... <br>
-                    an...
+                    Hasil Penilaian Angka Kredit Jabatan Fungsional Guru<br>
+                    <span style="font-weight:bold">
+                        a.n {{ ' '.$user->name.'('.$user->sekolah.')'}}
+                    </span>
                 </td>
             </tr>
         </table>
         <span style="font-size:10">
-            Sehubungan dengan surat kepala SMAN 8 Malinau Perihal usul penilaian angka kredit saudara
+            Sehubungan dengan surat kepala {{$user->sekolah}} Perihal usul penilaian angka kredit saudara
         </span>
 
         <table width="100%" style=" border: none !important;font-size:10">
@@ -377,7 +379,7 @@
                     <tr>
                         <td colspan="3">    3) Tugas lain yang relevan</td>
                         <td style="text-align:right">
-                            {{$user->tugas_lain != null ? str_replace('.',',',$user->tugas_lain) : 0}}
+                            {{$user->tugas_lain != null ? str_replace('.',',',$user->tugas_lain) : '-'}}
                           </td>
                           <td style="text-align:right">
                               <span id="jml_tugas_lain">
@@ -1044,8 +1046,6 @@
 
             <div style="text-align:left;padding-left:70%;font-size:10">
                 <br>
-                <br> <br>
-                <br>
                 {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo( \Carbon\Carbon::now()->format('Y-m-d') ) }}
                 <br>
                 <br>
@@ -1092,8 +1092,7 @@
             </table>
 
             <div style="text-align:left;padding-left:70%;font-size:10">
-                <br>
-                <br>
+
                 {{ ucfirst(Auth::user()->wilayah_kerja).', '.tgl_indo( \Carbon\Carbon::now()->format('Y-m-d') ) }}
                 <br>
                 <br>

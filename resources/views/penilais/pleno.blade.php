@@ -41,6 +41,7 @@
                     <th colspan="3">AKK Utama 90%</th>
                     <th colspan="3">PD</th>
                     <th colspan="3">PIKI</th>
+                    <th colspan="3">AK P 10%</th>
                     <th colspan="3">Masa Kerja</th>
                     <th colspan="2">K I 50%</th>
                     <th rowspan="2">L PI</th>
@@ -66,6 +67,10 @@
 
                     <th >PIKI</th>
                     <th >Wajib</th>
+                    <th >L/TL</th>
+
+                    <th >AKP</th>
+                    <th >MAX</th>
                     <th >L/TL</th>
 
                     <th >TMT</th>
@@ -172,6 +177,26 @@
 
                     <td style="{{ number_format($ak_piki - $pak->akpkbpiki,3)>=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',number_format($ak_piki - $pak->akpkbpiki,3)) }}</td>
 
+                    <td>
+                        {{
+                            $ak_penunjang = number_format(
+                                        ($pak->ijazah_tidak_sesuai + $pak->ijazah_tidak_sesuai2 +
+                                        $pak->pendukung_tugas_guru + $pak->pendukung_tugas_guru2 +
+                                        $pak->memperoleh_penghargaan + $pak->memperoleh_penghargaan2)
+                                        -
+                                        ($pak->ijazah_tidak_sesuai_user
+                                        + $pak->pendukung_tugas_guru_user
+                                        + $pak->memperoleh_penghargaan_user)
+                                    ,3)
+                        }}
+                    </td>
+                    <td>
+                        {{
+                            $pak->akp
+                        }}
+                    </td>
+                    <td style="{{ number_format($ak_penunjang - $pak->akp,3 )<=0 ? 'color: green;' : 'color: red;'  }} text-align:right">{{ str_replace('.',',',number_format($ak_penunjang - $pak->akp,3 )) }}</td>
+                    <td></td>
 
                     <td>
                         {{  tgl_indo($pak->tmt_pns)}}
