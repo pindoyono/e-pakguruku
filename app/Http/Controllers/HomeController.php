@@ -30,8 +30,8 @@ class HomeController extends Controller
                 // return redirect()->route('admin.page');
                 return view('home');
             }
-            return view('home');
-            // return view('lock');
+            // return view('home');
+            return view('lock');
         }
         return view('home');
     }
