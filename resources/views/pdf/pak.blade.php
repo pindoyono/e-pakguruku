@@ -725,7 +725,8 @@
             </table>
             <table width="100%" style="font-size:10; border: none !important;vertical-align:top;">
                 <tr style="border: none !important;">
-                    <td  width="580px" style="border: none !important;">
+                    <td  style="border: none !important;">
+                        {{-- <td  width="520px" style="border: none !important;"> --}}
 
                             Tembusan : Disampaikan Kepada Yth. <br>
                             &nbsp;1. Kepala Kantor Regional VIII BKN Banjarmasin di Banjarbaru <br>
@@ -739,7 +740,8 @@
                     {{-- <td style="border: none !important;" >
 
                     </td> --}}
-                    <td width="50%" style="border: none !important;vertical-align:top;font-size:11">
+                    {{-- <td width="50%" style="border: none !important;vertical-align:top;font-size:11"> --}}
+                    <td style="border: none !important;vertical-align:top;font-size:11;white-space: nowrap;">
                         {{$settings->kadis}},
                         <br>
                         <br>
