@@ -201,7 +201,7 @@
 
 
                     <tr style="font-size:9; text-align:left" >
-                        <td class="spasi" style="text-align:center !important">II</td>
+                        <td style="text-align:center !important">II</td>
                         <td class="spasi" colspan=4> PENETAPAN ANGKA KREDIT</td>
                         <td class="spasi" width="10%" > LAMA</td>
                         <td class="spasi" width="10%"> BARU</td>
@@ -711,7 +711,7 @@
                     {{-- <td style="border: none !important;" >
 
                     </td> --}}
-                    <td width="175px" style="border: none !important;vertical-align:top;">
+                    <td width="200px" style="border: none !important;vertical-align:top;">
                         <table width="100%" style="border: none !important;vertical-align:top;">
                             <tr >
                                 <td width="50%" style="border: none !important;vertical-align:top;">Ditetapkan di</td>
