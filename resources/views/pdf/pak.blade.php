@@ -165,7 +165,7 @@
                         <td class="spasi" rowspan=2> 9</td>
                         <td class="spasi" rowspan=2>Masa Kerja Golongan</td>
                         <td class="spasi">Lama</td>
-                        <td class="spasi" colspan=4>{{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}</td>
+                        <td class="spasi" colspan=4>{{  masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" )->subYears(1), $pak->tmt_cpns) }}</td>
                     </tr>
                     <tr>
                         <td class="spasi">Baru</td>
@@ -173,7 +173,7 @@
                                         \Carbon\Carbon::parse(now())->format('m')<=4?
                                         masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $pak->tmt_cpns)
                                         :
-                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-10-01" ), $pak->tmt_cpns)
+                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $pak->tmt_cpns)
                                         }}
                         </td>
                     </tr>
