@@ -171,9 +171,9 @@
                         <td class="spasi">Baru</td>
                         <td class="spasi" colspan=4>{{
                                         \Carbon\Carbon::parse(now())->format('m')<=4?
-                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $pak->tmt_cpns)
+                                        masa_kerja(\Carbon\Carbon::parse(  \Carbon\Carbon::parse($pak->awal)->format('y')."-04-01" )->addYears(1), $pak->tmt_cpns)
                                         :
-                                        masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $pak->tmt_cpns)
+                                        masa_kerja(\Carbon\Carbon::parse(  \Carbon\Carbon::parse($pak->awal)->format('y')."-04-01" )->addYears(1), $pak->tmt_cpns)
                                         }}
                         </td>
                     </tr>
