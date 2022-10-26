@@ -85,7 +85,7 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <span class="badge badge-pill badge-danger">juni 2022</span>
+                    <span class="badge badge-pill badge-danger">Okt - Nov 2022</span>
                   </div>
                   <div class="timeline-body">
                     <p>Input Dupak</p>
@@ -101,7 +101,7 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <span class="badge badge-pill badge-success">juni 2022</span>
+                    <span class="badge badge-pill badge-success">Okt - Nov 2022</span>
                   </div>
                   <div class="timeline-body">
                     <p>Verifikasi Berkas</p>
@@ -114,7 +114,7 @@
                 </div>
                 <div class="timeline-panel">
                   <div class="timeline-heading">
-                    <span class="badge badge-pill badge-info">Juni 2022</span>
+                    <span class="badge badge-pill badge-info">Nov 2022</span>
                   </div>
                   <div class="timeline-body">
                     <p>Penilaian PAK</p>
