@@ -95,11 +95,24 @@
             </div>
             <label class="col-sm-3 col-form-label">NIP Kadis</label>
             <div class="col-md-2">
-                <input name="nip_kadis" type="text" class="form-control" id=''>
+                <input name="nip_kadis" type="text" class="form-control" id='datetimepicker7'>
             </div>
+
+        </div>
+
+        <div class="row">
+            <label class="col-sm-3 col-form-label">Batas Pegusulan</label>
+            <div class="col-md-2">
+                <input name="batas_akhir"  type="text" class="form-control" id='datetimepicker8' >
+            </div>
+            {{-- <label class="col-sm-3 col-form-label">NIP Kadis</label>
+            <div class="col-md-2">
+                <input name="nip_kadis" value="{{$settings->nip_kadis}}" type="text" class="form-control" id=''>
+            </div> --}}
         </div>
 
         <br>
+
 
             <button type="submit" class="btn btn-sm btn-success">
                 <span class="btn-label">
@@ -191,6 +204,16 @@
           });
 
           $('#datetimepicker7').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
+
+          $('#datetimepicker8').datetimepicker({
               icons: {
                   time: "fa fa-clock-o",
                   date: "fa fa-calendar",

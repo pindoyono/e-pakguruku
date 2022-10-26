@@ -98,6 +98,14 @@
             </div>
         </div>
 
+        <div class="row">
+            <label class="col-sm-3 col-form-label">Batas Pegusulan</label>
+            <div class="col-md-2">
+                <input name="tgl_akhir" value="{{Carbon\Carbon::parse($settings->tgl_akhir)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker8'>
+            </div>
+        </div>
+        <br>
+
         <br>
 
             <button type="submit" class="btn btn-sm btn-success">
@@ -199,6 +207,16 @@
               format: 'D-M-Y'
           });
 
+
+          $('#datetimepicker8').datetimepicker({
+              icons: {
+                  time: "fa fa-clock-o",
+                  date: "fa fa-calendar",
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down"
+              },
+              format: 'D-M-Y'
+          });
     });
  </script>
 <script>

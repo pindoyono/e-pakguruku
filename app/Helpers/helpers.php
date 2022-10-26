@@ -5,6 +5,7 @@ use App\Models\Jabatan;
 use App\Models\Kegiatan;
 use App\Models\Kepegawaian;
 use App\Models\pak;
+use App\Models\Setting;
 
 
 if (! function_exists('convertLocalToUTC')) {
@@ -405,6 +406,17 @@ if (! function_exists('get_juml_guru')) {
     {
         $users = User::role('guru')->count();
         return $users;
+    }
+}
+
+if (! function_exists('get_tgl_akhir')) {
+    function get_tgl_akhir()
+    {
+        $settings = Setting::all();
+        foreach ($settings as $key => $set) {
+            $tgl_akhir = $set->tgl_akhir;
+        }
+        return $tgl_akhir;
     }
 }
 

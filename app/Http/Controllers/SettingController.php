@@ -76,6 +76,7 @@ class SettingController extends Controller
         $input['akhir_hapak'] = Carbon::parse($request->get('akhir_hapak'));
         $input['tgl_hapak_ttd'] = Carbon::parse($request->get('tgl_hapak_ttd'));
         $input['tgl_pak_ttd'] = Carbon::parse($request->get('tgl_pak_ttd'));
+        $input['tgl_akhir'] = Carbon::parse($request->get('tgl_akhir'));
 
         $setting = Setting::find($id);
         $setting->update($input);

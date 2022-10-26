@@ -30,8 +30,14 @@ class HomeController extends Controller
                 // return redirect()->route('admin.page');
                 return view('home');
             }
-            return view('home');
-            // return view('lock');
+
+            if(date('Y-m-d') <= date(get_tgl_akhir()) ){
+                return view('home');
+                // dd('home');
+            }else{
+                return view('lock');
+                // dd('lock');
+            }
         }
         return view('home');
     }

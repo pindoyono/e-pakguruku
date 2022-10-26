@@ -22,5 +22,6 @@ class Setting extends Model
         'nama_kadis',
         'jabatan_kadis',
         'nip_kadis',
+        'tgl_akhir',
     ];
 }
