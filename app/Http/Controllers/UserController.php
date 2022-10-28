@@ -84,6 +84,7 @@ class UserController extends Controller
                 'no_sk_cpns' => 'required',
                 'tmt_cpns' => 'required',
                 'tmt_pns' => 'required',
+                'ak_akhir' => 'required',
                 'no_hp' => 'required',
                 'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

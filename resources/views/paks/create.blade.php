@@ -151,7 +151,7 @@
             <tbody>
                 <tr>
                     <td scope="col" colspan="5" class="text-center font-weight-bolder">
-                        <h1>Penetapan Angka Kredit</h1>
+                        <h1>Penetapan Angka Kredit Terakhir</h1>
                     </td>
                 </tr>
                 <tr>

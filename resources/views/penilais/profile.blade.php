@@ -233,6 +233,15 @@
         </div>
       </div>
 
+      <div class="row">
+        <label class="col-sm-2 col-form-label">TMT SK Pangkat Terakhir</label>
+        <div class="col-sm-5">
+          <div class="form-group">
+            <input name="ak_akhir" type="text" value="{{$user->ak_akhir}}"  class="form-control" id=''>
+          </div>
+        </div>
+      </div>
+
     <div class="row">
         <label class="col-sm-2 col-form-label">No Handhone</label>
         <div class="col-sm-10">

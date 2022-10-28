@@ -11,6 +11,17 @@
     </div>
 </div>
 
+<style>
+    .hide {
+      display: none;
+    }
+
+    .myDIV:hover + .hide {
+      display: block;
+      color: red;
+    }
+    </style>
+
 <div class="col-md-12">
     <div class="card ">
       <div class="card-header card-header-rose card-header-text">
@@ -591,15 +602,17 @@
                             </span>
                     </td>
                     <td scope="col">
-                        <span id="jml_semua">
-                            {{
-                                number_format(
-                               $total_semua2 = (Auth::user()->ijazah_tidak_sesuai+
-                                Auth::user()->pendukung_tugas_guru+
-                                Auth::user()->memperoleh_penghargaan+
 
-                                Auth::user()->pendidikan_sekolah+
-                                Auth::user()->pelatihan_prajabatan+
+
+                            @php
+
+                                number_format(
+                                    $total_semua2 = (Auth::user()->ijazah_tidak_sesuai+
+                                    Auth::user()->pendukung_tugas_guru+
+                                    Auth::user()->memperoleh_penghargaan+
+
+                                    Auth::user()->pendidikan_sekolah+
+                                    Auth::user()->pelatihan_prajabatan+
                                 Auth::user()->proses_pembelajaran +
                                 Auth::user()->proses_bimbingan +
                                 Auth::user()->tugas_lain +
@@ -611,7 +624,12 @@
                                 )
                                 ,3)
 
-                            }}
+                            @endphp
+
+                        <span style="{{ $total_semua2 ==  Auth::user()->ak_akhir ? 'color: green;' : 'color: red;'  }}" id="jml_semua">
+
+                            <div class="myDIV">{{ $total_semua2 }}</div>
+                            <div class="hide">pastikan angka pada kolom ini adalah angka kredit yg tertera pada PAK pangkat terakhir </div>
                         </span>
                     </td>
                 </tr>
@@ -694,33 +712,36 @@
                     <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), Auth::user()->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), Auth::user()->tmt_pns)  }} </td>
                     <td colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo(Auth::user()->tmt_pns)}}   )</td>
                 </tr>
-                {{-- @if ($jabatan->id >=4 )
+
+                @if ($jabatan->id >=4 )
                 <tr style="font-weight: 900">
                     <td>Karya Inovatif Maksimal 50% <br> (3d Keatas)</td>
-                    <td style="{{$pak->karya_inovatif + $pak->karya_inovatif2 - Auth::user()->karya_inovatif <= 50/100*$jabatan->akpkbpiki? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->karya_inovatif + $pak->karya_inovatif2 - Auth::user()->karya_inovatif}})   </td>
+                    <td style="{{ $karya_inovatif + $pak_first->karya_inovatif - Auth::user()->karya_inovatif  <= 50/100*$jabatan->akpkbpiki? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$karya_inovatif + $pak_first->karya_inovatif - Auth::user()->karya_inovatif}})   </td>
                     <td  colspan="4"> Maksimal Karya Inovatif Yg di Bolehkan  ( {{  50/100*$jabatan->akpkbpiki }}  )</td>
                 </tr>
 
-                @if ($jabatan->id == 4 )
+               @if ($jabatan->id == 4 )
                 <tr style="font-weight: 900">
-                    <td>Laporan Hasil Penelitian <br> (3d -> 4a)</td>
-                    <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - Auth::user()->publikasi_ilmiah}})   </td>
-                    <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian</td>
+                    <td>Laporan Hasil Penelitian <br> (IIId -> 4a)</td>
+                    <td style="" >    </td>
+                    <td  colspan="4"> Wajib memiliki minimal 1 Laporan Hasil Penelitian
+                    </td>
                 </tr>
                 @endif
 
                 @if ($jabatan->id == 5 )
                 <tr style="font-weight: 900">
-                    <td>Laporan Hasil Penelitian <br> (4a -> 4b)</td>
-                    <td style="{{ 1>=2  ? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$pak->publikasi_ilmiah + $pak->publikasi_ilmiah2 - $user->publikasi_ilmiah}})   </td>
-                    <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah</td>
+                    <td>Jurnal Ilmiah <br> (4a -> 4b)</td>
+                    <td style="" > </td>
+                    <td  colspan="4"> Wajib memiliki minimal 1 Jurnal Ilmiah
+                    </td>
                 </tr>
                 @endif
 
-                @endif --}}
+                @endif
             </tbody>
         </table>
-
+        <span> ** sebelum melakukan perhitungan pastikan isian di profile atau biodata sudah benar karena berdasarkan input dari profile tersebut perhitungan angka kredit yg di butuhkan untuk naik pangkat</span>
         <button type="submit" class="btn btn-sm btn-info col-sm-12">
             <span class="btn-label">
               <i class="material-icons">send</i>

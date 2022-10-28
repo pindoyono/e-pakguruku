@@ -84,14 +84,16 @@
             <p> DUPAK </p>
         </a>
     </li>
-    @role('admin')
+    {{-- @role('admin') --}}
+    @if(date('Y-m-d') <= date(get_tgl_akhir()) )
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
             <i class="material-icons">trending_up</i>
             <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>
         </a>
     </li>
-    @endrole
+    @endif
+    {{-- @endrole --}}
     @endrole
 
     @role('penilai')

@@ -59,6 +59,7 @@ class User extends Authenticatable
         'memperoleh_penghargaan',
         'status_naik_pangkat',
         'tertinggal',
+        'ak_akhir',
     ];
 
     /**
