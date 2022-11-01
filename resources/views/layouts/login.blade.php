@@ -82,7 +82,7 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="container">
         <div class="row">
             <div class="col-lg-4"></div>
-            <div class="col-lg-4"><p id="demo" style="font-size:40px;text-align: center;font-weight:bold">   dsfsd </p></div>
+            <div class="col-lg-4"><p id="demo" style="font-size:40px;text-align: center;font-weight:bold">   </p></div>
             <div class="col-lg-4"></div>
             <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
             <form method="POST" action="{{ route('login') }}">
