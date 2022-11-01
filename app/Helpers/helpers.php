@@ -420,6 +420,17 @@ if (! function_exists('get_tgl_akhir')) {
     }
 }
 
+if (! function_exists('get_tgl_count')) {
+    function get_tgl_count()
+    {
+        $settings = Setting::all();
+        foreach ($settings as $key => $set) {
+            $tgl_akhir = $set->tgl_akhir;
+        }
+        return $tgl_akhir;
+    }
+}
+
 
 if (! function_exists('lolos')) {
     function lolos($pak_id)

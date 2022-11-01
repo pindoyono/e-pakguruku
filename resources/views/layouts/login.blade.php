@@ -74,13 +74,17 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
   </nav> --}}
+
   <!-- End Navbar -->
   <div class="wrapper wrapper-full-page">
     <div class="page-header login-page header-filter" filter-color="black" style="background-image: url('../../assets/img/login.jpg'); background-size: cover; background-position: top center;">
       <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4"><p id="demo" style="font-size:40px;text-align: center;font-weight:bold">   dsfsd </p></div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
               <div class="card card-login card-hidden">
