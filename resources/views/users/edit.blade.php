@@ -304,14 +304,14 @@
               </div>
 
               <div class="row">
-                <label class="col-sm-2 col-form-label">AK SK Pangkat Terakhir</label>
+                <label class="col-sm-2 col-form-label">AK SK Kenaikan Pangkat Terakhir</label>
                 <div class="col-sm-2">
                     <div class="form-group">
                         <input name="ak_akhir" type="number" step="any" value="{{number_format($user->ak_akhir,3)}}"  class="form-control" id=''>
                     </div>
                 </div>
                 <div class="form-check form-check-inline">
-                    <label class="col-sm-12 col-form-label"> **isikan angka kredit yg tertera pada sk pangkat terakhir jika belum pernah naik pangkat isikan 100.000  </label>
+                    <label class="col-sm-12 col-form-label"> **isikan angka kredit yg tertera pada sk kenaikan pangkat terakhir jika belum pernah naik pangkat isikan 100.000  </label>
                 </div>
             </div>
 
