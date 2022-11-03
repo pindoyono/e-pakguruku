@@ -64,6 +64,7 @@ class KepegawaianController extends Controller
             'ijazah' => 'required|mimes:pdf|max:2048',
             'karpeg' => 'required|mimes:pdf|max:2048',
             'sk_penyesuaian' => 'mimes:pdf|max:2048',
+            'serdik' => 'mimes:pdf|max:2048',
         ]);
 
         $input = $request->all();
@@ -108,6 +109,13 @@ class KepegawaianController extends Controller
             $profileImage = 'sk_penyesuaian_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->storeAs('public/kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
             $input['sk_penyesuaian'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+        }
+
+        if ($request->file('serdik')) {
+            $image = $request->file('serdik');
+            $profileImage = 'serdik_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->storeAs('public/kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['serdik'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         // dd($input);
@@ -158,6 +166,7 @@ class KepegawaianController extends Controller
             'sk_jafung' => 'mimes:pdf|max:2048',
             'ijazah' => 'mimes:pdf|max:2048',
             'karpeg' => 'mimes:pdf|max:2048',
+            'serdik' => 'mimes:pdf|max:2048',
         ]);
 
         $input = $request->all();
@@ -297,6 +306,30 @@ class KepegawaianController extends Controller
                 $input['sk_penyesuaian'] = 'berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
             } else {
                 unset($input['sk_penyesuaian']);
+            }
+        }
+
+
+         if (File::exists(public_path('storage/' . $kepegawaian->serdik))) {
+            if ($image = $request->file('serdik')) {
+                if ($kepegawaian->serdik == null) {
+                } else {
+                    unlink(public_path('storage/' . $kepegawaian->serdik));
+                }
+                $profileImage = 'serdik_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->storeAs('public/kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                $input['serdik'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+            } else {
+                unset($input['serdik']);
+            }
+
+        } else {
+            if ($image = $request->file('serdik')) {
+                $profileImage = 'serdik_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->storeAs('public/berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                $input['serdik'] = 'berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+            } else {
+                unset($input['serdik']);
             }
         }
 

@@ -147,6 +147,22 @@
                                     </a>
                                 </td>
                             </tr>
+                            <tr>
+                                <td>
+                                    7
+                                </td>
+                                <td>
+                                    Sertifikat Pendidik
+                                </td>
+                                <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->serdik)}}">Download</a></td>
+                                <td class="text-right">
+                                    <a href="{{route('kepegawaians.edit', $kepegawaian)}}">
+                                        <button class="btn btn-info btn-round btn-sm">
+                                            edit
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
                             {{-- <tr>
                                 <td>
                                     6
