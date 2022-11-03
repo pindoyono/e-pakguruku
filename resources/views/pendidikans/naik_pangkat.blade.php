@@ -713,7 +713,7 @@
                     <td colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo(Auth::user()->tmt_pns)}}   )</td>
                 </tr>
 
-                @if ($jabatan->id >=4 )
+                @if ($jabatan->id >=4 
                 <tr style="font-weight: 900">
                     <td>Karya Inovatif Maksimal 50% <br> (3d Keatas)</td>
                     <td style="{{ $karya_inovatif + $pak_first->karya_inovatif - Auth::user()->karya_inovatif  <= 50/100*$jabatan->akpkbpiki? 'color: green;' : 'color: red;'  }}" > Perolehan ({{$karya_inovatif + $pak_first->karya_inovatif - Auth::user()->karya_inovatif}})   </td>
