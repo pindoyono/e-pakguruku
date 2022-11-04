@@ -629,7 +629,7 @@
                         <span style="{{ $total_semua2 ==  Auth::user()->ak_akhir ? 'color: green;' : 'color: red;'  }}" id="jml_semua">
 
                             <div class="myDIV">{{ $total_semua2 }}</div>
-                            <div class="hide">pastikan angka pada kolom ini adalah angka kredit yg tertera pada PAK pangkat terakhir </div>
+                            <div class="hide">pastikan angka pada kolom ini adalah angka kredit yg tertera pada SK kenaikan pangkat terakhir </div>
                         </span>
                     </td>
                 </tr>
