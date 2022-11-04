@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td scope="col" rowspan="13" width="%" style="vertical-align: top;">1</td>
-                    <td scope="col" colspan="3">Unsur Utama</td>
+                    <td scope="col" colspan="3">Unsur Utama (ak daerah tertinggal)</td>
                     <td scope="col"> {{$pak_first->tertinggal}} </td>
                     @foreach ($pak as $item)
                     @php $sum_tertinggal += sum_tertinggal($item->id); @endphp

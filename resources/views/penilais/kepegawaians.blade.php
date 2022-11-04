@@ -68,6 +68,15 @@
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_penyesuaian)}}">Lihat</a></td>
                             </tr>
+                            <tr>
+                                <td>
+                                    6
+                                </td>
+                                <td>
+                                    Sertifikat Pendidik
+                                </td>
+                                <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->serdik)}}">Lihat</a></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

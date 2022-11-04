@@ -26,7 +26,7 @@
             <td scope="col" rowspan="13" width="2%" style="vertical-align: top;">1</td>
             <td scope="col" colspan="3">Unsur Utama</td>
             <td scope="col">
-                <input type="number" step="any"  name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{$user->tertinggal }}" class="form-control">
+                <input type="number" step="any"  name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{$user->tertinggal==null ? 0:$user->tertinggal }}" class="form-control">
             </td>
             <td scope="col">
                {{
