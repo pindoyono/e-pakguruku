@@ -112,7 +112,7 @@
                         <td colspan=4>{{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}</td>
                     </tr>
                     <tr>
-                        <td>Baru {{date("Y")."-10-01"}}</td>
+                        <td>Baru</td>
                         <td colspan=4>{{
                                         \Carbon\Carbon::parse(now())->format('m')<=4?
                                         masa_kerja(\Carbon\Carbon::parse( date("Y")."-04-01" ), $pak->tmt_cpns)
