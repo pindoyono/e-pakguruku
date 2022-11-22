@@ -23,5 +23,7 @@ class Setting extends Model
         'jabatan_kadis',
         'nip_kadis',
         'tgl_akhir',
+        'periode',
+
     ];
 }

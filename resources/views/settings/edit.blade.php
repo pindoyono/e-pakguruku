@@ -103,6 +103,26 @@
             <div class="col-md-2">
                 <input name="tgl_akhir" value="{{Carbon\Carbon::parse($settings->tgl_akhir)->format('d/m/Y')}}" type="text" class="form-control" id='datetimepicker8'>
             </div>
+            <div class="col-md-2">
+                Periode 0{{$settings->periode}}
+            </div>
+            <div class="col-md-2">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="periode" value="4" {{$settings->periode == 4 ? "checked":""}}> April
+                    <span class="circle">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+              <div class="col-md-2">
+
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="periode" value="10" {{$settings->periode == 10 ? "checked":""}}> Oktober
+                <span class="circle">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
         </div>
         <br>
 

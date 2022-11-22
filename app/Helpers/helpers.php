@@ -420,6 +420,18 @@ if (! function_exists('get_tgl_akhir')) {
     }
 }
 
+
+if (! function_exists('get_periode')) {
+    function get_periode()
+    {
+        $settings = Setting::all();
+        foreach ($settings as $key => $set) {
+            $periode = $set->periode;
+        }
+        return $periode;
+    }
+}
+
 if (! function_exists('get_tgl_count')) {
     function get_tgl_count()
     {

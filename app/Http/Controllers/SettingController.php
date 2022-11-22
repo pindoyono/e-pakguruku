@@ -59,6 +59,9 @@ class SettingController extends Controller
         $settings = Setting::first();
         $count = Setting::count();
 
+        // dd($settings);
+
+
         return view("settings.edit",[ 'settings' => $settings,
                                             'count' => $count,
                                         ]);
@@ -67,7 +70,6 @@ class SettingController extends Controller
     public function update(Request $request, $id)
     {
 
-        // dd($input);
         $input = $request->all();
         $input['tgl_berita_acara_atas'] = Carbon::parse($request->get('tgl_berita_acara_atas'));
         $input['tgl_berita_acara_ttd'] = Carbon::parse($request->get('tgl_berita_acara_ttd'));
@@ -78,6 +80,7 @@ class SettingController extends Controller
         $input['tgl_pak_ttd'] = Carbon::parse($request->get('tgl_pak_ttd'));
         $input['tgl_akhir'] = Carbon::parse($request->get('tgl_akhir'));
 
+        // dd($input);
         $setting = Setting::find($id);
         $setting->update($input);
 
