@@ -80,7 +80,7 @@
                     </td>
 
                     <td scope="col" colspan="3">
-                        <input type="number" step="any" name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tertinggal}}" class="form-control">
+                        <input type="number" step="any" value=0 name="tertinggal" id="tertinggal" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tertinggal}}" class="form-control">
                     </td>
                 </tr>
 
@@ -117,7 +117,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pendidikan_sekolah}}" class="form-control">
+                        <input type="number" step="any" value="0" name="pendidikan_sekolah" id="sekolah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pendidikan_sekolah}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +142,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pelatihan_prajabatan}}" class="form-control">
+                        <input type="number" step="any" value="0" name="pelatihan_prajabatan" id="pra_jabatan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pelatihan_prajabatan}}" class="form-control">
                     </td>
                     </tr>
                 {{-- Pembelajaran / Bimbingan dan Tugas Tertentu --}}
@@ -178,7 +178,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_pembelajaran}}" class="form-control">
+                        <input type="number" step="any" value="0" name="proses_pembelajaran" id="prose_pembelajaran" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_pembelajaran}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -203,7 +203,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_bimbingan}}" class="form-control">
+                        <input type="number" step="any" value="0" name="proses_bimbingan" id="proses_bimbingan" oninput="jml_utama();jml_semua();" value="{{Auth::user()->proses_bimbingan}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -228,7 +228,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tugas_lain}}" class="form-control">
+                        <input type="number" step="any" value="0" name="tugas_lain" id="tugas_lain" oninput="jml_utama();jml_semua();" value="{{Auth::user()->tugas_lain}}" class="form-control">
                     </td>
                 </tr>
 
@@ -265,7 +265,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pengembangan_diri}}" class="form-control">
+                        <input type="number" step="any" value="0" name="pengembangan_diri"  id="pengembangan_diri" oninput="jml_utama();jml_semua();" value="{{Auth::user()->pengembangan_diri}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -290,7 +290,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->publikasi_ilmiah}}" class="form-control">
+                        <input type="number" step="any" value="0" name="publikasi_ilmiah" id="karya_ilmiah" oninput="jml_utama();jml_semua();" value="{{Auth::user()->publikasi_ilmiah}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -315,7 +315,7 @@
                             </span>
                         </td>
                         <td scope="col">
-                            <input type="number" step="any" name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{Auth::user()->karya_inovatif}}" class="form-control">
+                            <input type="number" step="any" value="0" name="karya_inovatif" id="karya_inovatif" oninput="jml_utama();jml_semua();" value="{{Auth::user()->karya_inovatif}}" class="form-control">
                         </td>
                 </tr>
                 <tr style="font-weight: 900;font-size: 20px;">
@@ -420,7 +420,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->ijazah_tidak_sesuai}}" class="form-control">
+                        <input type="number" step="any" value="0" name="ijazah_tidak_sesuai" id="ijazah_tidak_sesuai" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->ijazah_tidak_sesuai}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -445,7 +445,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->pendukung_tugas_guru}}" class="form-control">
+                        <input type="number" step="any" value="0" name="pendukung_tugas_guru" id="pendukung_tugas_guru" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->pendukung_tugas_guru}}" class="form-control">
                     </td>
                 </tr>
                 <tr>
@@ -470,7 +470,7 @@
                         </span>
                     </td>
                     <td scope="col">
-                        <input type="number" step="any" name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->memperoleh_penghargaan}}" class="form-control">
+                        <input type="number" step="any" value="0" name="memperoleh_penghargaan" id="penghargaan" oninput="jml_penunjang();jml_semua();" value="{{Auth::user()->memperoleh_penghargaan}}" class="form-control">
                     </td>
                 </tr>
                 <tr style="font-weight: 900;font-size: 20px;">

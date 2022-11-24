@@ -33,7 +33,13 @@
                 </a>
             </div>
         </div>
-      <div class="card-body">
+        <div class="card-body">
+            <h3>
+                <span> Untuk melihat berkas yg sudah di upload silakan klik tulisan warna ungu pada masing masing nama berkas yg sudah di upload..
+                    jika dirasa ada yg tidak sesuai cukup lakukan upoad ulang berkas yg dirasa tidak sesuai saja..
+                    klik simpan pada tombol hijau dibawah
+                </span>
+            </h3>
 
         <form enctype="multipart/form-data" class="form-horizontal"  action="{{route('paks.update',$data)}}" method="POST">
             @csrf
@@ -149,7 +155,7 @@
             </div>
             <label class="col-sm-3 col-form-label">
                 <a target="_blank" href="{{asset('storage/'.$data->scan_pak)}}">
-                    P A K
+                    PAK Asli Kenpa s.d Pak Terakhir ( digabung jadi 1 file )
                 </a>
             </label>
             <div class="col-md-2">
@@ -170,7 +176,7 @@
             </div>
             <label class="col-sm-3 col-form-label">
                 <a target="_blank" href="{{asset('storage/'.$data->skp)}}">
-                    SKP
+                    SKP 2 th Terakhir (SKP discan dengan jelas dan baik)
                 </a>
             </label>
             <div class="col-md-2">

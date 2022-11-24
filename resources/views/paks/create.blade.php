@@ -109,7 +109,7 @@
             </div>
             <div class="col-md-1">
             </div>
-            <label class="col-sm-3 col-form-label"> P A K Terakhir</label>
+            <label class="col-sm-3 col-form-label"> <b>PAK Asli Kenpa s.d Pak Terakhir ( digabung jadi 1 file ) </b></label>
             <div class="col-md-2">
                 <input type="file" required name="scan_pak" class="form-control" placeholder=".col-md-3">
             </div>
@@ -122,7 +122,7 @@
             </div> --}}
             {{-- <div class="col-md-1">
             </div> --}}
-            <label class="col-sm-3 col-form-label">SKP</label>
+            <label class="col-sm-3 col-form-label"><b>SKP 2 th Terakhir (SKP discan dengan jelas dan baik)</b></label>
             <div class="col-md-2">
                 <input type="file" required name="skp" class="form-control" placeholder="">
             </div>

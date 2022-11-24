@@ -72,7 +72,9 @@
                                     2
                                 </td>
                                 <td>
-                                    SK Pangkat Terakhir
+                                    <b>
+                                        <b>Sk pangkat terakhir + PAK kenpa terakhir ( digabung jadi 1 file ) <br> PAK kenpa adalah PAK yg nilai AK nya tertera pada SK Kenpa Terakhir</b>
+                                    </b>
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_pangkat)}}">Download</a></td>
                                 <td class="text-right">
@@ -88,7 +90,13 @@
                                     3
                                 </td>
                                 <td>
-                                    SK Jafung Terakhir
+                                    <b>
+                                        <b>
+                                            SK Jabfung Pertama + PAK Jabfung bagi kenaikan pangkat pertama ( digabung jadi 1 file )
+                                            <br>
+                                            PAK jafung adalah PAK yg nilai ak nya tertera pada SK jafung
+                                        </b>
+                                    </b>
                                 </td>
                                 <td><a target="_blank" href="{{asset('storage/'.$kepegawaian->sk_jafung)}}">Download</a></td>
                                 <td class="text-right">

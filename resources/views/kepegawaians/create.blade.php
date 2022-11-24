@@ -33,7 +33,7 @@
             <div class="col-md-2">
                 <input type="file" name="sk_cpns" class="form-control" placeholder=".col-md-3">
             </div>
-            <label class="col-sm-3 col-form-label">SK Pangkat Terakhir & PAK Pangkat Terakhir</label>
+            <label class="col-sm-3 col-form-label"><b>Sk pangkat terakhir + PAK kenpa terakhir ( digabung jadi 1 file ) <br> PAK kenpa adalah PAK yg nilai AK nya tertera pada SK Kenpa Terakhir</b></label>
             <div class="col-md-2">
                 <input type="file" name="sk_pangkat" class="form-control" placeholder=".col-md-3">
             </div>
@@ -42,7 +42,7 @@
         <br>
 
         <div class="row">
-            <label class="col-sm-3 col-form-label">SK Jabatan Fungsional</label>
+            <label class="col-sm-3 col-form-label">SK Jabfung Pertama + PAK Jabfung bagi kenaikan pangkat pertama ( digabung jadi 1 file ) <br> PAK jabfung adalah PAK yg nilai ak nya tertera pada SK jafung</label>
             <div class="col-md-2">
                 <input type="file" name="sk_jafung" class="form-control" placeholder=".col-md-3">
             </div>
