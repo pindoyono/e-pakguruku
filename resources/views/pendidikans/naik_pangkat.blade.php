@@ -635,6 +635,9 @@
                 </tr>
             </tbody>
         </table>
+        @if ($pak_first->status == 'submit' || $pak_first->status == 'Perbaikan' )
+
+
         <button type="submit" class="btn btn-sm btn-success col-sm-12">
             <span class="btn-label">
               <i class="material-icons">check</i>
@@ -642,7 +645,9 @@
             Hitung
             <div class="ripple-container"></div>
         </button>
-
+        @else
+            {{'Tidak Ada Akses Action'}}
+        @endif
     {!! Form::close() !!}
 
     @php $jml_1 = $ak_peroleh - $jabatan->target; @endphp
