@@ -70,7 +70,7 @@
                                     zoom_in
                                     </span>
                                 </label>
-                            </a>
+                            </a><br>
                             untuk melihat pesan perbaikan silakan klik tombol di samping
                             @elseif ($pak->status == 'Ditolak' )
                             <a href="{{ route('provinsis.pesan_perbaikan',$pak->id) }}" target="_blank" rel="noopener noreferrer">
