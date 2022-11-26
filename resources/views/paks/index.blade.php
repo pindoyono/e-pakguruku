@@ -71,7 +71,7 @@
                                     </span>
                                 </label>
                             </a>
-
+                            untuk meihat pesan perbaikan silakan klik tombol diatas
                             @elseif ($pak->status == 'Ditolak' )
                             <a href="{{ route('provinsis.pesan_perbaikan',$pak->id) }}" target="_blank" rel="noopener noreferrer">
                                 <label class="badge badge-danger">
