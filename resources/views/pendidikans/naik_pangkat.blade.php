@@ -43,9 +43,9 @@
 
                 STATUS USULAN :
                 @if (Auth::user()->status_naik_pangkat == "PAK TAHUNAN")
-                    <span class="btn btn-warning ">{{ Auth::user()->status_naik_pangkat }}</span>
+                    <span class="btn btn-danger ">{{ Auth::user()->status_naik_pangkat }}</span>
                 @else
-                    <span class="btn btn-success ">{{ Auth::user()->status_naik_pangkat }}</span>
+                    <span class="btn btn-primary ">{{ Auth::user()->status_naik_pangkat }}</span>
                 @endif
                 <h2>
                 </h2>
