@@ -39,10 +39,13 @@
             <input type="hidden" value="PUT" name="_method">
       <div class="card-body">
         <div class="pull-left">
-            STATUS USULAN :
-            <span class="badge  badge-info">{{ Auth::user()->status_naik_pangkat }}</span>
-            <h2>
-            </h2>
+            <h1>
+
+                STATUS USULAN :
+                <span class="badge  badge-info">{{ Auth::user()->status_naik_pangkat }}</span>
+                <h2>
+                </h2>
+            </h1>
         </div>
         <table class="table table-bordered" >
             <tbody>
