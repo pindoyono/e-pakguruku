@@ -41,8 +41,8 @@
         <div class="pull-left">
             <h1>
 
-                sSTATUS USULAN :
-                <span class="badge  badge-info">{{ Auth::user()->status_naik_pangkat }}</span>
+                STATUS USULAN :
+                <span class="btn">{{ Auth::user()->status_naik_pangkat }}</span>
                 <h2>
                 </h2>
             </h1>
