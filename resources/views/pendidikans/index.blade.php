@@ -60,10 +60,10 @@
                                 </td>
                                 <td class="td-actions text-right">
                                     <a class="btn btn-primary" href="{{ route('pendidikans.edit1',$lampiran->id) }}"><i class="material-icons">edit</i></a>
-                                    {!! Form::open(['method' => 'DELETE','route' => ['pendidikans.destroy1', $lampiran->id],'style'=>'display:inline']) !!}
+                                    {{-- {!! Form::open(['method' => 'DELETE','route' => ['pendidikans.destroy1', $lampiran->id],'style'=>'display:inline']) !!}
                                         <button type="submit" rel="tooltip" class="btn btn-danger">
                                             <i class="material-icons">close</i>
-                                    {!! Form::close() !!}
+                                    {!! Form::close() !!} --}}
                                 </td>
                             </tr>
                         @endforeach
