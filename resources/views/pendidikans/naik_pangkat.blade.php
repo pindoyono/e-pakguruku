@@ -644,15 +644,16 @@
         </table>
 
         {{-- @if ($pak_first->status == 'submit' || $pak_first->status == 'Perbaikan' ) --}}
-
-
+        {{-- untuk tutup hitung naik pangkat --}}
+        @if(date('Y-m-d') <= date(get_tgl_akhir()) )
         <button type="submit" class="btn btn-sm btn-success col-sm-12">
             <span class="btn-label">
-              <i class="material-icons">check</i>
+                <i class="material-icons">check</i>
             </span>
             Hitung
             <div class="ripple-container"></div>
         </button>
+        @endif
         {{-- @else
             {{'Tidak Ada Akses Action'}}
         @endif --}}
@@ -759,13 +760,16 @@
             </tbody>
         </table>
         <span> ** sebelum melakukan perhitungan pastikan isian di profile atau biodata sudah benar karena berdasarkan input dari profile tersebut perhitungan angka kredit yg di butuhkan untuk naik pangkat</span>
+       {{-- untuk tutup usul naik pangkat --}}
+        @if(date('Y-m-d') <= date(get_tgl_akhir()) )
         <button type="submit" class="btn btn-sm btn-info col-sm-12">
             <span class="btn-label">
-              <i class="material-icons">send</i>
+                <i class="material-icons">send</i>
             </span>
             Usul Naik Pangkat
             <div class="ripple-container"></div>
         </button>
+        @endif
     {!! Form::close() !!}
 
       </div>
