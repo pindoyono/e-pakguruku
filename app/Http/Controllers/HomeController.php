@@ -35,7 +35,9 @@ class HomeController extends Controller
                 return view('home');
                 // dd('home');
             }else{
-                return view('lock');
+                // return view('lock');
+                return view('home');
+
                 // dd('lock');
             }
         }
