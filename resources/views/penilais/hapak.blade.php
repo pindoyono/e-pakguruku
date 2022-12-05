@@ -646,7 +646,12 @@
         </tr>
         <tr style="font-weight: 900">
             <td>Masa Kerja Golongan</td>
-            <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td>
+            {{-- <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td> --}}
+            @if (get_periode()==4)
+                <td style="{{ masa_kerja(\Carbon\Carbon::parse((date("Y")+1)."-04-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse((date("Y")+1)."-04-01"), $user->tmt_pns)  }} </td>
+            @elseif (get_periode()==10)
+                <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns)  }} </td>
+            @endif
             <td colspan="4"> TMT pangkat Terakhir ( {{  tgl_indo($user->tmt_pns)}}   )</td>
         </tr>
         @if ($jabatan_pak->id >=4 )
