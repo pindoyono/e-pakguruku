@@ -277,10 +277,23 @@ class PenilaiController extends Controller
 
         $jabatan_pak = Jabatan::where('id',$user->pangkat_golongan)->first();
 
-        // dd($pak->awal);
+        // dd($pak->tertinggal.'+'.$pak->tertinggal2.'+'.$user->tertinggal);
+
+        $daerah_tertinggal = 0;
+
+        if($pak->tertinggal>0){
+            $daerah_tertinggal = 50;
+        }elseif($pak->tertinggal2>0){
+            $daerah_tertinggal = 50;
+        }elseif($user->tertinggal){
+            $daerah_tertinggal = 50;
+        }
+
+        // dd($daerah_tertinggal);
 
         return view('penilais.pak_detail', [
                                             'pendidikan' => $pendidikan,
+                                            'daerah_tertinggal' => $daerah_tertinggal,
                                             'pak_id' => $pak_id,
                                             'i' => $i,
                                             'pendidikan1' => $pendidikan1,
