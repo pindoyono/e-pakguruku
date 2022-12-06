@@ -403,7 +403,7 @@ class PenilaiController extends Controller
                                                 'settings' => $settings,
                                             ]);
 
-        return $pdf->stream('BeritaAcara.pdf');
+        return $pdf->stream($data->name);
     }
 
     public function cetak_ba_jurnal($pak_id)
