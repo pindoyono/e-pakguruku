@@ -402,8 +402,9 @@ class PenilaiController extends Controller
                                                 'pangkat' => $pangkat,
                                                 'settings' => $settings,
                                             ]);
-
-        return $pdf->stream($data->name);
+        $nama_file = $data->name.'_'.$data->sekolah.'.pdf';
+        // dd($nama_file);
+        return $pdf->stream($nama_file);
     }
 
     public function cetak_ba_jurnal($pak_id)
