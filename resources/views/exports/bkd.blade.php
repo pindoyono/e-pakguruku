@@ -63,35 +63,41 @@
                     <td>{{ "'" . $pak->nip }}</td>
                     <td>{{ $pak->pendidikan }}</td>
                     <td>{{ '-' }}</td>
+
                     <td>{{ get_jabatan($pak->pangkat_golongan)->pangkat }}</td>
                     <td>{{ tgl_indo($pak->tmt_pns) }}</td>
-                    <td>{{ masa_kerja_tahun(\Carbon\Carbon::parse(date('Y') . '-04-01')->subYears(1), $pak->tmt_cpns) }}
+
+                    <td>{{ masa_kerja_tahun(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}
                         Tahun
                     </td>
-                    <td>{{ masa_kerja_bulan(\Carbon\Carbon::parse(date('Y') . '-04-01')->subYears(1), $pak->tmt_cpns) }}
+                    <td>{{ masa_kerja_bulan(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}
                     </td>
+
                     <td>{{ get_jabatan($pak->pangkat_golongan + 1)->pangkat }}</td>
-                    <td> {{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}</td>
+                    <td> {{ \Carbon\Carbon::parse(now())->format('m') <= 4 || \Carbon\Carbon::parse(now())->format('m') >= 10? tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('Y') . '-04-01')->addYears(1)->format('Y-m-d')): tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-10-01')->format('Y-m-d')) }}
+                    </td>
+
+
                     <td>
-                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4
+                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4 || \Carbon\Carbon::parse(now())->format('m') >= 10
                             ? masa_kerja_tahun(
                                 \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
                                 $pak->tmt_cpns,
                             )
                             : masa_kerja_tahun(
-                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
+                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-10-01')->addYears(1),
                                 $pak->tmt_cpns,
                             ) }}
                         Tahun
                     </td>
                     <td>
-                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4
+                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4 || \Carbon\Carbon::parse(now())->format('m') >= 10
                             ? masa_kerja_bulan(
                                 \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
                                 $pak->tmt_cpns,
                             )
                             : masa_kerja_bulan(
-                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
+                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-10-01')->addYears(1),
                                 $pak->tmt_cpns,
                             ) }}
                     </td>
