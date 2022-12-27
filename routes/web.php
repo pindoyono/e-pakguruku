@@ -1,26 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PakController;
-use App\Http\Controllers\KegiatanController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\PendidikanController;
-use App\Http\Controllers\JabatanController;
-use App\Http\Controllers\KepegawaianController;
-use App\Http\Controllers\PenilaiController;
-use App\Http\Controllers\ProvinsiController;
-use App\Http\Controllers\Lampiran2pkbController;
-use App\Http\Controllers\RelasiL2pkbUsulanController;
 use App\Http\Controllers\BaJurnalController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\KepegawaianController;
+use App\Http\Controllers\Lampiran2pkbController;
+use App\Http\Controllers\PakController;
+use App\Http\Controllers\PendidikanController;
+use App\Http\Controllers\PenilaiController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\RelasiL2pkbUsulanController;
 use App\Http\Controllers\SettingController;
-
-
-
-
-
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +25,7 @@ use App\Http\Controllers\SettingController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 // // Route::get('call-helper', sum_pendidikan1(1));
 // if (Auth::user()->hasRole('admin')) {
@@ -48,7 +42,7 @@ Auth::routes();
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     // Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::get('export', [UserController::class, 'export'])->name('export');
@@ -63,7 +57,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('lampiran2pkbs', Lampiran2pkbController::class);
 
     Route::resource('pendidikans', PendidikanController::class)->except([
-        'create','index'
+        'create', 'index',
     ]);
 
     Route::get('/index1/{id}', [PendidikanController::class, 'index1'])->name('pendidikans.index1');
@@ -88,10 +82,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/cetak_hapak/{id}', [PenilaiController::class, 'cetak_hapak'])->name('penilais.cetak_hapak');
     Route::get('/pleno', [PenilaiController::class, 'pleno'])->name('penilais.pleno');
     Route::get('/export_pleno', [PenilaiController::class, 'export'])->name('penilais.export_pleno');
+    Route::get('/export_pleno_2', [PenilaiController::class, 'export_2'])->name('penilais.export_pleno_2');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
     Route::get('/vermak/{id}', [PenilaiController::class, 'vermak'])->name('penilais.vermak');
-
 
     Route::get('/verifikasi', [ProvinsiController::class, 'verifikasi'])->name('provinsis.verifikasi');
     Route::get('/verif/{id}', [ProvinsiController::class, 'verif'])->name('provinsis.verif');
@@ -102,7 +96,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
     Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
     Route::put('/no_sk/{id}', [ProvinsiController::class, 'no_sk'])->name('provinsis.no_sk');
-
 
     Route::get('/index/{id}', [RelasiL2pkbUsulanController::class, 'index'])->name('l2pkb.index');
     Route::POST('/store', [RelasiL2pkbUsulanController::class, 'store'])->name('l2pkb.store');
@@ -117,8 +110,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/index2/{id}', [BaJurnalController::class, 'index'])->name('ba_jurnals.index');
     Route::POST('/store/{id}', [BaJurnalController::class, 'store'])->name('ba_jurnals.store');
     Route::delete('/destroy2/{id}', [BaJurnalController::class, 'destroy'])->name('ba_jurnals.destroy');
-
-
-
 
 });
