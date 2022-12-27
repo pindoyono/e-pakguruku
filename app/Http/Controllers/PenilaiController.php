@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\BkdEksport;
 use App\Exports\PlenosExport;
 use App\Http\Controllers\Controller;
 use App\Models\Ba_jurnal;
