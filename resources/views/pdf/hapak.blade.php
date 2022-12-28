@@ -144,9 +144,11 @@
         <div style="text-align: justify;font-size:10">
             Yang telah dinilai oleh Tim Penilai Angka Kredit Jabatan fungsional Guru Dinas Pendidikan dan
             Kebudayaan Provinsi Kalimantan Utara pada tanggal
-            {{ tgl_indo_bulan($settings->awal_hapak) . ' s/d ' . tgl_indo($settings->akhir_hapak) }}, dengan hasil penilaian
+            {{ tgl_indo_bulan($settings->awal_hapak) . ' s/d ' . tgl_indo($settings->akhir_hapak) }}, dengan hasil
+            penilaian
             DUPAK
-            dan bukti fisik pada masa penilaian {{ tgl_indo($pak->awal) . ' s/d ' . tgl_indo($pak->akhir) }} adalah sebagai
+            dan bukti fisik pada masa penilaian {{ tgl_indo($pak->awal) . ' s/d ' . tgl_indo($pak->akhir) }} adalah
+            sebagai
             berikut:
         </div>
     </div>
@@ -698,7 +700,6 @@
                                         $user->pendukung_tugas_guru +
                                         $user->tertinggal +
                                         $user->memperoleh_penghargaan),
-
                                 3,
                             ),
                         ) }}
@@ -827,8 +828,9 @@
                 @php $jml_4 = number_format(($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ,3) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal) @endphp
                 @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
                 @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
-                @php $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp, 3);
-
+                @php
+                    $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp, 3);
+                    
                     if ($jml_1 >= 0 && $jml_2 >= 0 && $jml_3 >= 0 && $jml_4 >= 0 && $jml_5 <= 0) {
                         $naik_pangkat = 1;
                     } else {
@@ -855,8 +857,9 @@
                 <tr style="font-weight: 900">
                     <td>Masa Kerja Golongan</td>
                     <td
-                        style="{{ masa_kerja(\Carbon\Carbon::parse(date('Y') . '-10-01'), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
-                        {{ masa_kerja(\Carbon\Carbon::parse(date('Y') . '-10-01'), $user->tmt_pns) }} </td>
+                        style=" {{ masa_kerja_tahun(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $user->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
+                        {{ masa_kerja(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $user->tmt_pns) }}
+                    </td>
                     <td colspan="4"> TMT pangkat Terakhir ( {{ tgl_indo($user->tmt_pns) }} )</td>
                 </tr>
                 @if ($jabatan_pak->id >= 4)

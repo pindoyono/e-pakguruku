@@ -228,17 +228,10 @@
                                             </td>
                                             <td> Minimal 2 Tahun</td>
                                             {{-- <td style="{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $pak->tmt_pns) >= 2 ? 'color: green;' : 'color: red;'  }}" >{{ masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $pak->tmt_pns)  }} </td> --}}
-                                            @if (get_periode() == 4)
-                                                <td
-                                                    style="{{ masa_kerja(\Carbon\Carbon::parse(date('Y') + 1 . '-04-01'), $pak->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
-                                                    {{ masa_kerja(\Carbon\Carbon::parse(date('Y') + 1 . '-04-01'), $pak->tmt_pns) }}
-                                                </td>
-                                            @elseif (get_periode() == 10)
-                                                <td
-                                                    style="{{ masa_kerja(\Carbon\Carbon::parse(date('Y') . '-10-01'), $pak->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
-                                                    {{ masa_kerja(\Carbon\Carbon::parse(date('Y') . '-10-01'), $pak->tmt_pns) }}
-                                                </td>
-                                            @endif
+                                            <td
+                                                style=" {{ masa_kerja(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $pak->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
+                                                {{ masa_kerja(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $pak->tmt_pns) }}
+                                            </td>
 
                                             <td> {{ (50 / 100) * $pak->akpkbpiki }} </td>
                                             @if ($pak->jabatan_id >= 4)

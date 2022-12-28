@@ -114,14 +114,14 @@
                     <td rowspan=2> 9</td>
                     <td rowspan=2>Masa Kerja Golongan</td>
                     <td>Lama</td>
-                    <td colspan=4>{{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}</td>
+                    <td colspan=4>
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
+                    </td>
                 </tr>
                 <tr>
                     <td>Baru</td>
                     <td colspan=4>
-                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4
-                            ? masa_kerja(\Carbon\Carbon::parse(date('Y') . '-04-01'), $pak->tmt_cpns)
-                            : masa_kerja(\Carbon\Carbon::parse(date('Y') . '-10-01'), $pak->tmt_cpns) }}
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
                     </td>
                 </tr>
                 <tr>
@@ -220,7 +220,8 @@
                     <td style="text-align:right">
                         {{ $pak2->proses_bimbingan != 0 ? str_replace('.', ',', $pak2->proses_bimbingan) : '-' }} </td>
                     <td style="text-align:right">
-                        {{ $pak2->proses_bimbingan2 != 0 ? str_replace('.', ',', $pak2->proses_bimbingan2) : '-' }} </td>
+                        {{ $pak2->proses_bimbingan2 != 0 ? str_replace('.', ',', $pak2->proses_bimbingan2) : '-' }}
+                    </td>
                     <td style="text-align:right">
                         {{ number_format($pak2->proses_bimbingan + $pak2->proses_bimbingan2, 3) != 0 ? str_replace('.', ',', number_format($pak2->proses_bimbingan + $pak2->proses_bimbingan2, 3)) : '-' }}
                     </td>
@@ -244,7 +245,8 @@
                 <tr>
                     <td colspan="3"> 1) Pengembangan Diri</td>
                     <td style="text-align:right">
-                        {{ $pak2->pengembangan_diri != 0 ? str_replace('.', ',', $pak2->pengembangan_diri) : '-' }} </td>
+                        {{ $pak2->pengembangan_diri != 0 ? str_replace('.', ',', $pak2->pengembangan_diri) : '-' }}
+                    </td>
                     <td style="text-align:right">
                         {{ $pak2->pengembangan_diri2 != 0 ? str_replace('.', ',', $pak2->pengembangan_diri2) : '-' }}
                     </td>
@@ -257,7 +259,8 @@
                     <td style="text-align:right">
                         {{ $pak2->publikasi_ilmiah != 0 ? str_replace('.', ',', $pak2->publikasi_ilmiah) : '-' }} </td>
                     <td style="text-align:right">
-                        {{ $pak2->publikasi_ilmiah2 != 0 ? str_replace('.', ',', $pak2->publikasi_ilmiah2) : '-' }} </td>
+                        {{ $pak2->publikasi_ilmiah2 != 0 ? str_replace('.', ',', $pak2->publikasi_ilmiah2) : '-' }}
+                    </td>
                     <td style="text-align:right">
                         {{ number_format($pak2->publikasi_ilmiah + $pak2->publikasi_ilmiah2, 3) != 0 ? str_replace('.', ',', number_format($pak2->publikasi_ilmiah + $pak2->publikasi_ilmiah2, 3)) : '-' }}
                     </td>
@@ -504,7 +507,7 @@
                                 $pak2->publikasi_ilmiah +
                                 $pak2->karya_inovatif +
                                 $pak2->tertinggal,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -523,7 +526,7 @@
                                         $pak2->publikasi_ilmiah +
                                         $pak2->karya_inovatif +
                                         $pak2->tertinggal,
-
+                        
                                     3,
                                 ),
                             )
@@ -545,7 +548,7 @@
                                 $pak2->publikasi_ilmiah2 +
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -564,7 +567,7 @@
                                         $pak2->publikasi_ilmiah2 +
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )
@@ -598,7 +601,7 @@
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -629,7 +632,7 @@
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )

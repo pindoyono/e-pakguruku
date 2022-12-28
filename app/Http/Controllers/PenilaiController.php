@@ -656,6 +656,7 @@ class PenilaiController extends Controller
     public function export_2()
     {
         return Excel::download(new BkdEksport, 'Daftar Usul Nominatif KENPA.xlsx');
+
     }
 
     public function vermak($pak_id)

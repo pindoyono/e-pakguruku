@@ -384,7 +384,7 @@ if (!function_exists('masa_kerja_bulan')) {
 
         $bulan = $diffInMonths - ($diffYears * 12);
 
-        return $bulan . ' Bulan';
+        return $bulan;
     }
 }
 

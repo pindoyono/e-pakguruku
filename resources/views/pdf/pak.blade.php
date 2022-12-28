@@ -169,21 +169,13 @@
                     <td class="spasi" rowspan=2>Masa Kerja Golongan</td>
                     <td class="spasi">Lama</td>
                     <td class="spasi" colspan=4>
-                        {{ masa_kerja(\Carbon\Carbon::parse($pak->tmt_pns), $pak->tmt_cpns) }}
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
                     </td>
                 </tr>
                 <tr>
                     <td class="spasi">Baru</td>
                     <td class="spasi" colspan=4>
-                        {{ \Carbon\Carbon::parse(now())->format('m') <= 4
-                            ? masa_kerja(
-                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
-                                $pak->tmt_cpns,
-                            )
-                            : masa_kerja(
-                                \Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-04-01')->addYears(1),
-                                $pak->tmt_cpns,
-                            ) }}
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
                     </td>
                 </tr>
                 <tr>
@@ -575,7 +567,7 @@
                                 $pak2->publikasi_ilmiah +
                                 $pak2->karya_inovatif +
                                 $pak2->tertinggal,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -594,7 +586,7 @@
                                         $pak2->publikasi_ilmiah +
                                         $pak2->karya_inovatif +
                                         $pak2->tertinggal,
-
+                        
                                     3,
                                 ),
                             )
@@ -616,7 +608,7 @@
                                 $pak2->publikasi_ilmiah2 +
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -635,7 +627,7 @@
                                         $pak2->publikasi_ilmiah2 +
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )
@@ -669,7 +661,7 @@
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -700,7 +692,7 @@
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )
