@@ -106,7 +106,10 @@
                 DINAS PENDIDIKAN DAN KEBUDAYAAN PROVINSI KALIMANTAN UTARA <br>
             </span>
             <span style="font-size:10">
-                Nomor : {{ $pak->no_sk }} <br>
+                Nomor : {!! $pak->no_sk == null
+                    ? '823.3/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Disdikbud/KU/I/2023'
+                    : $pak->no_sk !!}
+                <br>
             </span>
             <span style="font-size:12; font-weight:bold">
                 Masa Penilaian : {{ tgl_indo($pak->awal) . ' s/d ' . tgl_indo($pak->akhir) }} <br>
@@ -567,7 +570,7 @@
                                 $pak2->publikasi_ilmiah +
                                 $pak2->karya_inovatif +
                                 $pak2->tertinggal,
-                        
+
                             3,
                         ) != 0
                             ? str_replace(
@@ -586,7 +589,7 @@
                                         $pak2->publikasi_ilmiah +
                                         $pak2->karya_inovatif +
                                         $pak2->tertinggal,
-                        
+
                                     3,
                                 ),
                             )
@@ -608,7 +611,7 @@
                                 $pak2->publikasi_ilmiah2 +
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal2,
-                        
+
                             3,
                         ) != 0
                             ? str_replace(
@@ -627,7 +630,7 @@
                                         $pak2->publikasi_ilmiah2 +
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal2,
-                        
+
                                     3,
                                 ),
                             )
@@ -661,7 +664,7 @@
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal +
                                 $pak2->tertinggal2,
-                        
+
                             3,
                         ) != 0
                             ? str_replace(
@@ -692,7 +695,7 @@
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal +
                                         $pak2->tertinggal2,
-                        
+
                                     3,
                                 ),
                             )
