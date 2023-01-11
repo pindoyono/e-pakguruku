@@ -39,6 +39,9 @@
                                         <th rowspan="2">No</th>
                                         <th rowspan="2">Penilai</th>
                                         <th rowspan="2">Nama</th>
+                                        <th rowspan="2">Nip</th>
+                                        <th rowspan="2">No Hp</th>
+                                        <th rowspan="2">Nama Sekolah</th>
                                         <th colspan="2">Usulan Gol</th>
                                         <th colspan="3">Angka Kredit</th>
                                         <th colspan="3">AKK Utama 90%</th>
@@ -92,6 +95,9 @@
                                             <td>{{ $pak->penilai_id != null ? get_data_penilai($pak->penilai_id)->name : 'Belum Di Nilai' }}
                                             </td>
                                             <td>{{ $pak->name }}</td>
+                                            <td>{{ "'" . $pak->username }}</td>
+                                            <td>{{ $pak->no_hp }}</td>
+                                            <td>{{ $pak->sekolah }}</td>
                                             <td>{{ $pak->pangkat }}</td>
                                             <td>{{ get_jabatan($pak->pangkat_golongan + 1)->pangkat }}</td>
                                             <td>

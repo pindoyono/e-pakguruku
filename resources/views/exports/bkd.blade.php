@@ -61,6 +61,8 @@
                     <td>{{ $i++ }}</td>
                     <td>{{ $pak->name }}</td>
                     <td>{{ "'" . $pak->nip }}</td>
+                    <td>{{ $pak->no_hp }}</td>
+                    <td>{{ $pak->sekolah }}</td>
                     <td>{{ $pak->pendidikan }}</td>
                     <td>{{ '-' }}</td>
 

@@ -139,6 +139,8 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
+                                        <th>Nip</th>
+                                        <th>no_hp</th>
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
@@ -164,6 +166,9 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $pak->name }}</td>
+                                            <td>{{ $pak->username }}</td>
+                                            <td>{{ $pak->no_hp }}</td>
+
                                             <td><label
                                                     class="badge {{ $pak->status_naik_pangkat == 'NAIK PANGKAT' ? 'badge-info' : 'badge-warning' }} ">{{ $pak->status_naik_pangkat }}</label>
                                             </td>
