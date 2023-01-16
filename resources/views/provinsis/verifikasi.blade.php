@@ -203,9 +203,9 @@
                                             </td>
                                             <td class="td-actions text-right">
 
-                                                <a class="btn btn-danger"
+                                                {{-- <a class="btn btn-danger"
                                                     href="{{ route('penilais.vermak', $pak->id) }}"><i
-                                                        class="material-icons">recycling</i></a>
+                                                        class="material-icons">recycling</i></a> --}}
                                                 <a class="btn btn-success"
                                                     href="{{ route('penilais.pak_detail', $pak->id) }}"><i
                                                         class="material-icons">zoom_in</i></a>
@@ -215,6 +215,9 @@
                                                 @role('admin-prov')
                                                     <a class="btn btn-warning" target="_blank"
                                                         href="{{ route('penilais.cetak_pak', $pak->id) }}"><i
+                                                            class="material-icons">print</i></a>
+                                                    <a class="btn btn-danger" target="_blank"
+                                                        href="{{ route('penilais.cetak_asli', $pak->id) }}"><i
                                                             class="material-icons">print</i></a>
                                                 @endrole
 

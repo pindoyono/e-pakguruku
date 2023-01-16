@@ -79,6 +79,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/cetak_berita_acara/{id}', [PenilaiController::class, 'cetak_berita_acara'])->name('penilais.cetak_berita_acara');
     Route::get('/cetak_ba_jurnal/{id}', [PenilaiController::class, 'cetak_ba_jurnal'])->name('penilais.cetak_ba_jurnal');
     Route::get('/cetak_pak/{id}', [PenilaiController::class, 'cetak_pak'])->name('penilais.cetak_pak');
+    Route::get('/cetak_asli/{id}', [PenilaiController::class, 'cetak_asli'])->name('penilais.cetak_asli');
     Route::get('/cetak_hapak/{id}', [PenilaiController::class, 'cetak_hapak'])->name('penilais.cetak_hapak');
     Route::get('/pleno', [PenilaiController::class, 'pleno'])->name('penilais.pleno');
     Route::get('/export_pleno', [PenilaiController::class, 'export'])->name('penilais.export_pleno');
