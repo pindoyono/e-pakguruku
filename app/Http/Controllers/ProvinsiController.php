@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
-use Auth;
 use App\Models\pak;
-
-
+use Auth;
+use DB;
+use Illuminate\Http\Request;
 
 class ProvinsiController extends Controller
 {
@@ -16,28 +14,28 @@ class ProvinsiController extends Controller
     {
         if (Auth::user()->hasRole('super-admin')) {
             $data = DB::table('paks')
-                        ->join('users', 'users.id', '=', 'paks.user_id')
-                        ->select('users.*','paks.*')
-                        ->orderBy('paks.id','asc')
-                        ->get();
-        }else{
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->select('users.*', 'paks.*')
+                ->orderBy('paks.id', 'asc')
+                ->get();
+        } else {
             $data = DB::table('paks')
-                        ->join('users', 'users.id', '=', 'paks.user_id')
-                        ->select('users.*','paks.*')
-                        ->orderBy('paks.id','asc')
-                        ->where('wilayah_kerja',Auth::user()->wilayah_kerja)
-                        ->get();
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->select('users.*', 'paks.*')
+                ->orderBy('paks.id', 'asc')
+                ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->get();
         }
 
-        $i=1;
+        $i = 1;
 
         return view('provinsis.verifikasi', [
-                                        'data' => $data,
-                                        'i' => $i,
-                                    ]);
+            'data' => $data,
+            'i' => $i,
+        ]);
     }
 
-    public function verif(Request $request,$pak_id)
+    public function verif(Request $request, $pak_id)
     {
         //
 
@@ -48,10 +46,10 @@ class ProvinsiController extends Controller
                 'status' => 'Terverifikasi',
             ]
         );
-        return back()->with('success','DUPAK Terverifikasi');
+        return back()->with('success', 'DUPAK Terverifikasi');
     }
 
-    public function perbaikan(Request $request,$pak_id)
+    public function perbaikan(Request $request, $pak_id)
     {
         //
 
@@ -60,26 +58,26 @@ class ProvinsiController extends Controller
         ]);
         // dd($request->all());
         $pak = Pak::find($pak_id);
-        if( $request->get('ditolak') == "ditolak" ){
+        if ($request->get('ditolak') == "ditolak") {
             $pak->update(
                 [
                     'pesan_perbaikan' => $request->get('pesan_perbaikan'),
                     'status' => 'Ditolak',
-                    ]
-                );
-        }else{
+                ]
+            );
+        } else {
 
             $pak->update(
                 [
                     'pesan_perbaikan' => $request->get('pesan_perbaikan'),
                     'status' => 'Perbaikan',
-                    ]
-                );
+                ]
+            );
         }
-        return back()->with('success','Pesan Perbaikan Berhasil Terkirim');
+        return back()->with('success', 'Pesan Perbaikan Berhasil Terkirim');
     }
 
-    public function tolak(Request $request,$pak_id)
+    public function tolak(Request $request, $pak_id)
     {
         //
 
@@ -94,10 +92,10 @@ class ProvinsiController extends Controller
                 'status' => 'ditolak',
             ]
         );
-        return back()->with('success','Pesan Penolakan Berhasil Terkirim');
+        return back()->with('success', 'Pesan Penolakan Berhasil Terkirim');
     }
 
-    public function lap_pi(Request $request,$pak_id)
+    public function lap_pi(Request $request, $pak_id)
     {
         $pak = Pak::find($pak_id);
         $pak->update(
@@ -105,10 +103,10 @@ class ProvinsiController extends Controller
                 'lap_pi' => 'Ada',
             ]
         );
-        return back()->with('success','Laporan Penilitian berhasil di Update');
+        return back()->with('success', 'Laporan Penilitian berhasil di Update');
     }
 
-    public function jurnal(Request $request,$pak_id)
+    public function jurnal(Request $request, $pak_id)
     {
         $pak = Pak::find($pak_id);
         $pak->update(
@@ -116,10 +114,10 @@ class ProvinsiController extends Controller
                 'jurnal' => 'Ada',
             ]
         );
-        return back()->with('success','Jurnal berhasil di Update');
+        return back()->with('success', 'Jurnal berhasil di Update');
     }
 
-    public function saran(Request $request,$pak_id)
+    public function saran(Request $request, $pak_id)
     {
         //
 
@@ -133,10 +131,10 @@ class ProvinsiController extends Controller
                 'saran' => $request->get('saran'),
             ]
         );
-        return back()->with('success','Saran Tersimpan');
+        return back()->with('success', 'Saran Tersimpan');
     }
 
-    public function no_sk(Request $request,$pak_id)
+    public function no_sk(Request $request, $pak_id)
     {
         //
 
@@ -150,10 +148,27 @@ class ProvinsiController extends Controller
                 'no_sk' => $request->get('no_sk'),
             ]
         );
-        return back()->with('success','No SK Tersimpan');
+        return back()->with('success', 'No SK Tersimpan');
     }
 
-    public function pesan_perbaikan(Request $request,$pak_id)
+    public function no_sk_asli(Request $request, $pak_id)
+    {
+        //
+
+        $this->validate($request, [
+            'no_sk_asli' => 'required',
+        ]);
+        // dd($request->all());
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'no_sk_asli' => $request->get('no_sk_asli'),
+            ]
+        );
+        return back()->with('success', 'No SK Tersimpan');
+    }
+
+    public function pesan_perbaikan(Request $request, $pak_id)
     {
         //
         $data = Pak::find($pak_id);

@@ -97,6 +97,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
     Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
     Route::put('/no_sk/{id}', [ProvinsiController::class, 'no_sk'])->name('provinsis.no_sk');
+    Route::put('/no_sk_asli/{id}', [ProvinsiController::class, 'no_sk_asli'])->name('provinsis.no_sk_asli');
 
     Route::get('/index/{id}', [RelasiL2pkbUsulanController::class, 'index'])->name('l2pkb.index');
     Route::POST('/store', [RelasiL2pkbUsulanController::class, 'store'])->name('l2pkb.store');

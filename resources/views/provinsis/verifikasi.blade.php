@@ -144,7 +144,8 @@
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
-                                        <th>No SK</th>
+                                        <th style="width:30%">No SK</th>
+                                        <th style="width:30%">No SK Asli</th>
                                         <th>Status</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
@@ -153,12 +154,15 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
+                                        <th>Nip</th>
+                                        <th>no_hp</th>
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
-                                        <th width="25%">No SK</th>
+                                        <th style="width:30%">No SK</th>
+                                        <th style="width:30%">No SK Asli</th>
                                         <th>Status</th>
-                                        <th class="text-right" width="15%">Actions</th>
+                                        <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -182,6 +186,22 @@
                                                         <input type="text" class="form-control"
                                                             value="{{ $pak->no_sk == null ? '823.3/ /Disdikbud/KU/I/2023' : $pak->no_sk }}"
                                                             name="no_sk" placeholder="No SK">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="submit" rel="tooltip" class="btn btn-default">
+                                                            <i class="material-icons">done</i>
+                                                    </div>
+                                                </div>
+                                                {!! Form::close() !!}
+                                            </td>
+                                            <td class="td-actions">
+                                                {!! Form::open(['method' => 'PUT', 'route' => ['provinsis.no_sk_asli', $pak->id], 'style' => 'display:inline']) !!}
+                                                @csrf
+                                                <div class="row">
+                                                    <div class="col-md-8">
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $pak->no_sk_asli == null ? '420/   /Disdikbud-A.1/KU/I/2023' : $pak->no_sk_asli }}"
+                                                            name="no_sk_asli" placeholder="No SK">
                                                     </div>
                                                     <div class="col-md-2">
                                                         <button type="submit" rel="tooltip" class="btn btn-default">

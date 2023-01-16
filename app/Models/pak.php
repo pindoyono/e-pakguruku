@@ -55,6 +55,7 @@ class pak extends Model
         'jurnal',
         'lap_pi',
         'no_sk',
+        'no_sk_asli',
     ];
 
     public function users()
@@ -62,28 +63,3 @@ class pak extends Model
         return $this->hasMany(User::class);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
