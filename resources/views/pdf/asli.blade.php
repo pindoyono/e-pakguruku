@@ -81,10 +81,6 @@
                     : $pak->no_sk !!}
                 <br>
             </span>
-            <span style="font-size:12; font-weight:bold">
-                Masa Penilaian : {{ tgl_indo($pak->awal) . ' s/d ' . tgl_indo($pak->akhir) }} <br>
-            </span>
-
         </div>
 
         Yang bertandatangan dibawah ini:
@@ -92,7 +88,7 @@
             <tr style="border: none !important;">
                 <td style="border: none !important;">Nama</td>
                 <td style="border: none !important;">:</td>
-                <td style="border: none !important;">{{ $settings->nama_kadis }}</td>
+                <td style="border: none !important;">{{ ucfirst($settings->nama_kadis) }}</td>
             </tr>
             <tr>
                 <td style="border: none !important;">NIP</td>
