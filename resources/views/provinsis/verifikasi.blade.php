@@ -139,13 +139,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Nip</th>
-                                        <th>no_hp</th>
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
-                                        <th style="width:30%">No SK</th>
-                                        <th style="width:30%">No SK Asli</th>
+                                        <th style="width:50%">No SK</th>
+                                        <th style="width:50%">No SK Asli</th>
                                         <th>Status</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
@@ -154,13 +152,11 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Nip</th>
-                                        <th>no_hp</th>
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
-                                        <th style="width:30%">No SK</th>
-                                        <th style="width:30%">No SK Asli</th>
+                                        <th style="width:50%">No SK</th>
+                                        <th style="width:50%">No SK Asli</th>
                                         <th>Status</th>
                                         <th class="disabled-sorting text-right">Actions</th>
                                     </tr>
@@ -170,8 +166,8 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $pak->name }}</td>
-                                            <td>{{ $pak->username }}</td>
-                                            <td>{{ $pak->no_hp }}</td>
+                                            {{-- <td>{{ $pak->username }}</td>
+                                            <td>{{ $pak->no_hp }}</td> --}}
 
                                             <td><label
                                                     class="badge {{ $pak->status_naik_pangkat == 'NAIK PANGKAT' ? 'badge-info' : 'badge-warning' }} ">{{ $pak->status_naik_pangkat }}</label>
