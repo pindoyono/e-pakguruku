@@ -227,7 +227,7 @@
                     <br>
                     <br>
                     <br>
-                    {{ $settings->nama_kadis }} <br>
+                    {{ ucfirst($settings->nama_kadis) }} <br>
                     {{ $settings->jabatan_kadis }} <br>
                     {{ $settings->nip_kadis }} <br>
                 </td>
