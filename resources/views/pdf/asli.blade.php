@@ -76,11 +76,11 @@
                 </u>
             </span>
             <span style="font-size:14">
-                {{-- Nomor : {!! $pak->no_sk == null
+                Nomor : {!! $pak->no_sk_asli == null
                     ? '420/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Disdikbud-A.1/KU/I/2023'
-                    : $pak->no_sk !!} --}}
+                    : $pak->no_sk_asli !!}
 
-                Nomor : {!! '420/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Disdikbud-A.1/KU/I/2023' !!}
+                {{-- Nomor : {!! '420/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/Disdikbud-A.1/KU/I/2023' !!} --}}
                 <br>
             </span>
         </div>
