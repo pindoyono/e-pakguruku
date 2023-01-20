@@ -165,6 +165,7 @@ class ProvinsiController extends Controller
                 'no_sk_asli' => $request->get('no_sk_asli'),
             ]
         );
+        // return redirect('provinsis.verifikasi', ['page' => $request->page])->with('success', 'No SK Tersimpan');
         return back()->with('success', 'No SK Tersimpan');
     }
 

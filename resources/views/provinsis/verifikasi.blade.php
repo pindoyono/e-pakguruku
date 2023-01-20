@@ -23,10 +23,9 @@
                     </div>
                     <div class="card-body">
                         <div class="toolbar">
-                            <!--        Here you can write extra buttons/actions for the toolbar              -->
                         </div>
                         <div class="material-datatables">
-                            <table class="table table-bordered" style="font-weight: 900">
+                            {{-- <table class="table table-bordered" style="font-weight: 900">
                                 <tbody>
                                     <tr>
                                         <td>
@@ -131,7 +130,7 @@
                                         </td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> --}}
 
                             <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0"
                                 width="100%" style="width:100%">
@@ -166,9 +165,6 @@
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>{{ $pak->name }}</td>
-                                            {{-- <td>{{ $pak->username }}</td>
-                                            <td>{{ $pak->no_hp }}</td> --}}
-
                                             <td><label
                                                     class="badge {{ $pak->status_naik_pangkat == 'NAIK PANGKAT' ? 'badge-info' : 'badge-warning' }} ">{{ $pak->status_naik_pangkat }}</label>
                                             </td>
@@ -204,6 +200,8 @@
                                                             <i class="material-icons">done</i>
                                                     </div>
                                                 </div>
+                                                <input type="hidden" name='page'
+                                                    value={{ app('request')->input('page') }}>
                                                 {!! Form::close() !!}
                                             </td>
                                             <td>
@@ -270,6 +268,7 @@
                     [10, 25, 50, "All"]
                 ],
                 responsive: true,
+                stateSave: true,
                 language: {
                     search: "_INPUT_",
                     searchPlaceholder: "Search records",
