@@ -798,6 +798,7 @@ class PenilaiController extends Controller
 
     public function export_2()
     {
+
         return Excel::download(new BkdEksport, 'Daftar Usul Nominatif KENPA.xlsx');
 
     }

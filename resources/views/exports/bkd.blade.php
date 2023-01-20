@@ -62,8 +62,6 @@
                     <td>{{ $pak->name }}</td>
                     <td>{{ "'" . $pak->nip }}</td>
                     <td>{{ $pak->no_hp }}</td>
-                    <td>{{ $pak->sekolah }}</td>
-                    <td>{{ $pak->pendidikan }}</td>
                     <td>{{ '-' }}</td>
 
                     <td>{{ get_jabatan($pak->pangkat_golongan)->pangkat }}</td>
@@ -77,7 +75,7 @@
                     </td>
 
                     <td>{{ get_jabatan($pak->pangkat_golongan + 1)->pangkat }}</td>
-                    <td> {{ \Carbon\Carbon::parse(now())->format('m') <= 4 || \Carbon\Carbon::parse(now())->format('m') >= 10? tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('Y') . '-04-01')->addYears(1)->format('Y-m-d')): tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-10-01')->format('Y-m-d')) }}
+                    <td> {{ \Carbon\Carbon::parse(now())->format('m') <= 4 || \Carbon\Carbon::parse(now())->format('m') >= 10 ? tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('Y') . '-04-01')->format('Y-m-d')) : tgl_indo(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-10-01')->format('Y-m-d')) }}
                     </td>
                     <td>{{ masa_kerja_tahun(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
                         Tahun
