@@ -111,6 +111,12 @@
             </a>
         </li>
         <li class="nav-item ">
+            <a class="nav-link" href="{{ route('penilais.penilai_tahunan') }}">
+                <i class="material-icons">calculate</i>
+                <p> Penilaian <span class="badge badge-pill badge-success">Tahunan</span> </p>
+            </a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
                 <i class="material-icons">assistant</i>
                 <p> Lampiran 2 PKB </p>

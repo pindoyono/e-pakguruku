@@ -28,6 +28,31 @@ class PenilaiController extends Controller
             $data = DB::table('paks')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->select('users.*', 'paks.*')
+                ->orderBy('paks.id', 'asc')
+                ->get();
+        } else {
+            $data = DB::table('paks')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->select('users.*', 'paks.*')
+                ->orderBy('paks.id', 'asc')
+                ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->get();
+        }
+        $i = 1;
+
+        return view('penilais.penilai', [
+            'data' => $data,
+            'i' => $i,
+        ]);
+    }
+
+    public function penilai_tahunan()
+    {
+
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->select('users.*', 'paks.*')
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->orderBy('paks.id', 'asc')
