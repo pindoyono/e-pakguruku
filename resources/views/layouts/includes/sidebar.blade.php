@@ -125,6 +125,12 @@
                 <p> Verifikasi </p>
             </a>
         </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('provinsis.verifikasi_tahunan') }}">
+                <i class="material-icons">verified</i>
+                <p> Verifikasi <span class="badge badge-pill badge-success">Tahunan</span> </p>
+            </a>
+        </li>
     @endrole
 
     @role('admin-prov')
@@ -132,6 +138,12 @@
             <a class="nav-link" href="{{ route('penilais.pleno') }}">
                 <i class="material-icons">view_in_ar</i>
                 <p> Rekap Pleno </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('penilais.pleno_tahunan') }}">
+                <i class="material-icons">view_in_ar</i>
+                <p> Rekap Pleno <span class="badge badge-pill badge-success">Tahunan</span> </p>
             </a>
         </li>
         <li class="nav-item ">

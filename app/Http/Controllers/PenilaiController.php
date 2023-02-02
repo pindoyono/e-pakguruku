@@ -28,6 +28,8 @@ class PenilaiController extends Controller
             $data = DB::table('paks')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->select('users.*', 'paks.*')
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->orderBy('paks.id', 'asc')
                 ->get();
         } else {
@@ -36,6 +38,8 @@ class PenilaiController extends Controller
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->get();
         }
         $i = 1;
@@ -779,6 +783,64 @@ class PenilaiController extends Controller
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->get();
+        }
+
+        // dd($data);
+
+        return view('penilais.pleno', [
+            'data' => $data,
+            'pak2' => $pak2,
+            'i' => $i = 1,
+        ]);
+    }
+
+    public function pleno_tahunan()
+    {
+        if (Auth::user()->hasRole('super-admin')) {
+            $data = DB::table('paks')
+                ->select('paks.*', 'paks.id as pak_id', 'users.name', 'users.username', 'users.sekolah', 'users.no_hp', 'users.tmt_cpns', 'tmt_jabatan', 'sekolah', 'users.username as nip', 'users.pendidikan', 'jabatans.id as jabatan_id', 'users.pangkat_golongan', 'users.tertinggal as tertinggal_user', 'users.pengembangan_diri as pd_user',
+                    'users.ijazah_tidak_sesuai as ijazah_tidak_sesuai_user', 'users.pendukung_tugas_guru as pendukung_tugas_guru_user', 'users.memperoleh_penghargaan as memperoleh_penghargaan_user',
+                    'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->get();
+
+            $pak2 = DB::table('paks')
+                ->select('paks.*', 'paks.id as pak_id', 'users.name', 'users.username', 'users.sekolah', 'users.no_hp', 'users.tmt_cpns', 'tmt_jabatan', 'sekolah', 'users.username as nip', 'users.pendidikan', 'jabatans.id as jabatan_id', 'users.pangkat_golongan', 'users.tertinggal as tertinggal_user', 'users.pengembangan_diri as pd_user',
+                    'users.ijazah_tidak_sesuai as ijazah_tidak_sesuai_user', 'users.pendukung_tugas_guru as pendukung_tugas_guru_user', 'users.memperoleh_penghargaan as memperoleh_penghargaan_user',
+                    'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->select('paks.*')
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->get();
+
+        } else {
+            $data = DB::table('paks')
+                ->select('paks.*', 'paks.id as pak_id', 'users.name', 'users.username', 'users.sekolah', 'users.no_hp', 'users.tmt_cpns', 'tmt_jabatan', 'sekolah', 'users.username as nip', 'users.pendidikan', 'jabatans.id as jabatan_id', 'users.pangkat_golongan', 'users.tertinggal as tertinggal_user', 'users.pengembangan_diri as pd_user',
+                    'users.ijazah_tidak_sesuai as ijazah_tidak_sesuai_user', 'users.pendukung_tugas_guru as pendukung_tugas_guru_user', 'users.memperoleh_penghargaan as memperoleh_penghargaan_user',
+                    'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->get();
+
+            $pak2 = DB::table('paks')
+                ->select('paks.*', 'paks.id as pak_id', 'users.name', 'users.username', 'users.sekolah', 'users.no_hp', 'users.tmt_cpns', 'tmt_jabatan', 'sekolah', 'users.username as nip', 'users.pendidikan', 'jabatans.id as jabatan_id', 'users.pangkat_golongan', 'users.tertinggal as tertinggal_user', 'users.pengembangan_diri as pd_user',
+                    'users.ijazah_tidak_sesuai as ijazah_tidak_sesuai_user', 'users.pendukung_tugas_guru as pendukung_tugas_guru_user', 'users.memperoleh_penghargaan as memperoleh_penghargaan_user',
+                    'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+                ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->select('paks.*')
+                ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+            //hanya yg pak tahunan aja
+                ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->get();
         }
 

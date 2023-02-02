@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/cetak_asli/{id}', [PenilaiController::class, 'cetak_asli'])->name('penilais.cetak_asli');
     Route::get('/cetak_hapak/{id}', [PenilaiController::class, 'cetak_hapak'])->name('penilais.cetak_hapak');
     Route::get('/pleno', [PenilaiController::class, 'pleno'])->name('penilais.pleno');
+    Route::get('/pleno_tahunan', [PenilaiController::class, 'pleno_tahunan'])->name('penilais.pleno_tahunan');
     Route::get('/export_pleno', [PenilaiController::class, 'export'])->name('penilais.export_pleno');
     Route::get('/export_pleno_2', [PenilaiController::class, 'export_2'])->name('penilais.export_pleno_2');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
@@ -89,6 +90,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/vermak/{id}', [PenilaiController::class, 'vermak'])->name('penilais.vermak');
 
     Route::get('/verifikasi', [ProvinsiController::class, 'verifikasi'])->name('provinsis.verifikasi');
+    Route::get('/verifikasi_tahunan', [ProvinsiController::class, 'verifikasi_tahunan'])->name('provinsis.verifikasi_tahunan');
     Route::get('/verif/{id}', [ProvinsiController::class, 'verif'])->name('provinsis.verif');
     Route::put('/perbaikan/{id}', [ProvinsiController::class, 'perbaikan'])->name('provinsis.perbaikan');
     Route::put('/tolak/{id}', [ProvinsiController::class, 'tolak'])->name('provinsis.tolak');
