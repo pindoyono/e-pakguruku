@@ -1,19 +1,19 @@
 <div class="user">
     <div class="photo">
-      {{-- <img src="../../assets/img/avatar.jpg" /> --}}
-      @if(Auth::user()->avatar == null)
-          <img height="40px" src="{{asset('storage/avatar/placeholder.jpg')}}" alt="...">
-      @else
-            <img height="40px" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}" alt="...">
-      @endif
+        {{-- <img src="../../assets/img/avatar.jpg" /> --}}
+        @if (Auth::user()->avatar == null)
+            <img height="40px" src="{{ asset('storage/avatar/placeholder.jpg') }}" alt="...">
+        @else
+            <img height="40px" src="{{ asset('storage/avatar/' . Auth::user()->avatar) }}" alt="...">
+        @endif
     </div>
     <div class="user-info">
-            <a href="{{ route('users.edit',Crypt::encrypt(Auth::user()->id) ) }}" class="username">
-                <p>
-                    {{Auth::user()->name}}
-                </p>
-            </a>
-      {{-- <div class="collapse" id="collapseExample">
+        <a href="{{ route('users.edit', Crypt::encrypt(Auth::user()->id)) }}" class="username">
+            <p>
+                {{ Auth::user()->name }}
+            </p>
+        </a>
+        {{-- <div class="collapse" id="collapseExample">
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="#">
@@ -36,110 +36,110 @@
         </ul>
       </div> --}}
     </div>
-  </div>
-  <ul class="nav">
+</div>
+<ul class="nav">
     <li class="nav-item ">
-      <a class="nav-link" href="{{ route('home') }}">
-        <i class="material-icons">dashboard</i>
-        <p> Dashboard </p>
-      </a>
+        <a class="nav-link" href="{{ route('home') }}">
+            <i class="material-icons">dashboard</i>
+            <p> Dashboard </p>
+        </a>
     </li>
     @role('super-admin')
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('users.index') }}">
-            <i class="material-icons">people</i>
-            <p> Pengguna </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('kegiatans.index') }}">
-            <i class="material-icons">switch_access_shortcut_add</i>
-            <p> Kegiatan </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('jabatans.index') }}">
-            <i class="material-icons">trending_up</i>
-            <p> Jabatan </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
-            <i class="material-icons">assistant</i>
-            <p> Lampiran 2 PKB </p>
-        </a>
-    </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('users.index') }}">
+                <i class="material-icons">people</i>
+                <p> Pengguna </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('kegiatans.index') }}">
+                <i class="material-icons">switch_access_shortcut_add</i>
+                <p> Kegiatan </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('jabatans.index') }}">
+                <i class="material-icons">trending_up</i>
+                <p> Jabatan </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
+                <i class="material-icons">assistant</i>
+                <p> Lampiran 2 PKB </p>
+            </a>
+        </li>
     @endrole
 
     @role('guru')
-     <li class="nav-item ">
-        <a class="nav-link" href="{{ route('kepegawaians.index') }}">
-            <i class="material-icons">receipt_long</i>
-            <p> Berkas Kepegawaian </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('paks.index') }}">
-            <i class="material-icons">folder_open</i>
-            <p> DUPAK </p>
-        </a>
-    </li>
-    @if(date('Y-m-d') <= date(get_tgl_akhir()) )
-    <li class="nav-item ">
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('kepegawaians.index') }}">
+                <i class="material-icons">receipt_long</i>
+                <p> Berkas Kepegawaian </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('paks.index') }}">
+                <i class="material-icons">folder_open</i>
+                <p> DUPAK </p>
+            </a>
+        </li>
+        @if (date('Y-m-d') <= date(get_tgl_akhir()))
+            {{-- <li class="nav-item ">
         <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
             <i class="material-icons">trending_up</i>
             <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>
         </a>
-    </li>
-    @endif
-    @role('admin')
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
-            <i class="material-icons">trending_up</i>
-            <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>
-        </a>
-    </li>
-    @endrole
+    </li> --}}
+        @endif
+        @role('admin')
+            {{-- <li class="nav-item ">
+                <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
+                    <i class="material-icons">trending_up</i>
+                    <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>
+                </a>
+            </li> --}}
+        @endrole
 
     @endrole
 
     @role('penilai')
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('penilais.penilai') }}">
-            <i class="material-icons">calculate</i>
-            <p> Penilaian </p>
-        </a>
-    </li>
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
-            <i class="material-icons">assistant</i>
-            <p> Lampiran 2 PKB </p>
-        </a>
-    </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('penilais.penilai') }}">
+                <i class="material-icons">calculate</i>
+                <p> Penilaian </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('lampiran2pkbs.index') }}">
+                <i class="material-icons">assistant</i>
+                <p> Lampiran 2 PKB </p>
+            </a>
+        </li>
     @endrole
 
     @role('admin-prov|cabdin')
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('provinsis.verifikasi') }}">
-            <i class="material-icons">verified</i>
-            <p> Verifikasi </p>
-        </a>
-    </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('provinsis.verifikasi') }}">
+                <i class="material-icons">verified</i>
+                <p> Verifikasi </p>
+            </a>
+        </li>
     @endrole
 
     @role('admin-prov')
-    <li class="nav-item ">
-        <a class="nav-link" href="{{ route('penilais.pleno') }}">
-            <i class="material-icons">view_in_ar</i>
-            <p> Rekap Pleno </p>
-        </a>
-    </li>
         <li class="nav-item ">
-        <a class="nav-link" href="{{ route('settings.index') }}">
-            <i class="material-icons">settings</i>
-            <p> Setting </p>
-        </a>
-    </li>
+            <a class="nav-link" href="{{ route('penilais.pleno') }}">
+                <i class="material-icons">view_in_ar</i>
+                <p> Rekap Pleno </p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="{{ route('settings.index') }}">
+                <i class="material-icons">settings</i>
+                <p> Setting </p>
+            </a>
+        </li>
     @endrole
 
 
@@ -147,27 +147,27 @@
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('penilais.angka_kredit') }}">
             <i class="material-icons">my_location</i>
-            <p> Angka Kredit  </p>
+            <p> Angka Kredit </p>
         </a>
     </li>
 
     <li class="nav-item ">
         <a class="nav-link" target="_blank" href="https://t.me/+N3_V0kylBOgxY2M1">
             <i class="material-icons">contact_support</i>
-            <p> Group Diskusi  </p>
+            <p> Group Diskusi </p>
         </a>
     </li>
 
     <li class="nav-item ">
         <a class="nav-link" target="_blank" href="https://youtu.be/OQrhI7BYUYI">
             <i class="material-icons">play_circle</i>
-            <p> Video Panduan  </p>
+            <p> Video Panduan </p>
         </a>
     </li>
 
     <li class="nav-item ">
         <a class="nav-link" href="{{ route('logout') }}"
-        onclick="event.preventDefault();
+            onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
             <i class="material-icons">logout</i>
             <p> Logout </p>
@@ -175,7 +175,7 @@
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
             @csrf
-            </form>
+        </form>
     </li>
     {{-- <li class="nav-item  active">
       <a class="nav-link" data-toggle="collapse" href="#pagesExamples" aria-expanded="true">
@@ -375,4 +375,4 @@
         </ul>
       </div>
     </li> --}}
-  </ul>
+</ul>
