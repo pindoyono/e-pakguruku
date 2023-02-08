@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Exports\BkdEksport;
+use App\Exports\BkdEksport_tahunan;
 use App\Exports\PlenosExport;
+use App\Exports\PlenosExport_tahunan;
 use App\Http\Controllers\Controller;
 use App\Models\Ba_jurnal;
 use App\Models\Jabatan;
@@ -887,6 +889,18 @@ class PenilaiController extends Controller
     {
 
         return Excel::download(new BkdEksport, 'Daftar Usul Nominatif KENPA.xlsx');
+
+    }
+
+    public function export_tahunan()
+    {
+        return Excel::download(new PlenosExport_tahunan, 'Pleno.xlsx');
+    }
+
+    public function export_tahunan_2()
+    {
+
+        return Excel::download(new BkdEksport_tahunan, 'Daftar Pak Tahunan.xlsx');
 
     }
 

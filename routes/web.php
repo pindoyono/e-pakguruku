@@ -86,6 +86,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/pleno_tahunan', [PenilaiController::class, 'pleno_tahunan'])->name('penilais.pleno_tahunan');
     Route::get('/export_pleno', [PenilaiController::class, 'export'])->name('penilais.export_pleno');
     Route::get('/export_pleno_2', [PenilaiController::class, 'export_2'])->name('penilais.export_pleno_2');
+    Route::get('/export_pleno_tahunan', [PenilaiController::class, 'export_tahunan'])->name('penilais.export_pleno_tahunan');
+    Route::get('/export_pleno_tahunan_2', [PenilaiController::class, 'export_tahunan_2'])->name('penilais.export_pleno_tahunan_2');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
     Route::get('/vermak/{id}', [PenilaiController::class, 'vermak'])->name('penilais.vermak');

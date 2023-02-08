@@ -24,9 +24,9 @@
                     <div class="card-body">
                         <div class="toolbar">
                             <!--        Here you can write extra buttons/actions for the toolbar              -->
-                            <a class="btn btn-success" href="{{ route('penilais.export_pleno') }}"><i
+                            <a class="btn btn-success" href="{{ route('penilais.export_pleno_tahunan') }}"><i
                                     class="material-icons">file_download</i> export</a>
-                            <a class="btn btn-primary" href="{{ route('penilais.export_pleno_2') }}"><i
+                            <a class="btn btn-primary" href="{{ route('penilais.export_pleno_tahunan_2') }}"><i
                                     class="material-icons">file_download</i> export BKD</a>
                         </div>
                         <div class="material-datatables">
