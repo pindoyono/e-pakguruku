@@ -505,11 +505,22 @@ if (!function_exists('lolos')) {
 
         if ($jabatan_pak) {
 
-            $jml_1 = number_format(($ak_diperoleh - $jabatan_pak->target), 3);
-            $jml_4 = number_format(($ak_utama_total - (90 / 100 * $jabatan_pak->target_sebelum)) - (90 / 100 * $jabatan_pak->akk), 3) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal);
-            $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd, 3);
-            $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki, 3);
-            $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp, 3);
+            try {
+                $jml_1 = number_format(($ak_diperoleh - $jabatan_pak->target), 3);
+                $jml_4 = number_format(($ak_utama_total - (90 / 100 * $jabatan_pak->target_sebelum)) - (90 / 100 * $jabatan_pak->akk), 3) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal);
+                $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd, 3);
+                $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki, 3);
+                $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp, 3);
+            } catch (Throwable $e) {
+                report($e);
+
+                return 'salah format';
+            }
+            // $jml_1 = number_format(($ak_diperoleh - $jabatan_pak->target), 3);
+            // $jml_4 = number_format(($ak_utama_total - (90 / 100 * $jabatan_pak->target_sebelum)) - (90 / 100 * $jabatan_pak->akk), 3) + ($pak->tertinggal + $pak->tertinggal2 + $user->tertinggal);
+            // $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd, 3);
+            // $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki, 3);
+            // $jml_5 = number_format($ak_penunjang - $jabatan_pak->akp, 3);
 
             // $masa_kerja = masa_kerja(\Carbon\Carbon::parse(date("Y")."-10-01"), $user->tmt_pns);
 

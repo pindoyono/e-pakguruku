@@ -59,6 +59,7 @@ class PenilaiController extends Controller
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->orderBy('paks.id', 'asc')
                 ->get();
+
         } else {
             $data = DB::table('paks')
                 ->join('users', 'users.id', '=', 'paks.user_id')
@@ -68,6 +69,7 @@ class PenilaiController extends Controller
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->get();
+            // ->paginate(100);
         }
         $i = 1;
 
