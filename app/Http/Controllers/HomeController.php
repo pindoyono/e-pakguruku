@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 
 class HomeController extends Controller
@@ -31,12 +30,12 @@ class HomeController extends Controller
                 return view('home');
             }
 
-            if(date('Y-m-d') <= date(get_tgl_akhir()) ){
+            if (date('Y-m-d') <= date(get_tgl_akhir())) {
                 return view('home');
                 // dd('home');
-            }else{
-                // return view('lock');
-                return view('home');
+            } else {
+                return view('lock');
+                // return view('home');
 
                 // dd('lock');
             }
