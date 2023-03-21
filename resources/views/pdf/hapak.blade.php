@@ -931,6 +931,7 @@
                 {{ 'NIP. ' . get_data_penilai($pak->penilai_id)->username }}
             @endif --}}
             Tanjung Selor, {{ tgl_indo($settings->tgl_pak_ttd) }}
+            <br>
             {{ $settings->kadis }},
             <br>
             <br>
@@ -987,7 +988,6 @@
                 @endif --}}
                 <br>
                 Tanjung Selor, {{ tgl_indo($settings->tgl_pak_ttd) }}
-                <br>
                 <br>
                 {{ $settings->kadis }},
                 <br>
