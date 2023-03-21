@@ -45,7 +45,7 @@
                     :
                 </td>
                 <td style="text-align: left; border: none !important;">
-                    DISdikbu...
+
                 </td>
                 <td rowspan="3" width="30%" style="border: none !important; vertical-align:top;"">
                     Tanjung Selor, {{ tgl_indo($settings->tgl_hapak_atas) }} <br>
@@ -917,7 +917,7 @@
         </div>
 
         <div style="text-align:left;padding-left:70%;font-size:10">
-            <br>
+            {{-- <br>
             {{ ucfirst(Auth::user()->wilayah_kerja) . ', ' . tgl_indo(\Carbon\Carbon::now()->format('Y-m-d')) }}
             <br>
             <br>
@@ -929,7 +929,16 @@
                 {{ ucwords(get_data_penilai($pak->penilai_id)->name) }}
                 <br>
                 {{ 'NIP. ' . get_data_penilai($pak->penilai_id)->username }}
-            @endif
+            @endif --}}
+            Tanjung Selor, {{ tgl_indo($settings->tgl_pak_ttd) }}
+            {{ $settings->kadis }},
+            <br>
+            <br>
+            <br>
+            <br>
+            {{ ucfirst($settings->nama_kadis) }} <br>
+            {{ $settings->jabatan_kadis }} <br>
+            {{ $settings->nip_kadis }} <br>
         </div>
 
 
@@ -964,7 +973,7 @@
 
             <div style="text-align:left;padding-left:70%;font-size:10">
 
-                {{ ucfirst(Auth::user()->wilayah_kerja) . ', ' . tgl_indo(\Carbon\Carbon::now()->format('Y-m-d')) }}
+                {{-- {{ ucfirst(Auth::user()->wilayah_kerja) . ', ' . tgl_indo(\Carbon\Carbon::now()->format('Y-m-d')) }}
                 <br>
                 <br>
                 <br>
@@ -975,7 +984,18 @@
                     {{ ucwords(get_data_penilai($pak->penilai_id)->name) }}
                     <br>
                     {{ 'NIP. ' . get_data_penilai($pak->penilai_id)->username }}
-                @endif
+                @endif --}}
+                <br>
+                Tanjung Selor, {{ tgl_indo($settings->tgl_pak_ttd) }}
+                <br>
+                {{ $settings->kadis }},
+                <br>
+                <br>
+                <br>
+                <br>
+                {{ ucfirst($settings->nama_kadis) }} <br>
+                {{ $settings->jabatan_kadis }} <br>
+                {{ $settings->nip_kadis }} <br>
             </div>
 
 </body>

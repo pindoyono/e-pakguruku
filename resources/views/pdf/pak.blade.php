@@ -570,7 +570,7 @@
                                 $pak2->publikasi_ilmiah +
                                 $pak2->karya_inovatif +
                                 $pak2->tertinggal,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -589,7 +589,7 @@
                                         $pak2->publikasi_ilmiah +
                                         $pak2->karya_inovatif +
                                         $pak2->tertinggal,
-
+                        
                                     3,
                                 ),
                             )
@@ -611,7 +611,7 @@
                                 $pak2->publikasi_ilmiah2 +
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -630,7 +630,7 @@
                                         $pak2->publikasi_ilmiah2 +
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )
@@ -664,7 +664,7 @@
                                 $pak2->karya_inovatif2 +
                                 $pak2->tertinggal +
                                 $pak2->tertinggal2,
-
+                        
                             3,
                         ) != 0
                             ? str_replace(
@@ -695,7 +695,7 @@
                                         $pak2->karya_inovatif2 +
                                         $pak2->tertinggal +
                                         $pak2->tertinggal2,
-
+                        
                                     3,
                                 ),
                             )
