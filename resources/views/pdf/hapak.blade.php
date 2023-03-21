@@ -988,6 +988,7 @@
                 <br>
                 Tanjung Selor, {{ tgl_indo($settings->tgl_pak_ttd) }}
                 <br>
+                <br>
                 {{ $settings->kadis }},
                 <br>
                 <br>
