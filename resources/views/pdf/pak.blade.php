@@ -172,7 +172,8 @@
                     <td class="spasi" rowspan=2>Masa Kerja Golongan</td>
                     <td class="spasi">Lama</td>
                     <td class="spasi" colspan=4>
-                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
+                        {{-- {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->subYears()->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }} --}}
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->format('y') . '-12-31')->addMonths(1), $pak->tmt_cpns) }}
                     </td>
                 </tr>
                 <tr>
