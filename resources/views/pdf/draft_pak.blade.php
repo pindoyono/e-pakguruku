@@ -179,7 +179,7 @@
                 <tr>
                     <td class="spasi">Baru</td>
                     <td class="spasi" colspan=4>
-                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal) . '-12-31')->addMonths(1), $pak->tmt_cpns) }}
+                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->subYears(1)->format('y') . '-12-31')->addMonths(1),$pak->tmt_cpns) }}
                     </td>
                 </tr>
                 <tr>
