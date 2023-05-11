@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('export', [UserController::class, 'export'])->name('export');
     Route::post('import', [UserController::class, 'import'])->name('import');
     Route::resource('paks', PakController::class);
+    Route::get('/cetak_draf/{id}', [PakController::class, 'cetak_draf_pak'])->name('paks.cetak_draf_pak');
+
     Route::resource('kegiatans', KegiatanController::class);
     Route::resource('posts', PostController::class);
     Route::resource('pendidikans', PendidikanController::class);

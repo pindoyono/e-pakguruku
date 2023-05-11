@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
 use App\Models\pak;
-use App\Models\user;
-use App\Models\Kegiatan;
-use App\Models\Post;
 use App\Models\Pendidikan;
-use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Models\Setting;
+use App\Models\user;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use DB;
+use PDF;
 
 class PakController extends Controller
 {
@@ -23,9 +24,30 @@ class PakController extends Controller
     public function index()
     {
         //
-        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->get();
-        $i=0;
-        return view('paks.index', ['data' => $data,'i'=>$i]);
+        $data = Pak::orderBy('id', 'asc')->where('user_id', Auth::user()->id)->where('status', '!=', 'terbit')->get();
+        $i = 0;
+        return view('paks.index', ['data' => $data, 'i' => $i]);
+    }
+
+    public function cetak_draf_pak($pak_id)
+    {
+        $data = DB::table('paks')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+            ->where('paks.id', $pak_id)
+            ->first();
+
+        // $pangkat = Jabatan::find($data->pangkat_golongan);
+        $pangkat = Jabatan::find($data->pangkat_golongan);
+
+        $settings = Setting::first();
+
+        $pdf = PDF::loadView('pdf.draft_pak', [
+            'pak' => $data,
+            'pangkat' => $pangkat,
+            'settings' => $settings,
+        ]);
+
+        return $pdf->stream('draf_PAK.pdf');
     }
 
     /**
@@ -36,9 +58,9 @@ class PakController extends Controller
     public function create()
     {
         //
-        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->count();
+        $data = Pak::orderBy('id', 'asc')->where('user_id', Auth::user()->id)->where('status', '!=', 'terbit')->count();
 
-        return view('paks.create',['cek_pak' => $data]);
+        return view('paks.create', ['cek_pak' => $data]);
     }
 
     /**
@@ -51,9 +73,9 @@ class PakController extends Controller
     {
         //
         // dd(Auth::user()->id);
-        $data = Pak::orderBy('id','asc')->where('user_id',Auth::user()->id)->where('status','!=','terbit')->count();
+        $data = Pak::orderBy('id', 'asc')->where('user_id', Auth::user()->id)->where('status', '!=', 'terbit')->count();
 
-        if( $data = 0) {
+        if ($data = 0) {
             $this->validate($request, [
                 'awal' => 'required',
                 'akhir' => 'required',
@@ -82,7 +104,7 @@ class PakController extends Controller
                 'skp' => 'mimes:pdf|max:10048',
             ]);
 
-        }else{
+        } else {
             $this->validate($request, [
                 'awal' => 'required',
                 'akhir' => 'required',
@@ -102,91 +124,89 @@ class PakController extends Controller
 
         }
 
-
-
         $input = $request->all();
         if ($request->file('surat_pengantar')) {
             $image = $request->file('surat_pengantar');
-            $profileImage = 'surat_pengantar_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['surat_pengantar'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'surat_pengantar_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['surat_pengantar'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('tidak_dihukum')) {
             $image = $request->file('tidak_dihukum');
-            $profileImage = 'tidak_dihukum'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['tidak_dihukum'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'tidak_dihukum' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['tidak_dihukum'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('dupak')) {
             $image = $request->file('dupak');
-            $profileImage = 'dupak'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['dupak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'dupak' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['dupak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('surat_pembelajaran')) {
             $image = $request->file('surat_pembelajaran');
-            $profileImage = 'surat_pembelajaran'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['surat_pembelajaran'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'surat_pembelajaran' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['surat_pembelajaran'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('surat_bimbingan_tertentu')) {
             $image = $request->file('surat_bimbingan_tertentu');
-            $profileImage = 'surat_bimbingan_tertentu'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['surat_bimbingan_tertentu'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'surat_bimbingan_tertentu' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['surat_bimbingan_tertentu'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($image = $request->file('surat_penunjang')) {
             $request->file('surat_penunjang');
-            $profileImage = 'surat_penunjang'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['surat_penunjang'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'surat_penunjang' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['surat_penunjang'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('surat_pkb')) {
             $image = $request->file('surat_pkb');
-            $profileImage = 'surat_pkb'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['surat_pkb'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'surat_pkb' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['surat_pkb'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($request->file('sk_ganjil')) {
             $image = $request->file('sk_ganjil');
-            $profileImage = 'sk_ganjil'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['sk_ganjil'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'sk_ganjil' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['sk_ganjil'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($image = $request->file('sk_genap')) {
             $image = $request->file('sk_genap');
-            $profileImage = 'sk_genap'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['sk_genap'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'sk_genap' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['sk_genap'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($image = $request->file('scan_pak')) {
             $image = $request->file('scan_pak');
-            $profileImage = 'scan_pak'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['scan_pak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'scan_pak' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['scan_pak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($image = $request->file('pkg')) {
             $image = $request->file('pkg');
-            $profileImage = 'pkg'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['pkg'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'pkg' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['pkg'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         if ($image = $request->file('skp')) {
             $image = $request->file('skp');
-            $profileImage = 'skp'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-             $path = $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-            $input['skp'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
+            $profileImage = 'skp' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $path = $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['skp'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
         $input['awal'] = Carbon::parse($request->get('awal'))->format('Y-m-d');
@@ -198,7 +218,7 @@ class PakController extends Controller
         $pak = Pak::create($input);
 
         return redirect()->route('paks.index')
-                        ->with('success','Dupak created successfully');
+            ->with('success', 'Dupak created successfully');
     }
 
     /**
@@ -232,7 +252,7 @@ class PakController extends Controller
 
         // dd($data);
 
-        return view('paks.edit',compact('data'));
+        return view('paks.edit', compact('data'));
     }
 
     /**
@@ -245,7 +265,7 @@ class PakController extends Controller
     public function update(Request $request, pak $pak)
     {
         //
-        if( $request->get('pra_jabatan')) {
+        if ($request->get('pra_jabatan')) {
             $this->validate($request, [
                 'awal' => 'required',
                 'akhir' => 'required',
@@ -274,7 +294,7 @@ class PakController extends Controller
                 'skp' => 'mimes:pdf|max:10048',
             ]);
 
-        }else{
+        } else {
             $this->validate($request, [
                 'awal' => 'required',
                 'akhir' => 'required',
@@ -294,297 +314,293 @@ class PakController extends Controller
 
         }
 
-
         $input = $request->all();
 
         // dd($input);
 
         if ($image = $request->file('surat_pengantar')) {
-            if(File::exists(public_path('storage/'.$pak->surat_pengantar))){
+            if (File::exists(public_path('storage/' . $pak->surat_pengantar))) {
                 if ($image = $request->file('surat_pengantar')) {
-                    if($pak->surat_pengantar==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->surat_pengantar));
+                    if ($pak->surat_pengantar == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->surat_pengantar));
                     }
-                    $profileImage = 'surat_pengantar_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pengantar'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pengantar_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pengantar'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pengantar']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('surat_pengantar')) {
-                    $profileImage = 'surat_pengantar_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pengantar'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pengantar_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pengantar'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pengantar']);
                 }
             }
         }
 
         if ($image = $request->file('tidak_dihukum')) {
-            if(File::exists(public_path('storage/'.$pak->tidak_dihukum))){
+            if (File::exists(public_path('storage/' . $pak->tidak_dihukum))) {
                 if ($image = $request->file('tidak_dihukum')) {
-                    if($pak->tidak_dihukum==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->tidak_dihukum));
+                    if ($pak->tidak_dihukum == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->tidak_dihukum));
                     }
-                    $profileImage = 'tidak_dihukum_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['tidak_dihukum'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'tidak_dihukum_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['tidak_dihukum'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['tidak_dihukum']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('tidak_dihukum')) {
-                    $profileImage = 'tidak_dihukum_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['tidak_dihukum'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'tidak_dihukum_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['tidak_dihukum'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['tidak_dihukum']);
                 }
             }
         }
 
         if ($image = $request->file('dupak')) {
-            if(File::exists(public_path('storage/'.$pak->dupak))){
+            if (File::exists(public_path('storage/' . $pak->dupak))) {
                 if ($image = $request->file('dupak')) {
-                    if($pak->dupak==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->dupak));
+                    if ($pak->dupak == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->dupak));
                     }
-                    $profileImage = 'dupak_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['dupak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'dupak_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['dupak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['dupak']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('dupak')) {
-                    $profileImage = 'dupak_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['dupak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'dupak_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['dupak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['dupak']);
                 }
             }
         }
-
 
         if ($image = $request->file('surat_pembelajaran')) {
-            if(File::exists(public_path('storage/'.$pak->surat_pembelajaran))){
+            if (File::exists(public_path('storage/' . $pak->surat_pembelajaran))) {
                 if ($image = $request->file('surat_pembelajaran')) {
-                    if($pak->surat_pembelajaran==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->surat_pembelajaran));
+                    if ($pak->surat_pembelajaran == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->surat_pembelajaran));
                     }
-                    $profileImage = 'surat_pembelajaran_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pembelajaran'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pembelajaran_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pembelajaran'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pembelajaran']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('surat_pembelajaran')) {
-                    $profileImage = 'surat_pembelajaran_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pembelajaran'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pembelajaran_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pembelajaran'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pembelajaran']);
                 }
             }
         }
 
-
         if ($image = $request->file('surat_bimbingan_tertentu')) {
-            if(File::exists(public_path('storage/'.$pak->surat_bimbingan_tertentu))){
+            if (File::exists(public_path('storage/' . $pak->surat_bimbingan_tertentu))) {
                 if ($image = $request->file('surat_bimbingan_tertentu')) {
-                    if($pak->surat_bimbingan_tertentu==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->surat_bimbingan_tertentu));
+                    if ($pak->surat_bimbingan_tertentu == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->surat_bimbingan_tertentu));
                     }
-                    $profileImage = 'surat_bimbingan_tertentu_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_bimbingan_tertentu'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_bimbingan_tertentu_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_bimbingan_tertentu'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_bimbingan_tertentu']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('surat_bimbingan_tertentu')) {
-                    $profileImage = 'surat_bimbingan_tertentu_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_bimbingan_tertentu'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_bimbingan_tertentu_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_bimbingan_tertentu'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_bimbingan_tertentu']);
                 }
             }
         }
 
         if ($image = $request->file('surat_penunjang')) {
-            if(File::exists(public_path('storage/'.$pak->surat_penunjang))){
+            if (File::exists(public_path('storage/' . $pak->surat_penunjang))) {
                 if ($image = $request->file('surat_penunjang')) {
-                    if($pak->surat_penunjang==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->surat_penunjang));
+                    if ($pak->surat_penunjang == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->surat_penunjang));
                     }
-                    $profileImage = 'surat_penunjang_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_penunjang'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_penunjang_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_penunjang'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_penunjang']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('surat_penunjang')) {
-                    $profileImage = 'surat_penunjang_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_penunjang'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_penunjang_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_penunjang'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_penunjang']);
                 }
             }
         }
 
         if ($image = $request->file('surat_pkb')) {
-            if(File::exists(public_path('storage/'.$pak->surat_pkb))){
+            if (File::exists(public_path('storage/' . $pak->surat_pkb))) {
                 if ($image = $request->file('surat_pkb')) {
-                    if($pak->surat_pkb==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->surat_pkb));
+                    if ($pak->surat_pkb == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->surat_pkb));
                     }
-                    $profileImage = 'surat_pkb_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pkb'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pkb_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pkb'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pkb']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('surat_pkb')) {
-                    $profileImage = 'surat_pkb_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['surat_pkb'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'surat_pkb_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['surat_pkb'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['surat_pkb']);
                 }
             }
         }
 
         if ($image = $request->file('sk_ganjil')) {
-            if(File::exists(public_path('storage/'.$pak->sk_ganjil))){
+            if (File::exists(public_path('storage/' . $pak->sk_ganjil))) {
                 if ($image = $request->file('sk_ganjil')) {
-                    if($pak->sk_ganjil==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->sk_ganjil));
+                    if ($pak->sk_ganjil == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->sk_ganjil));
                     }
-                    $profileImage = 'sk_ganjil_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['sk_ganjil'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'sk_ganjil_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['sk_ganjil'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['sk_ganjil']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('sk_ganjil')) {
-                    $profileImage = 'sk_ganjil_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['sk_ganjil'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'sk_ganjil_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['sk_ganjil'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['sk_ganjil']);
                 }
             }
         }
 
-
         if ($image = $request->file('sk_genap')) {
-            if(File::exists(public_path('storage/'.$pak->sk_genap))){
+            if (File::exists(public_path('storage/' . $pak->sk_genap))) {
                 if ($image = $request->file('sk_genap')) {
-                    if($pak->sk_genap==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->sk_genap));
+                    if ($pak->sk_genap == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->sk_genap));
                     }
-                    $profileImage = 'sk_genap_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['sk_genap'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'sk_genap_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['sk_genap'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['sk_genap']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('sk_genap')) {
-                    $profileImage = 'sk_genap_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['sk_genap'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'sk_genap_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['sk_genap'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['sk_genap']);
                 }
             }
         }
 
         if ($image = $request->file('scan_pak')) {
-            if(File::exists(public_path('storage/'.$pak->scan_pak))){
+            if (File::exists(public_path('storage/' . $pak->scan_pak))) {
                 if ($image = $request->file('scan_pak')) {
-                    if($pak->scan_pak==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->scan_pak));
+                    if ($pak->scan_pak == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->scan_pak));
                     }
-                    $profileImage = 'scan_pak_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['scan_pak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'scan_pak_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['scan_pak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['scan_pak']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('scan_pak_')) {
-                    $profileImage = 'scan_pak_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['scan_pak'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'scan_pak_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['scan_pak'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['scan_pak']);
                 }
             }
         }
 
         if ($image = $request->file('pkg')) {
-            if(File::exists(public_path('storage/'.$pak->pkg))){
+            if (File::exists(public_path('storage/' . $pak->pkg))) {
                 if ($image = $request->file('pkg')) {
-                    if($pak->pkg==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->pkg));
+                    if ($pak->pkg == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->pkg));
                     }
-                    $profileImage = 'pkg_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['pkg'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'pkg_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['pkg'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['pkg']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('pkg')) {
-                    $profileImage = 'pkg_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['pkg'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'pkg_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['pkg'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['pkg']);
                 }
             }
         }
 
         if ($image = $request->file('skp')) {
-            if(File::exists(public_path('storage/'.$pak->skp))){
+            if (File::exists(public_path('storage/' . $pak->skp))) {
                 if ($image = $request->file('skp')) {
-                    if($pak->skp==null){
-                    }else{
-                        unlink(public_path('storage/'.$pak->skp));
+                    if ($pak->skp == null) {
+                    } else {
+                        unlink(public_path('storage/' . $pak->skp));
                     }
-                    $profileImage = 'skp_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['skp'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'skp_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['skp'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['skp']);
                 }
-            }else{
+            } else {
                 if ($image = $request->file('skp')) {
-                    $profileImage = 'skp_'.date('YmdHis') . "." . $image->getClientOriginalExtension();
-                    $image->storeAs('public/dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username, $profileImage);
-                    $input['skp'] = 'dupak/'.Carbon::now()->format('Y').'/'.Auth::user()->username."/".$profileImage;
-                }else{
+                    $profileImage = 'skp_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                    $image->storeAs('public/dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                    $input['skp'] = 'dupak/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+                } else {
                     unset($input['skp']);
                 }
             }
@@ -608,8 +624,8 @@ class PakController extends Controller
 
         $user->update();
 
-        return redirect()->route('paks.edit',$data)
-                        ->with('success','User updated successfully');
+        return redirect()->route('paks.edit', $data)
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -621,98 +637,97 @@ class PakController extends Controller
     public function destroy(pak $pak)
     {
         //
-        $lampiran = Pendidikan::where('pak_id',$pak->id)->count();
-        if($lampiran>0){
+        $lampiran = Pendidikan::where('pak_id', $pak->id)->count();
+        if ($lampiran > 0) {
             return redirect()->back()
-                            ->with('error','Masih ada Lampiran pada dupak ini silahkan hapus terlebih dahulu');
+                ->with('error', 'Masih ada Lampiran pada dupak ini silahkan hapus terlebih dahulu');
         }
 
         // dd(public_path('storage/'.$pak->surat_pengantar));
-        if(File::exists(public_path('storage/'.$pak->surat_pengantar))){
-                if($pak->surat_pengantar == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->surat_pengantar));
-                }
-        }
-
-        if(File::exists(public_path('storage/'.$pak->tidak_dihukum))){
-                if($pak->tidak_dihukum == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->tidak_dihukum));
-                }
-        }
-        if(File::exists(public_path('storage/'.$pak->surat_pembelajaran))){
-            if($pak->surat_pembelajaran == null){
-            }else{
-                unlink(public_path('storage/'.$pak->surat_pembelajaran));
+        if (File::exists(public_path('storage/' . $pak->surat_pengantar))) {
+            if ($pak->surat_pengantar == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->surat_pengantar));
             }
         }
 
-        if(File::exists(public_path('storage/'.$pak->surat_bimbingan_tertentu))){
-                if($pak->surat_bimbingan_tertentu == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->surat_bimbingan_tertentu));
-                }
+        if (File::exists(public_path('storage/' . $pak->tidak_dihukum))) {
+            if ($pak->tidak_dihukum == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->tidak_dihukum));
+            }
         }
-
-        if(File::exists(public_path('storage/'.$pak->surat_penunjang))){
-            if($pak->surat_penunjang == null){
-            }else{
-                unlink(public_path('storage/'.$pak->surat_penunjang));
+        if (File::exists(public_path('storage/' . $pak->surat_pembelajaran))) {
+            if ($pak->surat_pembelajaran == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->surat_pembelajaran));
             }
         }
 
-        if(File::exists(public_path('storage/'.$pak->surat_pkb))){
-                if($pak->surat_pkb == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->surat_pkb));
-                }
-        }
-        if(File::exists(public_path('storage/'.$pak->sk_ganjil))){
-            if($pak->sk_ganjil == null){
-            }else{
-                unlink(public_path('storage/'.$pak->sk_ganjil));
+        if (File::exists(public_path('storage/' . $pak->surat_bimbingan_tertentu))) {
+            if ($pak->surat_bimbingan_tertentu == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->surat_bimbingan_tertentu));
             }
         }
 
-        if(File::exists(public_path('storage/'.$pak->sk_genap))){
-                if($pak->sk_genap == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->sk_genap));
-                }
-        }
-
-        if(File::exists(public_path('storage/'.$pak->scan_pak))){
-            if($pak->scan_pak == null){
-            }else{
-                unlink(public_path('storage/'.$pak->scan_pak));
+        if (File::exists(public_path('storage/' . $pak->surat_penunjang))) {
+            if ($pak->surat_penunjang == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->surat_penunjang));
             }
         }
 
-        if(File::exists(public_path('storage/'.$pak->pkg))){
-                if($pak->pkg == null){
-                }else{
-                    unlink(public_path('storage/'.$pak->pkg));
-                }
+        if (File::exists(public_path('storage/' . $pak->surat_pkb))) {
+            if ($pak->surat_pkb == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->surat_pkb));
+            }
         }
-        if(File::exists(public_path('storage/'.$pak->skp))){
-            if($pak->skp == null){
-            }else{
-                unlink(public_path('storage/'.$pak->skp));
+        if (File::exists(public_path('storage/' . $pak->sk_ganjil))) {
+            if ($pak->sk_ganjil == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->sk_ganjil));
             }
         }
 
-        if(File::exists(public_path('storage/'.$pak->dupak))){
-                if($pak->dupak== null){
-                }else{
-                    unlink(public_path('storage/'.$pak->dupak));
-                }
+        if (File::exists(public_path('storage/' . $pak->sk_genap))) {
+            if ($pak->sk_genap == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->sk_genap));
+            }
+        }
+
+        if (File::exists(public_path('storage/' . $pak->scan_pak))) {
+            if ($pak->scan_pak == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->scan_pak));
+            }
+        }
+
+        if (File::exists(public_path('storage/' . $pak->pkg))) {
+            if ($pak->pkg == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->pkg));
+            }
+        }
+        if (File::exists(public_path('storage/' . $pak->skp))) {
+            if ($pak->skp == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->skp));
+            }
+        }
+
+        if (File::exists(public_path('storage/' . $pak->dupak))) {
+            if ($pak->dupak == null) {
+            } else {
+                unlink(public_path('storage/' . $pak->dupak));
+            }
         }
 
         pak::find($pak->id)->delete();
         return redirect()->route('paks.index')
-                        ->with('success','User deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
-
 
 }
