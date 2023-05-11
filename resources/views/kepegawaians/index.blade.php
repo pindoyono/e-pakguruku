@@ -192,7 +192,9 @@
                                                     8
                                                 </td>
                                                 <td>
-                                                    Bukti Penggunaan Platform Merdeka Mengajar
+                                                    Bukti Penggunaan Platform Merdeka Mengajar *Laporan penggunaan PMM
+                                                    (cantumkan screenshoot dan
+                                                    link yg relevan)
                                                 </td>
                                                 <td><a target="_blank"
                                                         href="{{ asset('storage/' . $kepegawaian->pmm) }}">Download</a>

@@ -78,7 +78,7 @@
                             <input type="file" name="serdik" class="form-control" placeholder=".col-md-3">
                         </div>
 
-                        <label class="col-sm-3 col-form-label">Bukti Penggunaan Platform Medeka Mengajar Laporan penggunaan
+                        <label class="col-sm-3 col-form-label">Bukti Penggunaan Platform Medeka Mengajar *Laporan penggunaan
                             PMM (cantumkan screenshoot dan
                             link yg relevan)</label>
                         <div class="col-md-2">
