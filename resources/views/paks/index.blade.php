@@ -91,12 +91,13 @@
                                                 @endif
                                             </th>
                                             <td class="td-actions text-right">
+
+                                                <a class="btn btn-success"
+                                                    href="{{ route('paks.cetak_draf_pak', $pak->id) }}">cek draf Pak</a>
                                                 @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' || $pak->status == 'Terverifikasi')
                                                     <a class="btn btn-warning"
                                                         href="{{ route('pendidikans.index1', $pak->id) }}"><i
                                                             class="material-icons">attach_file</i></a>
-                                                    <a class="btn btn-success"
-                                                        href="{{ route('paks.cetak_draf_pak', $pak->id) }}">cek draf Pak</a>
                                                     <a class="btn btn-primary" href="{{ route('paks.edit', $pak) }}"><i
                                                             class="material-icons">edit</i></a>
                                                 @else
