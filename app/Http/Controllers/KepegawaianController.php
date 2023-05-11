@@ -65,6 +65,7 @@ class KepegawaianController extends Controller
             'karpeg' => 'required|mimes:pdf|max:2048',
             'sk_penyesuaian' => 'mimes:pdf|max:2048',
             'serdik' => 'mimes:pdf|max:2048',
+            'pmm' => 'mimes:pdf|max:20048',
         ]);
 
         $input = $request->all();
@@ -118,6 +119,13 @@ class KepegawaianController extends Controller
             $input['serdik'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
         }
 
+        if ($request->file('pmm')) {
+            $image = $request->file('pmm');
+            $profileImage = 'pmm_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->storeAs('public/kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+            $input['pmm'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+        }
+
         // dd($input);
         $input['user_id'] = Auth::user()->id;
         $pak = Kepegawaian::create($input);
@@ -167,6 +175,7 @@ class KepegawaianController extends Controller
             'ijazah' => 'mimes:pdf|max:2048',
             'karpeg' => 'mimes:pdf|max:2048',
             'serdik' => 'mimes:pdf|max:2048',
+            'pmm' => 'mimes:pdf|max:20048',
         ]);
 
         $input = $request->all();
@@ -309,8 +318,7 @@ class KepegawaianController extends Controller
             }
         }
 
-
-         if (File::exists(public_path('storage/' . $kepegawaian->serdik))) {
+        if (File::exists(public_path('storage/' . $kepegawaian->serdik))) {
             if ($image = $request->file('serdik')) {
                 if ($kepegawaian->serdik == null) {
                 } else {
@@ -330,6 +338,29 @@ class KepegawaianController extends Controller
                 $input['serdik'] = 'berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
             } else {
                 unset($input['serdik']);
+            }
+        }
+
+        if (File::exists(public_path('storage/' . $kepegawaian->pmm))) {
+            if ($image = $request->file('pmm')) {
+                if ($kepegawaian->pmm == null) {
+                } else {
+                    unlink(public_path('storage/' . $kepegawaian->pmm));
+                }
+                $profileImage = 'pmm_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->storeAs('public/kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                $input['pmm'] = 'kepegawaian/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+            } else {
+                unset($input['pmm']);
+            }
+
+        } else {
+            if ($image = $request->file('pmm')) {
+                $profileImage = 'pmm_' . date('YmdHis') . "." . $image->getClientOriginalExtension();
+                $image->storeAs('public/berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username, $profileImage);
+                $input['pmm'] = 'berkas/' . Carbon::now()->format('Y') . '/' . Auth::user()->username . "/" . $profileImage;
+            } else {
+                unset($input['pmm']);
             }
         }
 

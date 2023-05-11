@@ -9,5 +9,5 @@ class Kepegawaian extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['sk_cpns','serdik','sk_penyesuaian','sk_ggd', 'sk_pangkat', 'sk_jafung', 'ijazah', 'karpeg','user_id','nilai_pak_pangkat_akhir'];
+    protected $fillable = ['pmm', 'sk_cpns', 'serdik', 'sk_penyesuaian', 'sk_ggd', 'sk_pangkat', 'sk_jafung', 'ijazah', 'karpeg', 'user_id', 'nilai_pak_pangkat_akhir'];
 }
