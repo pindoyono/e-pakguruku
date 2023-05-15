@@ -90,7 +90,8 @@
                                                     </label>
                                                 @endif
                                                 @if ($pak->status == 'sudah dinilai')
-                                                    <a class="btn btn-warning"
+                                                    <a onclick="return confirm('Apakah Anda yakin PAK pada periode ini sudah TERBIT?')"
+                                                        class="btn btn-warning"
                                                         href="{{ route('paks.confirm_terbit', $pak->id) }}">
                                                         Klik Disini
                                                         Jika PAK Periode ini sudah terbit</a>
@@ -137,7 +138,6 @@
     </div>
     </div>
 @endsection
-
 
 
 @push('body-scripts')
