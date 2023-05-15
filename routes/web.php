@@ -48,6 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('export', [UserController::class, 'export'])->name('export');
     Route::post('import', [UserController::class, 'import'])->name('import');
     Route::resource('paks', PakController::class);
+    Route::get('/confirm_terbit/{id}', [PakController::class, 'confirm_terbit'])->name('paks.confirm_terbit');
     Route::get('/cetak_draf/{id}', [PakController::class, 'cetak_draf_pak'])->name('paks.cetak_draf_pak');
 
     Route::resource('kegiatans', KegiatanController::class);

@@ -89,6 +89,10 @@
                                                         {{ $pak->status }}
                                                     </label>
                                                 @endif
+                                                <a class="btn btn-success"
+                                                    href="{{ route('paks.confirm_terbit', $pak->id) }}">
+                                                    Klik Disini
+                                                    Jika PAK Periode ini sudah terbit</a>
                                             </th>
                                             <td class="td-actions text-right">
 

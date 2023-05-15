@@ -16,6 +16,20 @@ use PDF;
 
 class PakController extends Controller
 {
+    public function confirm_terbit(Request $request, $pak_id)
+    {
+        //
+
+        // dd($data);
+        $pak = Pak::find($pak_id);
+        $pak->update(
+            [
+                'status' => 'Terbit',
+            ]
+        );
+        return back()->with('success', 'Terbit');
+    }
+
     /**
      * Display a listing of the resource.
      *
