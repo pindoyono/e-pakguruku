@@ -89,7 +89,7 @@
                                                         {{ $pak->status }}
                                                     </label>
                                                 @endif
-                                                <a class="btn btn-success"
+                                                <a class="btn btn-warning"
                                                     href="{{ route('paks.confirm_terbit', $pak->id) }}">
                                                     Klik Disini
                                                     Jika PAK Periode ini sudah terbit</a>
