@@ -89,10 +89,12 @@
                                                         {{ $pak->status }}
                                                     </label>
                                                 @endif
-                                                <a class="btn btn-warning"
-                                                    href="{{ route('paks.confirm_terbit', $pak->id) }}">
-                                                    Klik Disini
-                                                    Jika PAK Periode ini sudah terbit</a>
+                                                @if ($pak->status == 'sudah dinilai')
+                                                    <a class="btn btn-warning"
+                                                        href="{{ route('paks.confirm_terbit', $pak->id) }}">
+                                                        Klik Disini
+                                                        Jika PAK Periode ini sudah terbit</a>
+                                                @endif
                                             </th>
                                             <td class="td-actions text-right">
 
