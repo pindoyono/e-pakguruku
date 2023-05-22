@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/update_pak/{id}', [UserController::class, 'update_pak'])->name('users.update_pak');
 
     // untuk penilai
+    Route::get('/data_kenpa', [PenilaiController::class, 'data_kenpa'])->name('penilais.data_kenpa');
     Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilais.penilai');
     Route::get('/penilai_tahunan', [PenilaiController::class, 'penilai_tahunan'])->name('penilais.penilai_tahunan');
     Route::get('/pak_detail/{id}', [PenilaiController::class, 'pak_detail'])->name('penilais.pak_detail');

@@ -50,6 +50,23 @@ class PenilaiController extends Controller
         ]);
     }
 
+    public function data_kenpa()
+    {
+        $data = DB::table('paks')
+            ->join('users', 'users.id', '=', 'paks.user_id')
+        // ->select('users.*', 'paks.*')
+            ->select('users.name as NAMA', 'users.status_naik_pangkat as STATUS NAIK PANGKAT', 'users.sekolah as SEKOLAH', 'paks.created_at as TANGGAL BUAT')
+            ->orderBy('paks.id', 'asc')
+            ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+            ->where(DB::raw('YEAR(paks.created_at)'), '>', '2022')
+            ->get();
+
+        return [
+            "status" => 1,
+            "data" => $data,
+        ];
+    }
+
     public function penilai_tahunan()
     {
 
