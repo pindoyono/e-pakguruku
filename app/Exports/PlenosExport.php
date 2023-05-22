@@ -21,6 +21,7 @@ class PlenosExport implements FromView
                     'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -29,6 +30,7 @@ class PlenosExport implements FromView
                     'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->select('paks.*')
                 ->get();
 
@@ -40,6 +42,7 @@ class PlenosExport implements FromView
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -50,6 +53,8 @@ class PlenosExport implements FromView
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+
                 ->get();
         }
 

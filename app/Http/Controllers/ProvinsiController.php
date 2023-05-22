@@ -17,6 +17,7 @@ class ProvinsiController extends Controller
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
         } else {
             $data = DB::table('paks')
@@ -24,6 +25,7 @@ class ProvinsiController extends Controller
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
         }
 

@@ -105,7 +105,7 @@
         <li class="nav-item ">
             <a class="nav-link" href="{{ route('penilais.penilai') }}">
                 <i class="material-icons">calculate</i>
-                <p> Penilaian </p>
+                <p> Penilaian <span class="badge badge-pill badge-warning">Kenpa</span> </p>
             </a>
         </li>
         <li class="nav-item ">
@@ -126,7 +126,7 @@
         <li class="nav-item ">
             <a class="nav-link" href="{{ route('provinsis.verifikasi') }}">
                 <i class="material-icons">verified</i>
-                <p> Verifikasi </p>
+                <p> Verifikasi <span class="badge badge-pill badge-warning">Kenpa</span> </p>
             </a>
         </li>
         <li class="nav-item ">
@@ -141,7 +141,7 @@
         <li class="nav-item ">
             <a class="nav-link" href="{{ route('penilais.pleno') }}">
                 <i class="material-icons">view_in_ar</i>
-                <p> Rekap Pleno </p>
+                <p> Rekap Pleno <span class="badge badge-pill badge-warning">Kenpa</span></p>
             </a>
         </li>
         <li class="nav-item ">

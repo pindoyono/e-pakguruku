@@ -35,6 +35,7 @@
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
+                                        <th>Tgl Buat</th>
                                         <th>Status</th>
                                         <th>Lolos?</th>
                                         <th class="disabled-sorting text-right">Actions</th>
@@ -47,6 +48,7 @@
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
+                                        <th>Tgl Buat</th>
                                         <th>Status</th>
                                         <th>Lolos?</th>
                                         <th class="text-right">Actions</th>
@@ -62,6 +64,7 @@
                                             </th>
                                             <th>{{ tahun_aja($pak->awal) }}</th>
                                             <th>{{ $pak->sekolah }}</th>
+                                            <th>{{ $pak->created_at }}</th>
                                             <th>
                                                 @if ($pak->status == 'Perbaikan')
                                                     <label class="badge badge-primary">{{ $pak->status }}</label>

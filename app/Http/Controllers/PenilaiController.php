@@ -31,6 +31,7 @@ class PenilaiController extends Controller
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
         } else {
             $data = DB::table('paks')
@@ -38,6 +39,7 @@ class PenilaiController extends Controller
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
         }
         $i = 1;
@@ -783,6 +785,7 @@ class PenilaiController extends Controller
                     'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -791,6 +794,7 @@ class PenilaiController extends Controller
                     'users.tmt_pns', 'users.karya_inovatif as ki_user', 'users.publikasi_ilmiah as pi_user', 'jabatans.*')
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
                 ->select('paks.*')
                 ->get();
 
@@ -802,6 +806,8 @@ class PenilaiController extends Controller
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -812,6 +818,8 @@ class PenilaiController extends Controller
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+
                 ->get();
         }
 

@@ -141,6 +141,7 @@
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
+                                        <th>Tgl Buat</th>
                                         <th style="width:50%">No SK</th>
                                         <th style="width:50%">No SK Asli</th>
                                         <th>Status</th>
@@ -154,6 +155,7 @@
                                         <th>Naik Pangkat</th>
                                         <th>Periode</th>
                                         <th>Sekolah</th>
+                                        <th>Tgl Buat</th>
                                         <th style="width:50%">No SK</th>
                                         <th style="width:50%">No SK Asli</th>
                                         <th>Status</th>
@@ -170,6 +172,7 @@
                                             </td>
                                             <td>{{ tahun_aja($pak->awal) }}</td>
                                             <td>{{ $pak->sekolah }}</td>
+                                            <th>{{ $pak->created_at }}</th>
                                             <td class="td-actions">
                                                 {!! Form::open(['method' => 'PUT', 'route' => ['provinsis.no_sk', $pak->id], 'style' => 'display:inline']) !!}
                                                 @csrf

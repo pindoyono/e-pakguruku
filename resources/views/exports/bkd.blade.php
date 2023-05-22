@@ -24,6 +24,7 @@
             <tr>
                 <th rowspan="2">No</th>
                 <th rowspan="2">Nama</th>
+                <th rowspan="2">Tgl Buat</th>
                 <th rowspan="2">Nip</th>
                 <th rowspan="2">Pendidikan Terakhir</th>
                 <th rowspan="2">Diklatpim/STLUKPI/STLUR</th>
@@ -60,6 +61,7 @@
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $pak->name }}</td>
+                    <th>{{ $pak->created_at }}</th>
                     <td>{{ "'" . $pak->nip }}</td>
                     <td>{{ $pak->no_hp }}</td>
                     <td>{{ '-' }}</td>

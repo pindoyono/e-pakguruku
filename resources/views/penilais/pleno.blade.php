@@ -42,6 +42,7 @@
                                         <th rowspan="2">Nip</th>
                                         <th rowspan="2">No Hp</th>
                                         <th rowspan="2">Nama Sekolah</th>
+                                        <th rowspan="2">Tgl Buat</th>
                                         <th colspan="2">Usulan Gol</th>
                                         <th colspan="3">Angka Kredit</th>
                                         <th colspan="3">AKK Utama 90%</th>
@@ -98,6 +99,7 @@
                                             <td>{{ "'" . $pak->username }}</td>
                                             <td>{{ $pak->no_hp }}</td>
                                             <td>{{ $pak->sekolah }}</td>
+                                            <th>{{ $pak->created_at }}</th>
                                             <td>{{ $pak->pangkat }}</td>
                                             <td>{{ get_jabatan($pak->pangkat_golongan + 1)->pangkat }}</td>
                                             <td>
