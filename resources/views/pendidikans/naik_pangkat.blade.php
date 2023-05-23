@@ -743,7 +743,7 @@
                                 <tr style="font-weight: 900">
                                     <td>Masa Kerja Golongan</td>
                                     <td
-                                        style=" {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), Auth::user()->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
+                                        style=" {{ masa_kerja_tahun(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), Auth::user()->tmt_pns) >= 2 ? 'color: green;' : 'color: green;' }}">
                                         {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), Auth::user()->tmt_pns) }}
                                     </td>
                                     <td colspan="4"> TMT pangkat Terakhir ( {{ tgl_indo(Auth::user()->tmt_pns) }} )
