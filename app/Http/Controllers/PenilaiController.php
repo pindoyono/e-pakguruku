@@ -61,7 +61,11 @@ class PenilaiController extends Controller
             ->where(DB::raw('YEAR(paks.created_at)'), '>', '2022')
             ->get();
 
-        return json_decode($data, true);
+        // return json_decode($data, true);
+        return response()->json([
+            'name' => 'Abigail',
+            'state' => 'CA',
+        ]);
         // return [
         //     "status" => 1,
         //     "data" => $data,
