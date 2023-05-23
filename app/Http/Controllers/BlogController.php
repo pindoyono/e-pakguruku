@@ -21,7 +21,8 @@ class BlogController extends Controller
             ->select('users.name as NAMA', 'users.status_naik_pangkat as STATUS NAIK PANGKAT', 'users.sekolah as SEKOLAH', 'paks.created_at as TANGGAL BUAT', 'paks.status as STATUS USULAN DUPAK')
             ->orderBy('paks.id', 'asc')
             ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
-            ->where(DB::raw('YEAR(paks.created_at)'), '>', '2022')
+            ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
+            ->where(DB::raw('MONTH(paks.created_at)'), '>', '04')
             ->get();
         return [
 
