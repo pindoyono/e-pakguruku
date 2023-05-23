@@ -115,7 +115,8 @@
                     <td rowspan=2>Masa Kerja Golongan</td>
                     <td>Lama</td>
                     <td colspan=4>
-                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->format('y') . '-12-31'), $pak->tmt_cpns) }}
+                        {{-- {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->tmt_pns)->format('y') . '-12-31'), $pak->tmt_cpns) }} --}}
+                        {{ $pak->lama }}
 
 
                     </td>
@@ -123,7 +124,9 @@
                 <tr>
                     <td>Baru</td>
                     <td colspan=4>
-                        {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-12-31'), $pak->tmt_cpns) }}
+                        {{-- {{ masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse($pak->awal)->format('y') . '-12-31'), $pak->tmt_cpns) }} --}}
+                        {{ $pak->baru }}
+
                     </td>
                 </tr>
                 <tr>
