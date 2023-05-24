@@ -817,6 +817,8 @@ class PenilaiController extends Controller
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -826,6 +828,8 @@ class PenilaiController extends Controller
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->select('paks.*')
                 ->get();
 
@@ -838,6 +842,8 @@ class PenilaiController extends Controller
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
 
                 ->get();
 
@@ -850,6 +856,8 @@ class PenilaiController extends Controller
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
 
                 ->get();
         }
@@ -874,6 +882,8 @@ class PenilaiController extends Controller
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -885,6 +895,8 @@ class PenilaiController extends Controller
                 ->select('paks.*')
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
         } else {
@@ -897,6 +909,8 @@ class PenilaiController extends Controller
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -909,6 +923,8 @@ class PenilaiController extends Controller
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
         }
 

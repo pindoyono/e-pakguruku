@@ -23,6 +23,8 @@ class BkdEksport implements FromView
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -33,6 +35,8 @@ class BkdEksport implements FromView
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->select('paks.*')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
         } else {
@@ -44,6 +48,8 @@ class BkdEksport implements FromView
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -55,6 +61,8 @@ class BkdEksport implements FromView
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
         }
 
