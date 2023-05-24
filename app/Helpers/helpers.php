@@ -431,6 +431,28 @@ if (!function_exists('get_periode')) {
     }
 }
 
+if (!function_exists('get_bulan_pengusulan')) {
+    function get_bulan_pengusulan()
+    {
+        $settings = Setting::all();
+        foreach ($settings as $key => $set) {
+            $periode = $set->bulan_pengusulan;
+        }
+        return $periode;
+    }
+}
+
+if (!function_exists('get_tahun_pengusulan')) {
+    function get_tahun_pengusulan()
+    {
+        $settings = Setting::all();
+        foreach ($settings as $key => $set) {
+            $periode = $set->tahun_pengusulan;
+        }
+        return $periode;
+    }
+}
+
 if (!function_exists('get_tgl_count')) {
     function get_tgl_count()
     {

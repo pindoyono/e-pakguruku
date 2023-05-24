@@ -22,6 +22,8 @@ class PlenosExport implements FromView
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -31,6 +33,8 @@ class PlenosExport implements FromView
                 ->join('users', 'users.id', '=', 'paks.user_id')
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->select('paks.*')
                 ->get();
 
@@ -43,6 +47,8 @@ class PlenosExport implements FromView
                 ->join('jabatans', 'users.pangkat_golongan', '=', 'jabatans.id')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
 
             $pak2 = DB::table('paks')
@@ -54,6 +60,8 @@ class PlenosExport implements FromView
                 ->select('paks.*')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
 
                 ->get();
         }

@@ -15,6 +15,7 @@ use App\Models\pak;
 use App\Models\Setting;
 use App\Models\User;
 use Auth;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -32,8 +33,8 @@ class PenilaiController extends Controller
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
-                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-                ->where(DB::raw('MONTH(paks.created_at)'), '>', '04')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
         } else {
             $data = DB::table('paks')
@@ -42,8 +43,8 @@ class PenilaiController extends Controller
                 ->orderBy('paks.id', 'asc')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
                 ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
-                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-                ->where(DB::raw('MONTH(paks.created_at)'), '>', '04')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->get();
         }
         $i = 1;
@@ -85,8 +86,8 @@ class PenilaiController extends Controller
                 ->select('users.*', 'paks.*')
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
-                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-                ->where(DB::raw('MONTH(paks.created_at)'), '>', '04')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
                 ->orderBy('paks.id', 'asc')
                 ->get();
 
@@ -96,8 +97,8 @@ class PenilaiController extends Controller
                 ->select('users.*', 'paks.*')
                 ->orderBy('paks.id', 'asc')
                 ->where('wilayah_kerja', Auth::user()->wilayah_kerja)
-                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-                ->where(DB::raw('MONTH(paks.created_at)'), '>', '04')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', get_tahun_pengusulan())
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', get_bulan_pengusulan())
             //hanya yg pak tahunan aja
                 ->where('users.status_naik_pangkat', 'PAK TAHUNAN')
                 ->get();

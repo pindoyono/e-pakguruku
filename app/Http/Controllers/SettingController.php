@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Setting;
 use Carbon\Carbon;
-
-
+use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
@@ -17,9 +15,9 @@ class SettingController extends Controller
         $settings = Setting::get();
         $count = Setting::count();
 
-        $i=0;
+        $i = 0;
         // dd($setting);
-        return view('settings.index', ['data' => $settings,'count' => $count,'i'=>$i]);
+        return view('settings.index', ['data' => $settings, 'count' => $count, 'i' => $i]);
     }
 
     public function create()
@@ -28,9 +26,9 @@ class SettingController extends Controller
         $settings = Setting::get();
         $count = Setting::count();
 
-        return view("settings.create",[ 'settings' => $settings,
-                                            'count' => $count,
-                                        ]);
+        return view("settings.create", ['settings' => $settings,
+            'count' => $count,
+        ]);
     }
 
     public function store1(Request $request)
@@ -46,11 +44,10 @@ class SettingController extends Controller
         $input['tgl_hapak_ttd'] = Carbon::parse($request->get('tgl_hapak_ttd'));
         $input['tgl_pak_ttd'] = Carbon::parse($request->get('tgl_pak_ttd'));
 
-
         $setting = Setting::create($input);
 
         return redirect()->route('settings.index')
-                        ->with('success','Setting created successfully');
+            ->with('success', 'Setting created successfully');
     }
 
     public function edit()
@@ -61,10 +58,9 @@ class SettingController extends Controller
 
         // dd($settings);
 
-
-        return view("settings.edit",[ 'settings' => $settings,
-                                            'count' => $count,
-                                        ]);
+        return view("settings.edit", ['settings' => $settings,
+            'count' => $count,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -85,7 +81,7 @@ class SettingController extends Controller
         $setting->update($input);
 
         return redirect()->route('settings.index')
-                        ->with('success','Setting created successfully');
+            ->with('success', 'Setting created successfully');
     }
 
 }

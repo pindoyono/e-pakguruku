@@ -24,6 +24,8 @@ class Setting extends Model
         'nip_kadis',
         'tgl_akhir',
         'periode',
+        'tahun_pengusulan',
+        'bulan_pengusulan',
 
     ];
 }
