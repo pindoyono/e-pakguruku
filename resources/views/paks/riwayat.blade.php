@@ -54,8 +54,8 @@
                                                 </label>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" href="{{ route('l2pkb.alasan', $pak->id) }}">Cek
-                                                    Alasan</a>
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('l2pkb.alasan', $pak->id) }}">saran</a>
                                             </td>
                                         </tr>
                                     @endforeach
