@@ -22,6 +22,15 @@
                         <h3 class="card-title">Riwayat DUPAK TERBIT</h3>
                     </div>
 
+                    <div class="toolbar">
+                        <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        <h1>
+                            <b>
+                                Pada halaman ini adalah daftar usulan pada tahun tahun sebelum nya yang sudah TERBIT.
+                                tidak ada hubungan nya dengan usulan yang baru
+                            </b>
+                        </h1>
+                    </div>
 
                     <div class="card-body">
                         <div class="material-datatables">
