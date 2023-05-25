@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\relasi_l2pkb_usulan;
 use App\Models\Lampiran2pkb;
-use App\Models\Pendidikan;
-use Illuminate\Http\Request;
+use App\Models\relasi_l2pkb_usulan;
 use DB;
+use Illuminate\Http\Request;
 
 class RelasiL2pkbUsulanController extends Controller
 {
@@ -19,39 +18,75 @@ class RelasiL2pkbUsulanController extends Controller
     {
         //
 
-
-        $usulan =  DB::table('kegiatans')
-        ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
-        ->select('kegiatans.*','pendidikans.*')
-        ->orderBy('kegiatans.kode','asc')
-        ->where('pendidikans.pak_id',$pak_id)
+        $usulan = DB::table('kegiatans')
+            ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+            ->select('kegiatans.*', 'pendidikans.*')
+            ->orderBy('kegiatans.kode', 'asc')
+            ->where('pendidikans.pak_id', $pak_id)
         // ->where('kegiatans.unsur','PENGEMBANGAN  KEPROFESIAN  BERKELANJUTAN')
-        ->get();
+            ->get();
 
         // $data = relasi_l2pkb_usulan::orderBy('id','DESC')->get();
-        $lampiran = Lampiran2pkb::orderBy('id','DESC')->get();
-
+        $lampiran = Lampiran2pkb::orderBy('id', 'DESC')->get();
 
         $data = DB::table('relasi_l2pkb_usulans')
-        ->join('lampiran2pkbs', 'relasi_l2pkb_usulans.l2pkb_id', '=', 'lampiran2pkbs.id')
-        ->join('pendidikans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
-        ->join('kegiatans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+            ->join('lampiran2pkbs', 'relasi_l2pkb_usulans.l2pkb_id', '=', 'lampiran2pkbs.id')
+            ->join('pendidikans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->join('kegiatans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
         // ->select('kegiatan.is'as)
-        ->select('relasi_l2pkb_usulans.id as id','pendidikan_id', 'kegiatan','lampiran2pkbs.kode as kode', 'diskripsi', 'saran' ,'jenis')
-        ->orderBy('kegiatans.kode','asc')
-        ->where('pendidikans.pak_id',$pak_id)
-        ->get();
+            ->select('relasi_l2pkb_usulans.id as id', 'pendidikan_id', 'kegiatan', 'lampiran2pkbs.kode as kode', 'diskripsi', 'saran', 'jenis')
+            ->orderBy('kegiatans.kode', 'asc')
+            ->where('pendidikans.pak_id', $pak_id)
+            ->get();
 
         // dd($data);
         // dd($usulan);
 
-        $i=0;
+        $i = 0;
         return view('l2pkb.index', [
-                                'data' => $data,
-                                'usulan' => $usulan,
-                                'lampiran' => $lampiran,
-                                'i'=>$i
-                            ]);
+            'data' => $data,
+            'usulan' => $usulan,
+            'lampiran' => $lampiran,
+            'i' => $i,
+        ]);
+
+    }
+
+    public function alasan($pak_id)
+    {
+        //
+
+        $usulan = DB::table('kegiatans')
+            ->join('pendidikans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+            ->select('kegiatans.*', 'pendidikans.*')
+            ->orderBy('kegiatans.kode', 'asc')
+            ->where('pendidikans.pak_id', $pak_id)
+        // ->where('kegiatans.unsur','PENGEMBANGAN  KEPROFESIAN  BERKELANJUTAN')
+            ->get();
+
+        // $data = relasi_l2pkb_usulan::orderBy('id','DESC')->get();
+        $lampiran = Lampiran2pkb::orderBy('id', 'DESC')->get();
+
+        $data = DB::table('relasi_l2pkb_usulans')
+            ->join('lampiran2pkbs', 'relasi_l2pkb_usulans.l2pkb_id', '=', 'lampiran2pkbs.id')
+            ->join('pendidikans', 'relasi_l2pkb_usulans.pendidikan_id', '=', 'pendidikans.id')
+            ->join('kegiatans', 'kegiatans.id', '=', 'pendidikans.kegiatan_id')
+        // ->select('kegiatan.is'as)
+            ->select('relasi_l2pkb_usulans.id as id', 'pendidikan_id', 'kegiatan', 'lampiran2pkbs.kode as kode', 'diskripsi', 'saran', 'jenis')
+            ->orderBy('kegiatans.kode', 'asc')
+            ->where('pendidikans.pak_id', $pak_id)
+            ->get();
+
+        // dd($data);
+        // dd($usulan);
+
+        $i = 0;
+        return view('l2pkb.alasan', [
+            'data' => $data,
+            'usulan' => $usulan,
+            'lampiran' => $lampiran,
+            'i' => $i,
+        ]);
 
     }
 
@@ -78,9 +113,9 @@ class RelasiL2pkbUsulanController extends Controller
             "pendidikan_id" => "required",
             "l2pkb_id" => "required",
         ]);
-        $input= $request->all();
+        $input = $request->all();
         $data = relasi_l2pkb_usulan::create($input);
-        return back()->with('success','Lampiran hapak created successfully');
+        return back()->with('success', 'Lampiran hapak created successfully');
     }
 
     /**
@@ -127,6 +162,6 @@ class RelasiL2pkbUsulanController extends Controller
     {
         //
         relasi_l2pkb_usulan::find($id)->delete();
-        return back()->with('success','Lampiran deleted successfully');
+        return back()->with('success', 'Lampiran deleted successfully');
     }
 }

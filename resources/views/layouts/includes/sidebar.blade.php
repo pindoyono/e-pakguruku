@@ -85,6 +85,12 @@
             </a>
         </li>
         <li class="nav-item ">
+            <a class="nav-link" href="{{ route('paks.riwayat') }}">
+                <i class="material-icons">folder_open</i>
+                <p> Riwayat DUPAK <span class="badge badge-pill badge-success">Terbit</span></p>
+            </a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link" href="{{ route('pendidikans.naik_pangkat') }}">
                 <i class="material-icons">trending_up</i>
                 <p> Kenaikan Pangkat <span class="badge badge-pill badge-info">Beta</span> </p>

@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('export', [UserController::class, 'export'])->name('export');
     Route::post('import', [UserController::class, 'import'])->name('import');
     Route::resource('paks', PakController::class);
+    Route::get('/riwayat', [PakController::class, 'riwayat'])->name('paks.riwayat');
+
     Route::get('/confirm_terbit/{id}', [PakController::class, 'confirm_terbit'])->name('paks.confirm_terbit');
     Route::get('/cetak_draf/{id}', [PakController::class, 'cetak_draf_pak'])->name('paks.cetak_draf_pak');
 
@@ -111,6 +113,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/no_sk_asli/{id}', [ProvinsiController::class, 'no_sk_asli'])->name('provinsis.no_sk_asli');
 
     Route::get('/index/{id}', [RelasiL2pkbUsulanController::class, 'index'])->name('l2pkb.index');
+    Route::get('/alasan/{id}', [RelasiL2pkbUsulanController::class, 'alasan'])->name('l2pkb.alasan');
     Route::POST('/store', [RelasiL2pkbUsulanController::class, 'store'])->name('l2pkb.store');
     Route::delete('/destroy/{id}', [RelasiL2pkbUsulanController::class, 'destroy'])->name('l2pkb.destroy');
 
@@ -121,6 +124,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/update/{id}', [SettingController::class, 'update'])->name('settings.update');
 
     Route::get('/index2/{id}', [BaJurnalController::class, 'index'])->name('ba_jurnals.index');
+    Route::get('/index3/{id}', [BaJurnalController::class, 'index3'])->name('ba_jurnals.index3');
     Route::POST('/store/{id}', [BaJurnalController::class, 'store'])->name('ba_jurnals.store');
     Route::delete('/destroy2/{id}', [BaJurnalController::class, 'destroy'])->name('ba_jurnals.destroy');
 

@@ -43,6 +43,16 @@ class PakController extends Controller
         return view('paks.index', ['data' => $data, 'i' => $i]);
     }
 
+    public function riwayat()
+    {
+        //
+        $data = Pak::orderBy('id', 'asc')->where('user_id', Auth::user()->id)->where('status', 'Terbit')->get();
+
+        // $data = Pak::orderBy('id', 'asc')->where('user_id', Auth::user()->id)->get();
+        $i = 0;
+        return view('paks.riwayat', ['data' => $data, 'i' => $i]);
+    }
+
     public function cetak_draf_pak($pak_id)
     {
         $data = DB::table('paks')
