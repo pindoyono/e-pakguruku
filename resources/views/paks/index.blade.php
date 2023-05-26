@@ -101,8 +101,6 @@
 
                                                 <a class="btn btn-success"
                                                     href="{{ route('paks.cetak_draf_pak', $pak->id) }}">cek draf PAK</a>
-                                                <a class="btn btn-primary" href="{{ route('paks.edit', $pak) }}"><i
-                                                        class="material-icons">edit</i></a>
                                                 @if ($pak->status == 'submit' || $pak->status == 'Perbaikan' || $pak->status == 'Terverifikasi')
                                                     <a class="btn btn-warning"
                                                         href="{{ route('pendidikans.index1', $pak->id) }}"><i
@@ -112,9 +110,10 @@
                                                 @else
                                                     {{ 'Tidak Ada Akses Action' }}
                                                 @endif
-                                                {!! Form::open(['method' => 'DELETE', 'route' => ['paks.destroy', $pak], 'style' => 'display:inline']) !!}
-                                                {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
+
                                                 @if ($pak->status == 'submit' || $pak->status == 'Perbaikan')
+                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['paks.destroy', $pak], 'style' => 'display:inline']) !!}
+                                                    {{-- {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!} --}}
                                                     <button type="submit" rel="tooltip" class="btn btn-danger">
                                                         <i class="material-icons">close</i>
                                                         {!! Form::close() !!}
