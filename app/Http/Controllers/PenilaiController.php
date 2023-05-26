@@ -930,7 +930,7 @@ class PenilaiController extends Controller
 
         // dd($data);
 
-        return view('penilais.pleno', [
+        return view('penilais.pleno_tahunan', [
             'data' => $data,
             'pak2' => $pak2,
             'i' => $i = 1,
