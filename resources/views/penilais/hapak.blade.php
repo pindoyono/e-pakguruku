@@ -604,7 +604,7 @@
                 <td colspan="6"></td>
             </tr>
             <tr style="font-weight: 900">
-                <td>Masa Kerja Golongan</td>
+                <td>Masa Kerja Golongan -</td>
                 <td
                     style=" {{ masa_kerja_tahun(\Carbon\Carbon::parse(date('Y') . '-' . get_periode() . '-1'), Auth::user()->tmt_pns) >= 2 ? 'color: green;' : 'color: red;' }}">
                     {{ masa_kerja(\Carbon\Carbon::parse(date('Y') . '-' . get_periode() . '-1'), Auth::user()->tmt_pns) }}

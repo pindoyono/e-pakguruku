@@ -627,7 +627,7 @@
                                                 $memperoleh_penghargaan +
                                                 $pak_first->tertinggal +
                                                 $sum_tertinggal,
-                                        
+
                                             3,
                                         ) }}
                                     </span>
@@ -636,9 +636,9 @@
 
 
                                     @php
-                                        
+
                                         number_format($total_semua2 = Auth::user()->ijazah_tidak_sesuai + Auth::user()->pendukung_tugas_guru + Auth::user()->memperoleh_penghargaan + Auth::user()->pendidikan_sekolah + Auth::user()->pelatihan_prajabatan + Auth::user()->proses_pembelajaran + Auth::user()->proses_bimbingan + Auth::user()->tugas_lain + Auth::user()->pengembangan_diri + Auth::user()->publikasi_ilmiah + Auth::user()->karya_inovatif + Auth::user()->tertinggal, 3);
-                                        
+
                                     @endphp
 
                                     {{-- <span style="{{ $total_semua2 ==  Auth::user()->ak_akhir ? 'color: green;' : 'color: yellow;'  }}" id="jml_semua"> --}}
@@ -674,7 +674,7 @@
                     @php $jml_3 = (($pak_first->publikasi_ilmiah + $pak_first->karya_inovatif +$karya_ilmiah +  $karya_inovatif) - $jabatan->akpkbpiki) - (Auth::user()->publikasi_ilmiah +  Auth::user()->karya_inovatif); @endphp
                     @php
                         $jml_5 = $ak_penunjang - $jml_penunjang_terakhir - $jabatan->akp;
-                        
+
                         if ($jml_1 >= 0 && $jml_2 >= 0 && $jml_3 >= 0 && $jml_4 >= 0 && $jml_5 <= 0) {
                             $naik_pangkat = 1;
                         } else {
@@ -748,6 +748,7 @@
                                     </td>
 
                                     <td colspan="4"> TMT pangkat Terakhir ( {{ tgl_indo(Auth::user()->tmt_pns) }})
+
                                     </td>
                                 </tr>
 
