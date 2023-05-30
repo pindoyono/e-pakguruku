@@ -80,8 +80,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // untuk penilai
     Route::get('/data_kenpa', [PenilaiController::class, 'data_kenpa'])->name('penilais.data_kenpa');
-    Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilais.penilai');
-    Route::get('/penilai_tahunan', [PenilaiController::class, 'penilai_tahunan'])->name('penilais.penilai_tahunan');
+    Route::group(['middleware' => ['role:penilai']], function () {
+        //
+        Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilais.penilai');
+        Route::get('/penilai_tahunan', [PenilaiController::class, 'penilai_tahunan'])->name('penilais.penilai_tahunan');
+    });
     Route::get('/pak_detail/{id}', [PenilaiController::class, 'pak_detail'])->name('penilais.pak_detail');
     Route::put('/update_pak_penilai/{id}', [PenilaiController::class, 'update_pak_penilai'])->name('penilais.update_pak_penilai');
     Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
