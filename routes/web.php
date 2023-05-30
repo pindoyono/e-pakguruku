@@ -81,6 +81,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
+    Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
+
     // untuk penilai
     Route::get('/data_kenpa', [PenilaiController::class, 'data_kenpa'])->name('penilais.data_kenpa');
     Route::group(['middleware' => ['role:penilai|admin-prov']], function () {
@@ -109,7 +111,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::put('/tolak/{id}', [ProvinsiController::class, 'tolak'])->name('provinsis.tolak');
         Route::get('/lap_pi/{id}', [ProvinsiController::class, 'lap_pi'])->name('provinsis.lap_pi');
         Route::get('/jurnal/{id}', [ProvinsiController::class, 'jurnal'])->name('provinsis.jurnal');
-        Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
         Route::put('/saran/{id}', [ProvinsiController::class, 'saran'])->name('provinsis.saran');
         Route::put('/no_sk/{id}', [ProvinsiController::class, 'no_sk'])->name('provinsis.no_sk');
         Route::put('/no_sk_asli/{id}', [ProvinsiController::class, 'no_sk_asli'])->name('provinsis.no_sk_asli');
