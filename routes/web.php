@@ -83,7 +83,7 @@ Route::group(['middleware' => ['auth']], function () {
     // untuk penilai
     Route::get('/data_kenpa', [PenilaiController::class, 'data_kenpa'])->name('penilais.data_kenpa');
 
-    Route::group(['middleware' => ['role:guru']], function () {
+    Route::group(['middleware' => ['role:guru|admin']], function () {
 
         Route::resource('paks', PakController::class);
         Route::resource('pendidikans', PendidikanController::class);
