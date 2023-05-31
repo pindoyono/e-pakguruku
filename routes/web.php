@@ -57,7 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('kegiatans', KegiatanController::class);
     Route::resource('posts', PostController::class);
-    Route::resource('pendidikans', PendidikanController::class);
     Route::resource('jabatans', JabatanController::class);
     Route::resource('kepegawaians', KepegawaianController::class);
 
@@ -74,17 +73,25 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/edit1/{id}', [PendidikanController::class, 'edit1'])->name('pendidikans.edit1');
     Route::put('/update1/{id}', [PendidikanController::class, 'update1'])->name('pendidikans.update1');
     Route::delete('/destroy1/{id}', [PendidikanController::class, 'destroy1'])->name('pendidikans.destroy1');
-    Route::get('/naik_pangkat', [PendidikanController::class, 'naik_pangkat'])->name('pendidikans.naik_pangkat');
 
     Route::put('/update_pak/{id}', [UserController::class, 'update_pak'])->name('users.update_pak');
 
-    Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
     Route::get('/angka_kredit', [PenilaiController::class, 'angka_kredit'])->name('penilais.angka_kredit');
 
     Route::get('/pesan_perbaikan/{id}', [ProvinsiController::class, 'pesan_perbaikan'])->name('provinsis.pesan_perbaikan');
 
     // untuk penilai
     Route::get('/data_kenpa', [PenilaiController::class, 'data_kenpa'])->name('penilais.data_kenpa');
+
+    Route::group(['middleware' => ['role:guru']], function () {
+
+        Route::resource('paks', PakController::class);
+        Route::resource('pendidikans', PendidikanController::class);
+        Route::get('/naik_pangkat', [PendidikanController::class, 'naik_pangkat'])->name('pendidikans.naik_pangkat');
+        Route::put('/usul_naik_pangkat/{id}', [PenilaiController::class, 'usul_naik_pangkat'])->name('penilais.usul_naik_pangkat');
+
+    });
+
     Route::group(['middleware' => ['role:penilai|admin-prov']], function () {
         //
         Route::get('/penilai', [PenilaiController::class, 'penilai'])->name('penilais.penilai');

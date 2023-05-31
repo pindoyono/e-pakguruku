@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dd('das');
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
             if (Auth::user()->hasRole('admin')) {
@@ -30,12 +33,27 @@ class HomeController extends Controller
                 return view('home');
             }
 
-            if (date('Y-m-d') <= date(get_tgl_akhir())) {
-                return view('home');
-                // dd('home');
-            } else {
-                return view('lock');
+            $count = DB::table('paks')
+                ->join('users', 'users.id', '=', 'paks.user_id')
+            // ->select('users.*', 'paks.*')
+                ->select('users.id',)
+                ->orderBy('users.name', 'asc')
+                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
+                ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
+                ->where('users.id', Auth::user()->id)
+                ->count();
+
+
+            if (date('Y-m-d') <= date(get_tgl_akhir()) && $count == 0 ) {
+
+                // dd($count);
                 // return view('home');
+                // dd('home');
+                return view('lock');
+            } else {
+                // return view('lock');
+                return view('home');
 
                 // dd('lock');
             }
