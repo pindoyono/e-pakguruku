@@ -16,6 +16,7 @@ use PDF;
 
 class PakController extends Controller
 {
+
     public function confirm_terbit(Request $request, $pak_id)
     {
         //

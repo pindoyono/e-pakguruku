@@ -33,18 +33,23 @@ use App\Http\Controllers\UserController;
 // }else{
 //     // return redirect()->route('user.page');
 // }
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/lock', [HomeController::class, 'index1'])->name('home1');
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/welcome', function () {
+    //
+    return view('lock');
 
+})->name('welcome');
 Auth::routes();
 
 // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('blogs', BlogController::class);
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['role:guru|admin|admin-prov|super-admin|cabdin']], function () {
+    Route::get('/lock', [HomeController::class, 'index1'])->name('home1');
+
+    Route::get('/', [HomeController::class, 'index'])->name('home');
     // Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::get('export', [UserController::class, 'export'])->name('export');

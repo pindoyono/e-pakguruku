@@ -25,7 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // dd('das');
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
             if (Auth::user()->hasRole('admin')) {
@@ -34,28 +33,24 @@ class HomeController extends Controller
             }
 
             $count = DB::table('paks')
-                ->join('users', 'users.id', '=', 'paks.user_id')
+            ->join('users', 'users.id', '=', 'paks.user_id')
             // ->select('users.*', 'paks.*')
-                ->select('users.id',)
-                ->orderBy('users.name', 'asc')
-                ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
-                ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-                ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
-                ->where('users.id', Auth::user()->id)
-                ->count();
+            ->select('users.id',)
+            ->orderBy('users.name', 'asc')
+            ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+            ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
+            ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
+            ->where('users.id', Auth::user()->id)
+            ->count();
 
-
-            if (date('Y-m-d') <= date(get_tgl_akhir()) && $count == 0 ) {
-
-                // dd($count);
-                // return view('home');
-                // dd('home');
-                return view('lock');
+            if (date('Y-m-d') >= date(get_tgl_akhir()) && $count == 0 ) {
+                Auth::logout();
+                return redirect('welcome');
             } else {
                 // return view('lock');
                 return view('home');
 
-                // dd('lock');
+                dd('lock');
             }
         }
         return view('home');
@@ -63,6 +58,7 @@ class HomeController extends Controller
 
     public function index1()
     {
+        Auth::logout();
         return view('lock');
     }
 
