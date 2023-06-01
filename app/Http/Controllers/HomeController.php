@@ -27,6 +27,14 @@ class HomeController extends Controller
     {
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
+            if (Auth::user()->wilayah_kerja == 'malinau'){
+                if (date('Y-m-d') >= date('2023-06-15') && $count == 0 ) {
+                    Auth::logout();
+                    return redirect('welcome');
+                } else {
+                    return view('home');
+                }
+            }
             if (Auth::user()->hasRole('admin')) {
                 // return redirect()->route('admin.page');
                 return view('home');
@@ -50,7 +58,6 @@ class HomeController extends Controller
                 // return view('lock');
                 return view('home');
 
-                dd('lock');
             }
         }
         return view('home');
