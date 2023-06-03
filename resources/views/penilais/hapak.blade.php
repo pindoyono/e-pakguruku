@@ -431,6 +431,8 @@
                                 $user->memperoleh_penghargaan +
                                 $user->tertinggal,
                             3,
+                            '.',
+                            '',
                         ) }}
                     </span>
                 </td>
@@ -474,6 +476,8 @@
                                     $user->memperoleh_penghargaan +
                                     $user->tertinggal),
                             3,
+                            '.',
+                            '',
                         ) }}
                     </span>
                 </td>
@@ -505,6 +509,8 @@
                                 $pak->tertinggal +
                                 $pak->tertinggal2,
                             3,
+                            '.',
+                            '',
                         ) }}
                     </span>
                 </td>
@@ -578,10 +584,10 @@
                 <td>{{ $jabatan_pak->akp }}</td>
             </tr>
 
-            @php $jml_1 = number_format(floatval($ak_diperoleh) - $jabatan_pak->target,3)  @endphp
-            @php $jml_4 = number_format((($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ) + ($daerah_tertinggal),3) @endphp
-            @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3) @endphp
-            @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3) @endphp
+            @php $jml_1 = number_format($ak_diperoleh - $jabatan_pak->target,3, '.', '')  @endphp
+            @php $jml_4 = number_format((($ak_utama_total - (90/100*$jabatan_pak->target_sebelum)) - (90/100*$jabatan_pak->akk) ) + ($daerah_tertinggal),3, '.', '') @endphp
+            @php $jml_2 = number_format($ak_pd - $jabatan_pak->akpkbpd,3, '.', '') @endphp
+            @php $jml_3 = number_format($ak_piki - $jabatan_pak->akpkbpiki,3, '.', '') @endphp
             @php
                 $jml_5 = number_format($ak_penunjang - $ak_penunjang_akhir - $jabatan_pak->akp, 3);
                 

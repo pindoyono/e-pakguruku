@@ -465,6 +465,8 @@
                                         $user->publikasi_ilmiah +
                                         $user->karya_inovatif),
                                 3,
+                                '.',
+                                '',
                             )) != 0
                                 ? str_replace('.', ',', $ak_utama_peroleh_saatini)
                                 : '-' }}
@@ -490,6 +492,8 @@
                                     $pak->karya_inovatif +
                                     $pak->karya_inovatif2,
                                 3,
+                                '.',
+                                '',
                             )) != 0
                                 ? str_replace('.', ',', $ak_utama_total)
                                 : '-' }}

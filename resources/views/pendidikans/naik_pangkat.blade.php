@@ -627,8 +627,9 @@
                                                 $memperoleh_penghargaan +
                                                 $pak_first->tertinggal +
                                                 $sum_tertinggal,
-                                        
                                             3,
+                                            '.',
+                                            '',
                                         ) }}
                                     </span>
                                 </td>
