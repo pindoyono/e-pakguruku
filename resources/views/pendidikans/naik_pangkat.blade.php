@@ -655,15 +655,15 @@
 
                     {{-- @if ($pak_first->status == 'submit' || $pak_first->status == 'Perbaikan') --}}
                     {{-- untuk tutup hitung naik pangkat --}}
-                    @if (date('Y-m-d') <= date(get_tgl_akhir()))
-                        <button type="submit" class="btn btn-sm btn-success col-sm-12">
-                            <span class="btn-label">
-                                <i class="material-icons">check</i>
-                            </span>
-                            Hitung
-                            <div class="ripple-container"></div>
-                        </button>
-                    @endif
+                    {{-- @if (date('Y-m-d') <= date(get_tgl_akhir())) --}}
+                    <button type="submit" class="btn btn-sm btn-success col-sm-12">
+                        <span class="btn-label">
+                            <i class="material-icons">check</i>
+                        </span>
+                        Hitung
+                        <div class="ripple-container"></div>
+                    </button>
+                    {{-- @endif --}}
                     {{-- @else
             {{'Tidak Ada Akses Action'}}
         @endif --}}
