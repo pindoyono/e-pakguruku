@@ -188,7 +188,7 @@
                         ) }}
                     </td>
                     <td>
-                        {{ str_replace('.', ',', number_format($pak->akpkbpiki, 3)) }}
+                        {{ str_replace('.', ',', number_format($pak->akpkbpiki, 3, '.', '')) }}
                     </td>
 
                     <td
