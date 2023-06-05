@@ -169,7 +169,7 @@
                         {{ str_replace('.', ',', number_format($pak->akpkbpd, 3)) }}
                     </td>
                     <td
-                        style="{{ number_format($ak_pd - $pak->akpkbpd, 3) >= 0 ? 'color: green;' : 'color: red;' }} text-align:right;font-weight:bold">
+                        style="{{ number_format($ak_pd - $pak->akpkbpd, 3, '.', '') >= 0 ? 'color: green;' : 'color: red;' }} text-align:right;font-weight:bold">
                         {{ str_replace('.', ',', number_format($ak_pd - $pak->akpkbpd, 3)) }}</td>
 
                     <td>
@@ -192,7 +192,7 @@
                     </td>
 
                     <td
-                        style="{{ number_format($ak_piki - $pak->akpkbpiki, 3) >= 0 ? 'color: green;' : 'color: red;' }} text-align:right">
+                        style="{{ number_format($ak_piki - $pak->akpkbpiki, 3, '.', '') >= 0 ? 'color: green;' : 'color: red;' }} text-align:right">
                         {{ str_replace('.', ',', number_format($ak_piki - $pak->akpkbpiki, 3)) }}</td>
 
                     <td>
@@ -211,7 +211,7 @@
                         {{ $pak->akp }}
                     </td>
                     <td
-                        style="{{ number_format($ak_penunjang - $pak->akp, 3) <= 0 ? 'color: green;' : 'color: red;' }} text-align:right">
+                        style="{{ number_format($ak_penunjang - $pak->akp, 3, '.', '') <= 0 ? 'color: green;' : 'color: red;' }} text-align:right">
                         {{ str_replace('.', ',', number_format($ak_penunjang - $pak->akp, 3)) }}</td>
 
                     <td>
