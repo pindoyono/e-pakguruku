@@ -184,8 +184,9 @@
                                                 {{ str_replace('.', ',', number_format($pak->akpkbpd, 3)) }}
                                             </td>
                                             <td
-                                                style="{{ number_format($ak_pd - $pak->akpkbpd, 3) >= 0 ? 'color: green;' : 'color: red;' }} text-align:right;font-weight:bold">
-                                                {{ str_replace('.', ',', number_format($ak_pd - $pak->akpkbpd, 3)) }}</td>
+                                                style="{{ number_format($ak_pd - $pak->akpkbpd, 3, '.', '') >= 0 ? 'color: green;' : 'color: red;' }} text-align:right;font-weight:bold">
+                                                {{ str_replace('.', ',', number_format($ak_pd - $pak->akpkbpd, 3, '.', '')) }}
+                                            </td>
 
                                             <td>
                                                 {{ str_replace(
