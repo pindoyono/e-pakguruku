@@ -61,7 +61,7 @@
                 <tr>
                     <td>{{ $i++ }}</td>
                     <td>{{ $pak->name }}</td>
-                    <th>{{ $pak->created_at }}</th>
+                    <th>{{ $pak->tgl_buat }}</th>
                     <td>{{ "'" . $pak->nip }}</td>
                     <td>{{ $pak->no_hp }}</td>
                     <td>{{ '-' }}</td>

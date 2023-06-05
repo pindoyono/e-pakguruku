@@ -86,7 +86,7 @@
                     <td>{{ "'" . $pak->username }}</td>
                     <td>{{ $pak->no_hp }}</td>
                     <td>{{ $pak->sekolah }}</td>
-                    <th>{{ $pak->created_at }}</th>
+                    <th>{{ $pak->tgl_buat }}</th>
                     <td>{{ $pak->pangkat }}</td>
                     <td>{{ get_jabatan($pak->pangkat_golongan + 1)->pangkat }}</td>
                     <td>
