@@ -116,6 +116,8 @@
                                 $pak->memperoleh_penghargaan +
                                 $pak->memperoleh_penghargaan2,
                             3,
+                            '.',
+                            '',
                         ) }}
                     </td>
                     <td>{{ $pak->target }}</td>
