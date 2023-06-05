@@ -200,6 +200,8 @@
                                                             $pak->pi_user -
                                                             $pak->ki_user,
                                                         3,
+                                                        '.',
+                                                        '',
                                                     ),
                                                 ) }}
                                             </td>
