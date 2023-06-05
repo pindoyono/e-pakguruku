@@ -129,12 +129,14 @@
                                                         $pak->memperoleh_penghargaan +
                                                         $pak->memperoleh_penghargaan2,
                                                     3,
+                                                    '.',
+                                                    '',
                                                 ) }}
                                             </td>
                                             <td>{{ $pak->target }}</td>
                                             <td
-                                                style="{{ number_format($ak_diperoleh - $pak->target, 3) >= 0 ? 'color: green;' : 'color: red;' }} text-align:right; font-weight:bold">
-                                                {{ str_replace('.', ',', number_format($ak_diperoleh - $pak->target, 3)) }}
+                                                style="{{ number_format($ak_diperoleh - $pak->target, 3, '.', '') >= 0 ? 'color: green;' : 'color: red;' }} text-align:right; font-weight:bold">
+                                                {{ str_replace('.', ',', number_format($ak_diperoleh - $pak->target, 3, '.', '')) }}
                                             </td>
 
 
