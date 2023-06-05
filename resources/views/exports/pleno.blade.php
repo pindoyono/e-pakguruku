@@ -184,11 +184,13 @@
                                     $pak->pi_user -
                                     $pak->ki_user,
                                 3,
+                                '.',
+                                '',
                             ),
                         ) }}
                     </td>
                     <td>
-                        {{ str_replace('.', ',', number_format($pak->akpkbpiki, 3, '.', '')) }}
+                        {{ str_replace('.', ',', number_format($pak->akpkbpiki, 3)) }}
                     </td>
 
                     <td
