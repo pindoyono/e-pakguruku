@@ -162,7 +162,7 @@
                         {{ str_replace(
                             '.',
                             ',',
-                            $ak_pd = number_format($pak->pengembangan_diri + $pak->pengembangan_diri2 - $pak->pd_user, 3),
+                            $ak_pd = number_format($pak->pengembangan_diri + $pak->pengembangan_diri2 - $pak->pd_user, 3, '.', ''),
                         ) }}
                     </td>
                     <td>
