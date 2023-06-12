@@ -107,7 +107,7 @@
 
     @endrole
 
-    @role('admin-prov')
+    @role('penilai')
         <li class="nav-item ">
             <a class="nav-link" href="{{ route('penilais.penilai') }}">
                 <i class="material-icons">calculate</i>
