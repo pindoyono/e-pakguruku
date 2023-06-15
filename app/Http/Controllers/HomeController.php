@@ -38,7 +38,7 @@ class HomeController extends Controller
         ->where('users.id', Auth::user()->id)
         ->count();
 
-        if (!(Auth::user()->hasRole('guru'))) {
+        if (Auth::user()->hasRole('super-admin')) {
             return view('home');
         }
 
