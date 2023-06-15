@@ -25,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $count = DB::table('paks')
+        ->join('users', 'users.id', '=', 'paks.user_id')
+        // ->select('users.*', 'paks.*')
+        ->select('users.id',)
+        ->orderBy('users.name', 'asc')
+        ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
+        ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
+        ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
+        ->where('users.id', Auth::user()->id)
+        ->count();
+
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
             if (Auth::user()->wilayah_kerja == 'malinau'){
@@ -40,16 +51,7 @@ class HomeController extends Controller
                 return view('home');
             }
 
-            $count = DB::table('paks')
-            ->join('users', 'users.id', '=', 'paks.user_id')
-            // ->select('users.*', 'paks.*')
-            ->select('users.id',)
-            ->orderBy('users.name', 'asc')
-            ->where('users.status_naik_pangkat', 'NAIK PANGKAT')
-            ->where(DB::raw('YEAR(paks.created_at)'), '>=', '2023')
-            ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
-            ->where('users.id', Auth::user()->id)
-            ->count();
+
 
             if (date('Y-m-d') >= date(get_tgl_akhir()) && $count == 0 ) {
                 Auth::logout();
