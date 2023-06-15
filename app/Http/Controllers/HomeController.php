@@ -25,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+
         $count = DB::table('paks')
         ->join('users', 'users.id', '=', 'paks.user_id')
         // ->select('users.*', 'paks.*')
@@ -35,6 +37,10 @@ class HomeController extends Controller
         ->where(DB::raw('MONTH(paks.created_at)'), '>', '4')
         ->where('users.id', Auth::user()->id)
         ->count();
+
+        if (!(Auth::user()->hasRole('guru'))) {
+            return view('home');
+        }
 
         if (Auth::user()->hasRole('guru')) {
             // return redirect()->route('admin.page');
@@ -50,8 +56,6 @@ class HomeController extends Controller
                 // return redirect()->route('admin.page');
                 return view('home');
             }
-
-
 
             if (date('Y-m-d') >= date(get_tgl_akhir()) && $count == 0 ) {
                 Auth::logout();
