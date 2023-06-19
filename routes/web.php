@@ -46,7 +46,7 @@ Auth::routes();
 
 Route::resource('blogs', BlogController::class);
 
-Route::group(['middleware' => ['role:guru|admin|admin-prov|super-admin|cabdin']], function () {
+Route::group(['middleware' => ['role:guru|admin|admin-prov|super-admin|cabdin|penilai']], function () {
     Route::get('/lock', [HomeController::class, 'index1'])->name('home1');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
