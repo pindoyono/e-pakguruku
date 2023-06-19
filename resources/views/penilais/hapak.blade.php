@@ -577,7 +577,7 @@
                     ) }}
                 </td>
                 <td>
-                    {{ number_format($ak_penunjang - $ak_penunjang_akhir, 3, '.', '') }}
+                    {{ $ak_penunjang - $ak_penunjang_akhir }}
                 </td>
             </tr>
             <tr>
