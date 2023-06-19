@@ -555,10 +555,15 @@
                     {{ $ak_diperoleh }}
                 </td>
                 <td>
-                    {{ number_format($ak_utama_total - (90 / 100) * $jabatan_pak->target_sebelum + $daerah_tertinggal, 3) }}
+                    {{ number_format($ak_utama_total - (90 / 100) * $jabatan_pak->target_sebelum + $daerah_tertinggal, 3, '.', '') }}
                 </td>
                 <td>
-                    {{ $ak_pd = number_format($pak->pengembangan_diri + $pak->pengembangan_diri2 - $user->pengembangan_diri, 3) }}
+                    {{ $ak_pd = number_format(
+                        $pak->pengembangan_diri + $pak->pengembangan_diri2 - $user->pengembangan_diri,
+                        3,
+                        '.',
+                        '',
+                    ) }}
                 </td>
                 <td>
                     {{ $ak_piki = number_format(
