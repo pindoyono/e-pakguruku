@@ -382,6 +382,8 @@
                         {{ $ak_penunjang_akhir = number_format(
                             $user->ijazah_tidak_sesuai + $user->pendukung_tugas_guru + $user->memperoleh_penghargaan,
                             3,
+                            '.',
+                            '',
                         ) }}
                     </span>
                 </td>
@@ -396,6 +398,8 @@
                                 $pak->memperoleh_penghargaan2 -
                                 ($user->ijazah_tidak_sesuai + $user->pendukung_tugas_guru + $user->memperoleh_penghargaan),
                             3,
+                            '.',
+                            '',
                         ) }}
                     </span>
                 </td>
