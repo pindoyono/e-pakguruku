@@ -109,6 +109,12 @@
 
     @role('penilai')
         <li class="nav-item ">
+            <a class="nav-link" href="{{ route('users.index') }}">
+                <i class="material-icons">people</i>
+                <p> Pengguna </p>
+            </a>
+        </li>
+        <li class="nav-item ">
             <a class="nav-link" href="{{ route('penilais.penilai') }}">
                 <i class="material-icons">calculate</i>
                 <p> Penilaian <span class="badge badge-pill badge-warning">Kenpa</span> </p>
