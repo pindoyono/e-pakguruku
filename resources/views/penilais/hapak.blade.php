@@ -13,6 +13,7 @@
                     </h3>
                     <h3>
                         {{ tgl_indo($pak->awal) . ' S/D ' . tgl_indo($pak->akhir) }}
+                        {{ lolos($pak->id) }}
                     </h3>
                 </td>
             </tr>

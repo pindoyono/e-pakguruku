@@ -550,11 +550,11 @@ if (!function_exists('lolos')) {
                 # code...
                 // $masa_kerja = masa_kerja(\Carbon\Carbon::parse((date("Y") + 1) . "-04-01"), $user->tmt_pns);
                 // $masa_kerja = masa_kerja(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $user->tmt_pns);
-                $masa_kerja = masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), $user->tmt_pns);
+                $masa_kerja = masa_kerja_tahun(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), $user->tmt_pns);
             } else {
                 // $masa_kerja = masa_kerja(\Carbon\Carbon::parse(date("Y") . "-10-01"), $user->tmt_pns);
                 // $masa_kerja = masa_kerja(\Carbon\Carbon::parse($pak->akhir)->addMonths(1), $user->tmt_pns);
-                $masa_kerja = masa_kerja(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), $user->tmt_pns);
+                $masa_kerja = masa_kerja_tahun(\Carbon\Carbon::parse(\Carbon\Carbon::parse(now())->format('y') . '-' . get_periode() . '-31')->addMonths(1), $user->tmt_pns);
             }
 
             $ki = $pak->karya_inovatif + $pak->karya_inovatif2 - $user->karya_inovatif <= 50 / 100 * $jabatan_pak->akpkbpiki;
@@ -585,6 +585,7 @@ if (!function_exists('lolos')) {
                     $naik_pangkat = 1;
                 }
             } else {
+                // dd($masa_kerja);
                 $naik_pangkat = 0;
             }
 
