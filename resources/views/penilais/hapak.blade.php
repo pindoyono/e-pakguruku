@@ -581,6 +581,8 @@
                             $user->publikasi_ilmiah -
                             $user->karya_inovatif,
                         3,
+                        '.',
+                        '',
                     ) }}
                 </td>
                 <td>
